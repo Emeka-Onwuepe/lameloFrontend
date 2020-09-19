@@ -16,7 +16,7 @@ const Menu = (props) => {
                                
                             </div>
                             <div className="menu-deal">
-                                <li  className="menu"  onClick={() => props.history.push('/burger-fries-wings')}>Burger, Fries & Wings page<span className="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, illum.</span></li>
+                                <li  className="menu"  onClick={() => props.history.push('/wings-fries-burger')}>Burger, Fries & Wings page<span className="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, illum.</span></li>
                                 
                             </div>
                             <div className="menu-deal">
