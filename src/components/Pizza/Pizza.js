@@ -12,6 +12,7 @@ import PizzaCard from './PizzaCard';
 
 const Pizza = (props) => {
    const [getPizza, setGetPizza] = useState("");
+  const [getPrices,setPrices]=useState([])
 
    
    const fetchProducts = () => {
@@ -22,6 +23,8 @@ const Pizza = (props) => {
       .then(res => {
         if(res.data) {
           setGetPizza(res.data.Pizza)
+          setPrices(res.data.prices)
+          console.log(res.data)
         }else {
            alert(`Failed to fetch products`)
         }
@@ -51,7 +54,7 @@ const Pizza = (props) => {
                            Chicken Pizza, Meat Lover, Lamelo Special, Sicilian Pizza, Fahita Pizza, Hawai Pizza, Seafood Pizza, Beef Pizza, BBQ Chicken Pizza, Vegetable Pizza
                          </p>
                       </div>
-                      <div className="product-cards"><PizzaCard pizzas={getPizza}/></div>
+                      <div className="product-cards"><PizzaCard pizzas={getPizza} prices={getPrices}/></div>
                   </Container>
              
               </div>
