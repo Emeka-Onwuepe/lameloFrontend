@@ -58,4 +58,4 @@ const BWF = (props) => {
     )
 }
 
-export default BWF
+export default BWF;

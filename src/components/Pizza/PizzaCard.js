@@ -14,7 +14,7 @@ const [DivDisplay, setDivdisplay] = useState({ display: false, check: false })
 const [priceState, setpriceState] = useState([])
 const Style=  {
     "border": "1px #dadada solid",
-    "display": Display?"block":"none",
+    "display": Display ? "block":"none",
 }
     
 useEffect(() => {
