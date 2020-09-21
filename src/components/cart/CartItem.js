@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { storeContext, UpdateCart } from '../../STATES/Actions/Actions';
-import "../../CSS/cartItem.css"
+import { storeContext, UpdateCart } from '../State/State';
+// import "../../CSS/cartItem.css"
 
 
 const CartItem = (props) => {
