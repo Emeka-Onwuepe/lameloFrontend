@@ -1,42 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect, useContext } from 'react';
 
 import { Container, Row } from 'reactstrap';
 
 import Logo1 from '../../assets/LAMELŌ logo blk.png';
-
+import { storeContext, GET_PIZZA, getCategory, load, LOADING } from "../State/State"
 
 
 import './Pizza.css';
 import ProductCard from '../Card/ProductCard';
 
 const Pizza = (props) => {
-  const [getPizza, setGetPizza] = useState("");
-  const [getPrices, setPrices] = useState([])
-
-
-  const fetchProducts = () => {
-    let variables = {
-      "action": "Pizza"
-    }
-    axios.post("http://lameloapi.herokuapp.com/getproducts", variables, { headers: { "Content-Type": "application/json" } })
-      .then(res => {
-        if (res.data) {
-          setGetPizza(res.data.products)
-          setPrices(res.data.prices)
-          console.log(res.data)
-        } else {
-          alert(`Failed to fetch products`)
-        }
-
-      }).catch(err => {
-        console.log(err)
-      })
-
-  }
+  const { storestate, storedispatch } = useContext(storeContext)
+  const data = { "action": "Pizza" }
+  const { products, prices } = storestate.pizza
 
   useEffect(() => {
-    fetchProducts()
+    console.log(storestate.pizza)
+    getCategory(data, GET_PIZZA).then(res => storedispatch(res))
+    storedispatch(load(LOADING))
   }, []);
 
   return (
@@ -54,7 +35,7 @@ const Pizza = (props) => {
               Chicken Pizza, Meat Lover, Lamelo Special, Sicilian Pizza, Fahita Pizza, Hawai Pizza, Seafood Pizza, Beef Pizza, BBQ Chicken Pizza, Vegetable Pizza
                          </p>
           </div>
-          <div className="product-cards"><ProductCard products={getPizza} prices={getPrices} /></div>
+          <div className="product-cards"><ProductCard products={products} prices={prices} /></div>
         </Container>
 
       </div>

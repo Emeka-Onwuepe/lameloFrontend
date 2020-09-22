@@ -9,8 +9,6 @@ import { storeContext, addToCart, load, LOADING } from '../State/State';
 
 
 const ProductCard = ({ products, prices }) => {
-    // let product = { id: "", image: "", name: "", brand: "", price: "", discription: "", multipleSIzes: "" }
-    // const [products, setProduct] = useState([])
     const [Display, setDisplay] = useState(false)
     const [DivDisplay, setDivdisplay] = useState({ display: false, check: false })
     const [priceState, setpriceState] = useState([])
@@ -56,24 +54,12 @@ const ProductCard = ({ products, prices }) => {
     }
     const onChange = (e) => {
         const { priceID, productId } = spliter(e.target.id)
-        //get product
-        let [selectedProduct] = products.filter(product => product.id == productId)
-        //check if it is already added to the product array
-        // let check = products.filter(item => item.id == selectedProduct.id)
-        // if (check.length == 0) {
-        //   setProduct([...products, selectedProduct])
-
-        // } else {
 
         let [price] = prices.filter(x => x.id == priceID)
         price.checked = e.target.checked
         let [rest] = prices.filter(x => x.id != priceID)
         setpriceState([price, rest])
         console.log(priceState)
-
-        // }
-        // console.log(products)
-
     }
 
     const onClick = (e) => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import axios from 'axios';
 
 import { Container, Row } from 'reactstrap';
@@ -11,33 +11,7 @@ import ProductCard from "../Card/ProductCard"
 import './BWF.css';
 
 const BWF = (props) => {
-  const [getBFW, setGetBFW] = useState("");
-  const [getPrices, setPrices] = useState([])
 
-
-
-  const fetchProducts = () => {
-    let variables = {
-      "action": "bfw"
-    }
-    axios.post("http://lameloapi.herokuapp.com/getproducts", variables, { headers: { "Content-Type": "application/json" } })
-      .then(res => {
-        if (res.data) {
-          setGetBFW(res.data.products)
-          setPrices(res.data.prices)
-        } else {
-          alert(`Failed to fetch products`)
-        }
-
-      }).catch(err => {
-        console.log(err)
-      })
-
-  }
-
-  useEffect(() => {
-    fetchProducts()
-  }, []);
 
   return (
 
@@ -52,7 +26,7 @@ const BWF = (props) => {
           <div className="bwf-definations">
             <p></p>
           </div>
-          <div className="product-cards"><ProductCard products={getBFW} prices={getPrices} /></div>
+
         </Container>
 
       </div>
@@ -61,4 +35,4 @@ const BWF = (props) => {
   )
 }
 
-export default BWF
+export default BWF;
