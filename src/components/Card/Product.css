@@ -7,7 +7,67 @@
     position: relative;
     z-index: 1;
 }
+.card-container {
+    min-height: 550px;
+    box-shadow: 0 0 .25em .25em rgba(0, 0, 0, 0.25);
+}
 
+.button-cart {
+    position: absolute;
+    background-color: #4CAF50;
+    border: 0px;
+    color: #FFFFFF;
+    width: 130px;
+    height: 50px;
+    text-align: center;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    bottom: 65%;
+    left: 55%;
+    padding: 10px; 
+    border-radius: 50px;
+    outline: 0;
+}
+
+.button-cart:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    outline: 0;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+  }
+  
+  .button-cart:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    outline: 0;
+    transition: 0s
+  }
+  .css-2b097c-container {
+    position: relative;
+    box-sizing: border-box;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+}
+.css-1wa3eu0-placeholder {
+    color: orangered !important;
+}
+.css-1okebmr-indicatorSeparator {
+    background-color: orangered !important;
+}
+.css-6q0nyr-Svg {
+    fill: orangered !important;
+    stroke: orangered !important;
+}
 .pizza-bg {
     background-position: center;
     background-size: cover;

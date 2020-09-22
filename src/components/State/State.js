@@ -238,15 +238,19 @@ const StoreContextProvider = (props) => {
             localStorage.setItem("storestate", JSON.stringify(storestate))
         }, [storestate]);
 
-        return ( < storeContext.Provider value = {
-                {
-                    storestate,
-                    storedispatch
-                }
-            } > {
-                props.children
-            } < /storeContext.Provider>);
-        }
+        return (
+            <storeContext.Provider value={{storestate, storedispatch}}>
+                {props.children}
+            </storeContext.Provider>
+        )
 
+       }
 
         export default StoreContextProvider;
+
+
+
+    //     return ( < storeContext.Provider value = {{storestate, storedispatch} } > 
+    //         {props.children} 
+    //    < /storeContext.Provider>
+    //   );
