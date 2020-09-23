@@ -5,7 +5,6 @@ import { Container, Row } from 'reactstrap';
 import Logo1 from '../../assets/LAMELŌ logo blk.png';
 import { storeContext, GET_PIZZA, GET_BFW, GET_GELATOS, GET_SALAD, getCategory, load, LOADING } from "../State/State"
 
-
 import './Product.css';
 import ProductCard from './ProductCard';
 
@@ -69,7 +68,6 @@ const ProductPage = (props) => {
           </div>
           <div className="product-cards"><ProductCard products={products} prices={prices} /></div>
         </Container>
-
       </div>
       <button className="call-to-action-pizza " onClick={() => props.history.push('/menu')}>Menu</button>
     </div>

@@ -74,7 +74,8 @@ const storeReducer = (state, action) => {
                 pizza: {
                     products: action.products,
                     prices: action.prices
-                }
+                },
+                loading: false,
             }
         case GET_BFW:
             return {
@@ -82,7 +83,8 @@ const storeReducer = (state, action) => {
                 bfw: {
                     products: action.products,
                     prices: action.prices
-                }
+                },
+                loading: false,
             }
         case GET_GELATOS:
             return {
@@ -90,7 +92,8 @@ const storeReducer = (state, action) => {
                 gelatos: {
                     products: action.products,
                     prices: action.prices
-                }
+                },
+                loading: false,
             }
         case GET_SALAD:
             return {
@@ -98,7 +101,8 @@ const storeReducer = (state, action) => {
                 salad: {
                     products: action.products,
                     prices: action.prices
-                }
+                },
+                loading: false,
             }
         case ADD_TO_CART:
             return {
