@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { NavLink, Link, useParams } from 'react-router-dom';
 import {
-    Card, CardImg, CardText, 
+    Card, CardImg, CardText,
     CardBody, CardTitle, Row,
-    Col, Container,  Alert
+    Col, Container, Alert
 } from 'reactstrap';
 
 import Select from 'react-select';
@@ -15,12 +15,12 @@ const animatedComponents = makeAnimated();
 
 
 const ProductCard = ({ products, prices }) => {
- 
+
     const [DivDisplay, setDivdisplay] = useState({ display: false, check: false })
     const [priceState, setpriceState] = useState([])
     let check = false;
 
-   
+
 
 
     // useEffect(() => {
@@ -57,16 +57,29 @@ const ProductCard = ({ products, prices }) => {
 
     const onChange = (e) => {
         // const { priceID, productId } = spliter(e.target.id)
-const [value]= e.map(item=>item.value)
-console.log(value)
-        // let [price] = prices.filter(x => x.id == priceID)
-        // console.log(price)
-        // price = e.target.value
-        // let [rest] = prices.filter(x => x.id != priceID)
-        // setpriceState([price, rest])
-        // console.log(priceState)
+        let value = []
+        let stateArry = []
+        try {
+            value = e.map(item => item.value)
+        } catch (err) {
+        }
+        setpriceState([])
+        value.forEach(item => {
+            console.log(priceState)
+            let [price] = prices.filter(x => x.id == item)
+            // console.log(price)
+            // price = e.target.value
+            // let [rest] = prices.filter(x => x.id != item)
+            // let check = priceState.filter(item => item.id == price.id)
+            let check = stateArry.filter(item => item.id == price.id)
+            if (check.length == 0) {
+                // setpriceState([...priceState, price])
+                stateArry.push(price)
+                setpriceState(stateArry)
+            }
+        })
     }
-
+    console.log(priceState)
     const onClick = (e) => {
         const id = e.target.id
         console.log(id)
@@ -75,8 +88,8 @@ console.log(value)
         if (product.multipleSIzes.length > 0) {
             if (priceState.length > 0) {
                 setDivdisplay({ display: true })
-                let filtered = priceState.filter(x => x.checked == true)
-                for (const index of filtered) {
+                // let filtered = priceState.filter(x => x.checked == true)
+                for (const index of priceState) {
                     const data = { id: parseInt(`${product.id}${index.id}`), Id: product.id, name: product.name, brand: product.brand, price: index.price, size: index.size, quantity: 1, image: product.image }
                     storestate.cart.forEach(x => {
                         if (x.id == data.id) {
@@ -104,7 +117,7 @@ console.log(value)
             }
         }
     }
-   
+
     return (
         <Container>
             <Row>
@@ -115,25 +128,25 @@ console.log(value)
                         //     { value: 'strawberry', label: 'Strawberry' },
                         //     { value: 'vanilla', label: 'Vanilla' }
                         //   ]
-                          
-                        
+
+
                         <Col lg="4" key={index}>
                             <Card className="card-container">
                                 <CardImg top width="95%" src={pizza.image} alt={`pizza-image-${pizza.image}`} height={200} />
                                 <CardBody>
                                     <CardTitle><h3>{pizza.name}</h3></CardTitle>
-                                  
-                                    {pizza.price === 0 && prices.length > 0 ? 
-                                    <> 
-                                    <Select closeMenuOnSelect={false} components={animatedComponents}  onChange={onChange}  placeholder="Select Product Sizes..." isMulti options={filter(pizza.multipleSIzes,prices).map((item) => ({value:item.id,label:`Size:${item.size}- ₦${numbro(parseInt(item.price)).format({ thousandSeparated: true })}`}))
-                                    } /><br /></>              
-                                 : <p><b>Price:</b> <span>₦{numbro(parseInt(pizza.price)).format({ thousandSeparated: true })}</span></p>}
-                                   <CardText style={{ "color": "black" }}>{pizza.description}</CardText>
+
+                                    {pizza.price === 0 && prices.length > 0 ?
+                                        <>
+                                            <Select closeMenuOnSelect={false} components={animatedComponents} onChange={onChange} placeholder="Select Product Sizes..." isMulti options={filter(pizza.multipleSIzes, prices).map((item) => ({ value: item.id, label: `Size:${item.size}- ₦${numbro(parseInt(item.price)).format({ thousandSeparated: true })}` }))
+                                            } /><br /></>
+                                        : <p><b>Price:</b> <span>₦{numbro(parseInt(pizza.price)).format({ thousandSeparated: true })}</span></p>}
+                                    <CardText style={{ "color": "black" }}>{pizza.description}</CardText>
                                 </CardBody>
                             </Card>
                             <div>
                                 <button id={pizza.id} className="button-cart" onClick={onClick}>ADD TO CART</button>
-                                 {DivDisplay.check && DivDisplay.display ? alreadyInCart : DivDisplay.display ? decisionBox : ""}
+                                {DivDisplay.check && DivDisplay.display ? alreadyInCart : DivDisplay.display ? decisionBox : ""}
                             </div>
                         </Col>
                     )) : <Alert>Failed to load items</Alert>

@@ -17,11 +17,11 @@ const Routes = () => {
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/menu" component={Menu} />
+                <Route exact path="/ShoppingCart" component={ShoppingCart} />
                 <Route exact path="/:category" component={ProductPage} />
                 // <Route exact path="/pizza-page" component={Pizza} />
                 // <Route exact path="/product/:id" component={SingleProduct} />
                 // <Route exact path="/wings-fries-burger" component={BWF} />
-                <Route exact path="/ShoppingCart" component={ShoppingCart} />
                 {/* <Route exact path="/salad-page" component={Salad}/>
               <Route exact path="/gelatos" component={Gelato} />  */}
             </Switch>
