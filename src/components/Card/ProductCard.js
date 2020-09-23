@@ -20,12 +20,14 @@ const ProductCard = ({ products, prices }) => {
     const [priceState, setpriceState] = useState([])
     let check = false;
 
-
-
-
-    // useEffect(() => {
-    // }, [Display]);
     const { storestate, storedispatch } = useContext(storeContext)
+    useEffect(() => {
+        console.log("cart changed")
+        console.log(priceState)
+
+
+    }, [storestate.cart]);
+
     const initial = { display: false, check: false }
     const filter = (array, price) => {
         let items = []
@@ -63,7 +65,6 @@ const ProductCard = ({ products, prices }) => {
             value = e.map(item => item.value)
         } catch (err) {
         }
-        setpriceState([])
         value.forEach(item => {
             console.log(priceState)
             let [price] = prices.filter(x => x.id == item)
@@ -100,7 +101,7 @@ const ProductCard = ({ products, prices }) => {
                     if (check != true) {
                         storedispatch(addToCart(data))
                     }
-
+                    setpriceState([])
                 }
             }
         } else if (product.multipleSIzes.length == 0) {
