@@ -1,7 +1,20 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+
+import { AiFillDelete } from 'react-icons/ai';
+import { MdAdd } from "react-icons/md";
+import { RiSubtractFill } from "react-icons/ri";
+
+
+
+import numbro from 'numbro';
+import {
+    Container,
+    Card, CardImg, CardText, CardBody,
+    CardTitle, CardSubtitle, Button
+  } from 'reactstrap';
 import { storeContext, UpdateCart } from '../State/State';
-// import "../../CSS/cartItem.css"
+import "./CartItems.css"
 
 
 const CartItem = (props) => {
@@ -34,19 +47,27 @@ const CartItem = (props) => {
         storedispatch(UpdateCart(cart))
     }
     return (
-        <div className="cartDisplayBox">
-            <img src={product.image} alt="" />
-            <p >{product.name}</p>
-            <p >{product.brand}</p>
-            <p > &#x20A6; {`${product.price}`}</p>
-            <p>Qty: {product.quantity}</p>
-            <p>size: {product.size}</p>
-            <div className="controlButtons">
-                <button onClick={increment}>+</button>
-                <button onClick={decrement}>-</button>
-                <button onClick={deleteItem}>DELETE</button>
+       <Container>
+
+        <div className="item-container">
+            <Card>
+                <CardImg top width="100%" src={product.image} alt={`img-${product.image}`} height="200px"/>
+                <CardBody>
+                {/* ₦{numbro(parseInt(pizza.price)).format({ thousandSeparated: true })} */}
+                <CardTitle><h4>{product.name}</h4></CardTitle>
+                <CardSubtitle className="text-center"> <h5>Price: ₦{numbro(product.price).format({thousandSeparated: true})}</h5></CardSubtitle>
+                <CardText className="text-center"><p><b>Size: {product.size}</b></p><p><b>QTY: {product.quantity}</b></p>
+                    <p><b>Total: {product.quantity * product.price}</b></p>
+                </CardText>
+                <center>
+                    <Button onClick={increment} color="success"><MdAdd /></Button>{' '}
+                    <Button onClick={decrement} color="primary" className="text-light"><RiSubtractFill /></Button>{' '}
+                    <Button onClick={deleteItem} color="danger"><AiFillDelete /> delete</Button>
+                </center>
+                </CardBody>
+            </Card>
             </div>
-        </div>
+        </Container>
     )
 };
 
