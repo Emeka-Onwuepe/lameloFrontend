@@ -1,6 +1,9 @@
 import React, { useContext, useEffect, Fragment } from 'react';
+
+import numbro from 'numbro';
 import PropTypes from 'prop-types';
-import { Redirect, NavLink } from 'react-router-dom';
+import { Row, Container, Col, Button } from 'reactstrap';
+// import { Redirect, Link } from 'react-router-dom';
 import { storeContext } from '../State/State';
 import CartItem from './CartItem';
 import OrderedList from './OrderedList';
@@ -13,7 +16,7 @@ const ShoppingCart = (props) => {
     //     storedispatch({ type: CLEAR_SUCCESS })
     // }, []);
     let orderedlist = <OrderedList products={Ordered} />
-    const itemDisplay = cart.map((product) => <Fragment key={product.id}><CartItem product={product} /></Fragment>)
+    const itemDisplay = cart.map((product) => (<Col lg="4"><CartItem product={product} /></Col>))
     let total = 0
     for (const product of cart) {
         let amount = product.price * product.quantity
@@ -24,7 +27,7 @@ const ShoppingCart = (props) => {
     const order = { "product": cart, total }
 
     return (
-        <Fragment>
+        <Fragment className="cart-store">
              {User.user != undefined && User.user != "" ? <div className="userNameDiv">
                      <p className="userName">Welcome, {`${User.user.first_name.toUpperCase()} ${User.user.last_name.toUpperCase()}`} </p>
              </div> : ""}
@@ -33,12 +36,12 @@ const ShoppingCart = (props) => {
              </div>
             <div className="orderListDisplay text-center mt-4">
                 <h3>CART</h3>
-                {itemDisplay}
-                < p className="amount">Total Amount: &#x20A6; {`${total}`}</p>
+                <Container><Row>{itemDisplay}</Row></Container>
+                < p className="amount mt-4"><b>Total Amount:  ₦{numbro(total).format({thousandSeparated: true})}</b></p>
                 {/* <p className="directions"> {directions}</p> */}
-                <NavLink to="/confirmOrder"><button>CONFIRM ORDER</button></NavLink> 
+               <Button onClick={() => props.history.push("/confirmOrder")} className="confirm-btn">CONFIRM ORDER</Button>
             </div>
-
+            <button className="call-to-action-pizza " onClick={() => props.history.push('/menu')}>Menu</button>
 
         </Fragment >
     );

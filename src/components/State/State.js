@@ -30,7 +30,7 @@ export const DELETE_MESSAGES = "DELETE_MESSAGES";
 //Actions dispatchers
 
 export const getCategory = (data, type) => {
-    return axios.post("http://lameloapi.herokuapp.com/getproducts", data, ).then(res => {
+    return axios.post("http://lameloapis.herokuapp.com/getproducts", data, ).then(res => {
         return {
             type: type,
             products: res.data.products,

@@ -30,7 +30,11 @@
     border-radius: 50px;
     outline: 0;
 }
+.button-cart:hover{
+    background-color: black !important;
+    transition: ease-in-out 0.3s all;
 
+}
 .button-cart:after {
     content: "";
     background: #f1f1f1;
@@ -123,7 +127,18 @@ button.call-to-action-pizza:hover {
     width: 96%;
     margin: 5px auto;
 }
+.shopping-cart {
+    position: fixed;
+    bottom: 75%;
+    left: 87%;
+    z-index: 500;
+    color: white;
 
+}
+
+.shopping-cart:hover{
+    cursor: pointer;
+}
 .text-color {
     position: relative;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -151,9 +166,22 @@ button.call-to-action-pizza:hover {
     font-size: 20px;
     text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black, -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black, 0.05em 0.05em black;
     color: white;
-    line-height: 1.9;
+    line-height: 2;
     font-weight: bolder;
     margin: 0 auto;
+}
+
+.cart-count {
+    font-size: 14px;
+    border: 1px solid orangered;
+    background: orangered;
+    position: absolute;
+    padding-right: 9px;
+    padding-left: 9px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 50%;
+    margin-left: -10px;
 }
 
 .product-cards {
@@ -226,4 +254,20 @@ a.btn-colors {
 
 #checkboxes label:hover {
     background-color: #1e90ff;
+}
+
+.decisionBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.btns-checkout {
+    display: flex;
+    gap: 5px;
+}
+.Toastify__toast--error, .Toastify__toast--info {
+    width: 350px;
 }

@@ -1,3 +1,26 @@
-.item-container {
-     width: 300px;
+.cart-store {
+    background: #dedede;
+    height: 100%;
+
+}
+.card-items-page {
+    min-height: 480px;
+    box-shadow: 0 0 .25em .25em rgba(0, 0, 0, 0.25);
+    margin-top: 20px;
+
+}
+
+.orderListDisplay  {
+    background: #dedede;
+    padding: 20px;
+} 
+
+.confirm-btn {
+    background-color: orangered;
+    border: none;
+}
+
+.confirm-btn:hover {
+    background-color: black;
+    transition: ease-in-out 0.3s all;
 }
