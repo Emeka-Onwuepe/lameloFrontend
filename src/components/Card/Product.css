@@ -9,6 +9,7 @@
 }
 .card-container {
     min-height: 550px;
+    margin-bottom: 10px;
     box-shadow: 0 0 .25em .25em rgba(0, 0, 0, 0.25);
 }
 
@@ -171,18 +172,6 @@ button.call-to-action-pizza:hover {
     margin: 0 auto;
 }
 
-.cart-count {
-    font-size: 14px;
-    border: 1px solid orangered;
-    background: orangered;
-    position: absolute;
-    padding-right: 9px;
-    padding-left: 9px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    border-radius: 50%;
-    margin-left: -10px;
-}
 
 .product-cards {
     padding-bottom: 1rem;
@@ -202,6 +191,20 @@ button.call-to-action-pizza:hover {
     border: none;
 }
 
+.cart-count {
+    font-size: 14px;
+    border: 1px solid orangered;
+    background: orangered;
+    position: absolute;
+    padding-right: 9px;
+    padding-left: 9px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 50%;
+    margin-left: -13px;
+    margin-top: -10px;
+}
+
 .btn-colors:hover,
 .btn:focus {
     background: black;
@@ -211,15 +214,6 @@ button.call-to-action-pizza:hover {
 a.btn-colors {
     color: white;
     text-decoration: none;
-}
-
-@media (max-width: 568px) {
-    .text-color {
-        height: auto
-    }
-    button.call-to-action-pizza {
-        left: 70%;
-    }
 }
 
 .multiselect {
@@ -271,3 +265,17 @@ a.btn-colors {
 .Toastify__toast--error, .Toastify__toast--info {
     width: 350px;
 }
+
+@media (max-width: 568px) {
+    .text-color {
+        height: auto
+    }
+    button.call-to-action-pizza {
+        left: 70%;
+    }
+    .shopping-cart {
+        top: 12%;
+        left: 75%;
+    }
+}
+

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, Fragment } from 'react';
 
 import numbro from 'numbro';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Row, Container, Col, Button } from 'reactstrap';
 // import { Redirect, Link } from 'react-router-dom';
 import { storeContext } from '../State/State';
@@ -28,7 +28,7 @@ const ShoppingCart = (props) => {
 
     return (
         <Fragment className="cart-store">
-             {User.user != undefined && User.user != "" ? <div className="userNameDiv">
+             {User.user !== undefined && User.user !== "" ? <div className="userNameDiv">
                      <p className="userName">Welcome, {`${User.user.first_name.toUpperCase()} ${User.user.last_name.toUpperCase()}`} </p>
              </div> : ""}
             <div className="orderList" >
@@ -48,9 +48,9 @@ const ShoppingCart = (props) => {
 };
 
 
-ShoppingCart.propTypes = {
+// ShoppingCart.propTypes = {
 
-};
+// };
 
 
 export default ShoppingCart;

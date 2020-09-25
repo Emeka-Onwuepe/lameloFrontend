@@ -1,15 +1,16 @@
 import React from 'react'
 import Logo2 from '../../assets/Lamelo - Emblem (curves) wht.png';
+import CartCount from '../Card/CartCount';
 import './Menu.css';
 
 const Menu = (props) => {
     return (
         <div id="wrapper2">
-               <img src={Logo2} alt="logo2" className="logo-2"/>
+               <div className="menu-logo"> <img src={Logo2} alt="logo2" className="logo-2"/></div>
                 <div className="menupage">
                     <h1 className="menu-header">Menu</h1> 
                 </div>
-                <div>
+                <div className="menu-content">
                       <ol className="items">
                             <div className="menu-deal">
                                 <li className="menu" onClick={() => props.history.push('/pizza-page')}>Pizza page <span className="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, illum.</span></li>
@@ -31,6 +32,7 @@ const Menu = (props) => {
                         </ol>
                     </div>
               <button className="menu-call-to-action" onClick={() => props.history.push('/')}> &lt; Back</button>
+              <CartCount />
         </div>
     )
 }
