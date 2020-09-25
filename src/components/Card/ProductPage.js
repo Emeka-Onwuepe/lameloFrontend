@@ -7,6 +7,7 @@ import { storeContext, GET_PIZZA, GET_BFW, GET_GELATOS, GET_SALAD, getCategory, 
 
 import './Product.css';
 import ProductCard from './ProductCard';
+import CartCount from './CartCount';
 
 const ProductPage = (props) => {
   const { category } = useParams()
@@ -61,15 +62,12 @@ const ProductPage = (props) => {
           </Row>
           <h1 className="text-center text-color">{heading}</h1>
           <div className="divider-center" ></div>
-          <div className="pizza-definations">
-            <p>
-              Chicken Pizza, Meat Lover, Lamelo Special, Sicilian Pizza, Fahita Pizza, Hawai Pizza, Seafood Pizza, Beef Pizza, BBQ Chicken Pizza, Vegetable Pizza
-                         </p>
-          </div>
+          <div className="pizza-definations"></div>
           <div className="product-cards"><ProductCard products={products} prices={prices} /></div>
         </Container>
       </div>
       <button className="call-to-action-pizza " onClick={() => props.history.push('/menu')}>Menu</button>
+      <CartCount />
     </div>
   )
 }

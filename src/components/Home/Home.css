@@ -295,9 +295,13 @@ iframe {
   }
  .contact-us.card {
    display: flex;
-   width: 80%;
+   width: 74%;
    margin: 0px auto;
    justify-content: center;
+   border-top-right-radius: 20px;
+   border-top-left-radius: 20px;
+   border-bottom-left-radius: 0;
+   border-bottom-right-radius: 0;
 
  }
  .colored {
@@ -307,17 +311,26 @@ iframe {
  }
  .map-box {
   display: flex;
-  width: 95%;
+  align-self: center;
+  width: 100%;
   top: 360px;
+  margin: auto;
   justify-content: center;
   padding: 0;
+
  }
 
  .map-box iframe {
    position: relative;
    width: 100%;
-   margin: 0px auto;
+   margin: auto;
+   top: -15px;
    padding: 0;
+   border-top-right-radius: 0;
+   border-top-left-radius: 0;
+   border-bottom-left-radius: 20px;
+   border-bottom-right-radius:  20px;
+   
  }
 
 }

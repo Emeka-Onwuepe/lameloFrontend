@@ -1,9 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { NavLink, Link, useParams } from 'react-router-dom';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
     Card, CardImg, CardText,
     CardBody, CardTitle, Row,
-    Col, Container, Alert
+    Col, Container, Alert,
+    Button
 } from 'reactstrap';
 
 import Select from 'react-select';
@@ -45,16 +49,35 @@ const ProductCard = ({ products, prices }) => {
     }
 
 
-    const decisionBox = <div className="decisionBox">
-        <p>Choose either to continue shopping or to view your shopping cart by checking out</p>
-        <button onClick={() => { setDivdisplay(initial) }}>Continue Shopping</button>
-        <NavLink to="/ShoppingCart"><button>Check Out</button> </NavLink>
-    </div>
-    const alreadyInCart = <div className="decisionBox" >
-        <p style={{ color: "red", marginLeft: "50px" }}>Item already in Cart</p>
-        <button onClick={() => { setDivdisplay(initial) }}>Continue Shopping</button>
-        <NavLink to="/ShoppingCart"><button>Check Out</button> </NavLink>
-    </div>
+    const decisionBox = () => toast.info(<div className="decisionBox">
+       <p>Choose either to continue shopping or to view your shopping cart by checking out</p><br/>
+       <div className="btns-checkout">
+        <Button onClick={() => { setDivdisplay(initial) }} color="success">Continue Shopping</Button>
+        <Button onClick={() => window.location = "/ShoppingCart"} style={{backgroundColor: 'orangered', border: 'none'}}>Check Out</Button> 
+        </div>
+    </div>, {
+        position: "top-center",
+        autoClose: 10000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    })
+    const alreadyInCart = () => toast.error(<div className="decisionBox" >
+        <p style={{ color: "white"}}>Item already in Cart</p>
+       <div className="btns-checkout"> <Button onClick={() => { setDivdisplay(initial) }} color="success">Continue Shopping</Button>
+        <Button onClick={() => window.location = "/ShoppingCart"} style={{backgroundColor: 'orangered', border: 'none'}}>Check Out </Button>
+        </div>
+    </div>, {
+    position: "top-center",
+    autoClose: 10000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    })
 
 
     const onChange = (e) => {
@@ -80,7 +103,7 @@ const ProductCard = ({ products, prices }) => {
             }
         })
     }
-    console.log(priceState)
+
     const onClick = (e) => {
         const id = e.target.id
         console.log(id)
@@ -103,6 +126,8 @@ const ProductCard = ({ products, prices }) => {
                     }
                     setpriceState([])
                 }
+            }else{
+                alert("please select size(s) ")
             }
         } else if (product.multipleSIzes.length == 0) {
             setDivdisplay({ display: true })
@@ -123,13 +148,9 @@ const ProductCard = ({ products, prices }) => {
         <Container>
             <Row>
                 {
+                    
                     (products && products.length > 0) ? products.map((pizza, index) => (
-                        // const options = [
-                        //     { value: 'chocolate', label: 'Chocolate' },
-                        //     { value: 'strawberry', label: 'Strawberry' },
-                        //     { value: 'vanilla', label: 'Vanilla' }
-                        //   ]
-
+                      
 
                         <Col lg="4" key={index}>
                             <Card className="card-container">
@@ -147,12 +168,25 @@ const ProductCard = ({ products, prices }) => {
                             </Card>
                             <div>
                                 <button id={pizza.id} className="button-cart" onClick={onClick}>ADD TO CART</button>
-                                {DivDisplay.check && DivDisplay.display ? alreadyInCart : DivDisplay.display ? decisionBox : ""}
                             </div>
+                      
                         </Col>
                     )) : <Alert>Failed to load items</Alert>
+                   
                 }
-
+                <>
+                    {DivDisplay.check && DivDisplay.display ? alreadyInCart() : DivDisplay.display ? decisionBox() : ""}
+                    <ToastContainer position="top-center"
+                        autoClose={10000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                    />
+                </>
             </Row>
         </Container>
     );
