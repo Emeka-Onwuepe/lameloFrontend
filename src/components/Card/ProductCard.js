@@ -91,7 +91,7 @@ const ProductCard = ({ products, prices }) => {
                 setDivdisplay({ display: true })
                 // let filtered = priceState.filter(x => x.checked == true)
                 for (const index of priceState) {
-                    const data = { id: parseInt(`${product.id}${index.id}`), Id: product.id, name: product.name, brand: product.brand, price: index.price, size: index.size, quantity: 1, image: product.image }
+                    const data = { id: parseInt(`${product.id}${index.id}`), Id: product.id, name: product.name, flavour: product.flavour, price: index.price, size: index.size, quantity: 1, image: product.image }
                     storestate.cart.forEach(x => {
                         if (x.id == data.id) {
                             check = true
@@ -113,7 +113,7 @@ const ProductCard = ({ products, prices }) => {
                 }
             })
             if (check != true) {
-                const data = { id: product.id, Id: product.id, name: product.name, brand: product.brand, price: product.price, quantity: 1, image: product.image }
+                const data = { id: product.id, Id: product.id, name: product.name, flavour: product.flavour, price: product.price, quantity: 1, image: product.image }
                 storedispatch(addToCart(data))
             }
         }

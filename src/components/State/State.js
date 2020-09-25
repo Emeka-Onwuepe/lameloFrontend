@@ -13,6 +13,7 @@ export const GET_GELATOS = "GET_GELATOS";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const UPDATE_CART = "UPDATE_CART";
 export const PROCESS_ORDER = "PROCESS_ORDER";
+export const GET_ORDERED_PRODUCTS = "GET_ORDERED_PRODUCTS"
 export const LOADED = "LOADED";
 export const LOADING = "LOADING";
 export const ADD_ERROR = "ADD_ERROR";
@@ -29,13 +30,33 @@ export const DELETE_MESSAGES = "DELETE_MESSAGES";
 
 //Actions dispatchers
 
+
 export const getCategory = (data, type) => {
-    return axios.post("http://lameloapi.herokuapp.com/getproducts", data, ).then(res => {
+    return axios.post("https://lameloapis.herokuapp.com/getproducts", data, ).then(res => {
         return {
             type: type,
             products: res.data.products,
             prices: res.data.prices,
             // messages: "Logged In Successfully"
+        }
+    }).catch(err => {
+        return {
+            type: ADD_ERROR,
+            data: err.response.data,
+            status: err.response.status
+        }
+
+    })
+}
+
+export const processOrder = (data, config) => {
+    return axios.post('https://lameloapis.herokuapp.com/orderview', data, config).then(res => {
+        return {
+            type: PROCESS_ORDER,
+            data: res.data,
+            messages: "Order Placed Successfully",
+            success: true,
+            cart: [],
         }
     }).catch(err => {
         return {
@@ -135,6 +156,12 @@ const storeReducer = (state, action) => {
                 cart: action.cart,
                 loading: false,
             }
+        case GET_ORDERED_PRODUCTS:
+            return {
+                ...state,
+                OrderedProduct: action.products,
+                loading: false,
+            }
         case CLEAR_SUCCESS:
             return {
                 ...state,
@@ -170,91 +197,97 @@ const storeReducer = (state, action) => {
 export const storeContext = createContext()
 
 const StoreContextProvider = (props) => {
-        const [storestate, storedispatch] = useReducer(storeReducer, {},
-            () => {
-                const localdata = localStorage.getItem("storestate");
-                let finaldata = ""
-                if (localdata) {
-                    const jsonify = JSON.parse(localdata)
-                    finaldata = {
-                        pizza: {
-                            products: [],
-                            prices: []
-                        },
-                        bfw: {
-                            products: [],
-                            prices: []
-                        },
-                        salad: {
-                            products: [],
-                            prices: []
-                        },
-                        gelatos: {
-                            products: [],
-                            prices: []
-                        },
-                        User: "",
-                        Ordered: [],
-                        OrderedProduct: [],
-                        loading: true,
-                        cart: [],
-                        prices: [],
-                        ...jsonify,
-                        message: "",
-                        status: "",
-                        messages: "",
-                        check: "",
-                    }
-                } else {
-                    finaldata = {
-                        pizza: {
-                            products: [],
-                            prices: []
-                        },
-                        bfw: {
-                            products: [],
-                            prices: []
-                        },
-                        salad: {
-                            products: [],
-                            prices: []
-                        },
-                        gelatos: {
-                            products: [],
-                            prices: []
-                        },
-                        User: "",
-                        Ordered: [],
-                        OrderedProduct: [],
-                        loading: true,
-                        cart: [],
-                        prices: [],
-                        message: "",
-                        status: "",
-                        messages: "",
-                        check: "",
-                    }
+    const [storestate, storedispatch] = useReducer(storeReducer, {},
+        () => {
+            const localdata = localStorage.getItem("storestate");
+            let finaldata = ""
+            if (localdata) {
+                const jsonify = JSON.parse(localdata)
+                finaldata = {
+                    pizza: {
+                        products: [],
+                        prices: []
+                    },
+                    bfw: {
+                        products: [],
+                        prices: []
+                    },
+                    salad: {
+                        products: [],
+                        prices: []
+                    },
+                    gelatos: {
+                        products: [],
+                        prices: []
+                    },
+                    User: "",
+                    Ordered: [],
+                    OrderedProduct: [],
+                    loading: true,
+                    cart: [],
+                    prices: [],
+                    ...jsonify,
+                    message: "",
+                    status: "",
+                    messages: "",
+                    check: "",
                 }
-                return finaldata
+            } else {
+                finaldata = {
+                    pizza: {
+                        products: [],
+                        prices: []
+                    },
+                    bfw: {
+                        products: [],
+                        prices: []
+                    },
+                    salad: {
+                        products: [],
+                        prices: []
+                    },
+                    gelatos: {
+                        products: [],
+                        prices: []
+                    },
+                    User: "",
+                    Ordered: [],
+                    OrderedProduct: [],
+                    loading: true,
+                    cart: [],
+                    prices: [],
+                    message: "",
+                    status: "",
+                    messages: "",
+                    check: "",
+                }
             }
-        )
-        useEffect(() => {
-            localStorage.setItem("storestate", JSON.stringify(storestate))
-        }, [storestate]);
+            return finaldata
+        }
+    )
+    useEffect(() => {
+        localStorage.setItem("storestate", JSON.stringify(storestate))
+    }, [storestate]);
 
-        return (
-            <storeContext.Provider value={{storestate, storedispatch}}>
-                {props.children}
-            </storeContext.Provider>
-        )
+    return ( <
+        storeContext.Provider value = {
+            {
+                storestate,
+                storedispatch
+            }
+        } > {
+            props.children
+        } <
+        /storeContext.Provider>
+    )
 
-       }
+}
 
-        export default StoreContextProvider;
+export default StoreContextProvider;
 
 
 
-    //     return ( < storeContext.Provider value = {{storestate, storedispatch} } > 
-    //         {props.children} 
-    //    < /storeContext.Provider>
-    //   );
+//     return ( < storeContext.Provider value = {{storestate, storedispatch} } > 
+//         {props.children} 
+//    < /storeContext.Provider>
+//   );
