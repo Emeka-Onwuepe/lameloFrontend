@@ -51,12 +51,14 @@ export const getCategory = (data, type) => {
 
 export const processOrder = (data, config) => {
     return axios.post('https://lameloapis.herokuapp.com/orderview', data, config).then(res => {
+        console.log(res.data)
         return {
             type: PROCESS_ORDER,
-            data: res.data,
+            data: res.data.Ordered,
             messages: "Order Placed Successfully",
             success: true,
             cart: [],
+            user: res.data.user
         }
     }).catch(err => {
         return {
@@ -150,10 +152,11 @@ const storeReducer = (state, action) => {
         case PROCESS_ORDER:
             return {
                 ...state,
-                Ordered: [...state.Ordered, action.data.Ordered],
+                Ordered: [...state.Ordered, action.data],
                 messages: action.messages,
                 success: action.success,
                 cart: action.cart,
+                User: action.user,
                 loading: false,
             }
         case GET_ORDERED_PRODUCTS:
