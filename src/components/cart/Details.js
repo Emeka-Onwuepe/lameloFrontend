@@ -7,14 +7,14 @@ import { Redirect } from 'react-router-dom';
 const Details = (props) => {
     const { storestate, storedispatch } = useContext(storeContext);
     const { cart, User, success } = storestate
-    const { user } = User
+
 
     useEffect(() => {
         storedispatch(load(LOADED))
     }, []);
-
-    const initialState = user != undefined ? {
-        full_name: user.full_name, email: user.email, phone_number: user.phone_number, address: ""
+    console.log(User.fullName)
+    const initialState = User != undefined ? {
+        full_name: User.fullName, email: User.email, phone_number: User.phoneNumber, address: User.address
     } : {}
     const initialErrorState = {
         full_name: false, phone_number: false, email: false, phoneNumLength: false
@@ -54,6 +54,7 @@ const Details = (props) => {
         const Email = !errorTest.email.test(email)
         const phoneNumLength = phone_number.length < 11
         const data = JSON.stringify({
+            User: User.id != undefined ? User.id : "",
             user: { "fullName": full_name, "phoneNumber": phone_number, email, address },
             Ordered: { OrderId, total }, OrderedProduct: products
         })
