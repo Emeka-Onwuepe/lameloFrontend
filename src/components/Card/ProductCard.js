@@ -24,12 +24,14 @@ const ProductCard = ({ products, prices }) => {
     const [priceState, setpriceState] = useState([])
     let check = false;
 
-
-
-
-    // useEffect(() => {
-    // }, [Display]);
     const { storestate, storedispatch } = useContext(storeContext)
+    useEffect(() => {
+        console.log("cart changed")
+        console.log(priceState)
+
+
+    }, [storestate.cart]);
+
     const initial = { display: false, check: false }
     const filter = (array, price) => {
         let items = []
@@ -86,7 +88,6 @@ const ProductCard = ({ products, prices }) => {
             value = e.map(item => item.value)
         } catch (err) {
         }
-        setpriceState([])
         value.forEach(item => {
             console.log(priceState)
             let [price] = prices.filter(x => x.id == item)
@@ -102,7 +103,7 @@ const ProductCard = ({ products, prices }) => {
             }
         })
     }
-    console.log(priceState)
+
     const onClick = (e) => {
         const id = e.target.id
         console.log(id)
@@ -113,7 +114,7 @@ const ProductCard = ({ products, prices }) => {
                 setDivdisplay({ display: true })
                 // let filtered = priceState.filter(x => x.checked == true)
                 for (const index of priceState) {
-                    const data = { id: parseInt(`${product.id}${index.id}`), Id: product.id, name: product.name, brand: product.brand, price: index.price, size: index.size, quantity: 1, image: product.image }
+                    const data = { id: parseInt(`${product.id}${index.id}`), Id: product.id, name: product.name, flavour: product.flavour, price: index.price, size: index.size, quantity: 1, image: product.image }
                     storestate.cart.forEach(x => {
                         if (x.id == data.id) {
                             check = true
@@ -123,8 +124,10 @@ const ProductCard = ({ products, prices }) => {
                     if (check != true) {
                         storedispatch(addToCart(data))
                     }
-
+                    setpriceState([])
                 }
+            }else{
+                alert("please select size(s) ")
             }
         } else if (product.multipleSIzes.length == 0) {
             setDivdisplay({ display: true })
@@ -135,7 +138,7 @@ const ProductCard = ({ products, prices }) => {
                 }
             })
             if (check != true) {
-                const data = { id: product.id, Id: product.id, name: product.name, brand: product.brand, price: product.price, quantity: 1, image: product.image }
+                const data = { id: product.id, Id: product.id, name: product.name, flavour: product.flavour, price: product.price, quantity: 1, image: product.image }
                 storedispatch(addToCart(data))
             }
         }

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-// import "../../CSS/ordered.css"
 
 const OrderedList = (props) => {
     const products = props.products

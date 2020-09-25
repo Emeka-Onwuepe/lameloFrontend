@@ -41,7 +41,7 @@ const ProductPage = (props) => {
   }
 
   const { storestate, storedispatch } = useContext(storeContext)
-  const data = { "action": action }
+  const data = { "action": action, "data": "", "search": "" }
   const { products, prices } = storestate[action]
 
   const { mainCategory, heading } = GET_CATEGORY(match)
@@ -67,7 +67,7 @@ const ProductPage = (props) => {
         </Container>
       </div>
       <button className="call-to-action-pizza " onClick={() => props.history.push('/menu')}>Menu</button>
-      <CartCount/>
+      <CartCount />
     </div>
   )
 }

@@ -1,37 +1,38 @@
 import React, { useContext, useEffect, Fragment } from 'react';
 // import PropTypes from 'prop-types';
 import { NavLink, useParams, Redirect } from 'react-router-dom';
-import { storeContext, getCategory, GET_ORDERED_PRODUCTS, load, LOADING, LOADED } from '../../STATES/Actions/Actions';
-import '../../CSS/ordered.css'
+import { storeContext, getCategory, GET_ORDERED_PRODUCTS, load, LOADING, LOADED } from '../State/State';
+import './ordered.css'
 
 const OrderedItems = (props) => {
     const { id, total } = useParams()
     const { storestate, storedispatch } = useContext(storeContext)
     const { OrderedProduct, User } = storestate
-    const { products } = OrderedProduct
+    const products = OrderedProduct
     let items = ""
 
     useEffect(() => {
-        const data = { "data": id, "search": "orderedproducts" }
+        const data = { "action": "none", "data": id, "search": "orderedproducts" }
         getCategory(data, GET_ORDERED_PRODUCTS).then(res => storedispatch(res));
         storedispatch(load(LOADING))
+        console.log(products)
     }, [])
     if (products != undefined && products.length > 0) {
         items = products.map(item => <tr key={item.id}>
             <td>{item.name} </td>
-            <td>{item.brand} </td>
+            <td>{item.flavour} </td>
             <td>{item.size} </td>
             <td>{item.price} </td>
             <td>{item.quantity} </td>
             <td>{item.price * item.quantity} </td>
         </tr>)
     }
-    if (storestate.User == "") {
-        return < Redirect to="/ShoppingCart" />
-    }
+    // if (storestate.User == "") {
+    //     return < Redirect to="/ShoppingCart" />
+    // }
 
     if (items == "") {
-        return <Fragment></Fragment>
+        return <Fragment>HELLO</Fragment>
 
     } else {
 
@@ -44,7 +45,7 @@ const OrderedItems = (props) => {
                     <thead>
                         <tr>
                             <th>Product Name</th>
-                            <th>Brand</th>
+                            <th>Flavour</th>
                             <th>Size</th>
                             <th>Price</th>
                             <th>Qty</th>
