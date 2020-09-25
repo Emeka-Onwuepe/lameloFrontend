@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 
-const CartCount = (props) => {
+const CartCount = () => {
     return (
         <div className="shopping-cart" onClick={() => window.location = '/ShoppingCart'}>
             <FaShoppingCart style={{   fontSize: "50px"}} />

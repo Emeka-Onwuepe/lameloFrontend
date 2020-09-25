@@ -67,7 +67,7 @@ const ProductPage = (props) => {
         </Container>
       </div>
       <button className="call-to-action-pizza " onClick={() => props.history.push('/menu')}>Menu</button>
-      <CartCount count={storestate.cart.length}/>
+      <CartCount/>
     </div>
   )
 }
