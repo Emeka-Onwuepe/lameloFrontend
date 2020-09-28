@@ -102,8 +102,11 @@ const ProductCard = ({ products, prices }) => {
 
     const onClick = (e) => {
         const id = e.target.id
-        console.log(id)
-        let [product] = products.filter(product => product.id === id)
+        console.log("id", id)
+        console.log(products)
+        let [product] = products.filter(product => product.id == id);
+        // console.log(product)
+
         let check = false;
         if (product.multipleSIzes.length > 0) {
             if (priceState.length > 0) {
