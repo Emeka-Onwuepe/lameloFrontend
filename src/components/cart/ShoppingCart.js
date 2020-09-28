@@ -23,7 +23,7 @@ const ShoppingCart = (props) => {
     // const order = { "product": cart, total }
 
     return (
-        <div className="cart-store page">
+        <div className="cart-store">
             {User !== undefined && User !== "" ? <div className="userNameDiv">
                 <p className="userName">Welcome, {User.fullName.toUpperCase()} </p>
             </div> : ""}

@@ -77,7 +77,7 @@ const Details = (props) => {
         return < Redirect to="/pay" />
     }
     return (
-            <div className="user-details-container page">
+            <div className="user-details-container">
                 <h2 className="user-info-title"><center>PROVIDE YOUR DELIVERY DETAILS</center></h2><br />
             <Form onSubmit={onSubmit} className="user-detail-input">
             

@@ -48,7 +48,7 @@ const CartItem = (props) => {
 
 
 
-        <Card className="card-items-page">
+        <Card className="card-items-page page">
             <CardImg top width="100%" src={product.image} alt={`img-${product.image}`} height="200px" />
             <CardBody>
                 {/* ₦{numbro(parseInt(pizza.price)).format({ thousandSeparated: true })} */}

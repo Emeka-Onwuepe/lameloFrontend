@@ -10,7 +10,7 @@ const OrderedHistory = () => {
     let orderedlist = <OrderedList products={Ordered} />
     return (
         <div>
-            <div className="orderList page" >
+            <div className="orderList" >
                 {Ordered.length > 0 ? orderedlist : <p className="text-center mt-4">You haven't made any order yet</p>}
             </div>
         </div>

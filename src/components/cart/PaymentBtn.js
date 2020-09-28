@@ -30,10 +30,8 @@ const PaymentBtn = (props) => {
     };
 
     return (
-        <div className="page">
-
+        <div>
             <p>You can make payment now, or pay later</p>
-        
         <RaveProvider {...pay}>
             <RavePaymentButton >Pay  ₦{numbro(parseInt(recent.total)).format({thousandSeparated: true})}</RavePaymentButton>
         </RaveProvider>
