@@ -19,6 +19,7 @@ export const LOADING = "LOADING";
 export const ADD_ERROR = "ADD_ERROR";
 export const CLEAR_SUCCESS = "CLEAR_SUCCESS";
 export const DELETE_MESSAGES = "DELETE_MESSAGES";
+export const PAYMENT = "PAYMENT";
 
 
 //Capitalise first word
@@ -70,6 +71,19 @@ export const processOrder = (data, config) => {
     })
 }
 
+
+
+export const payment = (data) => {
+    return axios.post("https://lameloapis.herokuapp.com/payment", data, ).then(res => res.data).catch(err => {
+        return {
+            type: ADD_ERROR,
+            data: err.response.data,
+            status: err.response.status
+        }
+
+    })
+}
+
 export const addToCart = (data) => {
     return {
         type: ADD_TO_CART,
@@ -95,101 +109,106 @@ const storeReducer = (state, action) => {
             return {
                 ...state,
                 pizza: {
-                    products: action.products,
-                    prices: action.prices
-                },
-                loading: false,
+                        products: action.products,
+                        prices: action.prices
+                    },
+                    loading: false,
             }
-        case GET_BFW:
-            return {
-                ...state,
-                bfw: {
-                    products: action.products,
-                    prices: action.prices
-                },
-                loading: false,
-            }
-        case GET_GELATOS:
-            return {
-                ...state,
-                gelatos: {
-                    products: action.products,
-                    prices: action.prices
-                },
-                loading: false,
-            }
-        case GET_SALAD:
-            return {
-                ...state,
-                salad: {
-                    products: action.products,
-                    prices: action.prices
-                },
-                loading: false,
-            }
-        case ADD_TO_CART:
-            return {
-                ...state,
-                cart: [...state.cart, action.data],
-                loading: false,
-            }
-        case UPDATE_CART:
-            return {
-                ...state,
-                cart: [...action.data],
-                loading: false,
-            }
-        case LOADING:
-            return {
-                ...state,
-                loading: true
-            }
-        case LOADED:
-            return {
-                ...state,
-                loading: false,
-            }
-        case PROCESS_ORDER:
-            return {
-                ...state,
-                Ordered: [...state.Ordered, action.data],
-                messages: action.messages,
-                success: action.success,
-                cart: action.cart,
-                User: action.user,
-                loading: false,
-            }
-        case GET_ORDERED_PRODUCTS:
-            return {
-                ...state,
-                OrderedProduct: action.products,
-                loading: false,
-            }
-        case CLEAR_SUCCESS:
-            return {
-                ...state,
-                success: false,
-                loading: false,
-            }
-        case ADD_ERROR:
-            return {
-                ...state,
-                message: action.data,
-                status: action.status,
-                loading: false,
-            }
-        case DELETE_MESSAGES:
-            return {
-                ...state,
-                message: "",
-                status: "",
-                messages: ""
-            }
+            case GET_BFW:
+                return {
+                    ...state,
+                    bfw: {
+                            products: action.products,
+                            prices: action.prices
+                        },
+                        loading: false,
+                }
+                case GET_GELATOS:
+                    return {
+                        ...state,
+                        gelatos: {
+                                products: action.products,
+                                prices: action.prices
+                            },
+                            loading: false,
+                    }
+                    case GET_SALAD:
+                        return {
+                            ...state,
+                            salad: {
+                                    products: action.products,
+                                    prices: action.prices
+                                },
+                                loading: false,
+                        }
+                        case ADD_TO_CART:
+                            return {
+                                ...state,
+                                cart: [...state.cart, action.data],
+                                    loading: false,
+                            }
+                            case UPDATE_CART:
+                                return {
+                                    ...state,
+                                    cart: [...action.data],
+                                        loading: false,
+                                }
+                                case LOADING:
+                                    return {
+                                        ...state,
+                                        loading: true
+                                    }
+                                    case LOADED:
+                                        return {
+                                            ...state,
+                                            loading: false,
+                                        }
+                                        case PROCESS_ORDER:
+                                            return {
+                                                ...state,
+                                                Ordered: [...state.Ordered, action.data],
+                                                    messages: action.messages,
+                                                    success: action.success,
+                                                    cart: action.cart,
+                                                    User: action.user,
+                                                    loading: false,
+                                            }
+                                            case PAYMENT:
+                                                return {
+                                                    ...state,
+                                                    Ordered: action.data
+                                                }
+                                                case GET_ORDERED_PRODUCTS:
+                                                    return {
+                                                        ...state,
+                                                        OrderedProduct: action.products,
+                                                            loading: false,
+                                                    }
+                                                    case CLEAR_SUCCESS:
+                                                        return {
+                                                            ...state,
+                                                            success: false,
+                                                                loading: false,
+                                                        }
+                                                        case ADD_ERROR:
+                                                            return {
+                                                                ...state,
+                                                                message: action.data,
+                                                                    status: action.status,
+                                                                    loading: false,
+                                                            }
+                                                            case DELETE_MESSAGES:
+                                                                return {
+                                                                    ...state,
+                                                                    message: "",
+                                                                        status: "",
+                                                                        messages: ""
+                                                                }
 
-        default:
-            return {
-                ...state
-            }
+                                                                default:
+                                                                    return {
+                                                                        ...state
+                                                                    }
     }
 }
 
@@ -272,8 +291,7 @@ const StoreContextProvider = (props) => {
         localStorage.setItem("storestate", JSON.stringify(storestate))
     }, [storestate]);
 
-    return ( <
-        storeContext.Provider value = {
+    return ( < storeContext.Provider value = {
             {
                 storestate,
                 storedispatch
@@ -287,10 +305,3 @@ const StoreContextProvider = (props) => {
 }
 
 export default StoreContextProvider;
-
-
-
-//     return ( < storeContext.Provider value = {{storestate, storedispatch} } > 
-//         {props.children} 
-//    < /storeContext.Provider>
-//   );

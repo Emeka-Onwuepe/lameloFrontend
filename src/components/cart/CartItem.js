@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-// import PropTypes from 'prop-types';
 
 import { AiFillDelete } from 'react-icons/ai';
 import { MdAdd } from "react-icons/md";
@@ -22,13 +21,13 @@ const CartItem = (props) => {
     const { cart } = storestate
     const deleteItem = (e) => {
         e.preventDefault()
-        const data = cart.filter(x => x.id != product.id)
+        const data = cart.filter(x => x.id !== product.id)
         storedispatch(UpdateCart(data))
     }
     const increment = (e) => {
         e.preventDefault()
         for (const products of cart) {
-            if (products.id == product.id) {
+            if (products.id === product.id) {
                 products.quantity += 1
             }
         }
@@ -37,7 +36,7 @@ const CartItem = (props) => {
     const decrement = (e) => {
         e.preventDefault()
         for (const products of cart) {
-            if (products.id == product.id) {
+            if (products.id === product.id) {
                 if (products.quantity > 1) {
                     products.quantity -= 1
                 }
@@ -68,10 +67,6 @@ const CartItem = (props) => {
     )
 };
 
-
-CartItem.propTypes = {
-
-};
 
 
 export default CartItem;

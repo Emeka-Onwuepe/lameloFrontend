@@ -14,6 +14,22 @@
     background: #dedede;
     padding: 20px;
 } 
+.order-history {
+    /* margin-top: 20px; */
+    position: absolute;
+    left: 85%;
+    margin-right: 20px;
+    background-color: orangered;
+    border: none;
+}
+.order-history:hover {
+    background: black;
+    cursor: pointer;
+    -webkit-transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    transform: scale(1.3);
+    transition: ease-in-out 0.5s all;
+}
 
 .confirm-btn {
     background-color: orangered;
@@ -24,3 +40,53 @@
     background-color: black;
     transition: ease-in-out 0.3s all;
 }
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-details-container {
+    background-image: url(../../assets/restaurant.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    padding: 100px;
+}
+.user-info-title {
+    margin-bottom: -100px;
+    color: white;
+    font-weight: bolder;
+    
+}
+.form-group label {
+    color: white;
+    font-weight: bolder;
+}
+
+.user-detail-input {
+      width: 50%;
+      margin: 100px auto;
+}
+.userName {
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+
+@media (max-width: 568px){
+    .user-details-container {
+        height: 100%;
+    }
+    .user-detail-input {
+        width: 100%;
+    }
+    .user-info-title {
+        font-size: 20px;
+    }
+    .order-history {
+        left: 60%;
+        top: 8px;
+    }
+  }
