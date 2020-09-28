@@ -148,7 +148,7 @@ const ProductCard = ({ products, prices }) => {
     }
 
     return (
-        <Container className="page">
+        <Container>
             <Row>
                 {
                     

@@ -11,7 +11,6 @@ import CartCount from './CartCount';
 
 const ProductPage = (props) => {
   const { category } = useParams()
-  console.log(category)
   let [match] = category.match(/(\w+)/)
   const action = match === "wings" ? 'bfw' : match
   const GET_CATEGORY = (match) => {
@@ -50,11 +49,11 @@ const ProductPage = (props) => {
     // console.log(storestate.pizza)
     getCategory(data, mainCategory).then(res => storedispatch(res))
     storedispatch(load(LOADING))
-  }, [data, mainCategory, storedispatch]);
+  }, []);
 
   return (
 
-    <div className="border page">
+    <div className="border">
       <div className="pizza-bg">
         <Container fluid>
           <Row>

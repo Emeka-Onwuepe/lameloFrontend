@@ -13,7 +13,7 @@ import CartCount from '../Card/CartCount';
 
 const Home = (props) => {
   return (
-    <div className="content page">
+    <div className="content">
       <Row className="row-items">
 
         <Col lg="3" className="scrolldown"><div className="down-btn"><span>Scroll Down</span><br /><FaArrowDown className="scroll-arrow" /></div></Col>

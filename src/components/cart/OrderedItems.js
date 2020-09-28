@@ -38,7 +38,7 @@ const OrderedItems = (props) => {
     } else {
 
         return (
-            <div className="page">
+            <div>
                 {User.user !== undefined && User.user !== "" ? <div className="userNameDiv">
                     <p className="userName">Welcome, {console.log(User.fullName.toUpperCase())}</p>
 
