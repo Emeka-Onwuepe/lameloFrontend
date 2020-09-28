@@ -8,6 +8,8 @@ const OrderedList = (props) => {
         <span> Id:</span> {items.OrderId}
         <p>Amount: &#x20A6; {items.total}</p>
         <p> {items.created}</p>
+        {items.paid ?<p>PAID</p>:<button type="">Pay now</button>}
+        {console.log(items.paid)}
     </NavLink></li>))
 
     return (
