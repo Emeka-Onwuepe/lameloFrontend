@@ -12,6 +12,7 @@
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
     "materialize-css": "^1.0.0-rc.2",
+    "node-sass": "^4.14.1",
     "numbro": "^2.3.1",
     "pretty-checkbox": "^3.0.3",
     "react": "^16.13.1",
@@ -23,6 +24,7 @@
     "react-scripts": "3.4.3",
     "react-select": "^3.1.0",
     "react-toastify": "^6.0.8",
+    "react-transition-group": "^4.4.1",
     "reactstrap": "^8.5.1",
     "styled-components": "^5.2.0"
   },

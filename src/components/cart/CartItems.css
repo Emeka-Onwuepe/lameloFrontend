@@ -15,8 +15,9 @@
     padding: 20px;
 } 
 .order-history {
-    margin-top: 20px;
-    float: right;
+    /* margin-top: 20px; */
+    position: absolute;
+    left: 85%;
     margin-right: 20px;
     background-color: orangered;
     border: none;
@@ -68,7 +69,10 @@
       width: 50%;
       margin: 100px auto;
 }
-
+.userName {
+    margin-top: 20px;
+    margin-left: 50px;
+}
 
 
 @media (max-width: 568px){
@@ -80,5 +84,9 @@
     }
     .user-info-title {
         font-size: 20px;
+    }
+    .order-history {
+        left: 60%;
+        top: 8px;
     }
   }

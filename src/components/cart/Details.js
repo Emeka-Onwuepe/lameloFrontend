@@ -1,20 +1,21 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { storeContext, processOrder, load, LOADING, LOADED } from "../State/State";
 import { Redirect } from 'react-router-dom';
 
 
 const Details = (props) => {
     const { storestate, storedispatch } = useContext(storeContext);
-    const { cart, User, success } = storestate
+    const { cart, User } = storestate
+    // const  user  = User
 
 
     useEffect(() => {
         storedispatch(load(LOADED))
-    }, []);
-    console.log(User.fullName)
-    const initialState = User != undefined ? {
-        full_name: User.fullName, email: User.email, phone_number: User.phoneNumber, address: User.address
+    }, [storedispatch]);
+
+    const initialState = User !== undefined ? {
+        full_name: User.fullName, email: User.email, phone_number: User.phoneNumber, address: ""
     } : {}
     const initialErrorState = {
         full_name: false, phone_number: false, email: false, phoneNumLength: false
@@ -45,7 +46,7 @@ const Details = (props) => {
             total += amount
             products.push({
                 "name": product.name, "quantity": product.quantity, "price": product.price,
-                "size": product.size != undefined ? product.size : "", "flavour": product.flavour, "product": product.Id
+                "size": product.size !== undefined ? product.size : "", "flavour": product.flavour, "product": product.Id
             })
         }
         const { full_name, phone_number, email, address } = formstate;
@@ -54,7 +55,7 @@ const Details = (props) => {
         const Email = !errorTest.email.test(email)
         const phoneNumLength = phone_number.length < 11
         const data = JSON.stringify({
-            User: User.id != undefined ? User.id : "",
+            User: User.id !== undefined ? User.id : "",
             user: { "fullName": full_name, "phoneNumber": phone_number, email, address },
             Ordered: { OrderId, total }, OrderedProduct: products
         })
@@ -67,6 +68,7 @@ const Details = (props) => {
         }
         setErrorstate({ full_name: fullName, phone_number: phone, email: Email, phoneNumLength });
 
+
     }
     // if (User == "") {
     //     return < Redirect to="/login" />
@@ -75,9 +77,9 @@ const Details = (props) => {
         return < Redirect to="/pay" />
     }
     return (
-            <div className="user-details-container">
+            <div className="user-details-container page">
                 <h2 className="user-info-title"><center>PROVIDE YOUR DELIVERY DETAILS</center></h2><br />
-            <Form action="" method="post" onSubmit={onSubmit} className="user-detail-input">
+            <Form onSubmit={onSubmit} className="user-detail-input">
             
                 <FormGroup>
                   <Label for="full_name">FULL NAME</Label>

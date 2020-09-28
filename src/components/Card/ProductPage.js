@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import { Container, Row } from 'reactstrap';
 
 import Logo1 from '../../assets/LAMELŌ logo blk.png';
@@ -13,7 +13,7 @@ const ProductPage = (props) => {
   const { category } = useParams()
   console.log(category)
   let [match] = category.match(/(\w+)/)
-  const action = match == "wings" ? 'bfw' : match
+  const action = match === "wings" ? 'bfw' : match
   const GET_CATEGORY = (match) => {
     switch (match) {
       case 'pizza':
@@ -47,14 +47,14 @@ const ProductPage = (props) => {
   const { mainCategory, heading } = GET_CATEGORY(match)
 
   useEffect(() => {
-    console.log(storestate.pizza)
+    // console.log(storestate.pizza)
     getCategory(data, mainCategory).then(res => storedispatch(res))
     storedispatch(load(LOADING))
-  }, []);
+  }, [data, mainCategory, storedispatch]);
 
   return (
 
-    <div className="border">
+    <div className="border page">
       <div className="pizza-bg">
         <Container fluid>
           <Row>

@@ -13,7 +13,7 @@ import CartCount from '../Card/CartCount';
 
 const Home = (props) => {
   return (
-    <div className="content">
+    <div className="content page">
       <Row className="row-items">
 
         <Col lg="3" className="scrolldown"><div className="down-btn"><span>Scroll Down</span><br /><FaArrowDown className="scroll-arrow" /></div></Col>
@@ -67,7 +67,7 @@ const Home = (props) => {
                         <span>Lorem ipsum, dolor sit amet consectetur adipisicing.</span><br />
                         <span className="holder">CALL US</span><br />
                         <span>Lorem ipsum, dolor sit amet consectetur adipisicing.</span><br />
-                        <div className="social-links"><a target="_blank" href="https://www.facebook.com/LAMELOnigeria/" className="facebook" rel="noopener noreferrer"><FaFacebook /></a> <a target="_blank" href="https://www.twitter.com/lamelo_ng" classname="twitter" rel="noopener noreferrer"><FaTwitter /></a> <a target="_blank" href="https://www.instagram.com/lamelo_ng" className="instagram" rel="noopener noreferrer"><FaInstagram /></a><a target="_blank" href="https://www.linkedin.com/in/lamelo-ng-4956161b4/" className="linkedin" rel="noopener noreferrer"><FaLinkedin /></a></div>
+                        <div className="social-links"><a target="_blank" href="https://www.facebook.com/LAMELOnigeria/" className="facebook" rel="noopener noreferrer"><FaFacebook /></a> <a target="_blank" href="https://www.twitter.com/lamelo_ng" className="twitter" rel="noopener noreferrer"><FaTwitter /></a> <a target="_blank" href="https://www.instagram.com/lamelo_ng" className="instagram" rel="noopener noreferrer"><FaInstagram /></a><a target="_blank" href="https://www.linkedin.com/in/lamelo-ng-4956161b4/" className="linkedin" rel="noopener noreferrer"><FaLinkedin /></a></div>
                       </CardText>
                     </CardBody>
                   </Col>

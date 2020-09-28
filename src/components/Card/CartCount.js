@@ -3,7 +3,7 @@ import { FaShoppingCart } from 'react-icons/fa';
 import { storeContext } from "../State/State"
 
 const CartCount = (props) => {
-    const { storestate, storedispatch } = useContext(storeContext)
+    const { storestate } = useContext(storeContext)
     const { cart } = storestate
 
     return (

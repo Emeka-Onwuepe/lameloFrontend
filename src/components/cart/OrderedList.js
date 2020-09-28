@@ -1,17 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import { NavLink } from 'react-router-dom';
+import numbro from 'numbro';
+
+import './ordered.css';
 
 const OrderedList = (props) => {
     const products = props.products
     const list = products.map(items => (<li key={items.id}><NavLink to={`/ordered/${items.id}/${items.total}`}>
-        <span> Id:</span> {items.OrderId}
-        <p>Amount: &#x20A6; {items.total}</p>
-        <p> {items.created}</p>
+        <span> Id: {items.OrderId} </span>
+        <span>Amount: &#x20A6; {numbro(items.total).format({thousandSeparated: true})}</span>
+        <span> {items.created}</span>
     </NavLink></li>))
 
     return (
-        <div className="orderedList">
+        <div className="orderedList page">
             <h3>List of Orders</h3>
             <ol>
                 {list}
@@ -19,11 +22,6 @@ const OrderedList = (props) => {
         </div>
 
     );
-};
-
-
-OrderedList.propTypes = {
-
 };
 
 

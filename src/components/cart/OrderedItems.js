@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, Fragment } from 'react';
 // import PropTypes from 'prop-types';
-import { NavLink, useParams, Redirect } from 'react-router-dom';
-import { storeContext, getCategory, GET_ORDERED_PRODUCTS, load, LOADING, LOADED } from '../State/State';
+import { useParams } from 'react-router-dom';
+import numbro from 'numbro';
+import { storeContext, getCategory, GET_ORDERED_PRODUCTS, load, LOADING } from '../State/State';
 import './ordered.css'
 
 const OrderedItems = (props) => {
@@ -15,12 +16,12 @@ const OrderedItems = (props) => {
         const data = { "action": "none", "data": id, "search": "orderedproducts" }
         getCategory(data, GET_ORDERED_PRODUCTS).then(res => storedispatch(res));
         storedispatch(load(LOADING))
-        console.log(products)
-    }, [])
-    if (products != undefined && products.length > 0) {
+        // console.log(products)
+    }, [id, storedispatch])
+    if (products !== undefined && products.length > 0) {
         items = products.map(item => <tr key={item.id}>
             <td>{item.name} </td>
-            <td>{item.flavour} </td>
+            <td>{item.flavour === 'null' ? "" : item.flavour} </td>
             <td>{item.size} </td>
             <td>{item.price} </td>
             <td>{item.quantity} </td>
@@ -31,15 +32,16 @@ const OrderedItems = (props) => {
     //     return < Redirect to="/ShoppingCart" />
     // }
 
-    if (items == "") {
-        return <Fragment>HELLO</Fragment>
+    if (items === "") {
+        return <Fragment></Fragment>
 
     } else {
 
         return (
-            <Fragment>
+            <div className="page">
                 {User.user !== undefined && User.user !== "" ? <div className="userNameDiv">
-                    <p className="userName">Welcome, {`${User.user.first_name.toUpperCase()} ${User.user.last_name.toUpperCase()}`} </p>
+                    <p className="userName">Welcome, {console.log(User.fullName.toUpperCase())}</p>
+
                 </div> : ""}
                 <table>
                     <thead>
@@ -52,15 +54,15 @@ const OrderedItems = (props) => {
                             <th>Total</th>
                         </tr>
                     </thead>
-                    {items}
+                    <tbody>{items}</tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="5">Total</td>
-                            <td>&#x20A6; {total}</td>
+                            <td colSpan="5">Total</td>
+                            <td>&#x20A6; {numbro(total).format({thousandSeparated: true})}</td>
                         </tr>
                     </tfoot>
                 </table>
-            </Fragment>
+            </div>
         );
 
     }
