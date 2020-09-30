@@ -20,6 +20,8 @@ export const ADD_ERROR = "ADD_ERROR";
 export const CLEAR_SUCCESS = "CLEAR_SUCCESS";
 export const DELETE_MESSAGES = "DELETE_MESSAGES";
 export const PAYMENT = "PAYMENT";
+export const GET_LOCATION = "GET_LOCATION";
+export const ADD_LOGISTICS = "ADD_LOGISTICS";
 
 
 //Capitalise first word
@@ -73,8 +75,31 @@ export const processOrder = (data, config) => {
 
 
 
-export const payment = (data) => {
-    return axios.post("https://lameloapis.herokuapp.com/payment", data, ).then(res => res.data).catch(err => {
+export const payment = (data, orderlist) => {
+    return axios.post("https://lameloapis.herokuapp.com/payment", data, ).then(res => {
+        const filtered = orderlist.filter(item => item.id != res.data.id)
+        filtered.push(res.data)
+        return {
+            type: PAYMENT,
+            data: filtered
+        }
+    }).catch(err => {
+        return {
+            type: ADD_ERROR,
+            data: err.response.data,
+            status: err.response.status
+        }
+
+    })
+}
+
+export const locations = () => {
+    return axios.get("https://lameloapis.herokuapp.com/location").then(res => {
+        return {
+            type: GET_LOCATION,
+            data: res.data
+        }
+    }).catch(err => {
         return {
             type: ADD_ERROR,
             data: err.response.data,
@@ -99,6 +124,12 @@ export const UpdateCart = (data) => {
 export const load = (type) => {
     return {
         type: type
+    }
+}
+export const AddLogistics = (data) => {
+    return {
+        type: ADD_LOGISTICS,
+        data: data
     }
 }
 
@@ -171,44 +202,60 @@ const storeReducer = (state, action) => {
                                                     success: action.success,
                                                     cart: action.cart,
                                                     User: action.user,
+                                                    logistics: 0,
                                                     loading: false,
                                             }
                                             case PAYMENT:
                                                 return {
                                                     ...state,
-                                                    Ordered: action.data
+                                                    Ordered: action.data,
+                                                        loading: false,
                                                 }
-                                                case GET_ORDERED_PRODUCTS:
+                                                case GET_LOCATION:
                                                     return {
                                                         ...state,
-                                                        OrderedProduct: action.products,
+                                                        locations: action.data,
                                                             loading: false,
                                                     }
-                                                    case CLEAR_SUCCESS:
+                                                    case ADD_LOGISTICS:
                                                         return {
                                                             ...state,
-                                                            success: false,
+                                                            logistics: action.data,
                                                                 loading: false,
                                                         }
-                                                        case ADD_ERROR:
+
+
+                                                        case GET_ORDERED_PRODUCTS:
                                                             return {
                                                                 ...state,
-                                                                message: action.data,
-                                                                    status: action.status,
+                                                                OrderedProduct: action.products,
                                                                     loading: false,
                                                             }
-                                                            case DELETE_MESSAGES:
+                                                            case CLEAR_SUCCESS:
                                                                 return {
                                                                     ...state,
-                                                                    message: "",
-                                                                        status: "",
-                                                                        messages: ""
+                                                                    success: false,
+                                                                        loading: false,
                                                                 }
-
-                                                                default:
+                                                                case ADD_ERROR:
                                                                     return {
-                                                                        ...state
+                                                                        ...state,
+                                                                        message: action.data,
+                                                                            status: action.status,
+                                                                            loading: false,
                                                                     }
+                                                                    case DELETE_MESSAGES:
+                                                                        return {
+                                                                            ...state,
+                                                                            message: "",
+                                                                                status: "",
+                                                                                messages: ""
+                                                                        }
+
+                                                                        default:
+                                                                            return {
+                                                                                ...state
+                                                                            }
     }
 }
 
@@ -248,6 +295,8 @@ const StoreContextProvider = (props) => {
                     loading: true,
                     cart: [],
                     prices: [],
+                    locations: [],
+                    logistics: 0,
                     ...jsonify,
                     message: "",
                     status: "",
@@ -278,6 +327,8 @@ const StoreContextProvider = (props) => {
                     loading: true,
                     cart: [],
                     prices: [],
+                    locations: [],
+                    logistics: 0,
                     message: "",
                     status: "",
                     messages: "",

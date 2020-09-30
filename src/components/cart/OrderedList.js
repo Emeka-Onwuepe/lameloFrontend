@@ -1,31 +1,46 @@
 import React,{useContext} from 'react';
+import { RaveProvider, RavePaymentButton } from 'react-ravepayment';
 
 import { NavLink } from 'react-router-dom';
 import numbro from 'numbro';
 
 import './ordered.css';
-import { storeContext,payment,PAYMENT } from '../State/State';
+import { storeContext,payment} from '../State/State';
 
 const OrderedList = (props) => {
  const { storestate, storedispatch } = useContext(storeContext);
- const {Ordered}=storestate
+ const {Ordered,User}=storestate
 
-const Onclick=(e)=>{
-    const id= e.target.id
-    const data= {id}
-    payment(data).then((res)=>{
-        const filtered= Ordered.filter(item=>item.id !=res.id).push(res)
-        storedispatch({type:PAYMENT,data:filtered})
-    })
-}
+const config =(items,user,ordered)=>{
+const data={id:items.id}
+return {
+        txref: items.OrderId,
+        customer_email: user.email,
+        customer_phone: user.phoneNumber,
+        amount: items.total + items.logistics,
+        PBFPubKey: "FLWPUBK_TEST-79b39b660c2b5bcc87b62b747d4c3fa2-X",
+        production: false,
+        onSuccess:(()=>{
+             payment(data, ordered).then(res => storedispatch(res))
+        })
+        
+    }
+
+} ;
 
     const products = props.products
     const list = products.map(items => (<li key={items.id}><NavLink to={`/ordered/${items.id}/${items.total}`}>
         <span> Id: {items.OrderId} </span>
         <span>Amount: &#x20A6; {numbro(items.total).format({thousandSeparated: true})}</span>
+        <span>Logistics: &#x20A6; {numbro(items.logistics).format({thousandSeparated: true})}</span>
         <span> {items.created}</span>
     </NavLink> 
-    {items.paid ?<span>PAID</span>:<button  id={items.id} type="" onClick={Onclick}>Pay now</button>}
+    {items.paid ?<span>PAID</span>:
+      <RaveProvider {...config(items,User,Ordered)}  >
+        <
+        RavePaymentButton >Pay now ({numbro(items.total + items.logistics).format({thousandSeparated: true})})< /RavePaymentButton> <
+        /RaveProvider>
+    }
     </li>))
 
     return (
