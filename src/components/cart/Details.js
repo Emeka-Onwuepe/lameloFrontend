@@ -1,12 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { storeContext, processOrder, load, LOADING, LOADED } from "../State/State";
+import { storeContext, processOrder, load, LOADING, LOADED,locations } from "../State/State";
 import { Redirect } from 'react-router-dom';
 
 
 const Details = (props) => {
     const { storestate, storedispatch } = useContext(storeContext);
-    const { cart, User } = storestate
+    const { cart, User,logistics } = storestate
     // const  user  = User
 
 
@@ -57,7 +57,7 @@ const Details = (props) => {
         const data = JSON.stringify({
             User: User.id !== undefined ? User.id : "",
             user: { "fullName": full_name, "phoneNumber": phone_number, email, address },
-            Ordered: { OrderId, total }, OrderedProduct: products
+            Ordered: { OrderId, logistics, total }, OrderedProduct: products
         })
         const config = { headers: { "Content-Type": "application/json" } }
 
@@ -100,8 +100,6 @@ const Details = (props) => {
                   <Label for="address">ADDRESS</Label>
                   <Input type="address" name="address" value={address} id="address" onChange={onChange} placeholder="Please Enter Your address" required />
                 </FormGroup>
-               
-               
                 <Button className='submitButton btn-lg' color="primary" type="submit">SUBMIT</Button>
             </Form>
             </div>
