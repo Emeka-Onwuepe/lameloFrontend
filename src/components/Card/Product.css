@@ -1,27 +1,53 @@
 .pizza-bg {
     background-image: url('../../assets/restaurant2.jpg');
-    min-height: 100% !important;
-    border: 30px solid rgba(117, 115, 115, 0.7);
-    /* border-bottom: none; */
-    opacity: 0.9;
-    position: relative;
-    z-index: 1;
-}
-.card-container {
-    min-height: 550px;
-    margin-bottom: 10px;
-    box-shadow: 0 0 .25em .25em rgba(0, 0, 0, 0.25);
+
+   height: 100% !important;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: fixed;
+    border: 30px solid white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    background-size: 100%;
+    /* overflow-y: hidden; */
 }
 
+.pizza-bg::before {
+    content: '';
+    background: #000000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: .8;
+}
+
+
+.card-container {
+    position: relative;
+    min-height: 560px;
+    margin-bottom: 10px;
+    /* margin-top: -20px; */
+    /* box-shadow: 0 0 .25em .25em rgba(0, 0, 0, 0.25); */
+    z-index: 200 !important;
+}
+
+.product-cards {
+    z-index: 200;
+    padding-bottom: 1rem;
+    position: relative;
+}
 .orderList {
     height: 100%;
     width: 100%;
     background:#dedede;
 }
-body {
+/* body {
     background: #dedede;
-}
-
+} */
 .button-cart {
     position: absolute;
     background-color: #4CAF50;
@@ -34,11 +60,12 @@ body {
     text-decoration: none;
     overflow: hidden;
     cursor: pointer;
-    bottom: 65%;
+    bottom: 67%;
     left: 55%;
     padding: 10px; 
     border-radius: 50px;
     outline: 0;
+    z-index: 300;
 }
 .button-cart:hover{
     background-color: black !important;
@@ -89,12 +116,18 @@ body {
     background-attachment: fixed;
 }
 
-.logo-pizza {
+.home {
+    display: flex;
+}
+
+a .logo-pizza {
     position: relative;
-    z-index: 200;
+    z-index: 100;
     width: 320px;
     height: 320px;
-    margin: 1rem auto;
+    margin: 10px auto;
+    text-align: center;
+    /* margin-top: -20px; */
 }
 
 .call-to-action-pizza {
@@ -152,19 +185,23 @@ button.call-to-action-pizza:hover {
 .text-color {
     position: relative;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: orangered;
-    text-shadow: 0.05em 0 white, 0 0.05em white, -0.05em 0 white, 0 -0.05em white, -0.05em -0.05em white, -0.05em 0.05em white, 0.05em -0.05em white, 0.05em 0.05em white;
-    z-index: 200;
+    color: #ffffff;
+    /* text-shadow: 0.05em 0 white, 0 0.05em white, -0.05em 0 white, 0 -0.05em white, -0.05em -0.05em white, -0.05em 0.05em white, 0.05em -0.05em white, 0.05em 0.05em white; */
+    z-index: 300;
     text-transform: uppercase;
     letter-spacing: .8rem;
+    padding: 10px;
+    margin-top: -35px;
 }
 
 .divider-center {
-    height: 0.40rem;
+    position: relative;
+    height: 0.20rem;
     width: 20rem;
-    border: 1px solid orangered;
     background: white;
-    margin: 0px auto;
+    margin: auto;
+    /* margin-top: -10px; */
+    margin-bottom: 20px;
     z-index: 200;
 }
 
@@ -182,9 +219,6 @@ button.call-to-action-pizza:hover {
 }
 
 
-.product-cards {
-    padding-bottom: 1rem;
-}
 
 .btn-colors:nth-child(even) {
     position: absolute;
@@ -199,11 +233,40 @@ button.call-to-action-pizza:hover {
     left: 60%;
     border: none;
 }
-
+.col-lg-4 .card-container.card {
+    z-index: 300;
+}
+.down-btn-menu {
+    position: fixed;
+     top: 40%;
+     left: 4%;
+     z-index: 500;
+     text-align: center;
+     color:#C7B491;
+     font-weight: bolder;
+     -webkit-animation: mover 2s infinite  alternate;
+    animation: mover 1s infinite  alternate;
+ 
+  }
+  @-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+  }
+  @keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+  }
+.scroll-arrow-1 {
+    font-size: 40px;
+    margin-top: 10px;
+}
+.down-btn-menu:hover {
+    cursor: pointer;
+}
 .cart-count {
     font-size: 14px;
-    border: 1px solid orangered;
-    background: orangered;
+    border: 1px solid #4CAF50;
+    background: #4CAF50;
     position: absolute;
     padding-right: 9px;
     padding-left: 9px;

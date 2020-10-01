@@ -24,7 +24,7 @@ const PaymentBtn = (props) => {
     const pay = {
         ...config,
         onSuccess: () => {
-           return <Redirect to="/"/>
+           return <Redirect from="/pay" to="/"/>
         },
         onClose: () => { console.log("cool")}
     };
