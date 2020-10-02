@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import {  useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Container, Row } from 'reactstrap';
 
 import Logo1 from '../../assets/LAMELŌ logo blk.png';
@@ -50,7 +50,8 @@ const ProductPage = (props) => {
     getCategory(data, mainCategory).then(res => storedispatch(res))
     storedispatch(load(LOADING))
   }, []);
-
+  console.log(storestate.scrow)
+  console.log(window.pageYOffset)
   return (
 
     <div className="border">
