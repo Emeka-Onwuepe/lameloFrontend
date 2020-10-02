@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Logo1 from '../../assets/LAMELŌ logo blk.png';
 
 import bgImg from '../../assets/restaurant.jpeg';
@@ -6,18 +6,51 @@ import {
   Row, Col, Card, CardText, CardBody,
   CardTitle, Container
 } from 'reactstrap';
+import { motion } from 'framer-motion';
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaArrowDown } from 'react-icons/fa';
 
 import './Home.css';
 import CartCount from '../Card/CartCount';
 
 const Home = (props) => {
-  return (
-    <div className="content">
-      <Row className="row-items">
+  const homeVariants = {
+    hidden: {
+      x: '100vw',
+      opacity: 0
+  },
+  visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+          type: 'spring',
+           delay: 0.5,
+           duration: 0.5
+      }
+  },
+  exit: {
+    x: '-100vw',
+    transition: {
+      ease: 'easeInOut'
+    }
+  }
+  }
+//   const myContent= useRef();
 
-        <Col lg="3" className="scrolldown"><div className="down-btn"><span>Scroll Down</span><br /><FaArrowDown className="scroll-arrow" /></div></Col>
-        <Col lg="9" >
+//   const handleOnClick = (event) => {
+//     //.current is verification that your element has rendered
+//     if(myContent.current){
+//       myContent.current.scrollIntoView({ 
+//            behavior: "smooth", 
+//            block: "nearest"
+//         })
+//     }
+// }
+  return (
+    <motion.div className="content" variants={homeVariants} initial="hidden" animate="visible" exit="exit">
+      <Row className="row-items" >
+
+        <Col lg="3" className="scrolldown" ><div className="down-btn" ><span>Scroll Down</span><br /><FaArrowDown className="scroll-arrow"/></div></Col>
+        <Col lg="9" className="main-page">
           <div className="logo-image">
             <img src={Logo1} alt="logo1" className="logo-home" />
           </div>
@@ -35,7 +68,7 @@ const Home = (props) => {
                               </span>
               </span>
             </div>
-            <Row className="contact">
+            <Row className="contact" >
               <Col lg="4" id="explore-contact">
                 <div >
                   <Card className="explore">
@@ -97,7 +130,7 @@ const Home = (props) => {
       </Container>
       <button className="call-to-action" onClick={() => props.history.push('/menu')}>Menu</button>
       <CartCount />
-    </div>
+    </motion.div>
 
 
 
