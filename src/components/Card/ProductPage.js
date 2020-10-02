@@ -11,14 +11,17 @@ import './Product.css';
 import ProductCard from './ProductCard';
 import CartCount from './CartCount';
 
+import smoothscroll from 'smoothscroll-polyfill';
+
+// kick off the polyfill!
+smoothscroll.polyfill();
+
 const ProductPage = (props) => {
     // const myDiv= useRef();
 
-    const handleOnClick = () => {
-      document.getElementById('scroll').scrollTop -= 20;
-    //  window.scrollBy({top: 0, behavior: 'smooth'});
-
-    }
+    function scrollDiv(){
+      document.getElementById("scroll").scrollTop += 100;
+  }
   const { category } = useParams()
   let [match] = category.match(/(\w+)/)
   const action = match === "wings" ? 'bfw' : match
@@ -66,7 +69,7 @@ const ProductPage = (props) => {
    
       <motion.button whileHover={{scale: 1.1, backgroundColor: 'white'}} className="call-to-action-pizza " onClick={() => props.history.push('/menu')}>Menu</motion.button>
       
-      <div className="down-btn-menu" onClick={handleOnClick}><span onClick={handleOnClick}>Scroll Down</span><br /><FaArrowDown className="scroll-arrow-1" onClick={handleOnClick}/></div>
+      <div className="down-btn-menu" onClick={scrollDiv}><span>Scroll Down</span><br /><FaArrowDown className="scroll-arrow-1"/></div>
         {/* <div className="menu-overlay"></div> */}
         <CartCount />
         <Container fluid id="scroll">
@@ -75,7 +78,7 @@ const ProductPage = (props) => {
           <h1 className="text-center text-color">{heading}</h1>
           <div className="divider-center" ></div>
           {/* <div className="pizza-definations"></div> */}
-          <div className="product-cards" ><ProductCard products={products} prices={prices} /></div>
+          <div className="product-cards" id="d"><ProductCard products={products} prices={prices} /></div>
         </Container>
       </motion.div>
 
