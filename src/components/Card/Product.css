@@ -39,16 +39,12 @@
     position: relative;
 }
 
-.orderList {
+/* .orderList {
     height: 100%;
     width: 100%;
-    background: #dedede;
-}
-
-
-/* body {
-    background: #dedede;
+    
 } */
+
 
 .button-cart {
     position: absolute;
@@ -355,11 +351,15 @@ a.btn-colors {
     display: flex;
     gap: 5px;
 }
-
-.Toastify__toast--error,
-.Toastify__toast--info {
-    width: 350px;
+.Toastify__toast-container {
+    z-index: 9999;
+    width: 600px;
 }
+/* .Toastify__toast--error,
+.Toastify__toast--info {
+    width: 500px;
+    z-index: 9999;
+} */
 
 @media (max-width: 568px) {
     .text-color {

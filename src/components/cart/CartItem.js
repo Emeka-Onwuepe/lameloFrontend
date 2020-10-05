@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { AiFillDelete } from 'react-icons/ai';
 import { MdAdd } from "react-icons/md";
 import { RiSubtractFill } from "react-icons/ri";
+import altImage from '../../assets/LAMELŌ pattern blu2.png'
 
 
 
@@ -49,7 +50,7 @@ const CartItem = (props) => {
 
 
         <Card className="card-items-page page">
-            <CardImg top width="100%" src={product.image} alt={`img-${product.image}`} height="200px" />
+            <CardImg top width="100%" src={product.image.includes('/image') ? altImage : product.image} alt={`img-${product.image}`} height="200px" />
             <CardBody>
                 {/* ₦{numbro(parseInt(pizza.price)).format({ thousandSeparated: true })} */}
                 <CardTitle><h4>{product.name}</h4></CardTitle>
