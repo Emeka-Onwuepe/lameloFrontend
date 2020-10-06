@@ -11,29 +11,27 @@ import './Product.css';
 import ProductCard from './ProductCard';
 import CartCount from './CartCount';
 
-import smoothscroll from 'smoothscroll-polyfill';
 
 // kick off the polyfill!
-smoothscroll.polyfill();
 
 const ProductPage = (props) => {
 
-  const [scrollY, setscrolly] = useState(-250);
+  // const [scrollY, setscrolly] = useState(-250);
   // const myDiv= useRef();
-  useEffect(() => {
-    const div = document.querySelector(".container-fluid")
-    // div.scrollTo("", 100)
-  }, [scrollY]);
+  // useEffect(() => {
+  //   const div = document.querySelector(".container-fluid")
+  //   div.scrollTo("", 100)
+  // }, [scrollY]);
 
 
-  function scrollDiv() {
-    const div = document.querySelector(".container-fluid")
-    setscrolly(scrollY - 250)
-    div.style.marginTop = `${scrollY}px`;
+  // function scrollDiv() {
+  //   const div = document.querySelector(".container-fluid")
+  //   setscrolly(scrollY - 250)
+  //   div.style.marginTop = `${scrollY}px`;
 
-    // document.getElementById("scroll").scrollTop += 100;
-    console.log(window.pageYOffset)
-  }
+  //   document.getElementById("scroll").scrollTop += 100;
+  //   console.log(window.pageYOffset)
+  // }
   const { category } = useParams()
   let [match] = category.match(/(\w+)/)
   const action = match === "wings" ? 'bfw' : match
@@ -74,27 +72,27 @@ const ProductPage = (props) => {
     getCategory(data, mainCategory).then(res => storedispatch(res))
     storedispatch(load(LOADING))
   }, []);
-  console.log(storestate.scrow)
-  console.log(window.pageYOffset)
+  // console.log(storestate.scrow)
+  // console.log(window.pageYOffset)
+  
   return (
 
-    <motion.div initial={{ x: '-120vw' }} animate={{ x: 0 }} transition={{ delay: 0.2, type: "spring" }} className="pizza-bg">
+    <div className="pizza-bg">
+         <div className="overlay"></div>
+          <div className="product-align">
+            <Link to="/" className="home"><img src={Logo1} alt="logo1" className="logo-pizza" /></Link>
+            <h1 className="text-center text-color">{heading}</h1>
+            <div className="divider-center" ></div>
+    
+            <div className="product-cards"><ProductCard products={products} prices={prices} /></div>
+          </div>
+        <CartCount />
+      <button className="call-to-action-pizza " onClick={() => props.history.push('/menu')}>Menu</button>
 
-      <motion.button whileHover={{ scale: 1.1, backgroundColor: 'white' }} className="call-to-action-pizza " onClick={() => props.history.push('/menu')}>Menu</motion.button>
+  
 
-      <div className="down-btn-menu" onClick={scrollDiv}><span>Scroll Down</span><br /><FaArrowDown className="scroll-arrow-1" /></div>
-      {/* <div className="menu-overlay"></div> */}
-      <CartCount />
-      <Container fluid id="scroll">
 
-        <Link to="/" className="home"><img src={Logo1} alt="logo1" className="logo-pizza" /></Link>
-        <h1 className="text-center text-color">{heading}</h1>
-        <div className="divider-center" ></div>
-        {/* <div className="pizza-definations"></div> */}
-        <div className="product-cards" id="d"><ProductCard products={products} prices={prices} /></div>
-      </Container>
-    </motion.div>
-
+    </div>
   )
 }
 

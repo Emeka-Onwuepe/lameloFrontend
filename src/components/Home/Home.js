@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Logo1 from '../../assets/LAMELŌ logo blk.png';
 
 import bgImg from '../../assets/restaurant.jpeg';
@@ -6,47 +7,32 @@ import {
   Row, Col, Card, CardText, CardBody,
   CardTitle, Container
 } from 'reactstrap';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaArrowDown } from 'react-icons/fa';
 
 import './Home.css';
 import CartCount from '../Card/CartCount';
 
 const Home = (props) => {
-  const homeVariants = {
-    hidden: {
-      x: '100vw',
-      opacity: 0
-  },
-  visible: {
-      x: 0,
-      opacity: 1,
-      transition: {
-          type: 'spring',
-           delay: 0.5,
-           duration: 0.5
-      }
-  },
-  exit: {
-    x: '-100vw',
-    transition: {
-      ease: 'easeInOut'
-    }
-  }
-  }
-//   const myContent= useRef();
-
-//   const handleOnClick = (event) => {
-//     //.current is verification that your element has rendered
-//     if(myContent.current){
-//       myContent.current.scrollIntoView({ 
-//            behavior: "smooth", 
-//            block: "nearest"
-//         })
-//     }
-// }
+  
+ 
+    // const myDiv= useRef();
+    // useEffect(() => {
+    //   const div = document.querySelector(".main-page")
+    //   div.scrollTo("", 100)
+    // }, [scrollY]);
+  
+  
+    // function scrollDiv() {
+    //   const div = document.querySelector(".main-page")
+    //   setscrolly(scrollY - 250)
+    //   div.style.marginTop = `${scrollY}px`;
+  
+    //   document.getElementById("scroll").scrollTop += 100;
+    //   console.log(window.pageYOffset)
+    // }
   return (
-    <motion.div className="content" variants={homeVariants} initial="hidden" animate="visible" exit="exit">
+    <div className="content">
       <Row className="row-items" >
 
         <Col lg="3" className="scrolldown" ><div className="down-btn" ><span>Scroll Down</span><br /><FaArrowDown className="scroll-arrow"/></div></Col>
@@ -72,14 +58,13 @@ const Home = (props) => {
               <Col lg="4" id="explore-contact">
                 <div >
                   <Card className="explore">
-
-                    <CardBody>
-
-                      <CardTitle><h2 className="explore-header">Explore</h2></CardTitle>
-
-
+                    <Link to="/menu">
+                      <CardBody>
+                      <CardTitle>
+                        <h2 className="explore-header">Explore</h2></CardTitle>
                       <CardText className="text-details">Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
                     </CardBody>
+                    </Link>
                   </Card>
                 </div>
               </Col>
@@ -95,11 +80,13 @@ const Home = (props) => {
                     <CardBody className="card-body">
                       <CardText className="text-details-1">
                         <span className="holder">OPENING TIME</span><br />
-                        <span>Lorem ipsum, dolor sit amet consectetur adipisicing.</span><br />
+                        <span>We are open from 10:00 AM to 10:00 PM from Mondays till Sundays</span><br />
                         <span className="holder">VISIT US</span><br />
-                        <span>Lorem ipsum, dolor sit amet consectetur adipisicing.</span><br />
+                        <span>Plot C18 Obioma Onyeador Plaza, Beside DBB Plaza, 1<sup>st</sup> Avenue, Gwarimpa Abuja </span><br />
                         <span className="holder">CALL US</span><br />
-                        <span>Lorem ipsum, dolor sit amet consectetur adipisicing.</span><br />
+                        <span>+234-814-671-2370<br /> +234-818-799-4444</span><br />
+                        <span className="holder">EMAIL US</span><br />
+                        <span>info@lamelo.com.mg<br /> lamelo.info@gmail.com</span><br />
                         <div className="social-links"><a target="_blank" href="https://www.facebook.com/LAMELOnigeria/" className="facebook" rel="noopener noreferrer"><FaFacebook /></a> <a target="_blank" href="https://www.twitter.com/lamelo_ng" className="twitter" rel="noopener noreferrer"><FaTwitter /></a> <a target="_blank" href="https://www.instagram.com/lamelo_ng" className="instagram" rel="noopener noreferrer"><FaInstagram /></a><a target="_blank" href="https://www.linkedin.com/in/lamelo-ng-4956161b4/" className="linkedin" rel="noopener noreferrer"><FaLinkedin /></a></div>
                       </CardText>
                     </CardBody>
@@ -128,9 +115,9 @@ const Home = (props) => {
           </Row>
         </div>
       </Container>
-      <button className="call-to-action" onClick={() => props.history.push('/menu')}>Menu</button>
+      <button className="call-to-action-home" onClick={() => props.history.push('/menu')}>Menu</button>
       <CartCount />
-    </motion.div>
+    </div>
 
 
 

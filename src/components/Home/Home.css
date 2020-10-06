@@ -6,9 +6,6 @@
       margin-left: 0px;
       background: #1B1D1E;
   }
-  /* .content {
-    background: #1B1D1E;
-  } */
 .main-page {
   width: 100%;
   padding: 0;
@@ -56,8 +53,9 @@
     width: 100%;
     margin: 0;
     padding: 0;
-    height: 100vh;
-    border: 30px solid #ffffff;
+    height: 100%;
+    overflow-y: auto;
+    /* border: 30px solid #ffffff; */
 }
 
 .scroll-arrow {
@@ -68,7 +66,7 @@
 .down-btn {
   color:#C7B491;
 }
-  .call-to-action {
+  .call-to-action-home {
       position: fixed;
       z-index: 500;
       width: 100px;
@@ -145,7 +143,8 @@
 }
 .contact h2.explore-header {
   font-weight: bolder;
-  font-size: 3.5rem;
+  font-size: 2.1rem;
+  padding-bottom: 2rem;
   text-transform: uppercase;
   color: #EFEFEF;
 }

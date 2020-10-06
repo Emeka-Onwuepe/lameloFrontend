@@ -23,11 +23,12 @@ const PaymentBtn = (props) => {
 
     const pay = {
         ...config,
-        onSuccess: () => {
+        onSuccess: (res) => {
              const id= recent.id
+
              const data= {id}
             payment(data, Ordered).then(res => storedispatch(res))
-            return <Redirect to = "/" / >
+            
         },
         onClose: () => { console.log("cool") }
     };

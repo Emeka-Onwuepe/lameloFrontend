@@ -46,7 +46,7 @@ const ShoppingCart = (props) => {
                     <select name="logistics" id="logistics" onChange={onchange}>
                         <option value="0"></option>
                         <option value="0">I will pick it up myself</option>
-                        {storestate.locations.map(area => <option value={area.price}>{`${area.location}-${area.price}`}</option>)}
+                        {storestate.locations.map(area => <option value={area.price}>{`${area.location} Area- ₦${numbro(area.price).format({thousandSeparated: true})}`}</option>)}
                     </select>
                 </div>}<br />
                 {total > 0 && <Button onClick={() => props.history.push("/confirmOrder")} className="confirm-btn">CONFIRM ORDER</Button>}

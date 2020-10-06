@@ -67,7 +67,7 @@ const ProductCard = ({ products, prices }) => {
         draggable: true,
         progress: undefined,
     })
-    const alreadyInCart = () => toast.error(<div className="decisionBox" >
+    const alreadyInCart = () => toast.info(<div className="decisionBox" >
         <p style={{ color: "white"}}>Item already in Cart</p>
        <div className="btns-checkout"> <Button onClick={() => { setDivdisplay(initial) }} color="success">Continue Shopping</Button>
         <Button onClick={() => window.location = "/ShoppingCart"} color="info">Check Out </Button>
