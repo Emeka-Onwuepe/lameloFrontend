@@ -1,16 +1,29 @@
 .orderedList {
     width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: -250px;
 }
-
-.orderedList ol {
-
+.orderList button {
+    background: white;
+    border: 2px solid maroon;
 }
-
+.orderList button:hover {
+     background: maroon;
+     color: white;
+     transition: all ease-in-out .5s;
+}
+.orderList button:focus {
+    background: maroon;
+    color: white;
+    transition: all ease-in-out .5s;
+    scale: 1.1;
+}
+.orderlist-header {
+    text-align: center;
+    margin-top: 150px;
+}
 table {
     border: 1px solid #1a1a1b;
     padding: 0px;

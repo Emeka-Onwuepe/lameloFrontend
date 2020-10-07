@@ -1,12 +1,15 @@
 import React, { useEffect, useState, useContext } from 'react';
 // import { NavLink, Link, useParams } from 'react-router-dom';
 
+import altImage from '../../assets/LAMELŌ pattern blu2.png'
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { PacmanLoader } from 'react-spinners';
 import {
     Card, CardImg, CardText,
     CardBody, CardTitle, Row,
-    Col, Container, Alert,
+    Col, Container,
     Button
 } from 'reactstrap';
 
@@ -26,7 +29,7 @@ const ProductCard = ({ products, prices, toppings }) => {
 
     const { storestate, storedispatch } = useContext(storeContext)
     useEffect(() => {
-        console.log("cart changed")
+        console.log("cart changed", altImage)
         // console.log(priceState)
 
 
@@ -53,7 +56,7 @@ const ProductCard = ({ products, prices, toppings }) => {
         <p>Choose either to continue shopping or to view your shopping cart by checking out</p><br />
         <div className="btns-checkout">
             <Button onClick={() => { setDivdisplay(initial) }} color="success">Continue Shopping</Button>
-            <Button onClick={() => window.location = "/ShoppingCart"} style={{ backgroundColor: 'orangered', border: 'none' }}>Check Out</Button>
+            <Button onClick={() => window.location = "/ShoppingCart"} color="info">Check Out</Button>
         </div>
     </div>, {
         position: "top-center",
@@ -64,10 +67,10 @@ const ProductCard = ({ products, prices, toppings }) => {
         draggable: true,
         progress: undefined,
     })
-    const alreadyInCart = () => toast.error(<div className="decisionBox" >
+    const alreadyInCart = () => toast.info(<div className="decisionBox" >
         <p style={{ color: "white" }}>Item already in Cart</p>
         <div className="btns-checkout"> <Button onClick={() => { setDivdisplay(initial) }} color="success">Continue Shopping</Button>
-            <Button onClick={() => window.location = "/ShoppingCart"} style={{ backgroundColor: 'orangered', border: 'none' }}>Check Out </Button>
+            <Button onClick={() => window.location = "/ShoppingCart"} color="info">Check Out </Button>
         </div>
     </div>, {
         position: "top-center",
@@ -159,8 +162,9 @@ const ProductCard = ({ products, prices, toppings }) => {
 
 
                         <Col lg="4" key={index}>
+
                             <Card className="card-container">
-                                <CardImg top width="95%" src={pizza.image} alt={`pizza-image-${pizza.image}`} height={200} />
+                                <CardImg top width="95%" src={pizza.image.includes('/image') ? altImage : pizza.image} alt={`pizza-image-${pizza.image}`} height={200} />
                                 <CardBody>
                                     <CardTitle><h3>{pizza.name}</h3></CardTitle>
 
@@ -177,7 +181,7 @@ const ProductCard = ({ products, prices, toppings }) => {
                             </div>
 
                         </Col>
-                    )) : <Alert>Failed to load items</Alert>
+                    )) : <div style={{ display: 'flex', justifyContent: 'center' }}><PacmanLoader loading size={60} style={{ zIndex: '300' }} color="red" /></div>
 
                 }
                 {toppings.length > 0 ? toppings.map(topping => <div>

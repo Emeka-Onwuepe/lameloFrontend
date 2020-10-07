@@ -69,10 +69,4 @@ const OrderedItems = (props) => {
 
 };
 
-
-// OrderedItems.propTypes = {
-
-// };
-
-
 export default OrderedItems;

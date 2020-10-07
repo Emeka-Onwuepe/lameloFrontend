@@ -1,54 +1,58 @@
 .pizza-bg {
     background-image: url('../../assets/restaurant2.jpg');
-    height: 100% !important;
+    height: 100%;
     margin: 0;
     padding: 0;
     width: 100%;
-    position: fixed;
-    border: 30px solid white;
+    position: relative;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
     background-size: 100%;
-    /* overflow-y: hidden; */
+    overflow-y: auto;
 }
-
-.pizza-bg::before {
+/* .pizza-bg::before {
     content: '';
     background: #000000;
     position: absolute;
+    min-height: 100%;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
     opacity: .8;
+    padding-top: 400px;
+    padding-bottom: 
+} */
+
+.overlay {
+    background: #000000;
+    position: absolute;
+    min-height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: .8;
+    /* box-sizing: inherit; */
 }
 
+/* .product-align {
+    margin-top: -1500px;
+} */
+
 .card-container {
-    position: relative;
-    min-height: 560px;
+    min-height: 500px;
     margin-bottom: 10px;
-    /* margin-top: -20px; */
-    /* box-shadow: 0 0 .25em .25em rgba(0, 0, 0, 0.25); */
     z-index: 200 !important;
 }
 
 .product-cards {
-    z-index: 200;
-    padding-bottom: 1rem;
-    position: relative;
-}
-
-.orderList {
-    height: 100%;
-    width: 100%;
-    background: #dedede;
+    z-index: 500;
+   /* position: relative; */
 }
 
 
-/* body {
-    background: #dedede;
-} */
 
 .button-cart {
     position: absolute;
@@ -139,7 +143,7 @@ a .logo-pizza {
 }
 
 .call-to-action-pizza {
-    position: fixed;
+    position: fixed !important;
     z-index: 500;
     width: 100px;
     height: 100px;
@@ -274,11 +278,11 @@ button.call-to-action-pizza:hover {
         transform: translateY(-20px);
     }
 }
-
+/* 
 .scroll-arrow-1 {
     font-size: 40px;
     margin-top: 10px;
-}
+} */
 
 .down-btn-menu:hover {
     cursor: pointer;
@@ -355,11 +359,15 @@ a.btn-colors {
     display: flex;
     gap: 5px;
 }
-
-.Toastify__toast--error,
-.Toastify__toast--info {
-    width: 350px;
+.Toastify__toast-container {
+    z-index: 9999;
+    width: 600px;
 }
+/* .Toastify__toast--error,
+.Toastify__toast--info {
+    width: 500px;
+    z-index: 9999;
+} */
 
 @media (max-width: 568px) {
     .text-color {

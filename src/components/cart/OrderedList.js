@@ -29,28 +29,41 @@ return {
 } ;
 
     const products = props.products
-    const list = products.map(items => (<li key={items.id}><NavLink to={`/ordered/${items.id}/${items.total}`}>
-        <span> Id: {items.OrderId} </span>
-        <span>Amount: &#x20A6; {numbro(items.total).format({thousandSeparated: true})}</span>
-        <span>Logistics: &#x20A6; {numbro(items.logistics).format({thousandSeparated: true})}</span>
-        <span> {items.created}</span>
-    </NavLink> 
-    {items.paid ?<span>PAID</span>:
-      <RaveProvider {...config(items,User,Ordered)}  >
-        <
-        RavePaymentButton >Pay now ({numbro(items.total + items.logistics).format({thousandSeparated: true})})< /RavePaymentButton> <
-        /RaveProvider>
+    const list = products.map(items => (
+    <tr key={items.id}>
+        <td><NavLink to={`/ordered/${items.id}/${items.total}`}> {items.OrderId}</NavLink> </td>
+        <td><NavLink to={`/ordered/${items.id}/${items.total}`}> &#x20A6; {numbro(items.total).format({thousandSeparated: true})}</NavLink></td>
+        <td><NavLink to={`/ordered/${items.id}/${items.total}`}>&#x20A6; {numbro(items.logistics).format({thousandSeparated: true})}</NavLink></td>
+        <td> <NavLink to={`/ordered/${items.id}/${items.total}`}>{items.created}</NavLink></td>
+  
+    {items.paid ?<td>PAID</td>:
+         <td><RaveProvider {...config(items,User,Ordered)}>
+            <RavePaymentButton >
+                Pay Now (&#x20A6;{numbro(items.total + items.logistics).format({thousandSeparated: true})})
+            </RavePaymentButton>
+        </RaveProvider>
+        </td>
     }
-    </li>))
+    </tr>))
 
     return (
-        <div className="orderedList page">
-            <h3>List of Orders</h3>
-            <ol>
-                {list}
-            </ol>
+        <div>
+            <h3  className="orderlist-header">List of Orders</h3>
+            <div className="orderedList page">
+                <table>
+                        <thead>
+                            <tr>
+                                <th>Ref No:</th>
+                                <th>Amount</th>
+                                <th>Logistics </th>
+                                <th>Date ordered</th>
+                                <th>status</th>
+                            </tr>
+                        </thead>
+                        <tbody>{list}</tbody>
+                    </table>
+            </div>
         </div>
-
     );
 };
 

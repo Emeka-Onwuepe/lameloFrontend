@@ -1,7 +1,18 @@
 .cart-store {
-    background: #dedede;
-    height: 100%;
+    overflow-y: auto;
+    margin: 0;
+    padding: 20px;
 
+}
+
+#full_name, #email, #phone_number, #address {
+    border: 2px solid maroon;
+    height: 3rem;
+    border-radius: 0;
+}
+.submitButton {
+    border-radius: 0;
+    border: 2px solid maroon;
 }
 .card-items-page {
     min-height: 480px;
@@ -9,11 +20,28 @@
     margin-top: 20px;
 
 }
-
+#logistics  {
+    width: 25rem;
+    height: 3rem;
+}
 .orderListDisplay  {
-    background: #dedede;
     padding: 20px;
+    margin: 0;
 } 
+.btn-paylater {
+    border-radius: 0;
+}
+.btn-paylater:hover {
+    background: black;
+    color: white;
+    transition: all ease-in-out .5s;
+}
+.btn-paylater:focus {
+    background: black;
+    color: white;
+    transition: all ease-in-out .5s;
+    scale: 1.1;
+}
 .order-history {
     /* margin-top: 20px; */
     position: absolute;
@@ -73,7 +101,42 @@
     margin-top: 20px;
     margin-left: 50px;
 }
-
+.payment-portal {
+   position: relative;
+   top: 250px;
+   text-align: center;
+}
+.payment-portal p {
+    font-size: 20px;
+    font-weight: bolder;
+}
+.payment-btns {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 10px;
+}
+.payment-btns button {
+   width: 10rem;
+   height: 3rem;
+   text-transform: uppercase;
+}
+.payment-btns button:nth-child(1){
+    background: none;
+}
+.payment-btns button:nth-child(1):hover{
+    background: maroon;
+    transition: all ease-in-out .5s;
+    color: #ffffff;
+    border: none;
+}
+.payment-btns button:nth-child(1):focus {
+    background: maroon;
+    transition: all ease-in-out .5s;
+    color: #ffffff;
+    border: none;
+    scale: 1.1;
+}
 
 @media (max-width: 568px){
     .user-details-container {

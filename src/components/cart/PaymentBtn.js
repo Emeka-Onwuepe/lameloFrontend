@@ -23,19 +23,23 @@ const PaymentBtn = (props) => {
 
     const pay = {
         ...config,
-        onSuccess: () => {
+        onSuccess: (res) => {
              const id= recent.id
+
              const data= {id}
             payment(data, Ordered).then(res => storedispatch(res))
-            return <Redirect to = "/" / >
+            
         },
         onClose: () => { console.log("cool") }
     };
 
-    return ( <div>
-        <p > You can make payment now, or pay later </p> <RaveProvider {...pay } >
-        <RavePaymentButton > Pay₦ { numbro(parseInt(recent.total + recent.logistics)).format({ thousandSeparated: true }) } 
-        </RavePaymentButton> </RaveProvider> <Button onClick = {() => props.history.push("/") } > Pay Later </Button> </div>
+    return ( <div className="payment-portal">
+        <p > You can make payment now, or pay later </p><br /> <div className="payment-btns"><RaveProvider {...pay } >
+        
+        <RavePaymentButton > Pay ₦{ numbro(parseInt(recent.total + recent.logistics)).format({ thousandSeparated: true }) } 
+        </RavePaymentButton> </RaveProvider> <Button onClick = {() => props.history.push("/") } className="btn-paylater"> Pay Later </Button> 
+        </div>
+        </div>
     )
 }
 

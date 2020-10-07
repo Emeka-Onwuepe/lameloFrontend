@@ -81,26 +81,19 @@ const Details = (props) => {
                 <h2 className="user-info-title"><center>PROVIDE YOUR DELIVERY DETAILS</center></h2><br />
             <Form onSubmit={onSubmit} className="user-detail-input">
             
-                <FormGroup>
-                  <Label for="full_name">FULL NAME</Label>
                   {errorstate.full_name ? <p className="error">Only alphabets are allowed</p> : ""}
-                 <Input type="text" name="full_name" value={full_name} id="full_name" onChange={onChange} placeholder="Please Enter Your last name" required />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="email">EMAIL</Label>
+                 <Input type="text" name="full_name" value={full_name} id="full_name" onChange={onChange} placeholder="Please Enter Your full name" required />
+
                   {errorstate.email ? <p className="error">Invalid Email</p> : ""}
                  <Input type="email" name="email" value={email} id="email" onChange={onChange} placeholder="Please Enter Your Email" required />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="phone_number">PHONE NUMBER</Label>
+
+             
                   {errorstate.phone_number ? <p className="error">Only digits/numbers are allowed</p> : errorstate.phoneNumLength ? <p className="error">Phone Number should not be less than 11 digits </p> : ""}
                 <Input type="text" name="phone_number" value={phone_number} id="phone_number" onChange={onChange} placeholder="Please Enter Your phone number" required />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="address">ADDRESS</Label>
+          
                   <Input type="address" name="address" value={address} id="address" onChange={onChange} placeholder="Please Enter Your address" required />
-                </FormGroup>
-                <Button className='submitButton btn-lg' color="primary" type="submit">SUBMIT</Button>
+
+                <Button className='submitButton btn-lg btn-block' color="primary" type="submit">SUBMIT</Button>
             </Form>
             </div>
     );
