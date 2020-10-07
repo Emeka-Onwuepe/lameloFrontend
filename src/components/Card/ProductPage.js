@@ -86,6 +86,7 @@ const ProductPage = (props) => {
     
             <div className="product-cards"><ProductCard products={products} prices={prices} /></div>
           </div>
+          <div className="down-btn-menu" ><span>Scroll Down</span><br /><FaArrowDown className="scroll-arrow-menu"/></div>
         <CartCount />
       <button className="call-to-action-pizza " onClick={() => props.history.push('/menu')}>Menu</button>
 
