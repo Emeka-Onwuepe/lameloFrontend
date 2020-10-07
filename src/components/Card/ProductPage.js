@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Container } from 'reactstrap';
 
 import Logo1 from '../../assets/LAMELŌ logo blk.png';
-import { storeContext, GET_PIZZA, GET_BFW, GET_GELATOS, GET_SALAD, getCategory, load, LOADING } from "../State/State"
+import { storeContext, GET_PIZZA, GET_BFW, GET_GELATOS, GET_SALAD, GET_PLATTER, getCategory, load, LOADING } from "../State/State"
 
 import './Product.css';
 import ProductCard from './ProductCard';
@@ -55,6 +55,11 @@ const ProductPage = (props) => {
           mainCategory: GET_SALAD,
           heading: "Salad Menu"
         }
+      case 'platter':
+        return {
+          mainCategory: GET_PLATTER,
+          heading: "Platter Menu"
+        }
       default:
         return {
           mainCategory: GET_GELATOS,
@@ -65,7 +70,7 @@ const ProductPage = (props) => {
 
   const { storestate, storedispatch } = useContext(storeContext)
   const data = { "action": action, "data": "", "search": "" }
-  const { products, prices } = storestate[action]
+  const { products, prices, toppings } = storestate[action]
 
   const { mainCategory, heading } = GET_CATEGORY(match)
 
@@ -91,7 +96,7 @@ const ProductPage = (props) => {
         <h1 className="text-center text-color">{heading}</h1>
         <div className="divider-center" ></div>
         {/* <div className="pizza-definations"></div> */}
-        <div className="product-cards" id="d"><ProductCard products={products} prices={prices} /></div>
+        <div className="product-cards" id="d"><ProductCard products={products} prices={prices} toppings={toppings} /></div>
       </Container>
     </motion.div>
 

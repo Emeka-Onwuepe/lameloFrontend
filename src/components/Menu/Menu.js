@@ -68,6 +68,11 @@ const Menu = (props) => {
                                 <span className="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, illum.</span></li>
 
                     </div>
+                    <div className="menu-deal">
+                        <li className="menu" onClick={() => props.history.push('/platter')}>Platter page
+                                <span className="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, illum.</span></li>
+
+                    </div>
                 </ol>
             </motion.div>
             <motion.button variants={menuButtonVariants} whileHover="hover" className="menu-call-to-action" onClick={() => props.history.push('/')}> &lt; Back</motion.button>

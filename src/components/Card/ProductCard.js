@@ -18,7 +18,7 @@ import { storeContext, addToCart } from '../State/State';
 const animatedComponents = makeAnimated();
 
 
-const ProductCard = ({ products, prices }) => {
+const ProductCard = ({ products, prices, toppings }) => {
 
     const [DivDisplay, setDivdisplay] = useState({ display: false, check: false })
     const [priceState, setpriceState] = useState([])
@@ -50,10 +50,10 @@ const ProductCard = ({ products, prices }) => {
 
 
     const decisionBox = () => toast.success(<div className="decisionBox">
-       <p>Choose either to continue shopping or to view your shopping cart by checking out</p><br/>
-       <div className="btns-checkout">
-        <Button onClick={() => { setDivdisplay(initial) }} color="success">Continue Shopping</Button>
-        <Button onClick={() => window.location = "/ShoppingCart"} style={{backgroundColor: 'orangered', border: 'none'}}>Check Out</Button> 
+        <p>Choose either to continue shopping or to view your shopping cart by checking out</p><br />
+        <div className="btns-checkout">
+            <Button onClick={() => { setDivdisplay(initial) }} color="success">Continue Shopping</Button>
+            <Button onClick={() => window.location = "/ShoppingCart"} style={{ backgroundColor: 'orangered', border: 'none' }}>Check Out</Button>
         </div>
     </div>, {
         position: "top-center",
@@ -65,18 +65,18 @@ const ProductCard = ({ products, prices }) => {
         progress: undefined,
     })
     const alreadyInCart = () => toast.error(<div className="decisionBox" >
-        <p style={{ color: "white"}}>Item already in Cart</p>
-       <div className="btns-checkout"> <Button onClick={() => { setDivdisplay(initial) }} color="success">Continue Shopping</Button>
-        <Button onClick={() => window.location = "/ShoppingCart"} style={{backgroundColor: 'orangered', border: 'none'}}>Check Out </Button>
+        <p style={{ color: "white" }}>Item already in Cart</p>
+        <div className="btns-checkout"> <Button onClick={() => { setDivdisplay(initial) }} color="success">Continue Shopping</Button>
+            <Button onClick={() => window.location = "/ShoppingCart"} style={{ backgroundColor: 'orangered', border: 'none' }}>Check Out </Button>
         </div>
     </div>, {
-    position: "top-center",
-    autoClose: 10000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
+        position: "top-center",
+        autoClose: 10000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
     })
 
 
@@ -91,7 +91,7 @@ const ProductCard = ({ products, prices }) => {
         value.forEach(item => {
             console.log(priceState)
             let [price] = prices.filter(x => x.id === item)
-         
+
             let check = stateArry.filter(item => item.id === price.id)
             if (check.length === 0) {
                 stateArry.push(price)
@@ -124,15 +124,15 @@ const ProductCard = ({ products, prices }) => {
                     }
                     setpriceState([])
                 }
-            }else{
-               toast.warn("please select size(s) ", {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
+            } else {
+                toast.warn("please select size(s) ", {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
                 })
             }
         } else if (product.multipleSIzes.length === 0) {
@@ -154,9 +154,9 @@ const ProductCard = ({ products, prices }) => {
         <Container>
             <Row>
                 {
-                    
+
                     (products && products.length > 0) ? products.map((pizza, index) => (
-                      
+
 
                         <Col lg="4" key={index}>
                             <Card className="card-container">
@@ -175,11 +175,16 @@ const ProductCard = ({ products, prices }) => {
                             <div>
                                 <button id={pizza.id} className="button-cart" onClick={onClick}>ADD TO CART</button>
                             </div>
-                      
+
                         </Col>
                     )) : <Alert>Failed to load items</Alert>
-                   
+
                 }
+                {toppings.length > 0 ? toppings.map(topping => <div>
+                    <input type="checkbox" name={topping.topping} value={topping.price}></input>
+                    <label htmlFor={topping.topping}>{topping.topping}-₦{numbro(parseInt(topping.price)).format({ thousandSeparated: true })}</label>
+
+                </div>) : ""}
                 <>
                     {DivDisplay.check && DivDisplay.display ? alreadyInCart() : DivDisplay.display ? decisionBox() : ""}
                     <ToastContainer position="top-center"
@@ -194,7 +199,7 @@ const ProductCard = ({ products, prices }) => {
                     />
                 </>
             </Row>
-        </Container>
+        </Container >
     );
 };
 

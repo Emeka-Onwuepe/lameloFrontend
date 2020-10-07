@@ -7,6 +7,7 @@ import axios from 'axios';
 
 //Action Types
 export const GET_PIZZA = "GET_PIZZA";
+export const GET_PLATTER = "GET_PLATTER";
 export const GET_SALAD = "GET_SALAD";
 export const GET_BFW = "GET_BFW";
 export const GET_GELATOS = "GET_GELATOS";
@@ -41,7 +42,8 @@ export const getCategory = (data, type) => {
             type: type,
             products: res.data.products,
             prices: res.data.prices,
-            // messages: "Logged In Successfully"
+            toppings: res.data.toppings
+                // messages: "Logged In Successfully"
         }
     }).catch(err => {
         return {
@@ -141,128 +143,144 @@ const storeReducer = (state, action) => {
             return {
                 ...state,
                 pizza: {
-                        products: action.products,
-                        prices: action.prices
-                    },
-                    loading: false,
+                    products: action.products,
+                    prices: action.prices,
+                    toppings: action.toppings
+                },
+                loading: false,
             }
-            case GET_BFW:
-                return {
-                    ...state,
-                    bfw: {
-                            products: action.products,
-                            prices: action.prices
-                        },
-                        loading: false,
-                }
-                case GET_GELATOS:
-                    return {
-                        ...state,
-                        gelatos: {
-                                products: action.products,
-                                prices: action.prices
-                            },
-                            loading: false,
-                    }
-                    case GET_SALAD:
-                        return {
-                            ...state,
-                            salad: {
-                                    products: action.products,
-                                    prices: action.prices
-                                },
-                                loading: false,
-                        }
-                        case ADD_TO_CART:
-                            return {
-                                ...state,
-                                cart: [...state.cart, action.data],
-                                    loading: false,
-                            }
-                            case UPDATE_CART:
-                                return {
-                                    ...state,
-                                    cart: [...action.data],
-                                        loading: false,
-                                }
-                                case LOADING:
-                                    return {
-                                        ...state,
-                                        loading: true
-                                    }
-                                    case LOADED:
-                                        return {
-                                            ...state,
-                                            loading: false,
-                                        }
-                                        case PROCESS_ORDER:
-                                            return {
-                                                ...state,
-                                                Ordered: [...state.Ordered, action.data],
-                                                    messages: action.messages,
-                                                    success: action.success,
-                                                    cart: action.cart,
-                                                    User: action.user,
-                                                    logistics: 0,
-                                                    loading: false,
-                                            }
-                                            case PAYMENT:
-                                                return {
-                                                    ...state,
-                                                    Ordered: action.data,
-                                                        loading: false,
-                                                }
-                                                case GET_LOCATION:
-                                                    return {
-                                                        ...state,
-                                                        locations: action.data,
-                                                            loading: false,
-                                                    }
-                                                    case ADD_LOGISTICS:
-                                                        return {
-                                                            ...state,
-                                                            logistics: action.data,
-                                                                loading: false,
-                                                        }
+        case GET_BFW:
+            return {
+                ...state,
+                bfw: {
+                    products: action.products,
+                    prices: action.prices,
+                    toppings: action.toppings
+                },
+                loading: false,
+            }
+        case GET_GELATOS:
+            return {
+                ...state,
+                gelatos: {
+                    products: action.products,
+                    prices: action.prices,
+                    toppings: action.toppings
+                },
+                loading: false,
+            }
+        case GET_SALAD:
+            return {
+                ...state,
+                salad: {
+                    products: action.products,
+                    prices: action.prices,
+                    toppings: action.toppings
+                },
+                loading: false,
+            }
+        case GET_PLATTER:
+            return {
+                ...state,
+                platter: {
+                    products: action.products,
+                    prices: action.prices,
+                    toppings: action.toppings
+                },
+                loading: false,
+            }
 
 
-                                                        case GET_ORDERED_PRODUCTS:
-                                                            return {
-                                                                ...state,
-                                                                OrderedProduct: action.products,
-                                                                    loading: false,
-                                                            }
-                                                            case CLEAR_SUCCESS:
-                                                                return {
-                                                                    ...state,
-                                                                    success: false,
-                                                                        loading: false,
-                                                                }
-                                                                case ADD_ERROR:
-                                                                    return {
-                                                                        ...state,
-                                                                        message: action.data,
-                                                                            status: action.status,
-                                                                            loading: false,
-                                                                    }
-                                                                    case DELETE_MESSAGES:
-                                                                        return {
-                                                                            ...state,
-                                                                            message: "",
-                                                                                status: "",
-                                                                                messages: ""
-                                                                        }
-                                                                        case SET_SCREEN_SIZE:
-                                                                            return {
-                                                                                ...state,
-                                                                                screenWidth: action.width,
-                                                                                    scrow: action.scrow
-                                                                            }
+        case ADD_TO_CART:
+            return {
+                ...state,
+                cart: [...state.cart, action.data],
+                loading: false,
+            }
+        case UPDATE_CART:
+            return {
+                ...state,
+                cart: [...action.data],
+                loading: false,
+            }
+        case LOADING:
+            return {
+                ...state,
+                loading: true
+            }
+        case LOADED:
+            return {
+                ...state,
+                loading: false,
+            }
+        case PROCESS_ORDER:
+            return {
+                ...state,
+                Ordered: [...state.Ordered, action.data],
+                messages: action.messages,
+                success: action.success,
+                cart: action.cart,
+                User: action.user,
+                logistics: 0,
+                loading: false,
+            }
+        case PAYMENT:
+            return {
+                ...state,
+                Ordered: action.data,
+                loading: false,
+            }
+        case GET_LOCATION:
+            return {
+                ...state,
+                locations: action.data,
+                loading: false,
+            }
+        case ADD_LOGISTICS:
+            return {
+                ...state,
+                logistics: action.data,
+                loading: false,
+            }
 
-                                                                            default:
-                                                                                return {
-                                                                                    ...state
-                                                                                }
+
+        case GET_ORDERED_PRODUCTS:
+            return {
+                ...state,
+                OrderedProduct: action.products,
+                loading: false,
+            }
+        case CLEAR_SUCCESS:
+            return {
+                ...state,
+                success: false,
+                loading: false,
+            }
+        case ADD_ERROR:
+            return {
+                ...state,
+                message: action.data,
+                status: action.status,
+                loading: false,
+            }
+        case DELETE_MESSAGES:
+            return {
+                ...state,
+                message: "",
+                status: "",
+                messages: ""
+            }
+        case SET_SCREEN_SIZE:
+            return {
+                ...state,
+                screenWidth: action.width,
+                scrow: action.scrow
+            }
+
+        default:
+            return {
+                ...state
+            }
     }
 }
 
@@ -282,19 +300,28 @@ const StoreContextProvider = (props) => {
                 finaldata = {
                     pizza: {
                         products: [],
-                        prices: []
+                        prices: [],
+                        toppings: []
                     },
                     bfw: {
                         products: [],
-                        prices: []
+                        prices: [],
+                        toppings: []
                     },
                     salad: {
                         products: [],
-                        prices: []
+                        prices: [],
+                        toppings: []
                     },
                     gelatos: {
                         products: [],
-                        prices: []
+                        prices: [],
+                        toppings: []
+                    },
+                    platter: {
+                        products: [],
+                        prices: [],
+                        toppings: []
                     },
                     User: "",
                     Ordered: [],
@@ -327,6 +354,10 @@ const StoreContextProvider = (props) => {
                         prices: []
                     },
                     gelatos: {
+                        products: [],
+                        prices: []
+                    },
+                    platter: {
                         products: [],
                         prices: []
                     },
