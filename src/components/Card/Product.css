@@ -47,6 +47,20 @@
     z-index: 200 !important;
 }
 
+.toppings-style {
+    color: white;
+    z-index: 1000;
+}
+.toppings-divider {
+    width: 300px;
+    height: .1rem;
+    background-color: green;
+    margin: 3px auto;
+}
+/* .toppings-heading {
+    z-index: 1000;
+} */
+
 .product-cards {
     z-index: 500;
    /* position: relative; */

@@ -343,23 +343,28 @@ const StoreContextProvider = (props) => {
                 finaldata = {
                     pizza: {
                         products: [],
-                        prices: []
+                        prices: [],
+                        toppings: []
                     },
                     bfw: {
                         products: [],
-                        prices: []
+                        prices: [],
+                        toppings: []
                     },
                     salad: {
                         products: [],
-                        prices: []
+                        prices: [],
+                        toppings: []
                     },
                     gelatos: {
                         products: [],
-                        prices: []
+                        prices: [],
+                        toppings: []
                     },
                     platter: {
                         products: [],
-                        prices: []
+                        prices: [],
+                        toppings: []
                     },
                     User: "",
                     Ordered: [],
@@ -387,7 +392,7 @@ const StoreContextProvider = (props) => {
     useEffect(() => {
         const onresizer = () => {
             // console.log(window.pageYOffset)
-            console.log(window.scrollY)
+            // console.log(window.scrollY)
             storedispatch({
                 type: SET_SCREEN_SIZE,
                 width: window.innerWidth,
@@ -431,17 +436,6 @@ const StoreContextProvider = (props) => {
 
 
 
-    return ( < storeContext.Provider value = {
-            {
-                storestate,
-                storedispatch
-            }
-        } > {
-            props.children
-        } <
-        /storeContext.Provider>
-    )
-
-}
+    return ( < storeContext.Provider value = {{storestate,storedispatch}} >{props.children} </storeContext.Provider>)}
 
 export default StoreContextProvider;
