@@ -17,6 +17,7 @@ import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import numbro from 'numbro';
 import { storeContext, addToCart } from '../State/State';
+import { DriveEtaSharp } from '@material-ui/icons';
 
 const animatedComponents = makeAnimated();
 
@@ -30,7 +31,7 @@ const ProductCard = ({ products, prices, toppings }) => {
     const { storestate, storedispatch } = useContext(storeContext)
     useEffect(() => {
         console.log("cart changed", altImage)
-        // console.log(priceState)
+        console.log(toppings)
 
 
     }, [storestate.cart, storedispatch]);
@@ -155,9 +156,24 @@ const ProductCard = ({ products, prices, toppings }) => {
 
     return (
         <Container>
+         
             <Row>
+            <div style={{textAlign: 'center', backgroundColor: '#4CAF50', zIndex: '1000', border: '3px solid #4CAF50', padding: '20px', marginBottom: '10px'}} className="toppings-style">
+                <h3 className="toppings-heading">Choose Your Own Toppings</h3>
+                <div className="toppings-divider"/>
+                <Row>
+                { toppings.length > 0 && toppings.map(topping => <div  style={{margin: '5px', textAlign: 'center'}}>
+                    <input type="checkbox" name={topping.topping} value={topping.price}/>&nbsp;
+                    <label htmlFor={topping.topping}>{topping.topping} - ₦{numbro(parseInt(topping.price)).format({ thousandSeparated: true })}</label>
+                 </div>
+                )
+                }
+                
+                </Row>
+                <Button style={{padding: '20px', background: 'green', borderRadius: '50px', border: 'none', textTransform: 'uppercase'}} onClick={onClick}>Add Toppings</Button>
+            </div>
                 {
-
+                   
                     (products && products.length > 0) ? products.map((pizza, index) => (
 
 
@@ -184,11 +200,8 @@ const ProductCard = ({ products, prices, toppings }) => {
                     )) : <div style={{ display: 'flex', justifyContent: 'center' }}><PacmanLoader loading size={60} style={{ zIndex: '300' }} color="red" /></div>
 
                 }
-                {toppings.length > 0 ? toppings.map(topping => <div>
-                    <input type="checkbox" name={topping.topping} value={topping.price}></input>
-                    <label htmlFor={topping.topping}>{topping.topping}-₦{numbro(parseInt(topping.price)).format({ thousandSeparated: true })}</label>
-
-                </div>) : ""}
+                {/* {console.log(toppings.length)} */}
+              
                 <>
                     {DivDisplay.check && DivDisplay.display ? alreadyInCart() : DivDisplay.display ? decisionBox() : ""}
                     <ToastContainer position="top-center"
