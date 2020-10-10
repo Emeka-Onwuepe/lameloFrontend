@@ -6,6 +6,7 @@ import { storeContext, CLEAR_SUCCESS, locations, AddLogistics } from '../State/S
 import CartItem from './CartItem';
 import numbro from 'numbro';
 import { Row, Container, Col, Button } from 'reactstrap';
+import ScrollTop from '../Home/ScrollTop';
 
 const ShoppingCart = (props) => {
     const { storestate, storedispatch } = useContext(storeContext)
@@ -50,10 +51,10 @@ const ShoppingCart = (props) => {
                         {storestate.locations.map(area => <option value={area.price}>{`${area.location} Area- ₦${numbro(area.price).format({thousandSeparated: true})}`}</option>)}
                     </select>
                 </div>}<br />
-                {total > 0 && <Button onClick={() => props.history.push("/confirmOrder")} className="confirm-btn" data-aos="zoom-in-down">CONFIRM ORDER</Button>}
+                {total > 0 && <Button onClick={() => props.history.push("/confirmOrder")} className="confirm-btn">CONFIRM ORDER</Button>}
             </div>
             <button className="call-to-action-pizza " onClick={() => props.history.push('/menu')} data-aos="zoom-in-left">Menu</button>
-
+            <ScrollTop />
         </div >
     );
 };

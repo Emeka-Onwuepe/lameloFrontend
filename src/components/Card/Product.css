@@ -9,7 +9,7 @@
     background-size: cover;
     background-position: top center;
     background-size: 100%;
-    overflow-y: auto;
+    /* overflow-y: auto; */
 }
 /* .pizza-bg::before {
     content: '';

@@ -156,24 +156,26 @@ const ProductCard = ({ products, prices, toppings }) => {
 
     return (
         <Container>
-         
+
             <Row>
-            <div style={{textAlign: 'center', backgroundColor: '#4CAF50', zIndex: '1000', border: '3px solid #4CAF50', padding: '20px', marginBottom: '10px'}} className="toppings-style" data-aos="flip-left">
-                <h3 className="toppings-heading">Choose Your Own Toppings</h3>
-                <div className="toppings-divider"/>
-                <Row>
-                { toppings.length > 0 && toppings.map(topping => <div  style={{margin: '5px', textAlign: 'center'}}>
-                    <input type="checkbox" name={topping.topping} value={topping.price}/>&nbsp;
+                {toppings.length > 0 ? <div style={{ textAlign: 'center', backgroundColor: '#4CAF50', zIndex: '1000', border: '3px solid #4CAF50', padding: '20px', marginBottom: '10px' }} className="toppings-style" data-aos="flip-left">
+                    <h3 className="toppings-heading">Choose Your Own Toppings</h3>
+                    <div className="toppings-divider" />
+                    <Row>
+                        {toppings.length > 0 ? toppings.map(topping => <div style={{ margin: '5px', textAlign: 'center' }}>
+                            <input type="checkbox" name={topping.topping} value={topping.price} />&nbsp;
                     <label htmlFor={topping.topping}>{topping.topping} - ₦{numbro(parseInt(topping.price)).format({ thousandSeparated: true })}</label>
-                 </div>
-                )
-                }
-                
-                </Row>
-                <Button style={{padding: '20px', background: 'green', borderRadius: '50px', border: 'none', textTransform: 'uppercase'}} onClick={onClick}>Add Toppings</Button>
-            </div>
+                        </div>
+                        ) : ""
+                        }
+
+                        {console.log(toppings)}
+
+                    </Row>
+                    <Button style={{ padding: '20px', background: 'green', borderRadius: '50px', border: 'none', textTransform: 'uppercase' }} onClick={onClick}>Add Toppings</Button>
+                </div> : ""}
                 {
-                   
+
                     (products && products.length > 0) ? products.map((pizza, index) => (
 
 
@@ -201,7 +203,6 @@ const ProductCard = ({ products, prices, toppings }) => {
 
                 }
                 {/* {console.log(toppings.length)} */}
-              
                 <>
                     {DivDisplay.check && DivDisplay.display ? alreadyInCart() : DivDisplay.display ? decisionBox() : ""}
                     <ToastContainer position="top-center"

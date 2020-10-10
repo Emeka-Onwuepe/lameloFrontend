@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+
 import Logo1 from '../../assets/LAMELŌ logo blk.png';
 
 import bgImg from '../../assets/restaurant.jpeg';
@@ -12,10 +13,11 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaArrowDown } from 'rea
 
 import './Home.css';
 import CartCount from '../Card/CartCount';
+import ScrollTop from './ScrollTop';
+import ScrollBottom from './ScrollBottom';
 
 const Home = (props) => {
   
- 
     // const myDiv= useRef();
     // useEffect(() => {
     //   const div = document.querySelector(".main-page")
@@ -35,7 +37,9 @@ const Home = (props) => {
     <div className="content">
       <Row className="row-items" data-aos="zoom-in-left">
 
-        <Col lg="3" className="scrolldown" ><div className="down-btn" ><span>Scroll Down</span><br /><FaArrowDown className="scroll-arrow"/></div></Col>
+        <Col lg="3" className="scrolldown" >
+            <ScrollBottom />
+        </Col>
         <Col lg="9" className="main-page">
           <div className="logo-image">
             <img src={Logo1} alt="logo1" className="logo-home" data-aos="fade-up-left" />
@@ -110,20 +114,20 @@ const Home = (props) => {
           </div>
         </Col>
       </Row>
-      <Container fluid id="other-items" data-aos="flip-left"
+      <Container fluid id="other-items">
+        <div className="others"  data-aos="flip-left"
      data-aos-duration="4000">
-        <div className="others">
           <Row className="other-details">
             <Col lg="4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam explicabo, voluptatem error distinctio fugiat consequatur?</Col>
             <Col lg="4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam explicabo, voluptatem error distinctio fugiat consequatur?</Col>
             <Col lg="4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam explicabo, voluptatem error distinctio fugiat consequatur?</Col>
-            {/* </Container> */}
 
           </Row>
         </div>
       </Container>
       <button className="call-to-action-home" onClick={() => props.history.push('/menu')}>Menu</button>
       <CartCount />
+      <ScrollTop />
     </div>
 
 

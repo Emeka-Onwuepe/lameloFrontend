@@ -5,11 +5,16 @@ import CartCount from '../Card/CartCount';
 import { storeContext } from '../State/State';
 import { FaArrowDown } from 'react-icons/fa';
 import './Menu.css';
+// import ScrollTop from '../Home/ScrollTop';
+import ScrollTopMenu from './ScrollTopMenu';
 
 
 
 const Menu = (props) => {
- 
+    const scrollToBottom = () => window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth'
+    })
 
     return (
         <div id="wrapper2" >
@@ -43,10 +48,10 @@ const Menu = (props) => {
                     </div>
                 </ol>
             </div>
-            <div className="down-btn-menu" ><span>Scroll Down</span><br /><FaArrowDown className="scroll-arrow-menu"/></div>
+            <div className="down-btn-menu" onClick={scrollToBottom}><span>Scroll Down</span><br /><FaArrowDown className="scroll-arrow-menu"/></div>
             <button className="menu-call-to-action" onClick={() => props.history.push('/')}> &lt; Back</button>
             <CartCount />
-
+            <ScrollTopMenu />
         </div>
     )
 }

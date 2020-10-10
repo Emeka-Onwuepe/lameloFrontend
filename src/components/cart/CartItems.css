@@ -62,6 +62,7 @@
 .confirm-btn {
     background-color: orangered;
     border: none;
+    z-index: 500;
 }
 
 .confirm-btn:hover {

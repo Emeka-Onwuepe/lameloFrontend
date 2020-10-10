@@ -38,11 +38,12 @@ export const SET_SCREEN_SIZE = "SET_SCREEN_SIZE";
 
 export const getCategory = (data, type) => {
     return axios.post("https://lameloapis.herokuapp.com/getproducts", data, ).then(res => {
+        console.log(res.data.toppings)
         return {
             type: type,
             products: res.data.products,
             prices: res.data.prices,
-            toppings: res.data.toppings
+            toppings: res.data.toppings != undefined ? res.data.toppings : []
                 // messages: "Logged In Successfully"
         }
     }).catch(err => {
