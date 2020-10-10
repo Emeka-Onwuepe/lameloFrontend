@@ -17,7 +17,7 @@ const PaymentBtn = (props) => {
         customer_email: User.email,
         customer_phone: User.phoneNumber,
         amount: recent.total + recent.logistics,
-        PBFPubKey: "FLWPUBK_TEST-79b39b660c2b5bcc87b62b747d4c3fa2-X",
+        PBFPubKey: "FLWPUBK_TEST-64bdb63268791e82f346056cbc4e8029-X",
         production: false
     };
 

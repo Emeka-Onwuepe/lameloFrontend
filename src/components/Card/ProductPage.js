@@ -85,8 +85,8 @@ const ProductPage = (props) => {
     <div className="pizza-bg">
       <div className="overlay"></div>
       <div className="product-align">
-        <Link to="/" className="home"><img src={Logo1} alt="logo1" className="logo-pizza" /></Link>
-        <h1 className="text-center text-color">{heading}</h1>
+        <Link to="/" className="home"><img src={Logo1} alt="logo1" className="logo-pizza" data-aos="fade-right"/></Link>
+        <h1 className="text-center text-color" data-aos="zoom-in">{heading}</h1>
         <div className="divider-center" ></div>
 
         <div className="product-cards"><ProductCard products={products} prices={prices} toppings={toppings} /></div>
@@ -94,10 +94,6 @@ const ProductPage = (props) => {
       <div className="down-btn-menu" ><span>Scroll Down</span><br /><FaArrowDown className="scroll-arrow-menu" /></div>
       <CartCount />
       <button className="call-to-action-pizza " onClick={() => props.history.push('/menu')}>Menu</button>
-
-
-
-
     </div>
   )
 }

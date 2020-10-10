@@ -33,19 +33,23 @@ const Home = (props) => {
     // }
   return (
     <div className="content">
-      <Row className="row-items" >
+      <Row className="row-items" data-aos="zoom-in-left">
 
         <Col lg="3" className="scrolldown" ><div className="down-btn" ><span>Scroll Down</span><br /><FaArrowDown className="scroll-arrow"/></div></Col>
         <Col lg="9" className="main-page">
           <div className="logo-image">
-            <img src={Logo1} alt="logo1" className="logo-home" />
+            <img src={Logo1} alt="logo1" className="logo-home" data-aos="fade-up-left" />
           </div>
           <img src={bgImg} style={{ width: '100%' }} alt="pictures" className="bgImg" />
           <div className="moto">
-            <div className="h1-heading">
+            <div className="h1-heading" data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="2500">
               <h1>Once Bitten, Twice Melo</h1>
             </div>
-            <div className="welcome-container">
+            <div className="welcome-container" data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="3000">
               <span className="welcome-note">
                 <span className="welcome">Welcome to Lamelo Restaurant,the best plug for your, Pizza, Ice cream,Salad, shawama, Chicken wings and Burger</span><br />
                 <span className="main">
@@ -54,7 +58,9 @@ const Home = (props) => {
                               </span>
               </span>
             </div>
-            <Row className="contact" >
+            <Row className="contact" data-aos="fade-left"
+     data-aos-easing="linear"
+     data-aos-duration="3500">
               <Col lg="4" id="explore-contact">
                 <div >
                   <Card className="explore">
@@ -104,7 +110,8 @@ const Home = (props) => {
           </div>
         </Col>
       </Row>
-      <Container fluid id="other-items">
+      <Container fluid id="other-items" data-aos="flip-left"
+     data-aos-duration="4000">
         <div className="others">
           <Row className="other-details">
             <Col lg="4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam explicabo, voluptatem error distinctio fugiat consequatur?</Col>

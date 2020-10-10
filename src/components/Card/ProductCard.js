@@ -17,7 +17,7 @@ import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import numbro from 'numbro';
 import { storeContext, addToCart } from '../State/State';
-import { DriveEtaSharp } from '@material-ui/icons';
+// import { DriveEtaSharp } from '@material-ui/icons';
 
 const animatedComponents = makeAnimated();
 
@@ -158,7 +158,7 @@ const ProductCard = ({ products, prices, toppings }) => {
         <Container>
          
             <Row>
-            <div style={{textAlign: 'center', backgroundColor: '#4CAF50', zIndex: '1000', border: '3px solid #4CAF50', padding: '20px', marginBottom: '10px'}} className="toppings-style">
+            <div style={{textAlign: 'center', backgroundColor: '#4CAF50', zIndex: '1000', border: '3px solid #4CAF50', padding: '20px', marginBottom: '10px'}} className="toppings-style" data-aos="flip-left">
                 <h3 className="toppings-heading">Choose Your Own Toppings</h3>
                 <div className="toppings-divider"/>
                 <Row>
@@ -179,7 +179,7 @@ const ProductCard = ({ products, prices, toppings }) => {
 
                         <Col lg="4" key={index}>
 
-                            <Card className="card-container">
+                            <Card className="card-container" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="3000">
                                 <CardImg top width="95%" src={pizza.image.includes('/image') ? altImage : pizza.image} alt={`pizza-image-${pizza.image}`} height={200} />
                                 <CardBody>
                                     <CardTitle><h3>{pizza.name}</h3></CardTitle>
@@ -193,7 +193,7 @@ const ProductCard = ({ products, prices, toppings }) => {
                                 </CardBody>
                             </Card>
                             <div>
-                                <button id={pizza.id} className="button-cart" onClick={onClick}>ADD TO CART</button>
+                                <button id={pizza.id} className="button-cart" onClick={onClick} data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="3000">ADD TO CART</button>
                             </div>
 
                         </Col>
