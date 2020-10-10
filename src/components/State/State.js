@@ -393,7 +393,7 @@ const StoreContextProvider = (props) => {
     useEffect(() => {
         const onresizer = () => {
             // console.log(window.pageYOffset)
-            console.log(window.scrollY)
+            // console.log(window.scrollY)
             storedispatch({
                 type: SET_SCREEN_SIZE,
                 width: window.innerWidth,
@@ -437,17 +437,6 @@ const StoreContextProvider = (props) => {
 
 
 
-    return ( < storeContext.Provider value = {
-            {
-                storestate,
-                storedispatch
-            }
-        } > {
-            props.children
-        } <
-        /storeContext.Provider>
-    )
-
-}
+    return ( < storeContext.Provider value = {{storestate,storedispatch}} >{props.children} </storeContext.Provider>)}
 
 export default StoreContextProvider;

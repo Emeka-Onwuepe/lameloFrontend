@@ -203,7 +203,6 @@ const ProductCard = ({ products, prices, toppings }) => {
 
                 }
                 {/* {console.log(toppings.length)} */}
-
                 <>
                     {DivDisplay.check && DivDisplay.display ? alreadyInCart() : DivDisplay.display ? decisionBox() : ""}
                     <ToastContainer position="top-center"
