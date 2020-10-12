@@ -169,11 +169,11 @@ const ProductCard = ({ products, prices, toppings }) => {
                         ) : ""
                         }
 
-                        {console.log(toppings)}
+                        {/* {console.log(toppings)} */}
 
                     </Row>
                     <Button style={{ padding: '20px', background: 'green', borderRadius: '50px', border: 'none', textTransform: 'uppercase' }} onClick={onClick}>Add Toppings</Button>
-                </div> : ""}
+                </div>: ""}
                 {
 
                     (products && products.length > 0) ? products.map((pizza, index) => (
