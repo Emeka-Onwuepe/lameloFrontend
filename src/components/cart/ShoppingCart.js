@@ -28,6 +28,7 @@ const ShoppingCart = (props) => {
     // const order = { "product": cart, total }
     const onchange = (e) => {
         // setlogistics(parseInt(e.target.value))
+        console.log(e.target.name)
         storedispatch(AddLogistics(parseInt(e.target.value)))
     }
 
@@ -48,7 +49,7 @@ const ShoppingCart = (props) => {
                     <select name="logistics" id="logistics" onChange={onchange}>
                         <option value="0"></option>
                         <option value="0">I will pick it up myself</option>
-                        {storestate.locations.map(area => <option value={area.price}>{`${area.location} Area- ₦${numbro(area.price).format({thousandSeparated: true})}`}</option>)}
+                        {storestate.locations.map(area => <option id={area.location} value={area.price}>{`${area.location} Area- ₦${numbro(area.price).format({ thousandSeparated: true })}`}</option>)}
                     </select>
                 </div>}<br />
                 {total > 0 && <Button onClick={() => props.history.push("/confirmOrder")} className="confirm-btn">CONFIRM ORDER</Button>}
