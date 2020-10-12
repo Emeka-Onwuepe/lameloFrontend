@@ -123,12 +123,12 @@ ol {
     list-style: none;
     counter-reset: my-awesome-counter;
   }
-  li {
+  li.menu {
     counter-increment: my-awesome-counter;
     margin: 0.5rem;
   }
 
-  li::before {
+  li.menu::before {
     content: counter(my-awesome-counter) ".";
     width: 2rem;
     height: 2rem;

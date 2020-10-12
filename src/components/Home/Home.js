@@ -105,7 +105,6 @@ const Home = (props) => {
                   <Col lg="4" className="map-box">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d15758.247589548013!2d7.4048307760740055!3d9.103612932998885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sLamelo%20Restaurant%2CFirst%20Avenue%20Gwarimpa%2C%20Beside%20DBB%20Plaza%20Abuja!5e0!3m2!1sen!2sng!4v1600689399752!5m2!1sen!2sng" allowfullscreen={true} aria-hidden="false" tabIndex="0" title="lamelo-address" frameBorder="0" rel="noopener noreferrer" className="map-frame"></iframe>
                   </Col>
-
                 </Card>
 
               </Col>
@@ -115,8 +114,7 @@ const Home = (props) => {
         </Col>
       </Row>
       <Container fluid id="other-items">
-        <div className="others"  data-aos="flip-left"
-     data-aos-duration="4000">
+        <div className="others">
           <Row className="other-details">
             <Col lg="4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam explicabo, voluptatem error distinctio fugiat consequatur?</Col>
             <Col lg="4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam explicabo, voluptatem error distinctio fugiat consequatur?</Col>
