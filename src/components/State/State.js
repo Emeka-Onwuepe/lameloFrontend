@@ -15,6 +15,7 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const UPDATE_CART = "UPDATE_CART";
 export const PROCESS_ORDER = "PROCESS_ORDER";
 export const GET_ORDERED_PRODUCTS = "GET_ORDERED_PRODUCTS"
+export const GET_ORDERED = "GET_ORDERED"
 export const LOADED = "LOADED";
 export const LOADING = "LOADING";
 export const ADD_ERROR = "ADD_ERROR";
@@ -112,7 +113,22 @@ export const locations = () => {
 
     })
 }
+export const getOrder = () => {
+    return axios.get("https://lameloapis.herokuapp.com/dashboard").then(res => {
+        console.log(res.data.ordered)
+        return {
+            type: GET_ORDERED,
+            data: res.data.ordered
+        }
+    }).catch(err => {
+        return {
+            type: ADD_ERROR,
+            // data: err.response.data,
+            // status: err.response.status
+        }
 
+    })
+}
 export const addToCart = (data) => {
     return {
         type: ADD_TO_CART,
@@ -243,12 +259,16 @@ const storeReducer = (state, action) => {
                 logistics: action.data,
                 loading: false,
             }
-
-
         case GET_ORDERED_PRODUCTS:
             return {
                 ...state,
                 OrderedProduct: action.products,
+                loading: false,
+            }
+        case GET_ORDERED:
+            return {
+                ...state,
+                Orders: action.data,
                 loading: false,
             }
         case CLEAR_SUCCESS:
@@ -292,151 +312,155 @@ const storeReducer = (state, action) => {
 export const storeContext = createContext()
 
 const StoreContextProvider = (props) => {
-    const [storestate, storedispatch] = useReducer(storeReducer, {},
-        () => {
-            const localdata = localStorage.getItem("storestate");
-            let finaldata = ""
-            if (localdata) {
-                const jsonify = JSON.parse(localdata)
-                finaldata = {
-                    pizza: {
-                        products: [],
+        const [storestate, storedispatch] = useReducer(storeReducer, {},
+            () => {
+                const localdata = localStorage.getItem("storestate");
+                let finaldata = ""
+                if (localdata) {
+                    const jsonify = JSON.parse(localdata)
+                    finaldata = {
+                        pizza: {
+                            products: [],
+                            prices: [],
+                            toppings: []
+                        },
+                        bfw: {
+                            products: [],
+                            prices: [],
+                            toppings: []
+                        },
+                        salad: {
+                            products: [],
+                            prices: [],
+                            toppings: []
+                        },
+                        gelatos: {
+                            products: [],
+                            prices: [],
+                            toppings: []
+                        },
+                        platter: {
+                            products: [],
+                            prices: [],
+                            toppings: []
+                        },
+                        User: "",
+                        Ordered: [],
+                        Orders: [],
+                        OrderedProduct: [],
+                        loading: true,
+                        cart: [],
+                        scrow: window.pageYOffset,
+                        width: window.innerWidth,
                         prices: [],
-                        toppings: []
-                    },
-                    bfw: {
-                        products: [],
+                        locations: [],
+                        logistics: 0,
+                        ...jsonify,
+                        message: "",
+                        status: "",
+                        messages: "",
+                        check: "",
+                    }
+                } else {
+                    finaldata = {
+                        pizza: {
+                            products: [],
+                            prices: [],
+                            toppings: []
+                        },
+                        bfw: {
+                            products: [],
+                            prices: [],
+                            toppings: []
+                        },
+                        salad: {
+                            products: [],
+                            prices: [],
+                            toppings: []
+                        },
+                        gelatos: {
+                            products: [],
+                            prices: [],
+                            toppings: []
+                        },
+                        platter: {
+                            products: [],
+                            prices: [],
+                            toppings: []
+                        },
+                        User: "",
+                        Ordered: [],
+                        Orders: [],
+                        OrderedProduct: [],
+                        loading: true,
+                        cart: [],
+                        scrow: window.pageYOffset,
+                        width: window.innerWidth,
                         prices: [],
-                        toppings: []
-                    },
-                    salad: {
-                        products: [],
-                        prices: [],
-                        toppings: []
-                    },
-                    gelatos: {
-                        products: [],
-                        prices: [],
-                        toppings: []
-                    },
-                    platter: {
-                        products: [],
-                        prices: [],
-                        toppings: []
-                    },
-                    User: "",
-                    Ordered: [],
-                    OrderedProduct: [],
-                    loading: true,
-                    cart: [],
-                    scrow: window.pageYOffset,
-                    width: window.innerWidth,
-                    prices: [],
-                    locations: [],
-                    logistics: 0,
-                    ...jsonify,
-                    message: "",
-                    status: "",
-                    messages: "",
-                    check: "",
+                        locations: [],
+                        logistics: 0,
+                        message: "",
+                        status: "",
+                        messages: "",
+                        check: "",
+                    }
                 }
-            } else {
-                finaldata = {
-                    pizza: {
-                        products: [],
-                        prices: [],
-                        toppings: []
-                    },
-                    bfw: {
-                        products: [],
-                        prices: [],
-                        toppings: []
-                    },
-                    salad: {
-                        products: [],
-                        prices: [],
-                        toppings: []
-                    },
-                    gelatos: {
-                        products: [],
-                        prices: [],
-                        toppings: []
-                    },
-                    platter: {
-                        products: [],
-                        prices: [],
-                        toppings: []
-                    },
-                    User: "",
-                    Ordered: [],
-                    OrderedProduct: [],
-                    loading: true,
-                    cart: [],
-                    scrow: window.pageYOffset,
-                    width: window.innerWidth,
-                    prices: [],
-                    locations: [],
-                    logistics: 0,
-                    message: "",
-                    status: "",
-                    messages: "",
-                    check: "",
-                }
+                return finaldata
             }
-            return finaldata
-        }
-    )
-    useEffect(() => {
-        localStorage.setItem("storestate", JSON.stringify(storestate))
-    }, [storestate]);
+        )
+        useEffect(() => {
+            localStorage.setItem("storestate", JSON.stringify(storestate))
+        }, [storestate]);
 
-    useEffect(() => {
-        const onresizer = () => {
-            // console.log(window.pageYOffset)
-            // console.log(window.scrollY)
-            storedispatch({
-                type: SET_SCREEN_SIZE,
-                width: window.innerWidth,
-                scrow: window.pageYOffset
-            })
-        }
-        document.addEventListener('resize', onresizer)
-        document.addEventListener('scroll', onresizer)
+        useEffect(() => {
+            const onresizer = () => {
+                // console.log(window.pageYOffset)
+                // console.log(window.scrollY)
+                storedispatch({
+                    type: SET_SCREEN_SIZE,
+                    width: window.innerWidth,
+                    scrow: window.pageYOffset
+                })
+            }
+            document.addEventListener('resize', onresizer)
+            document.addEventListener('scroll', onresizer)
 
-        return () => {
+            return () => {
 
-        };
-    }, [])
+            };
+        }, [])
 
 
-    // const onresizer = () => {
-    //     console.log("ran from eventListener")
-    //     storedispatch({
-    //         type: SET_SCREEN_SIZE,
-    //         width: window.innerWidth,
-    //         scrow: window.pageYOffset
-    //     })
-    // }
-    // window.addEventListener('resize', onresizer)
-    // window.addEventListener('scroll', onresizer)
+        // const onresizer = () => {
+        //     console.log("ran from eventListener")
+        //     storedispatch({
+        //         type: SET_SCREEN_SIZE,
+        //         width: window.innerWidth,
+        //         scrow: window.pageYOffset
+        //     })
+        // }
+        // window.addEventListener('resize', onresizer)
+        // window.addEventListener('scroll', onresizer)
 
 
 
 
 
-    // const onresizer = () => {
-    //     console.log(window.innerHeight)
-    //     storedispatch({
-    //         type: SET_SCREEN_SIZE,
-    //         width: window.innerWidth,
-    //         scrow: window.pageYOffset
-    //     })
-    // }
-    // window.addEventListener('resize', onresizer)
-    // window.addEventListener('scroll', onresizer)
+        // const onresizer = () => {
+        //     console.log(window.innerHeight)
+        //     storedispatch({
+        //         type: SET_SCREEN_SIZE,
+        //         width: window.innerWidth,
+        //         scrow: window.pageYOffset
+        //     })
+        // }
+        // window.addEventListener('resize', onresizer)
+        // window.addEventListener('scroll', onresizer)
 
 
 
-    return ( < storeContext.Provider value = {{storestate,storedispatch}} >{props.children} </storeContext.Provider>)}
+        return ( < storeContext.Provider value = {
+                    { storestate, storedispatch }
+                } > { props.children } < /storeContext.Provider>)}
 
-export default StoreContextProvider;
+                export default StoreContextProvider;
