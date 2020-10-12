@@ -10,28 +10,17 @@ import { storeContext, GET_PIZZA, GET_BFW, GET_GELATOS, GET_SALAD, GET_PLATTER, 
 import './Product.css';
 import ProductCard from './ProductCard';
 import CartCount from './CartCount';
+import ScrollTopMenu from '../Menu/ScrollTopMenu';
 
 
 // kick off the polyfill!
 
 const ProductPage = (props) => {
 
-  // const [scrollY, setscrolly] = useState(-250);
-  // const myDiv= useRef();
-  // useEffect(() => {
-  //   const div = document.querySelector(".container-fluid")
-  //   div.scrollTo("", 100)
-  // }, [scrollY]);
-
-
-  // function scrollDiv() {
-  //   const div = document.querySelector(".container-fluid")
-  //   setscrolly(scrollY - 250)
-  //   div.style.marginTop = `${scrollY}px`;
-
-  //   document.getElementById("scroll").scrollTop += 100;
-  //   console.log(window.pageYOffset)
-  // }
+  const scrollToBottom = () => window.scrollTo({
+    top: document.documentElement.scrollHeight,
+    behavior: 'smooth'
+})
   const { category } = useParams()
   let [match] = category.match(/(\w+)/)
   const action = match === "wings" ? 'bfw' : match
@@ -81,23 +70,20 @@ const ProductPage = (props) => {
   // console.log(window.pageYOffset)
 
   return (
-
+    
     <div className="pizza-bg">
       <div className="overlay"></div>
       <div className="product-align">
-        <Link to="/" className="home"><img src={Logo1} alt="logo1" className="logo-pizza" /></Link>
-        <h1 className="text-center text-color">{heading}</h1>
+        <Link to="/" className="home"><img src={Logo1} alt="logo1" className="logo-pizza" data-aos="fade-right"/></Link>
+        <h1 className="text-center text-color" data-aos="zoom-in">{heading}</h1>
         <div className="divider-center" ></div>
 
         <div className="product-cards"><ProductCard products={products} prices={prices} toppings={toppings} /></div>
       </div>
-      <div className="down-btn-menu" ><span>Scroll Down</span><br /><FaArrowDown className="scroll-arrow-menu" /></div>
+      <div className="down-btn-menu" onClick={scrollToBottom}><span>Scroll Down</span><br /><FaArrowDown className="scroll-arrow-menu" /></div>
+      <ScrollTopMenu />
       <CartCount />
       <button className="call-to-action-pizza " onClick={() => props.history.push('/menu')}>Menu</button>
-
-
-
-
     </div>
   )
 }

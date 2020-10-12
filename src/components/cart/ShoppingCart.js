@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 
+
 // import PropTypes from 'prop-types';
 import { storeContext, CLEAR_SUCCESS, locations, AddLogistics,AddDestination } from '../State/State';
 import CartItem from './CartItem';
 import numbro from 'numbro';
 import { Row, Container, Col, Button } from 'reactstrap';
+import ScrollTop from '../Home/ScrollTop';
 
 const ShoppingCart = (props) => {
     const { storestate, storedispatch } = useContext(storeContext)
@@ -36,17 +38,17 @@ const ShoppingCart = (props) => {
     return (
         <div className="container-fluid cart-store">
             {User !== undefined && User !== "" ? <div className="userNameDiv">
-                <p className="userName">Welcome, {User.fullName.toUpperCase()} </p>
+                <p className="userName" data-aos="fade-up">Welcome, {User.fullName.toUpperCase()} </p>
             </div> : ""}
             <Button onClick={() => props.history.push("/orderhistory")} className="order-history">View Order History</Button>
             <div className="orderListDisplay text-center mt-4">
                 <h3>CART</h3>
-                <Container><Row>{itemDisplay}</Row></Container>
-                {total > 0 ? < p className="amount mt-4"><b>Total Amount:  ₦{numbro(total).format({ thousandSeparated: true })}</b></p> : <p>Your Cart is Empty</p>}
-                {total > 0 && <p><b>Total and logistics: ₦{numbro(total + logistics).format({ thousandSeparated: true })}</b></p>}
+                <Container data-aos="flip-up" data-aos-easing="ease-out-cubic"><Row>{itemDisplay}</Row></Container>
+                {total > 0 ? < p className="amount mt-4"><b>Total Amount:  ₦{numbro(total).format({ thousandSeparated: true })}</b></p> : <p data-aos="fade-left">Your Cart is Empty</p>}
+                {total > 0 && <p><b>Total and logistics: ₦{numbro(total + logistics).format({thousandSeparated: true})}</b></p>}
                 {/* <p className="directions"> {directions}</p> */}
-                {total > 0 && <div>
-                    <label htmlfor="logistics">Choose Your Location:</label> &nbsp;
+                {total > 0 && <div data-aos="zoom-in">
+                    <label for="logistics">Choose Your Location:</label> &nbsp;
                     <select name="logistics" id="logistics" onChange={onchange}>
                         <option value="0"></option>
                         <option value="0">I will pick it up myself</option>
@@ -55,8 +57,8 @@ const ShoppingCart = (props) => {
                 </div>}<br />
                 {total > 0 && <Button onClick={() => props.history.push("/confirmOrder")} className="confirm-btn">CONFIRM ORDER</Button>}
             </div>
-            <button className="call-to-action-pizza " onClick={() => props.history.push('/menu')}>Menu</button>
-
+            <button className="call-to-action-pizza " onClick={() => props.history.push('/menu')} data-aos="zoom-in-left">Menu</button>
+            <ScrollTop />
         </div >
     );
 };

@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import numbro from 'numbro';
 import { storeContext, getCategory, GET_ORDERED_PRODUCTS, load, LOADING } from '../State/State';
 import './ordered.css'
+import ScrollTop from '../Home/ScrollTop';
 
 const OrderedItems = (props) => {
     const { id, total } = useParams()
@@ -62,6 +63,7 @@ const OrderedItems = (props) => {
                         </tr>
                     </tfoot>
                 </table>
+                <ScrollTop />
             </div>
         );
 

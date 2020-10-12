@@ -1,12 +1,3 @@
-/* @import "~react-image-gallery/styles/css/image-gallery.css"; */
-html, body {
-    height: 100%;
-    margin: 0px;
-    font-size: 16px;
-    font-family: 'Lato', sans-serif;
-    box-sizing: border-box;
-  
-}
 :root {
 	--primary-color: #4834d4;
 	--success-color: #6ab04c;
@@ -87,20 +78,12 @@ body {
 }
 
 .navbar-nav {
-	list-style: none !important;
+	list-style: none;
 	display: flex;
 	flex-direction: row;
 	padding-left: 0;
 	margin-bottom: 0;
 	margin-top: 0;
-}
-li::before {
-    width: 2rem;
-    height: 2rem;
-    display: inline-block;
-    line-height: 2rem;
-    text-align: center;
-    margin-right: 2.5rem;
 }
 
 .nav-link {
@@ -330,9 +313,7 @@ li::before {
 	align-items: center;
 	height: 100vh;
 }
-li.nav-item {
-   list-style-type: none;
-}
+
 .sidebar-nav-item {
 	width: 100%;
 }
@@ -581,5 +562,3 @@ table th {
 	border-radius: .25rem;
 	box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 }
-
-

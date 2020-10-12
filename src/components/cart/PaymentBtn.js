@@ -17,7 +17,7 @@ const PaymentBtn = (props) => {
         customer_email: User.email,
         customer_phone: User.phoneNumber,
         amount: recent.total + recent.logistics,
-        PBFPubKey: "FLWPUBK_TEST-79b39b660c2b5bcc87b62b747d4c3fa2-X",
+        PBFPubKey: "FLWPUBK_TEST-64bdb63268791e82f346056cbc4e8029-X",
         production: false
     };
 
@@ -25,7 +25,6 @@ const PaymentBtn = (props) => {
         ...config,
         onSuccess: (res) => {
              const id= recent.id
-
              const data= {id}
             payment(data, Ordered).then(res => storedispatch(res))
             
@@ -33,7 +32,7 @@ const PaymentBtn = (props) => {
         onClose: () => { console.log("cool") }
     };
 
-    return ( <div className="payment-portal">
+    return ( <div data-aos="flip-right" className="payment-portal">
         <p > You can make payment now, or pay later </p><br /> <div className="payment-btns"><RaveProvider {...pay } >
         
         <RavePaymentButton > Pay ₦{ numbro(parseInt(recent.total + recent.logistics)).format({ thousandSeparated: true }) } 

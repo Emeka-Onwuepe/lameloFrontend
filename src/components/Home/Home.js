@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+
 import Logo1 from '../../assets/LAMELŌ logo blk.png';
 
 import bgImg from '../../assets/restaurant.jpeg';
@@ -12,10 +13,11 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaArrowDown } from 'rea
 
 import './Home.css';
 import CartCount from '../Card/CartCount';
+import ScrollTop from './ScrollTop';
+import ScrollBottom from './ScrollBottom';
 
 const Home = (props) => {
   
- 
     // const myDiv= useRef();
     // useEffect(() => {
     //   const div = document.querySelector(".main-page")
@@ -33,19 +35,25 @@ const Home = (props) => {
     // }
   return (
     <div className="content">
-      <Row className="row-items" >
+      <Row className="row-items" data-aos="zoom-in-left">
 
-        <Col lg="3" className="scrolldown" ><div className="down-btn" ><span>Scroll Down</span><br /><FaArrowDown className="scroll-arrow"/></div></Col>
+        <Col lg="3" className="scrolldown" >
+            <ScrollBottom />
+        </Col>
         <Col lg="9" className="main-page">
           <div className="logo-image">
-            <img src={Logo1} alt="logo1" className="logo-home" />
+            <img src={Logo1} alt="logo1" className="logo-home" data-aos="fade-up-left" />
           </div>
           <img src={bgImg} style={{ width: '100%' }} alt="pictures" className="bgImg" />
           <div className="moto">
-            <div className="h1-heading">
+            <div className="h1-heading" data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="2500">
               <h1>Once Bitten, Twice Melo</h1>
             </div>
-            <div className="welcome-container">
+            <div className="welcome-container" data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="3000">
               <span className="welcome-note">
                 <span className="welcome">Welcome to Lamelo Restaurant,the best plug for your, Pizza, Ice cream,Salad, shawama, Chicken wings and Burger</span><br />
                 <span className="main">
@@ -54,7 +62,9 @@ const Home = (props) => {
                               </span>
               </span>
             </div>
-            <Row className="contact" >
+            <Row className="contact" data-aos="fade-left"
+     data-aos-easing="linear"
+     data-aos-duration="3500">
               <Col lg="4" id="explore-contact">
                 <div >
                   <Card className="explore">
@@ -95,7 +105,6 @@ const Home = (props) => {
                   <Col lg="4" className="map-box">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d15758.247589548013!2d7.4048307760740055!3d9.103612932998885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sLamelo%20Restaurant%2CFirst%20Avenue%20Gwarimpa%2C%20Beside%20DBB%20Plaza%20Abuja!5e0!3m2!1sen!2sng!4v1600689399752!5m2!1sen!2sng" allowfullscreen={true} aria-hidden="false" tabIndex="0" title="lamelo-address" frameBorder="0" rel="noopener noreferrer" className="map-frame"></iframe>
                   </Col>
-
                 </Card>
 
               </Col>
@@ -110,13 +119,13 @@ const Home = (props) => {
             <Col lg="4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam explicabo, voluptatem error distinctio fugiat consequatur?</Col>
             <Col lg="4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam explicabo, voluptatem error distinctio fugiat consequatur?</Col>
             <Col lg="4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam explicabo, voluptatem error distinctio fugiat consequatur?</Col>
-            {/* </Container> */}
 
           </Row>
         </div>
       </Container>
       <button className="call-to-action-home" onClick={() => props.history.push('/menu')}>Menu</button>
       <CartCount />
+      <ScrollTop />
     </div>
 
 

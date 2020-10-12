@@ -6,6 +6,7 @@ import numbro from 'numbro';
 
 import './ordered.css';
 import { storeContext,payment} from '../State/State';
+import ScrollTop from '../Home/ScrollTop';
 
 const OrderedList = (props) => {
  const { storestate, storedispatch } = useContext(storeContext);
@@ -63,6 +64,7 @@ return {
                         <tbody>{list}</tbody>
                     </table>
             </div>
+            <ScrollTop />
         </div>
     );
 };
