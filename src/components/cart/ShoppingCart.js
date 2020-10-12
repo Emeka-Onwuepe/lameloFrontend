@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 
 // import PropTypes from 'prop-types';
-import { storeContext, CLEAR_SUCCESS, locations, AddLogistics } from '../State/State';
+import { storeContext, CLEAR_SUCCESS, locations, AddLogistics,AddDestination } from '../State/State';
 import CartItem from './CartItem';
 import numbro from 'numbro';
 import { Row, Container, Col, Button } from 'reactstrap';
@@ -26,8 +26,11 @@ const ShoppingCart = (props) => {
     // const order = { "product": cart, total }
     const onchange = (e) => {
         // setlogistics(parseInt(e.target.value))
-        console.log(e.target.name)
-        storedispatch(AddLogistics(parseInt(e.target.value)))
+        let data= e.target.value
+        const[price,location]=data.split("-")
+        console.log(price, location)
+        storedispatch(AddLogistics(parseInt(price)))
+         storedispatch(AddDestination(location))
     }
 
     return (
@@ -43,11 +46,11 @@ const ShoppingCart = (props) => {
                 {total > 0 && <p><b>Total and logistics: ₦{numbro(total + logistics).format({ thousandSeparated: true })}</b></p>}
                 {/* <p className="directions"> {directions}</p> */}
                 {total > 0 && <div>
-                    <label for="logistics">Choose Your Location:</label> &nbsp;
+                    <label htmlfor="logistics">Choose Your Location:</label> &nbsp;
                     <select name="logistics" id="logistics" onChange={onchange}>
                         <option value="0"></option>
                         <option value="0">I will pick it up myself</option>
-                        {storestate.locations.map(area => <option id={area.location} value={area.price}>{`${area.location} Area- ₦${numbro(area.price).format({ thousandSeparated: true })}`}</option>)}
+                        {storestate.locations.map(area => <option value={`${area.price}-${area.location}`}>{`${area.location} Area- ₦${numbro(area.price).format({ thousandSeparated: true })}`}</option>)}
                     </select>
                 </div>}<br />
                 {total > 0 && <Button onClick={() => props.history.push("/confirmOrder")} className="confirm-btn">CONFIRM ORDER</Button>}

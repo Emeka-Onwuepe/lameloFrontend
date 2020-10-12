@@ -24,6 +24,7 @@ export const DELETE_MESSAGES = "DELETE_MESSAGES";
 export const PAYMENT = "PAYMENT";
 export const GET_LOCATION = "GET_LOCATION";
 export const ADD_LOGISTICS = "ADD_LOGISTICS";
+export const ADD_DESTINATION = "ADD_DESTINATION";
 export const SET_SCREEN_SIZE = "SET_SCREEN_SIZE";
 
 
@@ -152,8 +153,13 @@ export const AddLogistics = (data) => {
         data: data
     }
 }
-
-//Reducer
+export const AddDestination = (data) => {
+        return {
+            type: ADD_DESTINATION,
+            data: data
+        }
+    }
+    //Reducer
 const storeReducer = (state, action) => {
     switch (action.type) {
         case GET_PIZZA:
@@ -239,6 +245,7 @@ const storeReducer = (state, action) => {
                 cart: action.cart,
                 User: action.user,
                 logistics: 0,
+                destination: "",
                 loading: false,
             }
         case PAYMENT:
@@ -257,6 +264,12 @@ const storeReducer = (state, action) => {
             return {
                 ...state,
                 logistics: action.data,
+                loading: false,
+            }
+        case ADD_DESTINATION:
+            return {
+                ...state,
+                destination: action.data,
                 loading: false,
             }
         case GET_ORDERED_PRODUCTS:
@@ -354,6 +367,7 @@ const StoreContextProvider = (props) => {
                         width: window.innerWidth,
                         prices: [],
                         locations: [],
+                        destination: "",
                         logistics: 0,
                         ...jsonify,
                         message: "",
@@ -398,6 +412,7 @@ const StoreContextProvider = (props) => {
                         width: window.innerWidth,
                         prices: [],
                         locations: [],
+                        destination: "",
                         logistics: 0,
                         message: "",
                         status: "",
