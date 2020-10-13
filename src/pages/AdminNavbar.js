@@ -1,276 +1,56 @@
-import React from 'react'
+import React, { useState, useContext } from 'react';
+
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+import { IconContext } from 'react-icons'
+import { Link } from 'react-router-dom';
 import avatar from '../assets/avatar.jpg'
 import adminLogo from '../assets/LAMELŌ logo blk.png'
+import { AdminContent } from './AdminContent';
+import { ThemeContext } from './Context/ThemeContext';
 
 const AdminNavbar = () => {
-
-    // function collapseSidebar() {
-    //     body.classList.toggle('sidebar-expand')
-    // }
-    return (
-        <div className="navbar">
-        {/* nav left */}
-        <ul className="navbar-nav">
-            <li className="nav-item">
-            <a className="nav-link">
-                <i className="fas fa-bars" />
-            </a>
-            </li>
-            <li className="nav-item">
-            <img src={adminLogo} alt="ATPro logo" className="logo logo-light" />
-            <img src={adminLogo} alt="ATPro logo" className="logo logo-dark" />
-            </li>
-        </ul>
-        {/* end nav left */}
-        {/* form */}
-        <form className="navbar-search">
-            <input type="text" name="Search" className="navbar-search-input" placeholder="What you looking for..." />
-            <i className="fas fa-search" />
-        </form>
-        {/* end form */}
-        {/* nav right */}
-        <ul className="navbar-nav nav-right">
-            <li className="nav-item mode">
-            <a className="nav-link" href="#" onclick="switchTheme()">
-                <i className="fas fa-moon dark-icon" />
-                <i className="fas fa-sun light-icon" />
-            </a>
-            </li>
-            <li className="nav-item dropdown">
-            <a className="nav-link">
-                <i className="fas fa-bell dropdown-toggle" data-toggle="notification-menu" />
-                <span className="navbar-badge">15</span>
-            </a>
-            <ul id="notification-menu" className="dropdown-menu notification-menu">
-                <div className="dropdown-menu-header">
-                <span>
-                    Notifications
-                </span>
-                </div>
-                <div className="dropdown-menu-content overlay-scrollbar scrollbar-hover">
-                <li className="dropdown-menu-item">
-                    <a href="#" className="dropdown-menu-link">
-                    <div>
-                        <i className="fas fa-gift" />
-                    </div>
-                    <span>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                        <br />
-                        <span>
-                        15/07/2020
-                        </span>
-                    </span>
-                    </a>
-                </li>
-                <li className="dropdown-menu-item">
-                    <a href="#" className="dropdown-menu-link">
-                    <div>
-                        <i className="fas fa-tasks" />
-                    </div>
-                    <span>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                        <br />
-                        <span>
-                        15/07/2020
-                        </span>
-                    </span>
-                    </a>
-                </li>
-                <li className="dropdown-menu-item">
-                    <a href="#" className="dropdown-menu-link">
-                    <div>
-                        <i className="fas fa-gift" />
-                    </div>
-                    <span>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                        <br />
-                        <span>
-                        15/07/2020
-                        </span>
-                    </span>
-                    </a>
-                </li>
-                <li className="dropdown-menu-item">
-                    <a href="#" className="dropdown-menu-link">
-                    <div>
-                        <i className="fas fa-tasks" />
-                    </div>
-                    <span>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                        <br />
-                        <span>
-                        15/07/2020
-                        </span>
-                    </span>
-                    </a>
-                </li>
-                <li className="dropdown-menu-item">
-                    <a href="#" className="dropdown-menu-link">
-                    <div>
-                        <i className="fas fa-gift" />
-                    </div>
-                    <span>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                        <br />
-                        <span>
-                        15/07/2020
-                        </span>
-                    </span>
-                    </a>
-                </li>
-                <li className="dropdown-menu-item">
-                    <a href="#" className="dropdown-menu-link">
-                    <div>
-                        <i className="fas fa-tasks" />
-                    </div>
-                    <span>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                        <br />
-                        <span>
-                        15/07/2020
-                        </span>
-                    </span>
-                    </a>
-                </li>
-                <li className="dropdown-menu-item">
-                    <a href="#" className="dropdown-menu-link">
-                    <div>
-                        <i className="fas fa-gift" />
-                    </div>
-                    <span>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                        <br />
-                        <span>
-                        15/07/2020
-                        </span>
-                    </span>
-                    </a>
-                </li>
-                <li className="dropdown-menu-item">
-                    <a href="#" className="dropdown-menu-link">
-                    <div>
-                        <i className="fas fa-tasks" />
-                    </div>
-                    <span>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                        <br />
-                        <span>
-                        15/07/2020
-                        </span>
-                    </span>
-                    </a>
-                </li>
-                <li className="dropdown-menu-item">
-                    <a href="#" className="dropdown-menu-link">
-                    <div>
-                        <i className="fas fa-gift" />
-                    </div>
-                    <span>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                        <br />
-                        <span>
-                        15/07/2020
-                        </span>
-                    </span>
-                    </a>
-                </li>
-                <li className="dropdown-menu-item">
-                    <a href="#" className="dropdown-menu-link">
-                    <div>
-                        <i className="fas fa-tasks" />
-                    </div>
-                    <span>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                        <br />
-                        <span>
-                        15/07/2020
-                        </span>
-                    </span>
-                    </a>
-                </li>
-                <li className="dropdown-menu-item">
-                    <a href="#" className="dropdown-menu-link">
-                    <div>
-                        <i className="fas fa-gift" />
-                    </div>
-                    <span>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                        <br />
-                        <span>
-                        15/07/2020
-                        </span>
-                    </span>
-                    </a>
-                </li>
-                <li className="dropdown-menu-item">
-                    <a href="#" className="dropdown-menu-link">
-                    <div>
-                        <i className="fas fa-tasks" />
-                    </div>
-                    <span>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                        <br />
-                        <span>
-                        15/07/2020
-                        </span>
-                    </span>
-                    </a>
-                </li>
-                </div>
-                <div className="dropdown-menu-footer">
-                <span>
-                    View all notifications
-                </span>
-                </div>
-            </ul>
-            </li>
-            <li className="nav-item avt-wrapper">
-            <div className="avt dropdown">
-                <img src={avatar} alt="User image" className="dropdown-toggle" data-toggle="user-menu" />
-                <ul id="user-menu" className="dropdown-menu">
-                <li className="dropdown-menu-item">
-                    <a className="dropdown-menu-link">
-                    <div>
-                        <i className="fas fa-user-tie" />
-                    </div>
-                    <div>
-                        <span>Profile</span>
-                    </div></a></li><li classname="dropdown-menu-item"><a className="dropdown-menu-link">
-                    </a><a href="#" classname="dropdown-menu-link">
-                    <div>
-                        <i classname="fas fa-cog">
-                        </i></div><i classname="fas fa-cog">
-                        <span>Settings</span>
-                    </i></a><i classname="fas fa-cog">
-                    </i></li><i classname="fas fa-cog">
-                    <li classname="dropdown-menu-item">
-                    <a href="#" classname="dropdown-menu-link">
-                        <div>
-                        <i classname="far fa-credit-card">
-                        </i></div><i classname="far fa-credit-card">
-                        <span>Payments</span>
-                        </i></a><i classname="far fa-credit-card">
-                    </i></li><i classname="far fa-credit-card">
-                    <li classname="dropdown-menu-item">
-                        <a href="#" classname="dropdown-menu-link">
-                        <div>
-                            <i classname="fas fa-spinner">
-                            </i></div><i classname="fas fa-spinner">
-                            <span>Projects</span>
-                        </i></a><i classname="fas fa-spinner">
-                        </i></li><i classname="fas fa-spinner">
-                        <li classname="dropdown-menu-item">
-                        <a href="#" classname="dropdown-menu-link">
-                            <div>
-                            <i classname="fas fa-sign-out-alt">
-                            </i></div><i classname="fas fa-sign-out-alt">
-                            <span>Logout</span>
-                            </i></a><i classname="fas fa-sign-out-alt">
-                        </i></li><i classname="fas fa-sign-out-alt">
-                        {'{'}/* end nav right */{'}'}
-                        </i></i></i></i></ul></div><i classname="fas fa-cog"><i classname="far fa-credit-card"><i classname="fas fa-spinner"><i classname="fas fa-sign-out-alt">
-                    </i></i></i></i></li></ul></div>
-
+      const [sidebar, setSidebar] = useState(false);
+      const showSideBar = () => setSidebar(!sidebar)
+      const theme = useContext(ThemeContext);
+      const { toggleTheme, isLightTheme, light, dark } = theme;
+      const checkTheme = isLightTheme ? light: dark
+      return (
+        <>
+          <IconContext.Provider value={{color: checkTheme.syntax}}>
+            <div className="admin-navbar" style={{background: checkTheme.ui, boxShadow: checkTheme.navbarShadow}}>
+                {console.log(theme)}
+               <Link to="#" className="menu-bars" style={{background: checkTheme.ui}}>
+                   <FaIcons.FaBars onClick={showSideBar}/>
+               </Link>&nbsp;
+                    <img src={adminLogo} alt="avatar" width={60} height={60} />
+              <span className="user-img">
+                  <Link to="#" onClick={toggleTheme}><button style={{marginRight: '20px', padding: '5px 8px', border: 'none', outline: 'none', color: checkTheme.btnColor, background: checkTheme.btnBg}}>{checkTheme.btnText}</button></Link> 
+                  <Link to="#"><span className="notify"><AiIcons.AiOutlineBell className="notification-bell"/><span className="notification-badge" style={{color: checkTheme.badge}}>0</span></span></Link>&nbsp;
+                  <Link to="#"><img src={avatar} alt="avatar" width={40} height={40} style={{ borderRadius: '50%'}} /></Link>
+              </span>
+          
+             
+            </div>
+            <nav className={sidebar ? "nav-menu active": "nav-menu"} style={{background: checkTheme.ui, boxShadow: checkTheme.sidebarShadow}}>
+                <ul className="nav-menu-items" onClick={showSideBar}>
+                    <li className="navbar-toggle">
+                        <Link to="#" className="menu-bars" >
+                            <AiIcons.AiOutlineClose/>
+                        </Link>
+                    </li>
+                    {AdminContent.map((item, index) => (
+                       <li key={index} className={item.cName} >
+                           <Link to={item.path} style={{color: checkTheme.syntax}}>
+                               {item.icons}
+                               <span className="titles">{item.title}</span>
+                           </Link>
+                       </li>
+                    ))}
+                </ul>
+            </nav>
+            </IconContext.Provider>
+        </>
     )
 }
 

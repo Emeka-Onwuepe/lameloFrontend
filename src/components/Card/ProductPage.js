@@ -1,8 +1,8 @@
 import React, { useEffect, useContext, useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { FaArrowDown } from 'react-icons/fa';
-import { motion } from 'framer-motion';
-import { Container } from 'reactstrap';
+// import { motion } from 'framer-motion';
+// import { Container } from 'reactstrap';
 
 import Logo1 from '../../assets/LAMELŌ logo blk.png';
 import { storeContext, GET_PIZZA, GET_BFW, GET_GELATOS, GET_SALAD, GET_PLATTER, getCategory, load, LOADING } from "../State/State"
