@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import AdminNavbar from './AdminNavbar';
 import Dashboard from './Dashboard'
 import { ThemeContext } from './Context/ThemeContext'
-
 import './Admin.css'
 
 
