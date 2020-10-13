@@ -8,9 +8,13 @@ import Routes from './Routes';
 import StoreContextProvider from './components/State/State';
 
 import './App.css'
-function App() {
-  useEffect(() => Aos.init({duration: 2000}))
+// import Admin from './pages/Admin';
+// import AdminNavbar from './pages/AdminNavbar';
+function App(props) {
+  useEffect(() => (
+    Aos.init({duration: 2000})))
   return (
+    
     <div>
       <StoreContextProvider>
         <Router>

@@ -9,6 +9,12 @@ import OrderedItems from "./components/cart/OrderedItems";
 import OrderedHistory from "./components/Card/OrderedHistory"
 import PaymentBtn from './components/cart/PaymentBtn';
 import Admin from './pages/Admin';
+import Notifications from './pages/Notifications';
+import Orders from './pages/Orders';
+import Sales from './pages/Sales';
+import Invoice from './pages/Invoice';
+import Archives from './pages/Archives';
+import ThemeContextProvider from './pages/Context/ThemeContext';
 
 
 const Routes = (props) => {
@@ -17,7 +23,14 @@ const Routes = (props) => {
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/menu" component={Menu} />
-                    <Route exact path="/admin-dashboard" component={Admin} />
+                    <ThemeContextProvider>
+                        <Route exact path="/admin-dashboard" component={Admin} />
+                        <Route exact path="/notifications" component={Notifications} />
+                        <Route exact path="/orders" component={Orders} />
+                        <Route exact path="/sales" component={Sales} />
+                        <Route exact path="/invoice" component={Invoice} />
+                        <Route exact path="/archives" component={Archives} />
+                    </ThemeContextProvider>
                     <Route exact path="/ShoppingCart" component={ShoppingCart} />
                     <Route exact path="/confirmOrder" component={Details} />
                     <Route exact path="/pay" component={PaymentBtn} />
