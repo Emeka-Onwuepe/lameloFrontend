@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 
 const Details = (props) => {
     const { storestate, storedispatch } = useContext(storeContext);
-    const { cart, User,logistics } = storestate
+    const { cart, User,logistics,destination } = storestate
     // const  user  = User
 
 
@@ -57,7 +57,7 @@ const Details = (props) => {
         const data = JSON.stringify({
             User: User.id !== undefined ? User.id : "",
             user: { "fullName": full_name, "phoneNumber": phone_number, email, address },
-            Ordered: { OrderId, logistics, total }, OrderedProduct: products
+            Ordered: { OrderId, logistics,destination, total }, OrderedProduct: products
         })
         const config = { headers: { "Content-Type": "application/json" } }
 

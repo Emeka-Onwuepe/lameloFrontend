@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import numbro from 'numbro';
 // import { confirmAlert } from 'react-confirm-alert'; 
@@ -8,13 +8,15 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Button } from 'reactstrap';
 
-import { storeContext, performAction, GET_ORDERED } from '../State/State';
-
-const OrderList = (props) => {
-    const products = props.products
-
+import { storeContext, performAction, GET_ARCHIVE, GET_ORDERED } from '../State/State';
+const Archive = (props) => {
     const { storestate, storedispatch } = useContext(storeContext);
-    const { customers } = storestate
+    useEffect(() => {
+        const data = { "action": "Get_Archive", "data": "", "customer": "", "search": "" }
+        performAction(data, GET_ARCHIVE).then(res => storedispatch(res))
+    }, []);
+    const { archive, customers } = storestate
+
     const filterCustomers = (array, customerId) => {
         let [match] = array.filter(customer => customer.id == customerId)
         return match.fullName
@@ -22,9 +24,7 @@ const OrderList = (props) => {
 
     const onclick = (e) => {
         const [id, action] = e.target.id.split("-")
-        console.log(id)
         const data = { "action": action, "data": id, "customer": "", "search": "" }
-
         const decisionBox = () => toast.success(<div className="decisionBox">
             <p>{action == "Delivered" ? `Are you sure you want to mark order with id: ${id} as delivered` :
                 `Are you sure you want to send order with id: ${id} to Archives`}</p><br />
@@ -43,7 +43,7 @@ const OrderList = (props) => {
         })
         decisionBox()
     }
-    const list = products.map(items => (
+    const list = archive.map(items => (
         <tr key={items.id}>
             <td><NavLink to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> {items.OrderId}</NavLink> </td>
             <td><NavLink to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> {filterCustomers(customers, items.customer)}</NavLink> </td>
@@ -77,7 +77,6 @@ const OrderList = (props) => {
                     <tbody>{list}</tbody>
                 </table>
             </div>
-            <NavLink to="/archive">Archive</NavLink>
             <ToastContainer position="top-center"
                 autoClose={10000}
                 hideProgressBar={false}
@@ -93,4 +92,4 @@ const OrderList = (props) => {
 };
 
 
-export default OrderList;
+export default Archive;
