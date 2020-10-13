@@ -16,6 +16,8 @@ export const UPDATE_CART = "UPDATE_CART";
 export const PROCESS_ORDER = "PROCESS_ORDER";
 export const GET_ORDERED_PRODUCTS = "GET_ORDERED_PRODUCTS"
 export const GET_ORDERED = "GET_ORDERED"
+export const GET_ARCHIVE = "GET_ARCHIVE"
+export const GET_PRODUCT_AND_CUSTOMER = "GET_PRODUCT_AND_CUSTOMER"
 export const LOADED = "LOADED";
 export const LOADING = "LOADING";
 export const ADD_ERROR = "ADD_ERROR";
@@ -116,10 +118,10 @@ export const locations = () => {
 }
 export const getOrder = () => {
     return axios.get("https://lameloapis.herokuapp.com/dashboard").then(res => {
-        console.log(res.data.ordered)
         return {
             type: GET_ORDERED,
-            data: res.data.ordered
+            data: res.data.ordered,
+            customers: res.data.customers
         }
     }).catch(err => {
         return {
@@ -130,6 +132,48 @@ export const getOrder = () => {
 
     })
 }
+
+export const performAction = (data, type) => {
+    return axios.post("https://lameloapis.herokuapp.com/dashboard", data).then(res => {
+        if (type == GET_ORDERED) {
+            return {
+                type: GET_ORDERED,
+                data: res.data.ordered,
+                customers: res.data.customers
+            }
+        } else {
+            return {
+                type: GET_ARCHIVE,
+                data: res.data.Archive,
+                customers: res.data.customers
+            }
+        }
+    }).catch(err => {
+        return {
+            type: ADD_ERROR,
+            // data: err.response.data,
+            // status: err.response.status
+        }
+    })
+}
+
+export const getOrderAndCustomer = (data) => {
+    return axios.post("https://lameloapis.herokuapp.com/dashboard", data).then(res => {
+        return {
+            type: GET_PRODUCT_AND_CUSTOMER,
+            products: res.data.products,
+            customer: res.data.customer
+        }
+    }).catch(err => {
+        return {
+            type: ADD_ERROR,
+            // data: err.response.data,
+            // status: err.response.status
+        }
+
+    })
+}
+
 export const addToCart = (data) => {
     return {
         type: ADD_TO_CART,
@@ -212,8 +256,6 @@ const storeReducer = (state, action) => {
                 },
                 loading: false,
             }
-
-
         case ADD_TO_CART:
             return {
                 ...state,
@@ -278,10 +320,25 @@ const storeReducer = (state, action) => {
                 OrderedProduct: action.products,
                 loading: false,
             }
+        case GET_PRODUCT_AND_CUSTOMER:
+            return {
+                ...state,
+                OrderedProduct: action.products,
+                customer: action.customer,
+                loading: false,
+            }
         case GET_ORDERED:
             return {
                 ...state,
                 Orders: action.data,
+                customers: action.customers,
+                loading: false,
+            }
+        case GET_ARCHIVE:
+            return {
+                ...state,
+                archive: action.data,
+                customers: action.customers,
                 loading: false,
             }
         case CLEAR_SUCCESS:
@@ -360,6 +417,8 @@ const StoreContextProvider = (props) => {
                         User: "",
                         Ordered: [],
                         Orders: [],
+                        archive: [],
+                        customers: [],
                         OrderedProduct: [],
                         loading: true,
                         cart: [],
@@ -368,6 +427,7 @@ const StoreContextProvider = (props) => {
                         prices: [],
                         locations: [],
                         destination: "",
+                        customer: { address: "", email: "", fullName: "", id: "", phoneNumber: "" },
                         logistics: 0,
                         ...jsonify,
                         message: "",
@@ -405,6 +465,8 @@ const StoreContextProvider = (props) => {
                         User: "",
                         Ordered: [],
                         Orders: [],
+                        archive: [],
+                        customers: [],
                         OrderedProduct: [],
                         loading: true,
                         cart: [],
@@ -413,6 +475,7 @@ const StoreContextProvider = (props) => {
                         prices: [],
                         locations: [],
                         destination: "",
+                        customer: { address: "", email: "", fullName: "", id: "", phoneNumber: "" },
                         logistics: 0,
                         message: "",
                         status: "",
