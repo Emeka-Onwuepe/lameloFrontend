@@ -9,7 +9,7 @@ import StoreContextProvider from './components/State/State';
 
 import './App.css'
 
-function App(props) {
+function App() {
   useEffect(() => {
     Aos.init({duration: 2000})
   }, [])
