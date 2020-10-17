@@ -10,7 +10,7 @@ import ThemeContextProvider from './pages/Context/ThemeContext';
 import ThemeRoutes from './ThemeRoutes'
 import './App.css'
 
-function App(props) {
+function App() {
   useEffect(() => {
     Aos.init({ duration: 2000 })
   }, [])
