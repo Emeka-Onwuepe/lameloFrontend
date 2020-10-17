@@ -9,9 +9,10 @@ import ScrollTop from '../Home/ScrollTop';
 const OrderedProducts = (props) => {
     const { id, total, destination, customerId } = useParams()
     const { storestate, storedispatch } = useContext(storeContext)
-    const { OrderedProduct, User, customer } = storestate
+    const { OrderedProduct, User, customer, orderedTopping } = storestate
     const products = OrderedProduct
     let items = ""
+    let toppings = ""
     useEffect(() => {
         const data = { "action": "none", "data": id, "customer": customerId, "search": "orderedproducts" }
         getOrderAndCustomer(data).then(res => storedispatch(res));
@@ -21,8 +22,16 @@ const OrderedProducts = (props) => {
     if (products !== undefined && products.length > 0) {
         items = products.map(item => <tr key={item.id}>
             <td>{item.name} </td>
-            <td>{item.flavour === 'null' ? "" : item.flavour} </td>
             <td>{item.size} </td>
+            <td>{item.price} </td>
+            <td>{item.quantity} </td>
+            <td>{item.price * item.quantity} </td>
+        </tr>)
+    }
+    if (orderedTopping !== undefined && orderedTopping.length > 0) {
+        toppings = orderedTopping.map(item => <tr key={item.id}>
+            <td>{item.name} </td>
+            <td> </td>
             <td>{item.price} </td>
             <td>{item.quantity} </td>
             <td>{item.price * item.quantity} </td>
@@ -55,7 +64,6 @@ const OrderedProducts = (props) => {
                     <thead>
                         <tr>
                             <th>Product Name</th>
-                            <th>Flavour</th>
                             <th>Size</th>
                             <th>Price</th>
                             <th>Qty</th>
@@ -63,6 +71,7 @@ const OrderedProducts = (props) => {
                         </tr>
                     </thead>
                     <tbody>{items}</tbody>
+                    <tbody>{toppings}</tbody>
                     <tfoot>
                         <tr>
                             <td colSpan="5">Total</td>

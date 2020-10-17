@@ -12,6 +12,7 @@ export const GET_SALAD = "GET_SALAD";
 export const GET_BFW = "GET_BFW";
 export const GET_GELATOS = "GET_GELATOS";
 export const ADD_TO_CART = "ADD_TO_CART";
+export const ADD_TO_TOPPING_CART = "ADD_TO_TOPPING_CART";
 export const UPDATE_CART = "UPDATE_CART";
 export const PROCESS_ORDER = "PROCESS_ORDER";
 export const GET_ORDERED_PRODUCTS = "GET_ORDERED_PRODUCTS"
@@ -28,6 +29,7 @@ export const GET_LOCATION = "GET_LOCATION";
 export const ADD_LOGISTICS = "ADD_LOGISTICS";
 export const ADD_DESTINATION = "ADD_DESTINATION";
 export const SET_SCREEN_SIZE = "SET_SCREEN_SIZE";
+export const UPDATE_TOPPING_CART = "UPDATE_TOPPING_CART"
 
 
 //Capitalise first word
@@ -42,12 +44,12 @@ export const SET_SCREEN_SIZE = "SET_SCREEN_SIZE";
 
 export const getCategory = (data, type) => {
     return axios.post("https://lameloapis.herokuapp.com/getproducts", data, ).then(res => {
-        console.log(res.data.toppings)
         return {
             type: type,
             products: res.data.products,
             prices: res.data.prices,
-            toppings: res.data.toppings != undefined ? res.data.toppings : []
+            toppings: res.data.toppings != undefined ? res.data.toppings : [],
+            orderedTopping: res.data.toppings != undefined ? res.data.toppings : []
                 // messages: "Logged In Successfully"
         }
     }).catch(err => {
@@ -62,13 +64,13 @@ export const getCategory = (data, type) => {
 
 export const processOrder = (data, config) => {
     return axios.post('https://lameloapis.herokuapp.com/orderview', data, config).then(res => {
-        console.log(res.data)
         return {
             type: PROCESS_ORDER,
             data: res.data.Ordered,
             messages: "Order Placed Successfully",
             success: true,
             cart: [],
+            toppingcart: [],
             user: res.data.user
         }
     }).catch(err => {
@@ -159,10 +161,12 @@ export const performAction = (data, type) => {
 
 export const getOrderAndCustomer = (data) => {
     return axios.post("https://lameloapis.herokuapp.com/dashboard", data).then(res => {
+        console.log(res.data.toppings)
         return {
             type: GET_PRODUCT_AND_CUSTOMER,
             products: res.data.products,
-            customer: res.data.customer
+            customer: res.data.customer,
+            orderedTopping: res.data.toppings
         }
     }).catch(err => {
         return {
@@ -180,6 +184,20 @@ export const addToCart = (data) => {
         data: data
     }
 }
+export const addToToppingCart = (data) => {
+    return {
+        type: ADD_TO_TOPPING_CART,
+        data: data
+    }
+}
+
+export const Updatetoppingcart = (data) => {
+    return {
+        type: UPDATE_TOPPING_CART,
+        data: data
+    }
+}
+
 export const UpdateCart = (data) => {
     return {
         type: UPDATE_CART,
@@ -262,10 +280,22 @@ const storeReducer = (state, action) => {
                 cart: [...state.cart, action.data],
                 loading: false,
             }
+        case ADD_TO_TOPPING_CART:
+            return {
+                ...state,
+                toppingcart: [...state.toppingcart, action.data],
+                loading: false,
+            }
         case UPDATE_CART:
             return {
                 ...state,
                 cart: [...action.data],
+                loading: false,
+            }
+        case UPDATE_TOPPING_CART:
+            return {
+                ...state,
+                toppingcart: [...action.data],
                 loading: false,
             }
         case LOADING:
@@ -285,6 +315,7 @@ const storeReducer = (state, action) => {
                 messages: action.messages,
                 success: action.success,
                 cart: action.cart,
+                toppingcart: action.toppingcart,
                 User: action.user,
                 logistics: 0,
                 destination: "",
@@ -318,13 +349,16 @@ const storeReducer = (state, action) => {
             return {
                 ...state,
                 OrderedProduct: action.products,
+                orderedTopping: action.orderedTopping,
                 loading: false,
             }
         case GET_PRODUCT_AND_CUSTOMER:
+            console.log(action.orderedTopping)
             return {
                 ...state,
                 OrderedProduct: action.products,
                 customer: action.customer,
+                orderedTopping: action.orderedTopping,
                 loading: false,
             }
         case GET_ORDERED:
@@ -420,8 +454,10 @@ const StoreContextProvider = (props) => {
                         archive: [],
                         customers: [],
                         OrderedProduct: [],
+                        orderedTopping: [],
                         loading: true,
                         cart: [],
+                        toppingcart: [],
                         scrow: window.pageYOffset,
                         width: window.innerWidth,
                         prices: [],
@@ -468,8 +504,10 @@ const StoreContextProvider = (props) => {
                         archive: [],
                         customers: [],
                         OrderedProduct: [],
+                        orderedTopping: [],
                         loading: true,
                         cart: [],
+                        toppingcart: [],
                         scrow: window.pageYOffset,
                         width: window.innerWidth,
                         prices: [],
@@ -492,8 +530,6 @@ const StoreContextProvider = (props) => {
 
         useEffect(() => {
             const onresizer = () => {
-                // console.log(window.pageYOffset)
-                // console.log(window.scrollY)
                 storedispatch({
                     type: SET_SCREEN_SIZE,
                     width: window.innerWidth,
@@ -507,36 +543,6 @@ const StoreContextProvider = (props) => {
 
             };
         }, [])
-
-
-        // const onresizer = () => {
-        //     console.log("ran from eventListener")
-        //     storedispatch({
-        //         type: SET_SCREEN_SIZE,
-        //         width: window.innerWidth,
-        //         scrow: window.pageYOffset
-        //     })
-        // }
-        // window.addEventListener('resize', onresizer)
-        // window.addEventListener('scroll', onresizer)
-
-
-
-
-
-        // const onresizer = () => {
-        //     console.log(window.innerHeight)
-        //     storedispatch({
-        //         type: SET_SCREEN_SIZE,
-        //         width: window.innerWidth,
-        //         scrow: window.pageYOffset
-        //     })
-        // }
-        // window.addEventListener('resize', onresizer)
-        // window.addEventListener('scroll', onresizer)
-
-
-
         return ( < storeContext.Provider value = {
                     { storestate, storedispatch }
                 } > { props.children } < /storeContext.Provider>)}

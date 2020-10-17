@@ -4,12 +4,12 @@ import { storeContext } from "../State/State"
 
 const CartCount = (props) => {
     const { storestate } = useContext(storeContext)
-    const { cart } = storestate
+    const { cart,toppingcart } = storestate
 
     return (
         <div className="shopping-cart" onClick={() => window.location = '/ShoppingCart'}>
             <FaShoppingCart style={{ fontSize: "50px" }} />
-            <span className="cart-count">{cart.length}</span>
+            <span className="cart-count">{cart.length + toppingcart.length}</span>
         </div>
     )
 }
