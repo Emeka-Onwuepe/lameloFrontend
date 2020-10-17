@@ -6,37 +6,37 @@ import * as AiIcons from 'react-icons/ai';
 export const AdminContent = [
     {
         title: 'Dashboard',
-        path: '/admin-dashboard',
+        path: '/admin/admin-dashboard',
         icons: <AiIcons.AiFillDashboard />,
         cName: 'nav-text'
     },
     {
         title: 'Notifications',
-        path: '/notifications',
+        path: '/admin/notifications',
         icons: <FaIcons.FaBell />,
         cName: 'nav-text'
     },
     {
         title: 'Orders',
-        path: '/orders',
+        path: '/admin/orders',
         icons: <AiIcons.AiOutlineOrderedList />,
         cName: 'nav-text'
     },
     {
         title: 'Sales',
-        path: '/sales',
+        path: '/admin/sales',
         icons: <FaIcons.FaBriefcase />,
         cName: 'nav-text'
     },
     {
         title: 'Invoice',
-        path: '/invoice',
+        path: '/admin/invoice',
         icons: <FaIcons.FaFileInvoice />,
         cName: 'nav-text'
     },
     {
         title: 'Archives',
-        path: '/archives',
+        path: '/admin/archives',
         icons: <FaIcons.FaArchive />,
         cName: 'nav-text'
     },

@@ -118,6 +118,7 @@ export const locations = () => {
 }
 export const getOrder = () => {
     return axios.get("https://lameloapis.herokuapp.com/dashboard").then(res => {
+        console.log(res.data.ordered)
         return {
             type: GET_ORDERED,
             data: res.data.ordered,
@@ -535,10 +536,10 @@ const StoreContextProvider = (props) => {
         // window.addEventListener('resize', onresizer)
         // window.addEventListener('scroll', onresizer)
 
-
-
-        return ( < storeContext.Provider value = {
-                    { storestate, storedispatch }
-                } > { props.children } < /storeContext.Provider>)}
-
-                export default StoreContextProvider;
+            return (
+                <storeContext.Provider value = {{ storestate, storedispatch }}>
+                    { props.children }
+                </storeContext.Provider>
+            )
+        }
+    export default StoreContextProvider;

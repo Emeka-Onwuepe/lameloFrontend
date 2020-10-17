@@ -1,17 +1,19 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import numbro from 'numbro';
-// import { confirmAlert } from 'react-confirm-alert'; 
-// import 'react-confirm-alert/src/react-confirm-alert.css';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Button } from 'reactstrap';
+import { Container, Card,Button } from 'reactstrap';
+import { ThemeContext } from './Context/ThemeContext';
 
-import { storeContext, performAction, GET_ORDERED } from '../State/State';
+import { storeContext, performAction, GET_ORDERED } from './../components/State/State';
 
 const OrderList = (props) => {
     const products = props.products
+    const theme = useContext(ThemeContext);
+    const { isLightTheme, light, dark } = theme;
+    const checkTheme = isLightTheme ? light: dark
 
     const { storestate, storedispatch } = useContext(storeContext);
     const { customers } = storestate
@@ -60,7 +62,7 @@ const OrderList = (props) => {
 
     return (
         <div>
-            <div className="orderedList page">
+            {/* <div className="orderedList page">
                 <table>
                     <thead>
                         <tr>
@@ -76,8 +78,55 @@ const OrderList = (props) => {
                     </thead>
                     <tbody>{list}</tbody>
                 </table>
-            </div>
-            <NavLink to="/archive">Archive</NavLink>
+            </div> */}
+            <Container>
+                     {isLightTheme ?
+                      <Card>
+                       
+                       <h3 style={{textAlign: 'center', fontSize:'30px', backgroundColor: checkTheme.cardHeader, }}>
+                          Recent Orders
+                       </h3>
+                       <table class="table table-striped" style={{overflowX: 'auto'}}>
+                       <thead>
+                        <tr>
+                            <th>Ref No:</th>
+                            <th>Customer</th>
+                            <th>Amount</th>
+                            <th>Destination</th>
+                            <th>Logistics </th>
+                            <th>Total</th>
+                            <th>Date ordered</th>
+                            <th>Delivered</th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                        {list}
+                        </tbody>
+                      </table>
+                    </Card>: 
+                    <Card>
+                      
+                     <h3 style={{textAlign: 'center', fontSize:'30px', backgroundColor: checkTheme.cardHeader, padding: '10px'}}>
+                        Recent Orders
+                     </h3>
+                      <table class="table table-striped table-dark" style={{overflowX: 'auto'}}>
+                      <thead>
+                        <tr>
+                            <th>Ref No:</th>
+                            <th>Customer</th>
+                            <th>Amount</th>
+                            <th>Destination</th>
+                            <th>Logistics </th>
+                            <th>Total</th>
+                            <th>Date ordered</th>
+                            <th>Delivered</th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                          {list}
+                        </tbody>
+                    </table></Card>}
+                </Container> 
             <ToastContainer position="top-center"
                 autoClose={10000}
                 hideProgressBar={false}

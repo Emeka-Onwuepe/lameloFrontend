@@ -22,7 +22,7 @@ const Routes = (props) => {
             <Route exact path="/ShoppingCart" component={ShoppingCart} />
             <Route exact path="/confirmOrder" component={Details} />
             <Route exact path="/pay" component={PaymentBtn} />
-            <Route exact path="/dashboard" component={DashBoard} />
+            {/* <Route exact path="/dashboard" component={DashBoard} /> */}
             <Route exact path="/archive" component={Archive} />
             <Route exact path="/orderhistory" component={OrderedHistory} />
 
