@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { storeContext, processOrder, load, LOADING, LOADED, locations } from "../State/State";
+import { storeContext, processOrder, load, LOADING, LOADED, CLEAR_SUCCESS} from "../State/State";
 import { Redirect } from 'react-router-dom';
 
 
@@ -84,6 +84,7 @@ const Details = (props) => {
     //     return < Redirect to="/login" />
     // }user-details
     if (storestate.success) {
+        storedispatch(load(CLEAR_SUCCESS)) 
         return < Redirect to="/pay" />
     }
     return (

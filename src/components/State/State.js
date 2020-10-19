@@ -22,6 +22,7 @@ export const GET_PRODUCT_AND_CUSTOMER = "GET_PRODUCT_AND_CUSTOMER"
 export const LOADED = "LOADED";
 export const LOADING = "LOADING";
 export const ADD_ERROR = "ADD_ERROR";
+export const SUCCESS = "SUCCESS";
 export const CLEAR_SUCCESS = "CLEAR_SUCCESS";
 export const DELETE_MESSAGES = "DELETE_MESSAGES";
 export const PAYMENT = "PAYMENT";
@@ -209,6 +210,11 @@ export const load = (type) => {
         type: type
     }
 }
+export const success = () => {
+    return {
+        type: SUCCESS
+    }
+}
 export const AddLogistics = (data) => {
     return {
         type: ADD_LOGISTICS,
@@ -353,7 +359,6 @@ const storeReducer = (state, action) => {
                 loading: false,
             }
         case GET_PRODUCT_AND_CUSTOMER:
-            console.log(action.orderedTopping)
             return {
                 ...state,
                 OrderedProduct: action.products,
@@ -379,6 +384,12 @@ const storeReducer = (state, action) => {
             return {
                 ...state,
                 success: false,
+                loading: false,
+            }
+        case SUCCESS:
+            return {
+                ...state,
+                success: true,
                 loading: false,
             }
         case ADD_ERROR:
