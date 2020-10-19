@@ -120,22 +120,15 @@
 	left: -14px;
 }
 
-.dashboard, .archives, .notifications, .orders, .sales, .invoice {
+ .archives, .notifications, .orders, .sales, .invoice {
 	display: flex;
-	flex-direction: column;
+	/* flex-direction: column; */
 	height: 100%;
 	font-size: 3rem;
 	padding: 10px 30px;
 	margin: 0 auto;
 }
 
-.dashboard.h3, .archives.h3, .notifications.h3, .orders.h3, .sales.h3, .invoice.h3 {
+.archives.h3, .notifications.h3, .orders.h3, .sales.h3, .invoice.h3 {
 	text-align: center;
 }
-
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-	width: 100%;
-
-  }

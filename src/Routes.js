@@ -8,7 +8,7 @@ import Details from "./components/cart/Details";
 import OrderedItems from "./components/cart/OrderedItems";
 import OrderedHistory from "./components/Card/OrderedHistory"
 import PaymentBtn from './components/cart/PaymentBtn';
-import DashBoard from "./components/DashBoard/DashBoard";
+// import DashBoard from "./components/DashBoard/DashBoard";
 import OrderedProducts from "./components/DashBoard/OrderedProducts";
 import Archive from "./components/DashBoard/Archive"
 

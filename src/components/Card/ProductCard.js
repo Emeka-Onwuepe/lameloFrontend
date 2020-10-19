@@ -16,7 +16,7 @@ import {
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import numbro from 'numbro';
-import { storeContext, addToCart } from '../State/State';
+import { storeContext, addToCart, addToToppingCart } from '../State/State';
 // import { DriveEtaSharp } from '@material-ui/icons';
 
 const animatedComponents = makeAnimated();
@@ -26,15 +26,17 @@ const ProductCard = ({ products, prices, toppings }) => {
 
     const [DivDisplay, setDivdisplay] = useState({ display: false, check: false })
     const [priceState, setpriceState] = useState([])
+    const [toppingState, setToppingState] = useState([])
+    const [checkboxState, setcheckboxState] = useState([])
     // let check = false;
-
     const { storestate, storedispatch } = useContext(storeContext)
     useEffect(() => {
-        console.log("cart changed", altImage)
-        console.log(toppings)
+    }, [storestate.cart, storestate.toppingcart]);
 
-
-    }, [storestate.cart, storedispatch]);
+    useEffect(() => {
+        let checkbox = document.querySelectorAll(".checkbox")
+        setcheckboxState(checkbox)
+    }, []);
 
     const initial = { display: false, check: false }
     const filter = (array, price) => {
@@ -51,7 +53,6 @@ const ProductCard = ({ products, prices, toppings }) => {
     //     let [priceID, productId] = array
     //     return { priceID: parseInt(priceID), productId: parseInt(productId) }
     // }
-
 
     const decisionBox = () => toast.success(<div className="decisionBox">
         <p>Choose either to continue shopping or to view your shopping cart by checking out</p><br />
@@ -83,6 +84,46 @@ const ProductCard = ({ products, prices, toppings }) => {
         progress: undefined,
     })
 
+    const onChangeCheckBox = (e) => {
+        //get selected
+        let [selected] = toppings.filter(x => x.id == e.target.id)
+        selected.checked = e.target.checked
+        selected.quantity = 1
+        let rest = toppings.filter(x => x.id != e.target.id)
+        let Alltoppings = rest.concat(selected)
+        let selectedToppings = Alltoppings.filter(x => x.checked == true)
+        setToppingState(selectedToppings)
+        // setpriceState([price, rest])
+    }
+
+    const onSubmit = () => {
+        let check = false
+        console.log(toppingState)
+        if (toppingState.length > 0) {
+            setDivdisplay({ display: true })
+            for (const index of toppingState) {
+                check = false
+                storestate.toppingcart.forEach(x => {
+                    console.log(x.id, index.id)
+                    if (x.id == index.id) {
+                        check = true
+                        setDivdisplay({ display: true, check: true })
+                    }
+                })
+                if (check !== true) {
+                    console.log(toppingState)
+                    storedispatch(addToToppingCart(index))
+                }
+            }
+        }
+        setToppingState([])
+        checkboxState.forEach(x => {
+            x.checked = false
+        })
+        toppings.forEach(x => {
+            x.checked = false
+        })
+    }
 
     const onChange = (e) => {
         // const { priceID, productId } = spliter(e.target.id)
@@ -93,7 +134,6 @@ const ProductCard = ({ products, prices, toppings }) => {
         } catch (err) {
         }
         value.forEach(item => {
-            console.log(priceState)
             let [price] = prices.filter(x => x.id === item)
 
             let check = stateArry.filter(item => item.id === price.id)
@@ -106,10 +146,7 @@ const ProductCard = ({ products, prices, toppings }) => {
 
     const onClick = (e) => {
         const id = e.target.id
-        console.log("id", id)
-        console.log(products)
         let [product] = products.filter(product => product.id == id);
-        // console.log(product)
 
         let check = false;
         if (product.multipleSIzes.length > 0) {
@@ -163,17 +200,14 @@ const ProductCard = ({ products, prices, toppings }) => {
                     <div className="toppings-divider" />
                     <Row>
                         {toppings.length > 0 ? toppings.map(topping => <div style={{ margin: '5px', textAlign: 'center' }}>
-                            <input type="checkbox" name={topping.topping} value={topping.price} />&nbsp;
+                            <input type="checkbox" name={topping.topping} className="checkbox" id={topping.id} onClick={onChangeCheckBox} value={topping.price} />&nbsp;
                     <label htmlFor={topping.topping}>{topping.topping} - ₦{numbro(parseInt(topping.price)).format({ thousandSeparated: true })}</label>
                         </div>
                         ) : ""
                         }
-
-                        {/* {console.log(toppings)} */}
-
                     </Row>
-                    <Button style={{ padding: '20px', background: 'green', borderRadius: '50px', border: 'none', textTransform: 'uppercase' }} onClick={onClick}>Add Toppings</Button>
-                </div>: ""}
+                    <Button style={{ padding: '20px', background: 'green', borderRadius: '50px', border: 'none', textTransform: 'uppercase' }} onClick={onSubmit}>Add Toppings</Button>
+                </div> : ""}
                 {
 
                     (products && products.length > 0) ? products.map((pizza, index) => (
@@ -202,7 +236,6 @@ const ProductCard = ({ products, prices, toppings }) => {
                     )) : <div style={{ display: 'flex', justifyContent: 'center' }}><PacmanLoader loading size={60} style={{ zIndex: '300' }} color="red" /></div>
 
                 }
-                {/* {console.log(toppings.length)} */}
                 <>
                     {DivDisplay.check && DivDisplay.display ? alreadyInCart() : DivDisplay.display ? decisionBox() : ""}
                     <ToastContainer position="top-center"
