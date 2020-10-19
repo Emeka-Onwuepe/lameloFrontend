@@ -60,7 +60,7 @@
 } 
 .nav-text {
 	display: flex;
-	justify-content: start;
+	justify-content: flex-start;
 	align-items: center;
 	padding: 8px 0px 8px 16px;
 	list-style: none;
@@ -120,11 +120,15 @@
 	left: -14px;
 }
 
-.dashboard, .archives, .notifications, .orders, .sales, .invoice {
+ .archives, .notifications, .orders, .sales, .invoice {
 	display: flex;
-	height: 90vh;
+	/* flex-direction: column; */
+	height: 100%;
 	font-size: 3rem;
 	padding: 10px 30px;
-	justify-content: center;
-	margin: 10px 0px;
+	margin: 0 auto;
+}
+
+.archives.h3, .notifications.h3, .orders.h3, .sales.h3, .invoice.h3 {
+	text-align: center;
 }

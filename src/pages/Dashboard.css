@@ -1,0 +1,33 @@
+.dashboard {
+    display: flex;
+	/* flex-direction: column; */
+	height: 100%;
+	font-size: 3rem;
+    padding: 10px 30px;
+	margin: 0 auto;
+}
+.admin-welcome {
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+}
+.dashboard-container {
+    width: 100%;
+    min-height: 100vh;
+}
+.dashboard-container h3 {
+    margin-top: 5px;
+    text-align: center;
+}
+.table {
+    margin-top: 0;
+    border-collapse: collapse; 
+    width: 100%;
+}
+
+.table tr > th {
+    font-size: 15px;
+}
+.table tr > td {
+    font-size: 14px;
+}

@@ -20,12 +20,13 @@ function App() {
         <Router>
           <Routes />
         </Router>
-      </StoreContextProvider>
+     
       <ThemeContextProvider>
         <Router>
           <ThemeRoutes />
         </Router>
       </ThemeContextProvider>
+      </StoreContextProvider>
     </div>
   );
 }
