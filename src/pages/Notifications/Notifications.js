@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import AdminNavbar from './AdminNavbar'
-import { ThemeContext } from './Context/ThemeContext'
+import AdminNavbar from '../AdminNavbar'
+import { ThemeContext } from '../Context/ThemeContext'
 
 const Notifications = () => {
     const theme = useContext(ThemeContext);

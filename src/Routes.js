@@ -9,7 +9,7 @@ import OrderedItems from "./components/cart/OrderedItems";
 import OrderedHistory from "./components/Card/OrderedHistory"
 import PaymentBtn from './components/cart/PaymentBtn';
 // import DashBoard from "./components/DashBoard/DashBoard";
-import OrderedProducts from "./components/DashBoard/OrderedProducts";
+// import OrderedProducts from "./components/DashBoard/OrderedProducts";
 import Archive from "./components/DashBoard/Archive"
 
 
@@ -28,7 +28,7 @@ const Routes = (props) => {
 
             <Route exact path="/ordered/:id/:total" component={OrderedItems} />
 
-            <Route exact path="/ordered/:id/:total/:customerId/:destination" component={OrderedProducts} />
+            {/* <Route exact path="/ordered/:id/:total/:customerId/:destination" component={OrderedProducts} /> */}
             <Route exact path="/:category" component={ProductPage} />
 
 
