@@ -7,9 +7,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Container, Card, Button } from 'reactstrap';
 
 import './Dashboard.css'
-import { ThemeContext } from './Context/ThemeContext';
+import { ThemeContext } from '../Context/ThemeContext';
 
-import { storeContext, performAction, GET_ORDERED } from './../components/State/State';
+import { storeContext, performAction, GET_ORDERED } from '../../components/State/State';
 
 const OrderList = (props) => {
     const products = props.products
@@ -48,7 +48,7 @@ const OrderList = (props) => {
         decisionBox()
     }
     const list = products.map(items => (
-        <tr key={items.id}>
+        <tr key={items.id} role="role">
             <td><NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> {items.OrderId}</NavLink> </td>
             <td><NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> {filterCustomers(customers, items.customer)}</NavLink> </td>
             <td><NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> &#x20A6; {numbro(items.total).format({ thousandSeparated: true })}</NavLink></td>
@@ -70,20 +70,21 @@ const OrderList = (props) => {
                        <h3 style={{textAlign: 'center', fontSize:'30px', backgroundColor: checkTheme.cardHeader }}>
                           Recent Orders
                        </h3>
-                       <table class="table table-striped">
-                       <thead>
-                        <tr>
-                            <th>Ref No:</th>
-                            <th>Customer</th>
-                            <th>Amount</th>
-                            <th>Destination</th>
-                            <th>Logistics </th>
-                            <th>Total</th>
-                            <th>Date ordered</th>
-                            <th>Status</th>
+                       <table class="table table-striped" role="table">
+                       <thead role="rowgroup">
+                        <tr role="row">
+                            <th role="columnheader">Ref No:</th>
+                            <th role="columnheader">Customer</th>
+                            <th role="columnheader">Amount</th>
+                            <th role="columnheader">Destination</th>
+                            <th role="columnheader">Logistics </th>
+                            <th role="columnheader">Total</th>
+                            <th role="columnheader">Date ordered</th>
+                            <th role="columnheader">Status</th>
+                            <th role="columnheader"></th>
                         </tr>
                     </thead>
-                        <tbody>
+                        <tbody role="rowgroup">
                         {list}
                         </tbody>
                       </table>
@@ -93,20 +94,20 @@ const OrderList = (props) => {
                      <h3 style={{textAlign: 'center', fontSize:'30px', backgroundColor: checkTheme.cardHeader, padding: '10px'}}>
                         Recent Orders
                      </h3>
-                      <table class="table table-striped table-dark">
-                      <thead>
-                        <tr>
-                            <th>Ref No:</th>
-                            <th>Customer</th>
-                            <th>Amount</th>
-                            <th>Destination</th>
-                            <th>Logistics </th>
-                            <th>Total</th>
-                            <th>Date ordered</th>
-                            <th>Status</th>
+                      <table class="table table-striped table-dark" role="table">
+                      <thead role="rowgroup">
+                        <tr role="row">
+                            <th role="columnheader">Ref No:</th>
+                            <th role="columnheader">Customer</th>
+                            <th role="columnheader">Amount</th>
+                            <th role="columnheader">Destination</th>
+                            <th role="columnheader">Logistics </th>
+                            <th role="columnheader">Total</th>
+                            <th role="columnheader">Date ordered</th>
+                            <th role="columnheader">Status</th>
                         </tr>
                     </thead>
-                        <tbody>
+                        <tbody role="rowgroup">
                           {list}
                         </tbody>
                     </table></Card>}

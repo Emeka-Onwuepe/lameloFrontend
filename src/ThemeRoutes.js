@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, useLocation } from 'react-router-dom';
-import Admin from './pages/Admin';
+import Admin from './pages/Dashboard/Admin';
 import Notifications from './pages/Notifications';
 import Orders from './pages/Orders';
 import Sales from './pages/Sales';
 import Invoice from './pages/Invoice';
 import Archives from './pages/Archives';
+import OrderedProducts from './pages/Dashboard/OrderedProducts';
+
 
 const ThemeRoutes = () => {
     return (
@@ -15,6 +17,7 @@ const ThemeRoutes = () => {
                 <Route exact path="/admin/admin-dashboard" component={Admin} />
                 <Route exact path="/admin/notifications" component={Notifications} />
                 <Route exact path="/admin/orders" component={Orders} />
+                <Route exact path="/ordered/:id/:total/:customerId/:destination" component={OrderedProducts} />
                 <Route exact path="/admin/sales" component={Sales} />
                 <Route exact path="/admin/invoice" component={Invoice} />
                 <Route exact path="/admin/archives" component={Archives} />

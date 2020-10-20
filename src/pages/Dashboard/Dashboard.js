@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { storeContext, getOrder } from './../components/State/State';
+import { storeContext, getOrder } from '../../components/State/State';
 
 // import './Dashboard.css';
 

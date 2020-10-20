@@ -2,9 +2,9 @@ import React, { useContext, useEffect, Fragment } from 'react';
 // import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import numbro from 'numbro';
-import { storeContext, getOrderAndCustomer, load, LOADING } from '../State/State';
-import './dashboard.css'
-import ScrollTop from '../Home/ScrollTop';
+import { storeContext, getOrderAndCustomer, load, LOADING } from '../../components/State/State';
+import './dashboard-content.css'
+import ScrollTop from '../../components/Home/ScrollTop';
 
 const OrderedProducts = (props) => {
     const { id, total, destination, customerId } = useParams()
