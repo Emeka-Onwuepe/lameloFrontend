@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import Admin from './pages/Dashboard/Admin';
-import Notifications from './pages/Notifications';
-import Orders from './pages/Orders';
-import Sales from './pages/Sales';
-import Invoice from './pages/Invoice';
-import Archives from './pages/Archives';
+import Notifications from './pages/Notifications/Notifications';
+import Orders from './pages/Orders/Orders';
+import Sales from './pages/Sales/Sales';
+import Invoice from './pages/Invoice/Invoice';
+import Archives from './pages/Archives/Archives';
 import OrderedProducts from './pages/Dashboard/OrderedProducts';
 
 
