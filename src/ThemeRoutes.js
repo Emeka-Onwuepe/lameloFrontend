@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Route, Switch, useLocation } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Admin from './pages/Dashboard/Admin';
 import Notifications from './pages/Notifications/Notifications';
 import Orders from './pages/Orders/Orders';
@@ -24,11 +23,6 @@ const ThemeRoutes = () => {
             </Switch>
         </div>
     );
-};
-
-
-ThemeRoutes.propTypes = {
-
 };
 
 
