@@ -31,6 +31,7 @@ export const ADD_LOGISTICS = "ADD_LOGISTICS";
 export const ADD_DESTINATION = "ADD_DESTINATION";
 export const SET_SCREEN_SIZE = "SET_SCREEN_SIZE";
 export const UPDATE_TOPPING_CART = "UPDATE_TOPPING_CART"
+export const ADD_NOTIFICATION = "ADD_NOTIFICATION"
 
 
 //Capitalise first word
@@ -121,7 +122,6 @@ export const locations = () => {
 }
 export const getOrder = () => {
     return axios.get("https://lameloapis.herokuapp.com/dashboard").then(res => {
-        console.log(res.data.ordered)
         return {
             type: GET_ORDERED,
             data: res.data.ordered,
@@ -318,7 +318,7 @@ const storeReducer = (state, action) => {
         case PROCESS_ORDER:
             return {
                 ...state,
-                Ordered: [...state.Ordered, action.data],
+                Ordered: [action.data, ...state.Ordered],
                 messages: action.messages,
                 success: action.success,
                 cart: action.cart,
@@ -372,6 +372,12 @@ const storeReducer = (state, action) => {
                 ...state,
                 Orders: action.data,
                 customers: action.customers,
+                loading: false,
+            }
+        case ADD_NOTIFICATION:
+            return {
+                ...state,
+                notification: [...action.data, ...state.notification],
                 loading: false,
             }
         case GET_ARCHIVE:
@@ -428,135 +434,139 @@ const storeReducer = (state, action) => {
 export const storeContext = createContext()
 
 const StoreContextProvider = (props) => {
-        const [storestate, storedispatch] = useReducer(storeReducer, {},
-            () => {
-                const localdata = localStorage.getItem("storestate");
-                let finaldata = ""
-                if (localdata) {
-                    const jsonify = JSON.parse(localdata)
-                    finaldata = {
-                        pizza: {
-                            products: [],
-                            prices: [],
-                            toppings: []
-                        },
-                        bfw: {
-                            products: [],
-                            prices: [],
-                            toppings: []
-                        },
-                        salad: {
-                            products: [],
-                            prices: [],
-                            toppings: []
-                        },
-                        gelatos: {
-                            products: [],
-                            prices: [],
-                            toppings: []
-                        },
-                        platter: {
-                            products: [],
-                            prices: [],
-                            toppings: []
-                        },
-                        User: "",
-                        Ordered: [],
-                        Orders: [],
-                        archive: [],
-                        customers: [],
-                        OrderedProduct: [],
-                        orderedTopping: [],
-                        loading: true,
-                        cart: [],
-                        toppingcart: [],
-                        scrow: window.pageYOffset,
-                        width: window.innerWidth,
+    const [storestate, storedispatch] = useReducer(storeReducer, {},
+        () => {
+            const localdata = localStorage.getItem("storestate");
+            let finaldata = ""
+            if (localdata) {
+                const jsonify = JSON.parse(localdata)
+                finaldata = {
+                    pizza: {
+                        products: [],
                         prices: [],
-                        locations: [],
-                        destination: "",
-                        customer: { address: "", email: "", fullName: "", id: "", phoneNumber: "" },
-                        logistics: 0,
-                        ...jsonify,
-                        message: "",
-                        status: "",
-                        messages: "",
-                        check: "",
-                    }
-                } else {
-                    finaldata = {
-                        pizza: {
-                            products: [],
-                            prices: [],
-                            toppings: []
-                        },
-                        bfw: {
-                            products: [],
-                            prices: [],
-                            toppings: []
-                        },
-                        salad: {
-                            products: [],
-                            prices: [],
-                            toppings: []
-                        },
-                        gelatos: {
-                            products: [],
-                            prices: [],
-                            toppings: []
-                        },
-                        platter: {
-                            products: [],
-                            prices: [],
-                            toppings: []
-                        },
-                        User: "",
-                        Ordered: [],
-                        Orders: [],
-                        archive: [],
-                        customers: [],
-                        OrderedProduct: [],
-                        orderedTopping: [],
-                        loading: true,
-                        cart: [],
-                        toppingcart: [],
-                        scrow: window.pageYOffset,
-                        width: window.innerWidth,
+                        toppings: []
+                    },
+                    bfw: {
+                        products: [],
                         prices: [],
-                        locations: [],
-                        destination: "",
-                        customer: { address: "", email: "", fullName: "", id: "", phoneNumber: "" },
-                        logistics: 0,
-                        message: "",
-                        status: "",
-                        messages: "",
-                        check: "",
-                    }
-                }
-                return finaldata
-            }
-        )
-        useEffect(() => {
-            localStorage.setItem("storestate", JSON.stringify(storestate))
-        }, [storestate]);
-
-        useEffect(() => {
-            const onresizer = () => {
-                storedispatch({
-                    type: SET_SCREEN_SIZE,
+                        toppings: []
+                    },
+                    salad: {
+                        products: [],
+                        prices: [],
+                        toppings: []
+                    },
+                    gelatos: {
+                        products: [],
+                        prices: [],
+                        toppings: []
+                    },
+                    platter: {
+                        products: [],
+                        prices: [],
+                        toppings: []
+                    },
+                    User: "",
+                    Ordered: [],
+                    Orders: [],
+                    notification: [],
+                    archive: [],
+                    customers: [],
+                    OrderedProduct: [],
+                    orderedTopping: [],
+                    loading: true,
+                    cart: [],
+                    toppingcart: [],
+                    scrow: window.pageYOffset,
                     width: window.innerWidth,
-                    scrow: window.pageYOffset
-                })
+                    prices: [],
+                    locations: [],
+                    destination: "",
+                    customer: { address: "", email: "", fullName: "", id: "", phoneNumber: "" },
+                    logistics: 0,
+                    ...jsonify,
+                    message: "",
+                    status: "",
+                    messages: "",
+                    check: "",
+                }
+            } else {
+                finaldata = {
+                    pizza: {
+                        products: [],
+                        prices: [],
+                        toppings: []
+                    },
+                    bfw: {
+                        products: [],
+                        prices: [],
+                        toppings: []
+                    },
+                    salad: {
+                        products: [],
+                        prices: [],
+                        toppings: []
+                    },
+                    gelatos: {
+                        products: [],
+                        prices: [],
+                        toppings: []
+                    },
+                    platter: {
+                        products: [],
+                        prices: [],
+                        toppings: []
+                    },
+                    User: "",
+                    Ordered: [],
+                    Orders: [],
+                    notification: [],
+                    archive: [],
+                    customers: [],
+                    OrderedProduct: [],
+                    orderedTopping: [],
+                    loading: true,
+                    cart: [],
+                    toppingcart: [],
+                    scrow: window.pageYOffset,
+                    width: window.innerWidth,
+                    prices: [],
+                    locations: [],
+                    destination: "",
+                    customer: { address: "", email: "", fullName: "", id: "", phoneNumber: "" },
+                    logistics: 0,
+                    message: "",
+                    status: "",
+                    messages: "",
+                    check: "",
+                }
             }
-            document.addEventListener('resize', onresizer)
-            document.addEventListener('scroll', onresizer)
-
-            return () => {
-
-            };
-        }, [])
-        return ( 
-          <storeContext.Provider value = { { storestate, storedispatch }} > { props.children } </storeContext.Provider>
-            )
+            return finaldata
         }
-   export default StoreContextProvider;
+    )
+    useEffect(() => {
+        localStorage.setItem("storestate", JSON.stringify(storestate))
+    }, [storestate]);
+
+    useEffect(() => {
+        const onresizer = () => {
+            storedispatch({
+                type: SET_SCREEN_SIZE,
+                width: window.innerWidth,
+                scrow: window.pageYOffset
+            })
+        }
+        document.addEventListener('resize', onresizer)
+        document.addEventListener('scroll', onresizer)
+
+        return () => {
+
+        };
+    }, [])
+    return ( <
+        storeContext.Provider value = {
+            { storestate, storedispatch }
+        } > { props.children } < /storeContext.Provider>
+    )
+}
+export default StoreContextProvider;
