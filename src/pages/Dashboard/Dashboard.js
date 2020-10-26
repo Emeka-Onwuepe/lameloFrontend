@@ -12,7 +12,7 @@ const Dashboard = () => {
     // const { } = storestate
     let OrderedList = <OrderList products={Orders} />
     useEffect(() => {
-        getOrder().then(res => storedispatch(res))
+        getOrder().then(res => storedispatch(res));
     }, []);
     return (
         <div className="dashboard-page">

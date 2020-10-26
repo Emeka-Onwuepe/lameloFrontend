@@ -10,7 +10,7 @@ import OrderedHistory from "./components/Card/OrderedHistory"
 import PaymentBtn from './components/cart/PaymentBtn';
 // import DashBoard from "./components/DashBoard/DashBoard";
 // import OrderedProducts from "./components/DashBoard/OrderedProducts";
-import Archive from "./components/DashBoard/Archive"
+// import Archive from "./components/DashBoard/Archive"
 
 
 
@@ -23,7 +23,7 @@ const Routes = (props) => {
             <Route exact path="/confirmOrder" component={Details} />
             <Route exact path="/pay" component={PaymentBtn} />
             {/* <Route exact path="/dashboard" component={DashBoard} /> */}
-            <Route exact path="/archive" component={Archive} />
+            {/* <Route exact path="/archive" component={Archive} /> */}
             <Route exact path="/orderhistory" component={OrderedHistory} />
 
             <Route exact path="/ordered/:id/:total" component={OrderedItems} />

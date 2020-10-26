@@ -55,8 +55,8 @@ export const getCategory = (data, type) => {
     }).catch(err => {
         return {
             type: ADD_ERROR,
-            // data: err.response.data,
-            // status: err.response.status
+            data: err.response.data,
+            status: err.response.status
         }
 
     })
@@ -76,8 +76,8 @@ export const processOrder = (data, config) => {
     }).catch(err => {
         return {
             type: ADD_ERROR,
-            // data: err.response.data,
-            // status: err.response.status
+            data: err.response.data,
+            status: err.response.status
         }
 
     })
@@ -96,8 +96,8 @@ export const payment = (data, orderlist) => {
     }).catch(err => {
         return {
             type: ADD_ERROR,
-            // data: err.response.data,
-            // status: err.response.status
+            data: err.response.data,
+            status: err.response.status
         }
 
     })
@@ -112,8 +112,8 @@ export const locations = () => {
     }).catch(err => {
         return {
             type: ADD_ERROR,
-            // data: err.response.data,
-            // status: err.response.status
+            data: err.response.data,
+            status: err.response.status
         }
 
     })
@@ -129,8 +129,8 @@ export const getOrder = () => {
     }).catch(err => {
         return {
             type: ADD_ERROR,
-            // data: err.response.data,
-            // status: err.response.status
+            data: err.response.data,
+            status: err.response.status
         }
 
     })
@@ -154,8 +154,8 @@ export const performAction = (data, type) => {
     }).catch(err => {
         return {
             type: ADD_ERROR,
-            // data: err.response.data,
-            // status: err.response.status
+            data: err.response.data,
+            status: err.response.status
         }
     })
 }
@@ -172,8 +172,8 @@ export const getOrderAndCustomer = (data) => {
     }).catch(err => {
         return {
             type: ADD_ERROR,
-            // data: err.response.data,
-            // status: err.response.status
+            data: err.response.data,
+            status: err.response.status
         }
 
     })
