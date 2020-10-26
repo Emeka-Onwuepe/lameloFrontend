@@ -11,7 +11,7 @@ const Admin = () => {
     const { isLightTheme, light, dark } = theme;
     const checkTheme = isLightTheme ? light : dark;
     return (
-       <div className="ms-content-wrapper" style={{backgroundColor: checkTheme.bg, color: checkTheme.bgColor}}>
+       <div style={{backgroundColor: checkTheme.bg, color: checkTheme.bgColor}}>
             <AdminNavbar />
             <Dashboard />
        </div>

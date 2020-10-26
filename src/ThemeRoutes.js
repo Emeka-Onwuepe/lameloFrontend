@@ -6,7 +6,7 @@ import Orders from './pages/Orders/Orders';
 import Sales from './pages/Sales/Sales';
 import Invoice from './pages/Invoice/Invoice';
 import Archives from './pages/Archives/Archives';
-import OrderedProducts from './pages/Dashboard/OrderedProducts';
+import OrderedProducts from './pages/OrderDetails/OrderedProducts';
 
 
 const ThemeRoutes = () => {
@@ -18,7 +18,6 @@ const ThemeRoutes = () => {
                 <Route exact path="/admin/orders" component={Orders} />
                 <Route exact path="/ordered/:id/:total/:customerId/:destination" component={OrderedProducts} />
                 <Route exact path="/admin/sales" component={Sales} />
-                <Route exact path="/admin/invoice" component={Invoice} />
                 <Route exact path="/admin/archives" component={Archives} />
             </Switch>
         </div>

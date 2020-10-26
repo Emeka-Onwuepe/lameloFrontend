@@ -42,7 +42,7 @@ const ProductCard = ({ products, prices, toppings }) => {
     const filter = (array, price) => {
         let items = []
         array.forEach(id => {
-            let [match] = price.filter(price => id === price.id)
+            let [match] = price.filter(price => id == price.id)
             items.push(match)
         })
         return items
@@ -134,10 +134,10 @@ const ProductCard = ({ products, prices, toppings }) => {
         } catch (err) {
         }
         value.forEach(item => {
-            let [price] = prices.filter(x => x.id === item)
+            let [price] = prices.filter(x => x.id == item)
 
-            let check = stateArry.filter(item => item.id === price.id)
-            if (check.length === 0) {
+            let check = stateArry.filter(item => item.id == price.id)
+            if (check.length == 0) {
                 stateArry.push(price)
                 setpriceState(stateArry)
             }
@@ -155,7 +155,7 @@ const ProductCard = ({ products, prices, toppings }) => {
                 for (const index of priceState) {
                     const data = { id: parseInt(`${product.id}${index.id}`), Id: product.id, name: product.name, flavour: product.flavour, price: index.price, size: index.size, quantity: 1, image: product.image }
                     storestate.cart.forEach(x => {
-                        if (x.id === data.id) {
+                        if (x.id == data.id) {
                             check = true
                             setDivdisplay({ display: true, check: true })
                         }
@@ -176,10 +176,10 @@ const ProductCard = ({ products, prices, toppings }) => {
                     progress: undefined,
                 })
             }
-        } else if (product.multipleSIzes.length === 0) {
+        } else if (product.multipleSIzes.length == 0) {
             setDivdisplay({ display: true })
             storestate.cart.forEach(x => {
-                if (x.id === id) {
+                if (x.id == id) {
                     check = true
                     setDivdisplay({ display: true, check: true })
                 }
@@ -220,7 +220,7 @@ const ProductCard = ({ products, prices, toppings }) => {
                                 <CardBody>
                                     <CardTitle><h3>{pizza.name}</h3></CardTitle>
 
-                                    {pizza.price === 0 && prices.length > 0 ?
+                                    {pizza.price == 0 && prices.length > 0 ?
                                         <>
                                             <Select closeMenuOnSelect={false} components={animatedComponents} onChange={onChange} placeholder="Select Product Sizes..." isMulti options={filter(pizza.multipleSIzes, prices).map((item) => ({ value: item.id, label: `Size:${item.size}- ₦${numbro(parseInt(item.price)).format({ thousandSeparated: true })}` }))
                                             } /><br /></>

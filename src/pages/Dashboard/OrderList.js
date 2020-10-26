@@ -26,7 +26,7 @@ const OrderList = (props) => {
 
     const onclick = (e) => {
         const [id, action] = e.target.id.split("-")
-        console.log(id)
+        // console.log(id)
         const data = { "action": action, "data": id, "customer": "", "search": "" }
 
         const decisionBox = () => toast.success(<div className="decisionBox">
@@ -48,16 +48,16 @@ const OrderList = (props) => {
         decisionBox()
     }
     const list = products.map(items => (
-        <tr key={items.id} role="role">
-            <td role="cell"><NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> {items.OrderId}</NavLink> </td>
-            <td role="cell"><NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> {filterCustomers(customers, items.customer)}</NavLink> </td>
-            <td role="cell"><NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> &#x20A6; {numbro(items.total).format({ thousandSeparated: true })}</NavLink></td>
-            <td role="cell">{items.destination === 'null' ? '':  <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.destination}</NavLink>}</td>
-            <td role="cell">{ items.logistics === 0 ? "" : <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>&#x20A6;{numbro(items.logistics).format({ thousandSeparated: true })}</NavLink>}</td>
-            <td role="cell"><NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>&#x20A6;{numbro(items.logistics + items.total).format({ thousandSeparated: true })}</NavLink></td>
-            <td role="cell"> <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.created}</NavLink></td>
-            <td role="cell"> <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.delivered ? "Delivered" : "Not Delivered"}</NavLink></td>
-            <td role="cell">{items.delivered ? "" : <Button id={`${items.OrderId}-Delivered`} style={{marginRight: "5px"}} onClick={onclick}>Delivered?</Button>}
+        <tr key={items.id} role="row" className="dashboard-order">
+            <td className="dashboard-td" role="cell"><NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> {items.OrderId}</NavLink> </td>
+            <td className="dashboard-td" role="cell"><NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> {filterCustomers(customers, items.customer)}</NavLink> </td>
+            <td className="dashboard-td" role="cell"><NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> &#x20A6; {numbro(items.total).format({ thousandSeparated: true })}</NavLink></td>
+            <td className="dashboard-td" role="cell">{items.destination === 'null' ? '':  <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.destination}</NavLink>}</td>
+            <td className="dashboard-td" role="cell">{ items.logistics === 0 ? "" : <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>&#x20A6;{numbro(items.logistics).format({ thousandSeparated: true })}</NavLink>}</td>
+            <td className="dashboard-td" role="cell"><NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>&#x20A6;{numbro(items.logistics + items.total).format({ thousandSeparated: true })}</NavLink></td>
+            <td className="dashboard-td" role="cell"> <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.created}</NavLink></td>
+            <td className="dashboard-td" role="cell"> <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.delivered ? "Delivered" : "Not Delivered"}</NavLink></td>
+            <td className="dashboard-td" role="cell">{items.delivered ? "" : <Button id={`${items.OrderId}-Delivered`} style={{marginRight: "5px"}} onClick={onclick}>Delivered?</Button>}
             {items.archived ? "" : <Button id={`${items.OrderId}-Archive`} onClick={onclick}>Archive</Button>}</td>
         </tr>
     ))
@@ -70,9 +70,9 @@ const OrderList = (props) => {
                        <h3 style={{textAlign: 'center', fontSize:'30px', backgroundColor: checkTheme.cardHeader }}>
                           Recent Orders
                        </h3>
-                       <table class="table table-striped" role="table">
-                       <thead role="rowgroup">
-                        <tr role="row">
+                       <table className="table table-striped dashboard-table" role="table">
+                       <thead role="rowgroup" className="table-heading">
+                        <tr role="row" className="heading-row">
                             <th role="columnheader">Ref No:</th>
                             <th role="columnheader">Customer</th>
                             <th role="columnheader">Amount</th>
@@ -81,33 +81,34 @@ const OrderList = (props) => {
                             <th role="columnheader">Total</th>
                             <th role="columnheader">Date ordered</th>
                             <th role="columnheader">Status</th>
-                            <th role="columnheader"></th>
+                            <th></th>
                         </tr>
                     </thead>
-                        <tbody role="rowgroup">
+                        <tbody role="rowgroup" className="dashboard-tbody">
                         {list}
                         </tbody>
                       </table>
                     </Card>: 
                     <Card style={{ backgroundColor: checkTheme.cardHeader }}>
                       
-                     <h3 style={{textAlign: 'center', fontSize:'30px', backgroundColor: checkTheme.cardHeader, padding: '10px'}}>
+                     <h3 style={{textAlign: 'center', fontSize:'30px', backgroundColor: checkTheme.cardHeader}}>
                         Recent Orders
                      </h3>
-                      <table class="table table-striped table-dark" role="table">
-                      <thead role="rowgroup">
-                        <tr role="row">
-                            <th role="columnheader">Ref No:</th>
-                            <th role="columnheader">Customer</th>
-                            <th role="columnheader">Amount</th>
-                            <th role="columnheader">Destination</th>
-                            <th role="columnheader">Logistics </th>
-                            <th role="columnheader">Total</th>
-                            <th role="columnheader">Date ordered</th>
-                            <th role="columnheader">Status</th>
+                      <table className="table table-striped table-dark dashboard-table" role="table">
+                      <thead role="rowgroup" className="table-heading">
+                        <tr role="row" className="heading-row">
+                            <th role="columnheader" className="dashboard-th">Ref No:</th>
+                            <th role="columnheader" className="dashboard-th">Customer</th>
+                            <th role="columnheader" className="dashboard-th">Amount</th>
+                            <th role="columnheader" className="dashboard-th">Destination</th>
+                            <th role="columnheader" className="dashboard-th">Logistics </th>
+                            <th role="columnheader" className="dashboard-th">Total</th>
+                            <th role="columnheader" className="dashboard-th">Date ordered</th>
+                            <th role="columnheader" className="dashboard-th">Status</th>
+                            <th></th>
                         </tr>
                     </thead>
-                        <tbody role="rowgroup">
+                        <tbody role="rowgroup" className="dashboard-tbody">
                           {list}
                         </tbody>
                     </table></Card>}
