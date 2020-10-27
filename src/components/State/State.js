@@ -163,7 +163,6 @@ export const performAction = (data, type) => {
 
 export const getOrderAndCustomer = (data) => {
     return axios.post("https://lameloapis.herokuapp.com/dashboard", data).then(res => {
-        console.log(res.data.toppings)
         return {
             type: GET_PRODUCT_AND_CUSTOMER,
             products: res.data.products,
@@ -377,7 +376,9 @@ const storeReducer = (state, action) => {
         case ADD_NOTIFICATION:
             return {
                 ...state,
-                notification: [...action.data, ...state.notification],
+                notification: [...action.neworder, ...state.notification],
+                Orders: action.data,
+                customers: action.customers,
                 loading: false,
             }
         case GET_ARCHIVE:

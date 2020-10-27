@@ -6,35 +6,37 @@ import { storeContext, getOrder, ADD_NOTIFICATION } from '../components/State/St
 const Notifications = () => {
     const { storestate, storedispatch } = useContext(storeContext)
     const { Orders, archive, notification } = storestate
-
-    // useEffect(() => {
-    // }, [Orders]);
-
-    const joined = Orders.concat(archive)
-    setInterval(() => {
-        getOrder().then(res => {
-            let newOrder = []
-            res.data.forEach(element => {
-                const check = joined.filter(item => item.id == element.id)
-                if (check.length == 0) {
-                    newOrder.push(element)
+    useEffect(() => {
+        const joined = Orders.concat(archive)
+        const orderCheckInterval = setInterval(() => {
+            getOrder().then(res => {
+                let newOrder = []
+                res.data.forEach(element => {
+                    const check = joined.filter(item => item.id == element.id)
+                    if (check.length == 0) {
+                        newOrder.push(element)
+                    }
+                });
+                if (newOrder.length > 0) {
+                    const data = {
+                        type: ADD_NOTIFICATION,
+                        neworder: newOrder,
+                        data: res.data,
+                        customers: res.customers
+                    }
+                    storedispatch(data)
+                    //call here
                 }
-            });
-            if (newOrder.length > 0) {
-                const data = {
-                    type: ADD_NOTIFICATION,
-                    data: newOrder
-                }
-                storedispatch(data)
-                storedispatch(res)
-                newOrder = []
-            }
-        })
-    }, 120000);
+            })
+        }, 60000);
+        return () => clearInterval(orderCheckInterval)
+    }, [Orders]);
+
+
     return (
-        <div>
-            <p>{notification.length}</p>
-        </div>
+        <>
+            {notification.length}
+        </>
     );
 };
 
