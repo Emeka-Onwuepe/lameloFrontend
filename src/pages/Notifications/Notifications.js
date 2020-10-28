@@ -9,7 +9,7 @@ const Notifications = () => {
     return (
         <div className="ms-content-wrapper"  style={{backgroundColor: checkTheme.bg, color: checkTheme.bgColor}}>
           <AdminNavbar />
-          <div className=" notifications">
+          <div className="notifications-wrapper">
              <h1>Notifications</h1>
         </div>
         </div>
