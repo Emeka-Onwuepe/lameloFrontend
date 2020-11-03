@@ -62,7 +62,7 @@ const ProductPage = (props) => {
   const { mainCategory, heading } = GET_CATEGORY(match)
 
   useEffect(() => {
-    // console.log(storestate.pizza)
+    console.log(products)
     getCategory(data, mainCategory).then(res => storedispatch(res))
     storedispatch(load(LOADING))
   }, []);

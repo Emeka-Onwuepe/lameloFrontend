@@ -8,7 +8,7 @@ const Details = (props) => {
     const { storestate, storedispatch } = useContext(storeContext);
     const { cart, User, logistics, destination, toppingcart } = storestate
     // const  user  = User
-
+    
     // OrderedToppings
     useEffect(() => {
         storedispatch(load(LOADED))
@@ -65,7 +65,7 @@ const Details = (props) => {
         const phoneNumLength = phone_number.length < 11
         const data = JSON.stringify({
             User: User.id !== undefined ? User.id : "",
-            user: { "fullName": full_name, "phoneNumber": phone_number, email, address },
+            user: { "fullName": full_name, "phoneNumber": phone_number, email, address:destination === "iwpk" ? "Customer pick up" : address },
             Ordered: { OrderId, logistics, destination, total }, OrderedProduct: products,
             OrderedToppings: toppings
         })
@@ -101,8 +101,7 @@ const Details = (props) => {
 
                 {errorstate.phone_number ? <p className="error">Only digits/numbers are allowed</p> : errorstate.phoneNumLength ? <p className="error">Phone Number should not be less than 11 digits </p> : ""}
                 <Input type="text" name="phone_number" value={phone_number} id="phone_number" onChange={onChange} placeholder="Please Enter Your phone number" required />
-
-                <Input type="address" name="address" value={address} id="address" onChange={onChange} placeholder="Please Enter Your address" required />
+                {destination=="iwpk"? "" :<Input type="address" name="address" value={address} id="address" onChange={onChange} placeholder="Please Enter Your address" required />}
 
                 <Button className='submitButton btn-lg btn-block' color="primary" type="submit">SUBMIT</Button>
             </Form>

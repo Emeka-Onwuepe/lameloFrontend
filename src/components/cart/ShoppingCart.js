@@ -55,7 +55,7 @@ const ShoppingCart = (props) => {
                     <label for="logistics">Choose Your Location:</label> &nbsp;
                     <select name="logistics" id="logistics" onChange={onchange}>
                         <option value="0"></option>
-                        <option value="0">I will pick it up myself</option>
+                        <option value="0-iwpk">I will pick it up myself</option>
                         {storestate.locations.map((area, index) => <option value={`${area.price}-${area.location}`} key={index}>{`${area.location} Area- ₦${numbro(area.price).format({ thousandSeparated: true })}`}</option>)}
                     </select>
                 </div>}<br />

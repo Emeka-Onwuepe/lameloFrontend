@@ -11,7 +11,7 @@ import { ThemeContext } from '../Context/ThemeContext';
 
 import { storeContext, performAction, GET_ORDERED } from '../../components/State/State';
 
-const OrderList = (props) => {
+const NotificationList = (props) => {
     const products = props.products
     const theme = useContext(ThemeContext);
     const { isLightTheme, light, dark } = theme;
@@ -23,12 +23,6 @@ const OrderList = (props) => {
         let [match] = array.filter(customer => customer.id == customerId)
         return match.fullName
     }
-
-    const getHours = (time) => (
-         time > "12" ? "0" + (parseInt(time.slice(12).trim()) - 12) : time  
-    )
-
-   
 
     const onclick = (e) => {
         const [id, action] = e.target.id.split("-")
@@ -58,17 +52,10 @@ const OrderList = (props) => {
             <td className="dashboard-td" role="cell"><NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> {items.OrderId}</NavLink> </td>
             <td className="dashboard-td" role="cell"><NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> {filterCustomers(customers, items.customer)}</NavLink> </td>
             <td className="dashboard-td" role="cell"><NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> &#x20A6; {numbro(items.total).format({ thousandSeparated: true })}</NavLink></td>
-            <td className="dashboard-td" role="cell">{items.destination === 'null' ? '' : items.destination === 'iwpk'?'Customer Pickup' :  <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.destination}</NavLink>}</td>
+            <td className="dashboard-td" role="cell">{items.destination === 'null' ? '':  <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.destination}</NavLink>}</td>
             <td className="dashboard-td" role="cell">{ items.logistics === 0 ? "" : <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>&#x20A6;{numbro(items.logistics).format({ thousandSeparated: true })}</NavLink>}</td>
             <td className="dashboard-td" role="cell"><NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>&#x20A6;{numbro(items.logistics + items.total).format({ thousandSeparated: true })}</NavLink></td>
-            <td className="dashboard-td" role="cell"> 
-               <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.created.slice(0, 11)} 
-               </NavLink><br />
-               <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{
-                  getHours(items.created)
-               }
-               </NavLink>
-            </td>
+            <td className="dashboard-td" role="cell"> <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.created}</NavLink></td>
             <td className="dashboard-td" role="cell"> <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.delivered ? "Delivered" : "Not Delivered"}</NavLink></td>
             <td className="dashboard-td" role="cell">{items.delivered ? "" : <Button id={`${items.OrderId}-Delivered`} style={{marginRight: "5px"}} onClick={onclick}>Delivered?</Button>}
             {items.archived ? "" : <Button id={`${items.OrderId}-Archive`} onClick={onclick}>Archive</Button>}</td>
@@ -141,4 +128,4 @@ const OrderList = (props) => {
 };
 
 
-export default OrderList;
+export default NotificationList;

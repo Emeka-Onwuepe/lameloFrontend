@@ -1,11 +1,13 @@
-import React, { useContext, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext, useEffect, useState } from 'react';
 import { storeContext, getOrder, ADD_NOTIFICATION } from '../components/State/State';
+import NotificationBox from './Notifications/NotificationBox';
+
 
 
 const Notifications = () => {
-    const { storestate, storedispatch } = useContext(storeContext)
-    const { Orders, archive, notification } = storestate
+    const { storestate, storedispatch } = useContext(storeContext);
+    const [ display, setDisplay ] = useState(false)
+    const { Orders, archive, notification } = storestate;
     useEffect(() => {
         const joined = Orders.concat(archive)
         const orderCheckInterval = setInterval(() => {
@@ -25,7 +27,7 @@ const Notifications = () => {
                         customers: res.customers
                     }
                     storedispatch(data)
-                    //call here
+                    // setDisplay(true)
                 }
             })
         }, 60000);
@@ -34,16 +36,14 @@ const Notifications = () => {
 
 
     return (
-        <>
+        <> 
+           {/* <NotificationBox /> */}
             {notification.length}
         </>
     );
 };
 
 
-Notifications.propTypes = {
-
-};
 
 
 export default Notifications;

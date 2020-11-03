@@ -29,12 +29,6 @@ export const AdminContent = [
         cName: 'nav-text'
     },
     {
-        title: 'Invoice',
-        path: '/admin/invoice',
-        icons: <FaIcons.FaFileInvoice />,
-        cName: 'nav-text'
-    },
-    {
         title: 'Archives',
         path: '/admin/archives',
         icons: <FaIcons.FaArchive />,
