@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ab8ed446.chunk.css",
+    "main.js": "/static/js/main.ca34c6bb.chunk.js",
+    "main.js.map": "/static/js/main.ca34c6bb.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.8c374b5d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.8c374b5d.js.map",
+    "static/css/2.7444351b.chunk.css": "/static/css/2.7444351b.chunk.css",
+    "static/js/2.fb9a271d.chunk.js": "/static/js/2.fb9a271d.chunk.js",
+    "static/js/2.fb9a271d.chunk.js.map": "/static/js/2.fb9a271d.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.eed75d47b61a7e6dcda8f4ce58af15fa.js": "/precache-manifest.eed75d47b61a7e6dcda8f4ce58af15fa.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.7444351b.chunk.css.map": "/static/css/2.7444351b.chunk.css.map",
+    "static/css/main.ab8ed446.chunk.css.map": "/static/css/main.ab8ed446.chunk.css.map",
+    "static/js/2.fb9a271d.chunk.js.LICENSE.txt": "/static/js/2.fb9a271d.chunk.js.LICENSE.txt",
+    "static/media/LAMELŌ logo blk.png": "/static/media/LAMELŌ logo blk.2d85a0e4.png",
+    "static/media/LAMELŌ pattern blu2.png": "/static/media/LAMELŌ pattern blu2.93cfddd9.png",
+    "static/media/Lamelo - Emblem (curves) wht.png": "/static/media/Lamelo - Emblem (curves) wht.913cad5c.png",
+    "static/media/Home.css": "/static/media/restaurant.7438956b.jpeg",
+    "static/media/Product.css": "/static/media/restaurant2.3b9268cc.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8c374b5d.js",
+    "static/css/2.7444351b.chunk.css",
+    "static/js/2.fb9a271d.chunk.js",
+    "static/css/main.ab8ed446.chunk.css",
+    "static/js/main.ca34c6bb.chunk.js"
+  ]
+}
