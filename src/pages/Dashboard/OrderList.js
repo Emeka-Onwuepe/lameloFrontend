@@ -24,9 +24,18 @@ const OrderList = (props) => {
         return match.fullName
     }
 
-    const getHours = (time) => (
-         time > "12" ? "0" + (parseInt(time.slice(12).trim()) - 12) : time  
-    )
+    const getHours = (time) => {
+ 
+       let hours = time.slice(0,2);
+       let covHours = parseInt(hours) + 1
+       let seconds = time.slice(2,5);
+       let amPM = covHours >= 12 && covHours !== "00" ? "PM" : "AM";
+       if(covHours > 12 ){
+           return covHours - 12 + seconds + " " + amPM
+       }else {
+          return covHours + " " + amPM
+       }
+    }
 
    
 
@@ -65,10 +74,12 @@ const OrderList = (props) => {
                <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.created.slice(0, 11)} 
                </NavLink><br />
                <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{
-                  getHours(items.created)
+                  getHours(items.created.slice(12))
                }
+
                </NavLink>
             </td>
+            {    console.log(items.created.slice(12))}
             <td className="dashboard-td" role="cell"> <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.delivered ? "Delivered" : "Not Delivered"}</NavLink></td>
             <td className="dashboard-td" role="cell">{items.delivered ? "" : <Button id={`${items.OrderId}-Delivered`} style={{marginRight: "5px"}} onClick={onclick}>Delivered?</Button>}
             {items.archived ? "" : <Button id={`${items.OrderId}-Archive`} onClick={onclick}>Archive</Button>}</td>
