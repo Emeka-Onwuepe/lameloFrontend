@@ -65,7 +65,7 @@ const Details = (props) => {
         const phoneNumLength = phone_number.length < 11
         const data = JSON.stringify({
             User: User.id !== undefined ? User.id : "",
-            user: { "fullName": full_name, "phoneNumber": phone_number, email, address:destination=="iwpk"?"Customer pick up":address },
+            user: { "fullName": full_name, "phoneNumber": phone_number, email, address:destination === "iwpk" ? "Customer pick up" : address },
             Ordered: { OrderId, logistics, destination, total }, OrderedProduct: products,
             OrderedToppings: toppings
         })

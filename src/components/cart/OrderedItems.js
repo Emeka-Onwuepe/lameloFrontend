@@ -37,21 +37,22 @@ const OrderedItems = (props) => {
             <td>{item.price * item.quantity} </td>
         </tr>)
     }
+
+    
     // if (storestate.User == "") {
     //     return < Redirect to="/ShoppingCart" />
     // }
 
-    if (items === "") {
+    if (items === "" && toppings==="") {
         return <Fragment></Fragment>
 
     } else {
 
         return (
             <div>
-                {User.user !== undefined && User.user !== "" ? <div className="userNameDiv">
-                    <p className="userName">Welcome, {console.log(User.fullName.toUpperCase())}</p>
-
-                </div> : ""}
+                {/* {User.user !== undefined && User.user !== "" ? <div className="userNameDiv">
+                    <p className="userName">Welcome, {User.fullName.toUpperCase()}</p>
+                </div> : ""} */}
                 <table>
                     <thead>
                         <tr>
