@@ -10,8 +10,10 @@ import { Button } from 'reactstrap';
 const PaymentBtn = (props) => {
     const { storestate, storedispatch } = useContext(storeContext)
     const { User, Ordered } = storestate;
-    const last = Ordered.length - 1
-    const recent = Ordered[last]
+    // const last = Ordered.length - 1
+    // const recent = Ordered[last]
+    const recent = Ordered[0]
+
 
     useEffect(() => {
     }, [storestate.success]);

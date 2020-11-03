@@ -17,7 +17,10 @@ const notifyStyle = {
     height: '100%',
     minHeight: '100vh',
     display: 'grid',
-    placeItems: 'center'
+    width: '100%',
+    placeItems: 'center',
+    position: 'absolute',
+    zIndex: 200
 }
 
 const modalStyle = {

@@ -97,7 +97,7 @@ const Home = (props) => {
                         <span>+234-814-671-2370<br /> +234-818-799-4444</span><br />
                         <span className="holder">EMAIL US</span><br />
                         <span>info@lamelo.com.mg<br /> lamelo.info@gmail.com</span><br />
-                        <p className="social-links"><a target="_blank" href="https://www.facebook.com/LAMELOnigeria/" className="facebook" rel="noopener noreferrer"><FaFacebook /></a> <a target="_blank" href="https://www.twitter.com/lamelo_ng" className="twitter" rel="noopener noreferrer"><FaTwitter /></a> <a target="_blank" href="https://www.instagram.com/lamelo_ng" className="instagram" rel="noopener noreferrer"><FaInstagram /></a><a target="_blank" href="https://www.linkedin.com/in/lamelo-ng-4956161b4/" className="linkedin" rel="noopener noreferrer"><FaLinkedin /></a></p>
+                        <span className="social-links"><a target="_blank" href="https://www.facebook.com/LAMELOnigeria/" className="facebook" rel="noopener noreferrer"><FaFacebook /></a> <a target="_blank" href="https://www.twitter.com/lamelo_ng" className="twitter" rel="noopener noreferrer"><FaTwitter /></a> <a target="_blank" href="https://www.instagram.com/lamelo_ng" className="instagram" rel="noopener noreferrer"><FaInstagram /></a><a target="_blank" href="https://www.linkedin.com/in/lamelo-ng-4956161b4/" className="linkedin" rel="noopener noreferrer"><FaLinkedin /></a></span>
                       </CardText>
                     </CardBody>
                   </Col>

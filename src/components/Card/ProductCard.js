@@ -62,6 +62,7 @@ const ProductCard = ({ products, prices, toppings }) => {
         </div>
     </div>, {
         position: "top-center",
+        onClose: ()=> setDivdisplay(initial),
         autoClose: 10000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -76,6 +77,7 @@ const ProductCard = ({ products, prices, toppings }) => {
         </div>
     </div>, {
         position: "top-center",
+        onClose: ()=> setDivdisplay(initial),
         autoClose: 10000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -195,7 +197,7 @@ const ProductCard = ({ products, prices, toppings }) => {
         <Container>
 
             <Row>
-                {toppings.length > 0 ? <div style={{ textAlign: 'center', backgroundColor: '#4CAF50', zIndex: '1000', border: '3px solid #4CAF50', padding: '20px', marginBottom: '10px' }} className="toppings-style" data-aos="flip-left">
+                {toppings && toppings.length > 0 ? <div style={{ textAlign: 'center', backgroundColor: '#4CAF50', zIndex: '1000', border: '3px solid #4CAF50', padding: '20px', marginBottom: '10px' }} className="toppings-style" data-aos="flip-left">
                     <h3 className="toppings-heading">Choose Your Own Toppings</h3>
                     <div className="toppings-divider" />
                     <Row>
@@ -239,6 +241,7 @@ const ProductCard = ({ products, prices, toppings }) => {
                 <>
                     {DivDisplay.check && DivDisplay.display ? alreadyInCart() : DivDisplay.display ? decisionBox() : ""}
                     <ToastContainer position="top-center"
+                        onClose= {()=> setDivdisplay(initial)}
                         autoClose={10000}
                         hideProgressBar={false}
                         newestOnTop={false}
