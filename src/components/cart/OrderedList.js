@@ -19,7 +19,7 @@ return {
         customer_email: user.email,
         customer_phone: user.phoneNumber,
         amount: items.total + items.logistics,
-        PBFPubKey: "FLWPUBK_TEST-79b39b660c2b5bcc87b62b747d4c3fa2-X",
+        PBFPubKey: process.env.REACT_APP_PBFPubKey,
         production: false,
         onSuccess:(()=>{
              payment(data, ordered).then(res => storedispatch(res))

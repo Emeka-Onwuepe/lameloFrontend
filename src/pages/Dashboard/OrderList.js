@@ -67,7 +67,7 @@ const OrderList = (props) => {
             <td className="dashboard-td" role="cell"><NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> {items.OrderId}</NavLink> </td>
             <td className="dashboard-td" role="cell"><NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> {filterCustomers(customers, items.customer)}</NavLink> </td>
             <td className="dashboard-td" role="cell"><NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> &#x20A6; {numbro(items.total).format({ thousandSeparated: true })}</NavLink></td>
-            <td className="dashboard-td" role="cell">{items.destination === 'null' ? '' : items.destination === 'iwpk'?'Customer Pickup' :  <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.destination}</NavLink>}</td>
+            <td className="dashboard-td" role="cell">{items.destination === 'null' ? '' : items.destination === 'iwpk'?<NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>Customer Pickup</NavLink> :  <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.destination}</NavLink>}</td>
             <td className="dashboard-td" role="cell">{ items.logistics === 0 ? "" : <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>&#x20A6;{numbro(items.logistics).format({ thousandSeparated: true })}</NavLink>}</td>
             <td className="dashboard-td" role="cell"><NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>&#x20A6;{numbro(items.logistics + items.total).format({ thousandSeparated: true })}</NavLink></td>
             <td className="dashboard-td" role="cell"> 
@@ -79,7 +79,6 @@ const OrderList = (props) => {
 
                </NavLink>
             </td>
-            {    console.log(items.created.slice(12))}
             <td className="dashboard-td" role="cell"> <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.delivered ? "Delivered" : "Not Delivered"}</NavLink></td>
             <td className="dashboard-td" role="cell">{items.delivered ? "" : <Button id={`${items.OrderId}-Delivered`} style={{marginRight: "5px"}} onClick={onclick}>Delivered?</Button>}
             {items.archived ? "" : <Button id={`${items.OrderId}-Archive`} onClick={onclick}>Archive</Button>}</td>

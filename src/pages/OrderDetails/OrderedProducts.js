@@ -53,7 +53,7 @@ const OrderedProducts = (props) => {
     //     return < Redirect to="/ShoppingCart" />
     // }
 
-    if (items === "") {
+    if (items === "" && toppings === "") {
         return <Fragment></Fragment>
 
     } else {
