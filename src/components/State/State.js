@@ -429,7 +429,18 @@ const storeReducer = (state, action) => {
 }
 
 
-
+export const getHours = (time) => {
+ 
+    let hours = time.slice(0,2);
+    let covHours = parseInt(hours) + 1
+    let seconds = time.slice(2,5);
+    let amPM = covHours >= 12 && covHours !== "00" ? "PM" : "AM";
+    if(covHours > 12 ){
+        return covHours - 12 + seconds + " " + amPM
+    }else {
+       return covHours + " " + amPM
+    }
+ }
 //build stateProvider
 
 export const storeContext = createContext()
@@ -564,10 +575,9 @@ const StoreContextProvider = (props) => {
 
         };
     }, [])
-    return ( <
-        storeContext.Provider value = {
-            { storestate, storedispatch }
-        } > { props.children } < /storeContext.Provider>
+
+ 
+    return ( <storeContext.Provider value ={{ storestate, storedispatch, getHours }} >{ props.children }</storeContext.Provider>
     )
 }
 export default StoreContextProvider;

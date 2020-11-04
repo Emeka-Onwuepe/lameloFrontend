@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Container, Card, Button } from 'reactstrap';
 
-import './Dashboard.css'
+// import './Dashboard.css'
 import { ThemeContext } from '../Context/ThemeContext';
 
 import { storeContext, performAction, GET_ORDERED } from '../../components/State/State';
@@ -64,6 +64,7 @@ const NotificationList = (props) => {
 
     return (
             <Container className="dashboard-container">
+                  {console.log(products)}
                      {isLightTheme ?
                       <Card style={{ backgroundColor: checkTheme.cardHeader }}>
                        
@@ -86,6 +87,7 @@ const NotificationList = (props) => {
                     </thead>
                         <tbody role="rowgroup" className="dashboard-tbody">
                         {list}
+                       
                         </tbody>
                       </table>
                     </Card>: 

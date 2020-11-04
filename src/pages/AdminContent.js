@@ -11,12 +11,6 @@ export const AdminContent = [
         cName: 'nav-text'
     },
     {
-        title: 'Notifications',
-        path: '/admin/notifications',
-        icons: <FaIcons.FaBell />,
-        cName: 'nav-text'
-    },
-    {
         title: 'Orders',
         path: '/admin/orders',
         icons: <AiIcons.AiOutlineOrderedList />,

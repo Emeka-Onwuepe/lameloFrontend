@@ -101,17 +101,16 @@
 	text-decoration: none;
 }
 
-.notify {
+.notebell {
 	margin-right: 15px;
 }
 
 .notification-bell {
 	font-size: 40px;
-	/* color: #000; */
+	position: relative;
 }
 
 .notification-badge {
-	/* color: #fff; */
 	position: relative;
 	font-size: 15px;
 	top: -10px;

@@ -8,7 +8,7 @@ import avatar from '../assets/avatar.jpg'
 import adminLogo from '../assets/LAMELŌ logo blk.png'
 import { AdminContent } from './AdminContent';
 import { ThemeContext } from './Context/ThemeContext';
-import Notifications from './Notification';
+import Notifications from './Orders/Notification';
 
 const AdminNavbar = () => {
     const [sidebar, setSidebar] = useState(false);
@@ -27,7 +27,7 @@ const AdminNavbar = () => {
                     <img src={adminLogo} alt="avatar" width={60} height={60} />
                     <span className="user-img">
                         <Link to="#" onClick={toggleTheme}><button style={{ marginRight: '20px', padding: '5px 8px', border: 'none', outline: 'none', color: checkTheme.btnColor, background: checkTheme.btnBg }}>{checkTheme.btnText}</button></Link>
-                        <Link to="#"><span className="notify"><AiIcons.AiOutlineBell className="notification-bell" /><span className="notification-badge" style={{ color: checkTheme.badge }}><Notifications /></span></span></Link>&nbsp;
+                        <Link to="#"><span className="notebell"><AiIcons.AiOutlineBell className="notification-bell" /><span className="notification-badge" style={{ color: checkTheme.badge }}><Notifications /></span></span></Link>&nbsp;
                   <Link to="#"><img src={avatar} alt="avatar" width={40} height={40} style={{ borderRadius: '50%' }} /></Link>
                     </span>
 
