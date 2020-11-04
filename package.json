@@ -33,7 +33,8 @@
         "smoothscroll-polyfill": "^0.4.4"
     },
     "scripts": {
-        "start": "npm run server",
+        // "start": "npm run server",
+        "start": " react-scripts start",
         "server": "serve -s build -l 3000",
         "build": "react-scripts build",
 
