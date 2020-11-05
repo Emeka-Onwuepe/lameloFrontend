@@ -18,12 +18,13 @@ const ArchivedData = (props) => {
     const themeContext = useContext(ThemeContext);
     const { isLightTheme, light, dark } = themeContext;
     const checkTheme = isLightTheme ? light: dark
+
+    const { archive, customers,Orders } = storestate
+
     useEffect(() => {
         const data = { "action": "Get_Archive", "data": "", "customer": "", "search": "" }
         performAction(data, GET_ARCHIVE).then(res => storedispatch(res))
-    }, []);
-    const { archive, customers } = storestate
-
+    }, [Orders,archive]);
     const filterCustomers = (array, customerId) => {
         let [match] = array.filter(customer => customer.id == customerId)
         return match.fullName
