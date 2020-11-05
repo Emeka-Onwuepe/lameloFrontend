@@ -3,7 +3,7 @@ import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 const defaultProps = {
   initialPage: 1,
-  pageSize: 7
+  pageSize: 10
 }
 
 class Paginations extends React.Component {
@@ -52,7 +52,7 @@ class Paginations extends React.Component {
       currentPage = currentPage || 1;
   
       // default page size is 10
-      pageSize = pageSize || 7;
+      pageSize = pageSize || 10;
     //   console.log(pageSize)
       // calculate total pages
       var totalPages = Math.ceil( totalItems / pageSize );

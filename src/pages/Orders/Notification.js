@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { storeContext, getOrder, ADD_NOTIFICATION } from '../../components/State/State';
 import { ThemeContext } from '../Context/ThemeContext';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Notifications = () => {
     const { storestate, storedispatch } = useContext(storeContext);
@@ -44,7 +44,7 @@ const Notifications = () => {
             {notification.length}
             <div className={display ? "notify" : "notify hide-notification"}>
                 <div className="box-items">
-                <h3 ><NavLink to="/admin/orders" >You have a new order</NavLink></h3>
+                <h3 ><Link to="/admin/orders" >You have a new order</Link></h3>
                 </div>
             </div> 
         </>
