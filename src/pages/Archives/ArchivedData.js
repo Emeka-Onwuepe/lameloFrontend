@@ -9,7 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Button, Container, Card} from 'reactstrap';
 
-import { storeContext, performAction, GET_ARCHIVE, GET_ORDERED } from '../../components/State/State';
+import { storeContext, performAction, GET_ARCHIVE, GET_ORDERED, getHours } from '../../components/State/State';
 
 import { ThemeContext } from '../Context/ThemeContext'
 const ArchivedData = (props) => {
@@ -56,10 +56,16 @@ const ArchivedData = (props) => {
             <td className="archive-td"><NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> {items.OrderId}</NavLink> </td>
             <td className="archive-td"><NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> {filterCustomers(customers, items.customer)}</NavLink> </td>
             <td className="archive-td"><NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> &#x20A6; {numbro(items.total).format({ thousandSeparated: true })}</NavLink></td>
-          <td className="archive-td">{items.destination === 'null' ? "" : <NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.destination}</NavLink>}</td>
+          <td className="archive-td">{items.destination === 'null' ? "" : items.destination === 'iwpk' ? <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>Customer Pickup</NavLink> : <NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.destination}</NavLink>}</td>
           <td className="archive-td">{items.logistics === 0 ? "" : <NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>&#x20A6; {numbro(items.logistics).format({ thousandSeparated: true })}</NavLink>}</td>
             <td className="archive-td"><NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>&#x20A6; {numbro(items.logistics + items.total).format({ thousandSeparated: true })}</NavLink></td>
-            <td className="archive-td"> <NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.created}</NavLink></td>
+            <td className="archive-td">    <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.created.slice(0, 11)} 
+               </NavLink><br />
+               <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{
+                  getHours(items.created.slice(12))
+               }
+
+               </NavLink></td>
             <td className="archive-td"> <NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.delivered ? "Delivered" : "Not Delivered"}</NavLink></td>
             <td className="archive-td">{items.delivered ? "" : <Button id={`${items.OrderId}-Delivered`} onClick={onclick} type="">Delivered ?</Button>}
             {items.archived ? "" : <button id={`${items.OrderId}-Archive`} onClick={onclick} type="">Archive</button>}

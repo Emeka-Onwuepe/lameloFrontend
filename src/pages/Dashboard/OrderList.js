@@ -9,10 +9,11 @@ import { Container, Card, Button } from 'reactstrap';
 import './Dashboard.css'
 import { ThemeContext } from '../Context/ThemeContext';
 
-import { storeContext, performAction, GET_ORDERED } from '../../components/State/State';
+import { storeContext, performAction, GET_ORDERED, getHours } from '../../components/State/State';
 
 const OrderList = (props) => {
-    const products = props.products
+    const products = props.products;
+    
     const theme = useContext(ThemeContext);
     const { isLightTheme, light, dark } = theme;
     const checkTheme = isLightTheme ? light: dark
@@ -23,21 +24,6 @@ const OrderList = (props) => {
         let [match] = array.filter(customer => customer.id == customerId)
         return match.fullName
     }
-
-    const getHours = (time) => {
- 
-       let hours = time.slice(0,2);
-       let covHours = parseInt(hours) + 1
-       let seconds = time.slice(2,5);
-       let amPM = covHours >= 12 && covHours !== "00" ? "PM" : "AM";
-       if(covHours > 12 ){
-           return covHours - 12 + seconds + " " + amPM
-       }else {
-          return covHours + " " + amPM
-       }
-    }
-
-   
 
     const onclick = (e) => {
         const [id, action] = e.target.id.split("-")

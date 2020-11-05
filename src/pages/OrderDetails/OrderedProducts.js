@@ -73,7 +73,7 @@ const OrderedProducts = (props) => {
                     </h3>
                     <div className="customer-details" style={{padding: '20px'}}> 
                         <p>Name: {customer.fullName}</p>
-                        <p>Zone: {destination}</p>
+                        <p>Zone: {destination === "iwpk" || destination === "null" ? "Customer Pickup": destination}</p>
                         <p>Address: {customer.address}</p>
                         <p>Email: {customer.email}</p>
                         <p>Phone_Number: {customer.phoneNumber}</p>

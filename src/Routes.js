@@ -10,9 +10,6 @@ import OrderedHistory from "./components/Card/OrderedHistory"
 import PaymentBtn from './components/cart/PaymentBtn';
 import Login from "./pages/Login"
 
-// import DashBoard from "./components/DashBoard/DashBoard";
-// import OrderedProducts from "./components/DashBoard/OrderedProducts";
-// import Archive from "./components/DashBoard/Archive"
 
 
 

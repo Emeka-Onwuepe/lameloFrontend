@@ -2,11 +2,17 @@ import React, { useContext } from 'react'
 import AdminNavbar from '../AdminNavbar';
 import { ThemeContext } from '../Context/ThemeContext'
 import ArchivedData from './ArchivedData';
+import {storeContext} from "../../components/State/State";
 
 const Archives = () => {
     const theme = useContext(ThemeContext);
     const { isLightTheme, light, dark } = theme;
-    const checkTheme = isLightTheme ? light : dark;
+    const checkTheme = isLightTheme ? light : dark;  
+    const { storestate, storedispatch } = useContext(storeContext);
+    const{logged}=storestate
+      if (!logged) {
+        return window.location = "/login";
+    }
     return (
         <div style={{backgroundColor: checkTheme.bg, color: checkTheme.bgColor}}>
             <AdminNavbar />
