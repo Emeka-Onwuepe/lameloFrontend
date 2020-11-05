@@ -8,6 +8,7 @@ import avatar from '../assets/avatar.jpg'
 import adminLogo from '../assets/LAMELŌ logo blk.png'
 import { AdminContent } from './AdminContent';
 import { ThemeContext } from './Context/ThemeContext';
+import {storeContext, LogOut, load, LOADING } from "../components/State/State";
 import Notifications from './Orders/Notification';
 
 const AdminNavbar = () => {
@@ -16,6 +17,16 @@ const AdminNavbar = () => {
     const theme = useContext(ThemeContext);
     const { toggleTheme, isLightTheme, light, dark } = theme;
     const checkTheme = isLightTheme ? light : dark
+
+const { storestate, storedispatch } = useContext(storeContext);
+     const logout = (e) => {
+        // e.preventDefault
+        const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.User.token}` } }
+        LogOut(null, config).then(res => storedispatch(res))
+        storedispatch(load(LOADING))
+    }
+
+
     return (
         <>
             <IconContext.Provider value={{ color: checkTheme.syntax }}>
@@ -29,6 +40,8 @@ const AdminNavbar = () => {
                         <Link to="#"><span className="notebell"><AiIcons.AiOutlineBell className="notification-bell" /><span className="notification-badge" style={{ color: checkTheme.badge }}><Notifications /></span></span></Link>&nbsp;
                         <Link to="#"><img src={avatar} alt="avatar" width={40} height={40} style={{ borderRadius: '50%' }} /></Link>
                     </span>
+
+                    {storestate.logged ? < button className="logout" onClick={logout}>LOG OUT</button> : ""}
 
 
                 </div>

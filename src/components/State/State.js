@@ -32,7 +32,9 @@ export const ADD_DESTINATION = "ADD_DESTINATION";
 export const SET_SCREEN_SIZE = "SET_SCREEN_SIZE";
 export const UPDATE_TOPPING_CART = "UPDATE_TOPPING_CART"
 export const ADD_NOTIFICATION = "ADD_NOTIFICATION"
-
+export const LOGIN = "LOGIN";
+export const LOGOUT = "LOGOUT";
+export const DELETE_USER = "DELETE_USER";
 
 //Capitalise first word
 // const sentenceCase = (data) => {
@@ -43,6 +45,45 @@ export const ADD_NOTIFICATION = "ADD_NOTIFICATION"
 
 //Actions dispatchers
 
+export const LoginUser = (data, config) => {
+    return axios.post('https://lameloapis.herokuapp.com/login', data, config).then(res => {
+
+        return {
+            type: LOGIN,
+            data: res.data,
+            messages: "Logged In Successfully"
+        }
+    }).catch(err => {
+        return {
+            type: ADD_ERROR,
+            data: err.response.data,
+            status: err.response.status,
+        }
+    })
+}
+
+export const LogOut = (data, config) => {
+    return axios.post('https://lameloapis.herokuapp.com/logout', null, config).then(res => {
+
+        return {
+            type: LOGOUT,
+            messages: "Logged Out"
+        }
+    }).catch(err => {
+        return {
+            type: ADD_ERROR,
+            data: err.response.data,
+            status: err.response.status
+        }
+
+    })
+}
+
+export const deleteUser = () => {
+    return {
+        type: DELETE_USER
+    }
+}
 
 export const getCategory = (data, type) => {
     return axios.post("https://lameloapis.herokuapp.com/getproducts", data, ).then(res => {
@@ -388,6 +429,34 @@ const storeReducer = (state, action) => {
                 customers: action.customers,
                 loading: false,
             }
+        case LOGIN:
+            return {
+                ...state,
+                User: {
+                    user: action.data.user,
+                    token: action.data.token,
+                },
+                messages: action.messages,
+                Ordered: action.data.ordered,
+                logged: true,
+                loading: false,
+
+            }
+        case LOGOUT:
+        case DELETE_USER:
+            return {
+                ...state,
+                logged: false,
+                User: "",
+                messages: "",
+                stores: "",
+                Ordered: "",
+                OrderedProduct: "",
+                Orders: [],
+                notification: [],
+                archive: [],
+                loading: false,
+            }
         case CLEAR_SUCCESS:
             return {
                 ...state,
@@ -430,18 +499,18 @@ const storeReducer = (state, action) => {
 
 
 export const getHours = (time) => {
- 
-    let hours = time.slice(0,2);
-    let covHours = parseInt(hours) + 1
-    let seconds = time.slice(2,5);
-    let amPM = covHours >= 12 && covHours !== "00" ? "PM" : "AM";
-    if(covHours > 12 ){
-        return covHours - 12 + seconds + " " + amPM
-    }else {
-       return covHours + " " + amPM
+
+        let hours = time.slice(0, 2);
+        let covHours = parseInt(hours) + 1
+        let seconds = time.slice(2, 5);
+        let amPM = covHours >= 12 && covHours !== "00" ? "PM" : "AM";
+        if (covHours > 12) {
+            return covHours - 12 + seconds + " " + amPM
+        } else {
+            return covHours + " " + amPM
+        }
     }
- }
-//build stateProvider
+    //build stateProvider
 
 export const storeContext = createContext()
 
@@ -487,6 +556,7 @@ const StoreContextProvider = (props) => {
                     OrderedProduct: [],
                     orderedTopping: [],
                     loading: true,
+                    logged: false,
                     cart: [],
                     toppingcart: [],
                     scrow: window.pageYOffset,
@@ -538,6 +608,7 @@ const StoreContextProvider = (props) => {
                     OrderedProduct: [],
                     orderedTopping: [],
                     loading: true,
+                    logged: false,
                     cart: [],
                     toppingcart: [],
                     scrow: window.pageYOffset,
@@ -560,24 +631,10 @@ const StoreContextProvider = (props) => {
         localStorage.setItem("storestate", JSON.stringify(storestate))
     }, [storestate]);
 
-    useEffect(() => {
-        const onresizer = () => {
-            storedispatch({
-                type: SET_SCREEN_SIZE,
-                width: window.innerWidth,
-                scrow: window.pageYOffset
-            })
-        }
-        document.addEventListener('resize', onresizer)
-        document.addEventListener('scroll', onresizer)
-
-        return () => {
-
-        };
-    }, [])
-
- 
-    return ( <storeContext.Provider value ={{ storestate, storedispatch, getHours }} >{ props.children }</storeContext.Provider>
+    return ( <
+        storeContext.Provider value = {
+            { storestate, storedispatch, getHours }
+        } > { props.children } < /storeContext.Provider>
     )
 }
 export default StoreContextProvider;

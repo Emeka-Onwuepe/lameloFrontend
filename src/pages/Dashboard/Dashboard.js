@@ -8,12 +8,15 @@ import OrderList from './OrderList';
 
 const Dashboard = () => {
     const { storestate, storedispatch } = useContext(storeContext)
-    const { Orders,  User } = storestate;
+    const { Orders,  User , logged } = storestate;
     // const { } = storestate
     let OrderedList = <OrderList products={Orders} />
     useEffect(() => {
         getOrder().then(res => storedispatch(res));
     }, []);
+     if (!logged) {
+        return window.location = "/login";
+    }
     return (
         <div className="dashboard-page">
             <div className="admin-welcome"><h2 style={{textAlign: 'center'}}>Welcome, Admin</h2></div>

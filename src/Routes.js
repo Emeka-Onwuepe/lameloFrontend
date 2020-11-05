@@ -8,6 +8,7 @@ import Details from "./components/cart/Details";
 import OrderedItems from "./components/cart/OrderedItems";
 import OrderedHistory from "./components/Card/OrderedHistory"
 import PaymentBtn from './components/cart/PaymentBtn';
+import Login from "./pages/Login"
 
 
 
@@ -21,6 +22,7 @@ const Routes = (props) => {
             <Route exact path="/confirmOrder" component={Details} />
             <Route exact path="/pay" component={PaymentBtn} />
             <Route exact path="/orderhistory" component={OrderedHistory} />
+            <Route exact path="/login" component={Login} />
 
             <Route exact path="/ordered/:id/:total" component={OrderedItems} />
 

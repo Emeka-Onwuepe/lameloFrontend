@@ -8,7 +8,7 @@ const SalesList = () => {
     const [sales, setSales] = useState([])
     const theme = useContext(ThemeContext);
     const { storestate } = useContext(storeContext);
-    const { Orders, archive } = storestate;
+    const { Orders, archive, logged } = storestate;
     const { isLightTheme, light, dark } = theme;
     const checkTheme = isLightTheme ? light : dark;
 
@@ -47,6 +47,10 @@ const SalesList = () => {
     useEffect(() => {
         setSales(getDaySales(dateNow(new Date()),allSales))
     }, [])
+
+      if (!logged) {
+        return window.location = "/login";
+    }
 
     return (   
        <Container className="dashboard-container">

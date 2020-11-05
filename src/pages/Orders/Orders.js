@@ -14,12 +14,15 @@ const Order = () => {
     const checkTheme = isLightTheme ? light: dark
     const { storestate, storedispatch } = useContext(storeContext);
 
-    const { notification } = storestate;
+    const { notification,logged } = storestate;
 
     let NotList = <NotificationList products={notification} />
     useEffect(() => {
         getOrder().then(res => storedispatch(res));
     }, []);
+      if (!logged) {
+        return window.location = "/login";
+    }
     return (
         <div className="dashboard-page ms-content-wrapper" style={{backgroundColor: checkTheme.bg, color: checkTheme.bgColor}}>
             <AdminNavbar />
