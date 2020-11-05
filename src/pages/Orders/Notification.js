@@ -42,7 +42,7 @@ const Notifications = () => {
         <> 
          
             {notification.length}
-            <div className={display ? "notify" : "notify hide-notification"}>
+            <div className={display ? "notify" : "notify hide-notification"} style={{backgroundColor: checkTheme.bg, color: checkTheme.bgColor}}>
                 <div className="box-items">
                 <h3 ><Link to="/admin/orders" >You have a new order</Link></h3>
                 </div>
