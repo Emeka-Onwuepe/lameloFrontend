@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import { ThemeContext } from '../Context/ThemeContext'
 import { Container, Card } from 'reactstrap';
 import { storeContext } from '../../components/State/State';
+import './Sales.css';
 
 const SalesList = () => {
     const [sales, setSales] = useState([])
@@ -46,8 +47,8 @@ const SalesList = () => {
                 <hr />
                
                 {sales && sales.length > 0 ? <><h5 className="text-center">You have made</h5>
-                <h2 className="text-center">{sales.length}</h2>
-                    <h5 className="text-center sales-count">{sales.length > 1 ? "Sales" : "Sale"}</h5>
+                <h2 className="text-center sales-count">{sales.length}</h2>
+                    <h5 className="text-center">{sales.length > 1 ? "Sales" : "Sale"}</h5>
                 </> : <p className="text-center">No Sales Yet</p>}
             </Card>
         </Container> 
