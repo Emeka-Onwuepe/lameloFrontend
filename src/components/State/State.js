@@ -35,6 +35,7 @@ export const ADD_NOTIFICATION = "ADD_NOTIFICATION"
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const DELETE_USER = "DELETE_USER";
+export const CLEAR_NOTIFICATION = "CLEAR_NOTIFICATION"
 
 //Capitalise first word
 // const sentenceCase = (data) => {
@@ -421,6 +422,11 @@ const storeReducer = (state, action) => {
                 Orders: action.data,
                 customers: action.customers,
                 loading: false,
+            }
+        case CLEAR_NOTIFICATION:
+            return {
+                ...state,
+                notification: [],
             }
         case GET_ARCHIVE:
             return {
