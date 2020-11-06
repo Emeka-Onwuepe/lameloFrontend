@@ -7,24 +7,25 @@ import Pagination from '../Pagination/Pagination';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Button, Container, Card} from 'reactstrap';
+import { Button, Container, Card } from 'reactstrap';
 
 import { storeContext, performAction, GET_ARCHIVE, GET_ORDERED, getHours } from '../../components/State/State';
 
 import { ThemeContext } from '../Context/ThemeContext'
 const ArchivedData = (props) => {
-    const [ pageOfItems, setPageOfItems ] = useState([]); 
+    const [pageOfItems, setPageOfItems] = useState([]);
     const { storestate, storedispatch } = useContext(storeContext);
     const themeContext = useContext(ThemeContext);
     const { isLightTheme, light, dark } = themeContext;
-    const checkTheme = isLightTheme ? light: dark
+    const checkTheme = isLightTheme ? light : dark
 
-    const { archive, customers,Orders } = storestate
+    const { archive, customers, Orders } = storestate
 
     useEffect(() => {
         const data = { "action": "Get_Archive", "data": "", "customer": "", "search": "" }
-        performAction(data, GET_ARCHIVE).then(res => storedispatch(res))
-    }, [Orders,archive]);
+        const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.User.token}` } }
+        performAction(data, GET_ARCHIVE, config).then(res => storedispatch(res))
+    }, [Orders, archive]);
     const filterCustomers = (array, customerId) => {
         let [match] = array.filter(customer => customer.id == customerId)
         return match.fullName
@@ -53,96 +54,96 @@ const ArchivedData = (props) => {
     }
     const list = pageOfItems && pageOfItems.length > 0 ? pageOfItems.map(items => (
         <tr key={items.id} role="role" className="archive-order">
-            <td className="archive-td"><NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> {items.OrderId}</NavLink> </td>
-            <td className="archive-td"><NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> {filterCustomers(customers, items.customer)}</NavLink> </td>
-            <td className="archive-td"><NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> &#x20A6; {numbro(items.total).format({ thousandSeparated: true })}</NavLink></td>
-          <td className="archive-td">{items.destination === 'null' ? "" : items.destination === 'iwpk' ? <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>Customer Pickup</NavLink> : <NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.destination}</NavLink>}</td>
-          <td className="archive-td">{items.logistics === 0 ? "" : <NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>&#x20A6; {numbro(items.logistics).format({ thousandSeparated: true })}</NavLink>}</td>
-            <td className="archive-td"><NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>&#x20A6; {numbro(items.logistics + items.total).format({ thousandSeparated: true })}</NavLink></td>
-            <td className="archive-td">    <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.created.slice(0, 11)} 
-               </NavLink><br />
-               <NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{
-                  getHours(items.created.slice(12))
-               }
+            <td className="archive-td"><NavLink style={{ color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> {items.OrderId}</NavLink> </td>
+            <td className="archive-td"><NavLink style={{ color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> {filterCustomers(customers, items.customer)}</NavLink> </td>
+            <td className="archive-td"><NavLink style={{ color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> &#x20A6; {numbro(items.total).format({ thousandSeparated: true })}</NavLink></td>
+            <td className="archive-td">{items.destination === 'null' ? "" : items.destination === 'iwpk' ? <NavLink style={{ color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>Customer Pickup</NavLink> : <NavLink style={{ color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.destination}</NavLink>}</td>
+            <td className="archive-td">{items.logistics === 0 ? "" : <NavLink style={{ color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>&#x20A6; {numbro(items.logistics).format({ thousandSeparated: true })}</NavLink>}</td>
+            <td className="archive-td"><NavLink style={{ color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>&#x20A6; {numbro(items.logistics + items.total).format({ thousandSeparated: true })}</NavLink></td>
+            <td className="archive-td">    <NavLink style={{ color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.created.slice(0, 11)}
+            </NavLink><br />
+                <NavLink style={{ color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{
+                    getHours(items.created.slice(12))
+                }
 
-               </NavLink></td>
-            <td className="archive-td"> <NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.delivered ? "Delivered" : "Not Delivered"}</NavLink></td>
+                </NavLink></td>
+            <td className="archive-td"> <NavLink style={{ color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}>{items.delivered ? "Delivered" : "Not Delivered"}</NavLink></td>
             <td className="archive-td">{items.delivered ? "" : <Button id={`${items.OrderId}-Delivered`} onClick={onclick} type="">Delivered ?</Button>}
-            {items.archived ? "" : <button id={`${items.OrderId}-Archive`} onClick={onclick} type="">Archive</button>}
+                {items.archived ? "" : <button id={`${items.OrderId}-Archive`} onClick={onclick} type="">Archive</button>}
             </td>
         </tr>
-    )) : <p className="text-center" style={{ color: "#333", textAlign: 'center'}}>No records found</p>
+    )) : <p className="text-center" style={{ color: "#333", textAlign: 'center' }}>No records found</p>
 
     const onChangePage = (pageOfItems) => {
-		setPageOfItems(pageOfItems);
-	}  
+        setPageOfItems(pageOfItems);
+    }
 
     return (
         <Container className="archive-container">
-               {isLightTheme ?
-                      <Card style={{ backgroundColor: checkTheme.cardHeader }}>
-                       
-                       <h3 style={{textAlign: 'center', fontSize:'30px', backgroundColor: checkTheme.cardHeader }}>
-                         Archived Orders
+            {isLightTheme ?
+                <Card style={{ backgroundColor: checkTheme.cardHeader }}>
+
+                    <h3 style={{ textAlign: 'center', fontSize: '30px', backgroundColor: checkTheme.cardHeader }}>
+                        Archived Orders
                        </h3>
-                       <table className="table table-striped archive-table" role="table">
-                       <thead role="rowgroup" className="archive-theading">
-                        <tr role="row" className="archive-hrow">
-                            <th role="columnheader" className="archive-th">Ref No:</th>
-                            <th role="columnheader" className="archive-th">Customer</th>
-                            <th role="columnheader" className="archive-th">Amount</th>
-                            <th role="columnheader" className="archive-th">Destination</th>
-                            <th role="columnheader" className="archive-th">Logistics </th>
-                            <th role="columnheader" className="archive-th">Total</th>
-                            <th role="columnheader" className="archive-th">Date ordered</th>
-                            <th role="columnheader" className="archive-th">Status</th>
-                            <th role="columnheader" className="archive-th"></th>
-                        </tr>
-                    </thead>
+                    <table className="table table-striped archive-table" role="table">
+                        <thead role="rowgroup" className="archive-theading">
+                            <tr role="row" className="archive-hrow">
+                                <th role="columnheader" className="archive-th">Ref No:</th>
+                                <th role="columnheader" className="archive-th">Customer</th>
+                                <th role="columnheader" className="archive-th">Amount</th>
+                                <th role="columnheader" className="archive-th">Destination</th>
+                                <th role="columnheader" className="archive-th">Logistics </th>
+                                <th role="columnheader" className="archive-th">Total</th>
+                                <th role="columnheader" className="archive-th">Date ordered</th>
+                                <th role="columnheader" className="archive-th">Status</th>
+                                <th role="columnheader" className="archive-th"></th>
+                            </tr>
+                        </thead>
                         <tbody role="rowgroup" className="archive-tbody">
-                           {list}
-                         
+                            {list}
+
                         </tbody>
-                      </table>
-                       {archive && archive.length > 0 ? (
-                        <Pagination  items={archive} onChangePage={onChangePage}/>): null
-                       }
-                    </Card>: 
-                    <Card style={{ backgroundColor: checkTheme.cardHeader }}>
-                      
-                     <h3 style={{textAlign: 'center', fontSize:'30px', backgroundColor: checkTheme.cardHeader, padding: '10px'}}>
+                    </table>
+                    {archive && archive.length > 0 ? (
+                        <Pagination items={archive} onChangePage={onChangePage} />) : null
+                    }
+                </Card> :
+                <Card style={{ backgroundColor: checkTheme.cardHeader }}>
+
+                    <h3 style={{ textAlign: 'center', fontSize: '30px', backgroundColor: checkTheme.cardHeader, padding: '10px' }}>
                         Archived Orders
                      </h3>
-                      <table className="table table-striped table-dark archive-table" role="table">
-                      <thead role="rowgroup" className="archive-theading">
-                        <tr role="row" className="archive-hrow">
-                            <th role="columnheader" className="archive-th">Ref No:</th>
-                            <th role="columnheader" className="archive-th">Customer</th>
-                            <th role="columnheader" className="archive-th">Amount</th>
-                            <th role="columnheader" className="archive-th">Destination</th>
-                            <th role="columnheader" className="archive-th">Logistics </th>
-                            <th role="columnheader" className="archive-th">Total</th>
-                            <th role="columnheader" className="archive-th">Date ordered</th>
-                            <th role="columnheader" className="archive-th">Status</th>
-                            <th role="columnheader" className="archive-th"></th>
-                        </tr>
-                    </thead>
+                    <table className="table table-striped table-dark archive-table" role="table">
+                        <thead role="rowgroup" className="archive-theading">
+                            <tr role="row" className="archive-hrow">
+                                <th role="columnheader" className="archive-th">Ref No:</th>
+                                <th role="columnheader" className="archive-th">Customer</th>
+                                <th role="columnheader" className="archive-th">Amount</th>
+                                <th role="columnheader" className="archive-th">Destination</th>
+                                <th role="columnheader" className="archive-th">Logistics </th>
+                                <th role="columnheader" className="archive-th">Total</th>
+                                <th role="columnheader" className="archive-th">Date ordered</th>
+                                <th role="columnheader" className="archive-th">Status</th>
+                                <th role="columnheader" className="archive-th"></th>
+                            </tr>
+                        </thead>
                         <tbody role="rowgroup" className="archive-tbody">
-                          {list}
-                        
+                            {list}
+
                         </tbody>
-                       {/* <tfoot>
+                        {/* <tfoot>
                             <tr>
                            
                           </tr>
                        </tfoot> */}
-                    
+
                     </table>
                     {archive && archive.length > 0 ? (
-                      <Pagination  items={archive} onChangePage={onChangePage}/>): null
+                        <Pagination items={archive} onChangePage={onChangePage} />) : null
                     }
-                    </Card>
-                   }
+                </Card>
+            }
             <ToastContainer position="top-center"
                 autoClose={10000}
                 hideProgressBar={false}

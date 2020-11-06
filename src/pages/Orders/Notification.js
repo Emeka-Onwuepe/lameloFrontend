@@ -5,17 +5,18 @@ import { Link } from 'react-router-dom';
 
 const Notifications = () => {
     const { storestate, storedispatch } = useContext(storeContext);
-    const [ display, setDisplay ] = useState(false)
+    const [display, setDisplay] = useState(false)
     const { Orders, archive, notification } = storestate;
 
     const theme = useContext(ThemeContext);
     const { isLightTheme, light, dark } = theme;
-    const checkTheme = isLightTheme ? light: dark;
+    const checkTheme = isLightTheme ? light : dark;
 
     useEffect(() => {
         const joined = Orders.concat(archive)
         const orderCheckInterval = setInterval(() => {
-            getOrder().then(res => {
+            const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.User.token}` } }
+            getOrder(config).then(res => {
                 let newOrder = []
                 res.data.forEach(element => {
                     const check = joined.filter(item => item.id == element.id)
@@ -39,14 +40,14 @@ const Notifications = () => {
     }, [Orders]);
 
     return (
-        <> 
-         
+        <>
+
             {notification.length}
             <div className={display ? "notify" : "notify hide-notification"}>
                 <div className="box-items">
-                <h3 ><Link to="/admin/orders" >You have a new order</Link></h3>
+                    <h3 ><Link to="/admin/orders" >You have a new order</Link></h3>
                 </div>
-            </div> 
+            </div>
         </>
     );
 };
