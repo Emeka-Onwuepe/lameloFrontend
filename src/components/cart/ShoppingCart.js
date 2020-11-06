@@ -40,8 +40,9 @@ const ShoppingCart = (props) => {
 
     return (
         <div className="container-fluid cart-store">
+            {console.log(User)}
             {User !== undefined && User !== "" ? <div className="userNameDiv">
-                <p className="userName" data-aos="fade-up">Welcome, {User.fullName.toUpperCase()} </p>
+                <p className="userName" data-aos="fade-up">Welcome, {User.fullName} </p>
             </div> : ""}
             <Button onClick={() => props.history.push("/orderhistory")} className="order-history">View Order History</Button>
             <div className="orderListDisplay text-center mt-4">
@@ -52,7 +53,7 @@ const ShoppingCart = (props) => {
                 {total > 0 && <p><b>Total and logistics: ₦{numbro(total + logistics).format({ thousandSeparated: true })}</b></p>}
                 {/* <p className="directions"> {directions}</p> */}
                 {total > 0 && <div data-aos="zoom-in">
-                    <label for="logistics">Choose Your Location:</label> &nbsp;
+                    <label htmlFor="logistics">Choose Your Location:</label> &nbsp;
                     <select name="logistics" id="logistics" onChange={onchange}>
                         <option value="0"></option>
                         <option value="0-iwpk">I will pick it up myself</option>
