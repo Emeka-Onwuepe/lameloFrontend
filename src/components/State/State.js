@@ -35,6 +35,7 @@ export const ADD_NOTIFICATION = "ADD_NOTIFICATION"
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const DELETE_USER = "DELETE_USER";
+export const CLEAR_NOTIFICATION = "CLEAR_NOTIFICATION"
 
 //Capitalise first word
 // const sentenceCase = (data) => {
@@ -161,8 +162,8 @@ export const locations = () => {
 
     })
 }
-export const getOrder = () => {
-    return axios.get("https://lameloapis.herokuapp.com/dashboard").then(res => {
+export const getOrder = (config) => {
+    return axios.get("https://lameloapis.herokuapp.com/dashboard", config).then(res => {
         return {
             type: GET_ORDERED,
             data: res.data.ordered,
@@ -178,8 +179,8 @@ export const getOrder = () => {
     })
 }
 
-export const performAction = (data, type) => {
-    return axios.post("https://lameloapis.herokuapp.com/dashboard", data).then(res => {
+export const performAction = (data, type, config) => {
+    return axios.post("https://lameloapis.herokuapp.com/dashboard", data, config).then(res => {
         if (type == GET_ORDERED) {
             return {
                 type: GET_ORDERED,
@@ -202,8 +203,8 @@ export const performAction = (data, type) => {
     })
 }
 
-export const getOrderAndCustomer = (data) => {
-    return axios.post("https://lameloapis.herokuapp.com/dashboard", data).then(res => {
+export const getOrderAndCustomer = (data, config) => {
+    return axios.post("https://lameloapis.herokuapp.com/dashboard", data, config).then(res => {
         return {
             type: GET_PRODUCT_AND_CUSTOMER,
             products: res.data.products,
@@ -421,6 +422,11 @@ const storeReducer = (state, action) => {
                 Orders: action.data,
                 customers: action.customers,
                 loading: false,
+            }
+        case CLEAR_NOTIFICATION:
+            return {
+                ...state,
+                notification: [],
             }
         case GET_ARCHIVE:
             return {
