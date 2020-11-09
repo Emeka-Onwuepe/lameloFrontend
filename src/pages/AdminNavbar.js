@@ -21,7 +21,7 @@ const AdminNavbar = () => {
 const { storestate, storedispatch } = useContext(storeContext);
      const logout = (e) => {
         // e.preventDefault
-        const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.User.token}` } }
+        const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.AdminUser.token}` } }
         LogOut(null, config).then(res => storedispatch(res))
         storedispatch(load(LOADING))
     }

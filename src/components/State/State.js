@@ -469,7 +469,7 @@ const storeReducer = (state, action) => {
         case LOGIN:
             return {
                 ...state,
-                User: {
+                AdminUser: {
                     user: action.data.user,
                     token: action.data.token,
                 },
@@ -485,6 +485,7 @@ const storeReducer = (state, action) => {
                 ...state,
                 logged: false,
                 User: "",
+                AdminUser: "",
                 messages: "",
                 stores: "",
                 Ordered: "",
@@ -578,6 +579,7 @@ const StoreContextProvider = (props) => {
                         toppings: []
                     },
                     User: "",
+                    AdminUser: "",
                     Ordered: [],
                     Orders: [],
                     Sales: { products: [], toppings: [] },
@@ -631,6 +633,7 @@ const StoreContextProvider = (props) => {
                         toppings: []
                     },
                     User: "",
+                    AdminUser: "",
                     Ordered: [],
                     Orders: [],
                     Sales: { products: [], toppings: [] },

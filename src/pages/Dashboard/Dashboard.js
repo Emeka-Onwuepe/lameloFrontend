@@ -8,11 +8,11 @@ import OrderList from './OrderList';
 
 const Dashboard = () => {
     const { storestate, storedispatch } = useContext(storeContext)
-    const { Orders, User, logged } = storestate;
+    const { Orders, AdminUser, logged } = storestate;
     // const { } = storestate
     let OrderedList = <OrderList products={Orders} />
     useEffect(() => {
-        const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.User.token}` } }
+        const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.AdminUser.token}` } }
         getOrder(config).then(res => storedispatch(res));
     }, []);
     if (!logged) {
