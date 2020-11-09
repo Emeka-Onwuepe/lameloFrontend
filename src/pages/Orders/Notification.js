@@ -18,6 +18,7 @@ const Notifications = () => {
             const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.User.token}` } }
             getOrder(config).then(res => {
                 let newOrder = []
+                console.log(res)
                 res.data.forEach(element => {
                     const check = joined.filter(item => item.id == element.id)
                     if (check.length == 0) {
@@ -43,7 +44,7 @@ const Notifications = () => {
         <>
 
             {notification.length}
-            <div className={display ? "notify" : "notify hide-notification"} style={{backgroundColor: checkTheme.bg, color: checkTheme.bgColor}}>
+            <div className={display ? "notify" : "notify hide-notification"} style={{backgroundColor: checkTheme.bg, color: checkTheme.bgColor, border: `1px solid ${checkTheme.bgColor}`}}>
                 <div className="box-items">
                     <h3 ><Link to="/admin/orders" >You have a new order</Link></h3>
                 </div>

@@ -32,10 +32,12 @@ const Order = () => {
     if (!logged) {
         return window.location = "/login";
     }
+    const { User: {user: {username}}} = storestate;
+    
     return (
         <div className="dashboard-page ms-content-wrapper" style={{ backgroundColor: checkTheme.bg, color: checkTheme.bgColor }}>
             <AdminNavbar />
-            <div className="admin-welcome"><h2 style={{ textAlign: 'center' }}>Welcome, Admin</h2></div>
+            <div className="admin-welcome"><h2 style={{ textAlign: 'center' }}>Welcome, {username}</h2></div>
             {NotList}
         </div>
     )

@@ -1,16 +1,25 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import AdminNavbar  from '../AdminNavbar'
 import { ThemeContext } from '../Context/ThemeContext'
 import SalesList from './SalesList';
+import {storeContext} from "../../components/State/State";
 
 const Sales = () => {
     const theme = useContext(ThemeContext);
     const { isLightTheme, light, dark } = theme;
     const checkTheme = isLightTheme ? light : dark;
+    const { storestate, storedispatch } = useContext(storeContext);
+    const{logged } = storestate
+
+    if (!logged) {
+        return window.location = "/login";
+    }
+    const{User: {user: {username}}} = storestate;
+    
     return (
         <div className="ms-content-wrapper dashboard-page" style={{backgroundColor: checkTheme.bg, color: checkTheme.bgColor}}>
            <AdminNavbar />
-           <div className="admin-welcome"><h2 style={{textAlign: 'center'}}>Welcome, Admin</h2></div>
+           <div className="admin-welcome"><h2 style={{textAlign: 'center'}}>Welcome, {username}</h2></div>
            <SalesList />
         </div>
     )

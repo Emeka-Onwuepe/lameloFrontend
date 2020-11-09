@@ -34,15 +34,15 @@ const SalesList = () => {
         });
         return filteredSales
     }
-    const getDailySales =(data, array)=>{
-        let filteredSales=[]
-         array.forEach(sale => {
-             if(sale.created.indexOf(data)>-1){
-                 filteredSales.push(sale)
-             }
-         });
-         return filteredSales
-     }
+    // const getDailySales =(data, array)=>{
+    //     let filteredSales=[]
+    //      array.forEach(sale => {
+    //          if(sale.created.indexOf(data)>-1){
+    //              filteredSales.push(sale)
+    //          }
+    //      });
+    //      return filteredSales
+    //  }
 
     useEffect(() => {
         setSales(getDaySales(dateNow(new Date()),allSales))
@@ -58,7 +58,7 @@ const SalesList = () => {
                 <h3 style={{textAlign: 'center', fontSize:'30px'}}>
                     Daily Sales
                 </h3>
-                {console.log(getDailySales("Pizza", sales))}
+             
                 <hr />
                
                 {sales && sales.length > 0 ? <><h5 className="text-center">You have made</h5>

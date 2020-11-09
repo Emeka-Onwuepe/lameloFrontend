@@ -48,7 +48,7 @@ const ToppingItems = (props) => {
         storedispatch(Updatetoppingcart(toppingcart))
     }
     return (
-        <Card className="card-items-page page">
+        <Card className="page" style={{height: '170px'}}>
             <CardBody>
                 <CardTitle><h4>{product.topping}</h4></CardTitle>
                 <CardSubtitle className="text-center"> <h5>Price: ₦{numbro(product.price).format({ thousandSeparated: true })}</h5></CardSubtitle>

@@ -19,7 +19,10 @@ const OrderedProducts = (props) => {
     const theme = useContext(ThemeContext);
     const { isLightTheme, light, dark } = theme;
     const checkTheme = isLightTheme ? light : dark;
-    const { OrderedProduct, User, customer, orderedTopping } = storestate
+    const { OrderedProduct, User, customer, orderedTopping, logged } = storestate;
+    if(!logged) window.location = '/login'
+    const { user: { username } } = User;
+ 
     const products = OrderedProduct
     let items = ""
     let toppings = ""
@@ -62,11 +65,11 @@ const OrderedProducts = (props) => {
         return (
             <div className="ordered-product" style={{ backgroundColor: checkTheme.bg, color: checkTheme.bgColor }}>
                 <AdminNavbar />
-                {User.user !== undefined && User.user !== "" ? <div className="userNameDiv">
-                    <p className="userName">Welcome, {User.fullName.toUpperCase()}</p>
+                {/* {User.user !== undefined && User.user !== "" ? <div className="userNameDiv">
+                    <p className="userName"></p>
 
-                </div> : ""}
-                <div className="customer-header"><h2 style={{ textAlign: 'center' }}>Customer's Order</h2></div>
+                </div> : ""} */}
+                <div className="customer-header"><h2 style={{ textAlign: 'center' }}>Welcome, {username.toUpperCase()}</h2></div>
                 <Container className="dashboard-container">
                     {isLightTheme ? <Card style={{ backgroundColor: checkTheme.cardHeader }}>
                         <h3 style={{ textAlign: 'center', fontSize: '30px', backgroundColor: checkTheme.cardHeader, padding: '10px' }}>
