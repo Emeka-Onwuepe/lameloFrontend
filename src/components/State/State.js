@@ -29,13 +29,13 @@ export const PAYMENT = "PAYMENT";
 export const GET_LOCATION = "GET_LOCATION";
 export const ADD_LOGISTICS = "ADD_LOGISTICS";
 export const ADD_DESTINATION = "ADD_DESTINATION";
-export const SET_SCREEN_SIZE = "SET_SCREEN_SIZE";
 export const UPDATE_TOPPING_CART = "UPDATE_TOPPING_CART"
 export const ADD_NOTIFICATION = "ADD_NOTIFICATION"
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const DELETE_USER = "DELETE_USER";
 export const CLEAR_NOTIFICATION = "CLEAR_NOTIFICATION"
+export const GET_SALES = "GET_SALES"
 
 //Capitalise first word
 // const sentenceCase = (data) => {
@@ -43,6 +43,13 @@ export const CLEAR_NOTIFICATION = "CLEAR_NOTIFICATION"
 //     let rest = data.slice(1).toLowerCase()
 //     return `${firstWord}${rest}`
 // }
+
+
+const filteritems = (array) => {
+    let result = []
+    array.forEach(item => result.push(...item))
+    return result
+}
 
 //Actions dispatchers
 
@@ -221,6 +228,25 @@ export const getOrderAndCustomer = (data, config) => {
     })
 }
 
+
+export const getSales = (data, config) => {
+    return axios.post("https://lameloapis.herokuapp.com/dashboard", data, config).then(res => {
+        let products = res.data.products.length > 1 ? filteritems(res.data.products) : res.data.products
+        let toppings = res.data.toppings.length > 1 ? filteritems(res.data.toppings) : res.data.toppings
+        return {
+            type: GET_SALES,
+            data: { products, toppings }
+        }
+    }).catch(err => {
+        // return {
+        //     type: ADD_ERROR,
+        //     data: err.response.data,
+        //     status: err.response.status
+        // }
+
+    })
+}
+
 export const addToCart = (data) => {
     return {
         type: ADD_TO_CART,
@@ -345,6 +371,11 @@ const storeReducer = (state, action) => {
                 ...state,
                 toppingcart: [...action.data],
                 loading: false,
+            }
+        case GET_SALES:
+            return {
+                ...state,
+                Sales: action.data
             }
         case LOADING:
             return {
@@ -489,13 +520,6 @@ const storeReducer = (state, action) => {
                 status: "",
                 messages: ""
             }
-        case SET_SCREEN_SIZE:
-            return {
-                ...state,
-                screenWidth: action.width,
-                scrow: action.scrow
-            }
-
         default:
             return {
                 ...state
@@ -556,6 +580,7 @@ const StoreContextProvider = (props) => {
                     User: "",
                     Ordered: [],
                     Orders: [],
+                    Sales: { products: [], toppings: [] },
                     notification: [],
                     archive: [],
                     customers: [],
@@ -608,6 +633,7 @@ const StoreContextProvider = (props) => {
                     User: "",
                     Ordered: [],
                     Orders: [],
+                    Sales: { products: [], toppings: [] },
                     notification: [],
                     archive: [],
                     customers: [],

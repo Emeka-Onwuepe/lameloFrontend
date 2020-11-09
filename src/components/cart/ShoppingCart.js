@@ -12,9 +12,9 @@ const ShoppingCart = (props) => {
     const { cart, User, logistics, toppingcart } = storestate;
   
 
-    const fullname = User !== undefined && User !== "" ? <div className="userNameDiv">
-    <p className="userName" data-aos="fade-up">Welcome, {User.fullName.toUpperCase()} </p>
-</div> : ""
+//     const fullname = User !== undefined && User !== "" ? <div className="userNameDiv">
+//     <p className="userName" data-aos="fade-up">Welcome, {User.fullame.toUpperCase()} </p>
+// </div> : ""
     useEffect(() => {
         storedispatch({ type: CLEAR_SUCCESS });
         locations().then(res => storedispatch(res))
@@ -44,7 +44,7 @@ const ShoppingCart = (props) => {
 
     return (
         <div className="container-fluid cart-store">
-            {fullname}
+            {/* {fullname} */}
             <Button onClick={() => props.history.push("/orderhistory")} className="order-history">View Order History</Button>
             <div className="orderListDisplay text-center mt-4">
                 <h3>CART</h3>
