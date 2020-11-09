@@ -29,12 +29,13 @@ const OrderList = (props) => {
         const [id, action] = e.target.id.split("-")
         // console.log(id)
         const data = { "action": action, "data": id, "customer": "", "search": "" }
+        const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.User.token}` } }
 
         const decisionBox = () => toast.success(<div className="decisionBox">
             <p>{action == "Delivered" ? `Are you sure you want to mark order with id: ${id} as delivered` :
                 `Are you sure you want to send order with id: ${id} to Archives`}</p><br />
             <div className="btns-checkout">
-                <Button onClick={() => { performAction(data, GET_ORDERED).then(res => storedispatch(res)) }} color="success">Yes</Button>
+                <Button onClick={() => { performAction(data, GET_ORDERED,config).then(res => storedispatch(res)) }} color="success">Yes</Button>
                 <Button color="info">No</Button>
             </div>
         </div>, {
