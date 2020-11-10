@@ -29,7 +29,7 @@ const OrderList = (props) => {
         const [id, action] = e.target.id.split("-")
         // console.log(id)
         const data = { "action": action, "data": id, "customer": "", "search": "" }
-        const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.User.token}` } }
+        const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.AdminUser.token}` } }
 
         const decisionBox = () => toast.success(<div className="decisionBox">
             <p>{action == "Delivered" ? `Are you sure you want to mark order with id: ${id} as delivered` :

@@ -15,7 +15,7 @@ const Notifications = () => {
     useEffect(() => {
         const joined = Orders.concat(archive)
         const orderCheckInterval = setInterval(() => {
-            const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.User.token}` } }
+            const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.AdminUser.token}` } }
             getOrder(config).then(res => {
                 let newOrder = []
                 console.log(res)

@@ -23,7 +23,7 @@ const ArchivedData = (props) => {
 
     useEffect(() => {
         const data = { "action": "Get_Archive", "data": "", "customer": "", "search": "" }
-        const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.User.token}` } }
+        const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.AdminUser.token}` } }
         performAction(data, GET_ARCHIVE, config).then(res => storedispatch(res))
     }, [Orders, archive]);
     const filterCustomers = (array, customerId) => {
@@ -34,7 +34,7 @@ const ArchivedData = (props) => {
     const onclick = (e) => {
         const [id, action] = e.target.id.split("-")
         const data = { "action": action, "data": id, "customer": "", "search": "" }
-        const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.User.token}` } }
+        const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.AdminUser.token}` } }
         const decisionBox = () => toast.success(<div className="decisionBox">
             <p>{action == "Delivered" ? `Are you sure you want to mark order with id: ${id} as delivered` :
                 `Are you sure you want to send order with id: ${id} to Archives`}</p><br />

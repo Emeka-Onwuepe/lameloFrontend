@@ -41,7 +41,7 @@ const{Sales}=storestate
         setSales(sales)
         let ids = []
         sales.forEach(item => ids.push(item.id))
-        const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.User.token}` } }
+        const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.AdminUser.token}` } }
         const data = { "action": "Get_Sales", "data": ids, "customer": "", "search": "" }
         getSales(data, config).then(res => storedispatch(res))
 

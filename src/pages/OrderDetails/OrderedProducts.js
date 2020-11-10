@@ -19,15 +19,12 @@ const OrderedProducts = (props) => {
     const theme = useContext(ThemeContext);
     const { isLightTheme, light, dark } = theme;
     const checkTheme = isLightTheme ? light : dark;
-    const { OrderedProduct, User, customer, orderedTopping, logged } = storestate;
-    if(!logged) window.location = '/login'
-    const { user: { username } } = User;
- 
+    const { OrderedProduct, AdminUser, customer, orderedTopping,logged } = storestate
     const products = OrderedProduct
     let items = ""
     let toppings = ""
     useEffect(() => {
-        const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.User.token}` } }
+        const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.AdminUser.token}` } }
         const data = { "action": "none", "data": id, "customer": customerId, "search": "orderedproducts" }
         getOrderAndCustomer(data, config).then(res => storedispatch(res));
         storedispatch(load(LOADING))
@@ -53,10 +50,12 @@ const OrderedProducts = (props) => {
             <td></td>
         </tr>)
     }
-    // if (storestate.User == "") {
+    // if (storestate.AdminUser == "") {
     //     return < Redirect to="/ShoppingCart" />
     // }
-
+if (!logged) {
+        return window.location = "/login";
+    }
     if (items === "" && toppings === "") {
         return <Fragment></Fragment>
 
@@ -65,11 +64,11 @@ const OrderedProducts = (props) => {
         return (
             <div className="ordered-product" style={{ backgroundColor: checkTheme.bg, color: checkTheme.bgColor }}>
                 <AdminNavbar />
-                {/* {User.user !== undefined && User.user !== "" ? <div className="userNameDiv">
-                    <p className="userName"></p>
+                {AdminUser.user !== undefined && AdminUser.user !== "" ? <div className="userNameDiv">
+                    <p className="userName">Welcome, {AdminUser.user.username.toUpperCase()}</p>
 
                 </div> : ""} */}
-                <div className="customer-header"><h2 style={{ textAlign: 'center' }}>Welcome, {username.toUpperCase()}</h2></div>
+                <div className="customer-header"><h2 style={{ textAlign: 'center' }}>Welcome, {AdminUser.user.username.toUpperCase()}</h2></div>
                 <Container className="dashboard-container">
                     {isLightTheme ? <Card style={{ backgroundColor: checkTheme.cardHeader }}>
                         <h3 style={{ textAlign: 'center', fontSize: '30px', backgroundColor: checkTheme.cardHeader, padding: '10px' }}>

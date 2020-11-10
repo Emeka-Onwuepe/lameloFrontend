@@ -118,7 +118,7 @@ export const processOrder = (data, config) => {
         return {
             type: PROCESS_ORDER,
             data: res.data.Ordered,
-            messages: "Order Placed Successfully",
+            messages: " ",
             success: true,
             cart: [],
             toppingcart: [],
@@ -142,7 +142,9 @@ export const payment = (data, orderlist) => {
         filtered.push(res.data)
         return {
             type: PAYMENT,
-            data: filtered
+            data: filtered,
+            messages: "Order Placed Successfully",
+
         }
     }).catch(err => {
         return {
@@ -405,6 +407,7 @@ const storeReducer = (state, action) => {
                 ...state,
                 Ordered: action.data,
                 loading: false,
+                messages: action.messages
             }
         case GET_LOCATION:
             return {
@@ -469,7 +472,7 @@ const storeReducer = (state, action) => {
         case LOGIN:
             return {
                 ...state,
-                User: {
+                AdminUser: {
                     user: action.data.user,
                     token: action.data.token,
                 },
@@ -485,6 +488,7 @@ const storeReducer = (state, action) => {
                 ...state,
                 logged: false,
                 User: "",
+                AdminUser: "",
                 messages: "",
                 stores: "",
                 Ordered: "",
@@ -578,6 +582,7 @@ const StoreContextProvider = (props) => {
                         toppings: []
                     },
                     User: "",
+                    AdminUser: "",
                     Ordered: [],
                     Orders: [],
                     Sales: { products: [], toppings: [] },
@@ -631,6 +636,7 @@ const StoreContextProvider = (props) => {
                         toppings: []
                     },
                     User: "",
+                    AdminUser: "",
                     Ordered: [],
                     Orders: [],
                     Sales: { products: [], toppings: [] },
@@ -663,9 +669,10 @@ const StoreContextProvider = (props) => {
         localStorage.setItem("storestate", JSON.stringify(storestate))
     }, [storestate]);
 
-    return ( <storeContext.Provider value = {{ storestate, storedispatch, getHours }} >
-         { props.children } 
-        </storeContext.Provider>
+    return ( < storeContext.Provider value = {
+            { storestate, storedispatch, getHours }
+        } > { props.children } <
+        /storeContext.Provider>
     )
 }
 export default StoreContextProvider;

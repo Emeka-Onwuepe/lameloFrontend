@@ -62,7 +62,7 @@ const ProductCard = ({ products, prices, toppings }) => {
         </div>
     </div>, {
         position: "top-center",
-        onClose: ()=> setDivdisplay(initial),
+        onClose: () => setDivdisplay(initial),
         autoClose: 10000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -77,7 +77,7 @@ const ProductCard = ({ products, prices, toppings }) => {
         </div>
     </div>, {
         position: "top-center",
-        onClose: ()=> setDivdisplay(initial),
+        onClose: () => setDivdisplay(initial),
         autoClose: 10000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -241,7 +241,7 @@ const ProductCard = ({ products, prices, toppings }) => {
                 <>
                     {DivDisplay.check && DivDisplay.display ? alreadyInCart() : DivDisplay.display ? decisionBox() : ""}
                     <ToastContainer position="top-center"
-                        onClose= {()=> setDivdisplay(initial)}
+                        onClose={() => setDivdisplay(initial)}
                         autoClose={10000}
                         hideProgressBar={false}
                         newestOnTop={false}
