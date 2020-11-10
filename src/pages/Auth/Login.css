@@ -1,0 +1,38 @@
+.login-container {
+    margin-top: 5rem;
+}
+
+.loginButton {
+    border-radius: 0;
+    border: 2px solid maroon;
+    padding: 10px;
+    background: transparent;
+}
+
+.loginButton:hover {
+    background: maroon;
+    color: #ffffff;
+    transition: .5s all ease-in-out;
+}
+
+
+#username, #password {
+    background: transparent !important;
+    border: 2px solid maroon;
+    padding: 20px;
+    outline: 0;
+    outline-color: transparent;
+}
+input#username:focus, input#password:focus {
+    background: transparent !important;
+    border: 2px solid maroon;
+    outline: 0;
+    outline-color: transparent;
+}
+input#username:active, input#password:active {
+    background: transparent !important;
+    border: 2px solid maroon;
+    outline: 0;
+    outline-color: transparent;
+}
+

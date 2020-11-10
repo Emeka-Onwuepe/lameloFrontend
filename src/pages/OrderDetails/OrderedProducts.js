@@ -67,8 +67,8 @@ if (!logged) {
                 {AdminUser.user !== undefined && AdminUser.user !== "" ? <div className="userNameDiv">
                     <p className="userName">Welcome, {AdminUser.user.username.toUpperCase()}</p>
 
-                </div> : ""}
-                <div className="customer-header"><h2 style={{ textAlign: 'center' }}>Customer's Order</h2></div>
+                </div> : ""} */}
+                <div className="customer-header"><h2 style={{ textAlign: 'center' }}>Welcome, {AdminUser.user.username.toUpperCase()}</h2></div>
                 <Container className="dashboard-container">
                     {isLightTheme ? <Card style={{ backgroundColor: checkTheme.cardHeader }}>
                         <h3 style={{ textAlign: 'center', fontSize: '30px', backgroundColor: checkTheme.cardHeader, padding: '10px' }}>

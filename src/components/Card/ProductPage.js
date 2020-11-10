@@ -20,7 +20,7 @@ const ProductPage = (props) => {
   const scrollToBottom = () => window.scrollTo({
     top: document.documentElement.scrollHeight,
     behavior: 'smooth'
-})
+  })
   const { category } = useParams()
   let [match] = category.match(/(\w+)/)
   const action = match === "wings" ? 'bfw' : match
@@ -62,31 +62,30 @@ const ProductPage = (props) => {
   const { mainCategory, heading } = GET_CATEGORY(match)
 
   useEffect(() => {
-    console.log(products)
     getCategory(data, mainCategory).then(res => storedispatch(res))
     storedispatch(load(LOADING))
   }, []);
   // console.log(storestate.scrow)
   // console.log(window.pageYOffset)
-  const style={
-                "color": "white",
-                "textAlign": "center",
-                "fontSize": "18px",
-                "zIndex": 300,
-                "position": "relative",
-                "marginBottom": "20px"
-              }
+  const style = {
+    "color": "white",
+    "textAlign": "center",
+    "fontSize": "18px",
+    "zIndex": 300,
+    "position": "relative",
+    "marginBottom": "20px"
+  }
 
   return (
-    
+
     <div className="pizza-bg">
       <div className="overlay"></div>
       <div className="product-align">
-        <Link to="/" className="home"><img src={Logo1} alt="logo1" className="logo-pizza" data-aos="fade-right"/></Link>
+        <Link to="/" className="home"><img src={Logo1} alt="logo1" className="logo-pizza" data-aos="fade-right" /></Link>
         <h1 className="text-center text-color" data-aos="zoom-in">{heading}</h1>
-         <div className="divider-center" ></div>
-        { heading == "Gelatos Menu"?<div style={style}>It is preferrable not to order Ice Creams online</div>:""}
-       
+        <div className="divider-center" ></div>
+        {heading == "Gelatos Menu" ? <div style={style}>It is preferrable not to order Ice Creams online</div> : ""}
+
         <div className="product-cards"><ProductCard products={products} prices={prices} toppings={toppings} /></div>
       </div>
       <div className="down-btn-menu" onClick={scrollToBottom}><span>Scroll Down</span><br /><FaArrowDown className="scroll-arrow-menu" /></div>

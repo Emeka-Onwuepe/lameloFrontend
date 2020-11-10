@@ -55,8 +55,8 @@ const CartItem = (props) => {
                 {/* ₦{numbro(parseInt(pizza.price)).format({ thousandSeparated: true })} */}
                 <CardTitle><h4>{product.name}</h4></CardTitle>
                 <CardSubtitle className="text-center"> <h5>Price: ₦{numbro(product.price).format({ thousandSeparated: true })}</h5></CardSubtitle>
-                <CardText className="text-center"><p><b>{product.size ? `Size: ${product.size}` : ''}</b></p><p><b>QTY: {product.quantity}</b></p>
-                    <p><b>Total: ₦{numbro(product.quantity * product.price).format({ thousandSeparated: true })}</b></p>
+                <CardText className="text-center"><span><b>{product.size ? `Size: ${product.size}` : ''}</b></span><br /><span><b>QTY: {product.quantity}</b></span><br />
+                    <span><b>Total: ₦{numbro(product.quantity * product.price).format({ thousandSeparated: true })}</b></span>
                 </CardText>
                 <center>
                     <Button onClick={increment} color="success"><MdAdd /></Button>{' '}

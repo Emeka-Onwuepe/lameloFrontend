@@ -9,7 +9,7 @@ const Archives = () => {
     const { isLightTheme, light, dark } = theme;
     const checkTheme = isLightTheme ? light : dark;  
     const { storestate, storedispatch } = useContext(storeContext);
-    const{logged}=storestate
+    const{logged, AdminUser}=storestate
       if (!logged) {
         return window.location = "/login";
     }
@@ -17,7 +17,7 @@ const Archives = () => {
         <div style={{backgroundColor: checkTheme.bg, color: checkTheme.bgColor}}>
             <AdminNavbar />
             <div className="archives-page">
-              <div className="archive-welcome"><h2 style={{textAlign: 'center'}}>Archives</h2></div>
+              <div className="archive-welcome"><h2 style={{textAlign: 'center'}}>Welcome, {AdminUser.user.username}</h2></div>
               <ArchivedData />
             </div>
         </div>

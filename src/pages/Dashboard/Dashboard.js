@@ -1,9 +1,7 @@
 import React, { useContext, useEffect } from 'react'
+// import { Redirect } from 'react-router-dom';
 import { storeContext, getOrder } from '../../components/State/State';
 
-// import './Dashboard.css';
-
-// import { Card } from 'reactstrap';
 import OrderList from './OrderList';
 
 const Dashboard = () => {
@@ -19,10 +17,12 @@ const Dashboard = () => {
         return window.location = "/login";
     }
     return (
+     
         <div className="dashboard-page">
-            <div className="admin-welcome"><h2 style={{ textAlign: 'center' }}>Welcome, Admin</h2></div>
+           <div className="admin-welcome"><h2 style={{ textAlign: 'center' }}>Welcome, {AdminUser.user.username}</h2></div>
             {OrderedList}
-        </div>
+        </div> 
+       
     )
 }
 

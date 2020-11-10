@@ -54,9 +54,10 @@ const{Sales}=storestate
     return (
         <Container className="dashboard-container">
             <Card style={{ backgroundColor: checkTheme.cardHeader, padding: '1rem' }}>
-                <h3 style={{ textAlign: 'center', fontSize: '30px', backgroundColor: checkTheme.cardHeader }}>
+                <h3 style={{textAlign: 'center', fontSize:'30px'}}>
                     Daily Sales
                 </h3>
+             
                 <hr />
 
                 {sales && sales.length > 0 ? <><h5 className="text-center">You have made</h5>
