@@ -534,7 +534,7 @@ export const getHours = (time) => {
         let covHours = parseInt(hours) + 1
         let seconds = time.slice(2, 5);
         let secs; 
-        if(seconds === ""){
+        if(seconds.includes(":00")){
             secs = ":00";
         }else {
             secs = seconds;  
