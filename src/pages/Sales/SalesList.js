@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { ThemeContext } from '../Context/ThemeContext'
 import { Container, Card } from 'reactstrap';
-import { storeContext, getSales } from '../../components/State/State';
+import { storeContext, getSales, getHours } from '../../components/State/State';
 import './Sales.css';
+import SalesItems from './SalesItems';
 
 const SalesList = () => {
     const [sales, setSales] = useState([])
@@ -65,6 +66,7 @@ const{Sales}=storestate
                     <h5 className="text-center">{sales.length > 1 ? "Sales" : "Sale"}</h5>
                 </> : <p className="text-center">No Sales Yet</p>}
             </Card>
+            <SalesItems />
         </Container>
 
     )

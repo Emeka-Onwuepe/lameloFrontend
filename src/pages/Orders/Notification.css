@@ -15,7 +15,6 @@
 	-webkit-animation: blink-animation 2s steps(5, start) infinite;
 
 }
-
 @keyframes blink-animation {
 	to {
 		-ms-transform: scale(1.5); /* IE 9 */

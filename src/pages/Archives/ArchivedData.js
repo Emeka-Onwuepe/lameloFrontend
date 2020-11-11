@@ -25,7 +25,7 @@ const ArchivedData = (props) => {
         const data = { "action": "Get_Archive", "data": "", "customer": "", "search": "" }
         const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.AdminUser.token}` } }
         performAction(data, GET_ARCHIVE, config).then(res => storedispatch(res))
-    }, [Orders, archive]);
+    }, []);
     const filterCustomers = (array, customerId) => {
         let [match] = array.filter(customer => customer.id == customerId)
         return match.fullName
@@ -73,7 +73,7 @@ const ArchivedData = (props) => {
                 {items.archived ? "" : <button id={`${items.OrderId}-Archive`} onClick={onclick} type="">Archive</button>}
             </td>
         </tr>
-    )) : <p className="text-center" style={{ color: "#333", textAlign: 'center' }}>No records found</p>
+    )) : <tr className="text-center" style={{ color: "#333", textAlign: 'center' }}>No records found</tr>
 
     const onChangePage = (pageOfItems) => {
         setPageOfItems(pageOfItems);

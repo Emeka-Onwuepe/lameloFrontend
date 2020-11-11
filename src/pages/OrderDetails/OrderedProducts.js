@@ -64,10 +64,10 @@ if (!logged) {
         return (
             <div className="ordered-product" style={{ backgroundColor: checkTheme.bg, color: checkTheme.bgColor }}>
                 <AdminNavbar />
-                {AdminUser.user !== undefined && AdminUser.user !== "" ? <div className="userNameDiv">
+                {/* {AdminUser.user !== undefined && AdminUser.user !== "" ? <div className="userNameDiv">
                     <p className="userName">Welcome, {AdminUser.user.username.toUpperCase()}</p>
 
-                </div> : ""} */}
+                </div> : ""}  */}
                 <div className="customer-header"><h2 style={{ textAlign: 'center' }}>Welcome, {AdminUser.user.username.toUpperCase()}</h2></div>
                 <Container className="dashboard-container">
                     {isLightTheme ? <Card style={{ backgroundColor: checkTheme.cardHeader }}>

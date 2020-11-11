@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import numbro from 'numbro';
 
@@ -8,11 +8,13 @@ import { Container, Card, Button } from 'reactstrap';
 
 import './Dashboard.css'
 import { ThemeContext } from '../Context/ThemeContext';
+import Pagination from '../Pagination/Pagination'
 
 import { storeContext, performAction, GET_ORDERED, getHours } from '../../components/State/State';
 
 const OrderList = (props) => {
     const products = props.products;
+    const [pageOfItems, setPageOfItems] = useState([]);
     
     const theme = useContext(ThemeContext);
     const { isLightTheme, light, dark } = theme;
@@ -49,7 +51,7 @@ const OrderList = (props) => {
         })
         decisionBox()
     }
-    const list = products.map(items => (
+    const list = pageOfItems && pageOfItems.length > 0 ? pageOfItems.map(items => (
         <tr key={items.id} role="row" className="dashboard-order">
             <td className="dashboard-td" role="cell"><NavLink style={{color: checkTheme.syntax }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> {items.OrderId}</NavLink> </td>
             <td className="dashboard-td" role="cell"><NavLink style={{color: checkTheme.syntax  }} to={`/ordered/${items.id}/${items.total}/${items.customer}/${items.destination}`}> {filterCustomers(customers, items.customer)}</NavLink> </td>
@@ -70,7 +72,12 @@ const OrderList = (props) => {
             <td className="dashboard-td" role="cell">{items.delivered ? "" : <Button id={`${items.OrderId}-Delivered`} style={{marginRight: "5px"}} onClick={onclick}>Delivered?</Button>}
             {items.archived ? "" : <Button id={`${items.OrderId}-Archive`} onClick={onclick}>Archive</Button>}</td>
         </tr>
-    ))
+    )) : <tr className="text-center" style={{ color: "#333", textAlign: 'center' }}>No records found</tr>
+
+    const onChangePage = (pageOfItems) => {
+        setPageOfItems(pageOfItems);
+    }
+
 
     return (
             <Container className="dashboard-container">
@@ -98,6 +105,9 @@ const OrderList = (props) => {
                         {list}
                         </tbody>
                       </table>
+                      {products && products.length > 0 ? (
+                        <Pagination items={products} onChangePage={onChangePage} />) : null
+                      }
                     </Card>: 
                     <Card style={{ backgroundColor: checkTheme.cardHeader }}>
                       
@@ -121,7 +131,11 @@ const OrderList = (props) => {
                         <tbody role="rowgroup" className="dashboard-tbody">
                           {list}
                         </tbody>
-                    </table></Card>}
+                    </table>
+                    {products && products.length > 0 ? (
+                        <Pagination items={products} onChangePage={onChangePage} />) : null
+                      }
+                    </Card>}
                     <ToastContainer position="top-center"
                         autoClose={10000}
                         hideProgressBar={false}

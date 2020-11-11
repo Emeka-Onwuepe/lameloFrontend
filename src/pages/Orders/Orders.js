@@ -14,7 +14,7 @@ const Order = () => {
     const checkTheme = isLightTheme ? light : dark
     const { storestate, storedispatch } = useContext(storeContext);
 
-    const { notification, logged } = storestate;
+    const { notification, logged, AdminUser:{user: {username}} } = storestate;
 
     let NotList = <NotificationList products={notification} />
     // useEffect(() => {
@@ -32,7 +32,7 @@ const Order = () => {
     if (!logged) {
         return window.location = "/login";
     }
-    const { User: {user: {username}}} = storestate;
+
     
     return (
         <div className="dashboard-page ms-content-wrapper" style={{ backgroundColor: checkTheme.bg, color: checkTheme.bgColor }}>

@@ -6,7 +6,7 @@ import OrderList from './OrderList';
 
 const Dashboard = () => {
     const { storestate, storedispatch } = useContext(storeContext)
-    const { Orders, AdminUser, logged } = storestate;
+    const { Orders, logged,  AdminUser:{user:{username}} } = storestate;
     // const { } = storestate
     let OrderedList = <OrderList products={Orders} />
     useEffect(() => {
@@ -19,7 +19,7 @@ const Dashboard = () => {
     return (
      
         <div className="dashboard-page">
-           <div className="admin-welcome"><h2 style={{ textAlign: 'center' }}>Welcome, {AdminUser.user.username}</h2></div>
+           <div className="admin-welcome"><h2 style={{ textAlign: 'center' }}>Welcome, {username}</h2></div>
             {OrderedList}
         </div> 
        

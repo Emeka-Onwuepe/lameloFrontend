@@ -9,12 +9,11 @@ const Sales = () => {
     const { isLightTheme, light, dark } = theme;
     const checkTheme = isLightTheme ? light : dark;
     const { storestate, storedispatch } = useContext(storeContext);
-    const{logged } = storestate
+    const{logged, AdminUser:{user: {username}} } = storestate
 
     if (!logged) {
         return window.location = "/login";
     }
-    const{User: {user: {username}}} = storestate;
     
     return (
         <div className="ms-content-wrapper dashboard-page" style={{backgroundColor: checkTheme.bg, color: checkTheme.bgColor}}>
