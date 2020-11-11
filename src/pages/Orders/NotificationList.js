@@ -31,12 +31,13 @@ const NotificationList = (props) => {
         const [id, action] = e.target.id.split("-")
         // console.log(id)
         const data = { "action": action, "data": id, "customer": "", "search": "" }
+        const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.AdminUser.token}` } }
 
         const decisionBox = () => toast.success(<div className="decisionBox">
             <p>{action == "Delivered" ? `Are you sure you want to mark order with id: ${id} as delivered` :
                 `Are you sure you want to send order with id: ${id} to Archives`}</p><br />
             <div className="btns-checkout">
-                <Button onClick={() => { performAction(data, GET_ORDERED).then(res => storedispatch(res)) }} color="success">Yes</Button>
+                <Button onClick={() => { performAction(data, GET_ORDERED, config).then(res => storedispatch(res)) }} color="success">Yes</Button>
                 <Button color="info">No</Button>
             </div>
         </div>, {
@@ -75,32 +76,32 @@ const NotificationList = (props) => {
     }
 
     return (
-            
-               <Container className="dashboard-container">
-                   
-                     {isLightTheme ?
-                      <Card style={{ backgroundColor: checkTheme.cardHeader }}>
-                       
-                       <h3 style={{textAlign: 'center', fontSize:'30px', backgroundColor: checkTheme.cardHeader }}>
-                          New Orders
+
+        <Container className="dashboard-container">
+
+            {isLightTheme ?
+                <Card style={{ backgroundColor: checkTheme.cardHeader }}>
+
+                    <h3 style={{ textAlign: 'center', fontSize: '30px', backgroundColor: checkTheme.cardHeader }}>
+                        New Orders
                        </h3>
-                       <table className="table table-striped dashboard-table" role="table">
-                       <thead role="rowgroup" className="table-heading">
-                        <tr role="row" className="heading-row">
-                            <th role="columnheader">Ref No:</th>
-                            <th role="columnheader">Customer</th>
-                            <th role="columnheader">Amount</th>
-                            <th role="columnheader">Destination</th>
-                            <th role="columnheader">Logistics </th>
-                            <th role="columnheader">Total</th>
-                            <th role="columnheader">Date ordered</th>
-                            <th role="columnheader">Status</th>
-                            <th></th>
-                        </tr>
-                    </thead>
+                    <table className="table table-striped dashboard-table" role="table">
+                        <thead role="rowgroup" className="table-heading">
+                            <tr role="row" className="heading-row">
+                                <th role="columnheader">Ref No:</th>
+                                <th role="columnheader">Customer</th>
+                                <th role="columnheader">Amount</th>
+                                <th role="columnheader">Destination</th>
+                                <th role="columnheader">Logistics </th>
+                                <th role="columnheader">Total</th>
+                                <th role="columnheader">Date ordered</th>
+                                <th role="columnheader">Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
                         <tbody role="rowgroup" className="dashboard-tbody">
-                        {list}
-                       
+                            {list}
+
                         </tbody>
                       </table>
                       {products && products.length > 0 ? (
@@ -112,22 +113,22 @@ const NotificationList = (props) => {
                      <h3 style={{textAlign: 'center', fontSize:'30px', backgroundColor: checkTheme.cardHeader}}>
                         New Orders
                      </h3>
-                      <table className="table table-striped table-dark dashboard-table" role="table">
-                      <thead role="rowgroup" className="table-heading">
-                        <tr role="row" className="heading-row">
-                            <th role="columnheader" className="dashboard-th">Ref No:</th>
-                            <th role="columnheader" className="dashboard-th">Customer</th>
-                            <th role="columnheader" className="dashboard-th">Amount</th>
-                            <th role="columnheader" className="dashboard-th">Destination</th>
-                            <th role="columnheader" className="dashboard-th">Logistics </th>
-                            <th role="columnheader" className="dashboard-th">Total</th>
-                            <th role="columnheader" className="dashboard-th">Date ordered</th>
-                            <th role="columnheader" className="dashboard-th">Status</th>
-                            <th></th>
-                        </tr>
-                    </thead>
+                    <table className="table table-striped table-dark dashboard-table" role="table">
+                        <thead role="rowgroup" className="table-heading">
+                            <tr role="row" className="heading-row">
+                                <th role="columnheader" className="dashboard-th">Ref No:</th>
+                                <th role="columnheader" className="dashboard-th">Customer</th>
+                                <th role="columnheader" className="dashboard-th">Amount</th>
+                                <th role="columnheader" className="dashboard-th">Destination</th>
+                                <th role="columnheader" className="dashboard-th">Logistics </th>
+                                <th role="columnheader" className="dashboard-th">Total</th>
+                                <th role="columnheader" className="dashboard-th">Date ordered</th>
+                                <th role="columnheader" className="dashboard-th">Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
                         <tbody role="rowgroup" className="dashboard-tbody">
-                          {list}
+                            {list}
                         </tbody>
                     </table>
                     {products && products.length > 0 ? (

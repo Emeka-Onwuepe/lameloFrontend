@@ -118,7 +118,6 @@ export const processOrder = (data, config) => {
         return {
             type: PROCESS_ORDER,
             data: res.data.Ordered,
-            messages: " ",
             success: true,
             cart: [],
             toppingcart: [],
@@ -142,8 +141,7 @@ export const payment = (data, orderlist) => {
         filtered.push(res.data)
         return {
             type: PAYMENT,
-            data: filtered,
-            messages: "Order Placed Successfully",
+            data: filtered
 
         }
     }).catch(err => {
@@ -393,7 +391,6 @@ const storeReducer = (state, action) => {
             return {
                 ...state,
                 Ordered: [action.data, ...state.Ordered],
-                messages: action.messages,
                 success: action.success,
                 cart: action.cart,
                 toppingcart: action.toppingcart,
@@ -406,8 +403,7 @@ const storeReducer = (state, action) => {
             return {
                 ...state,
                 Ordered: action.data,
-                loading: false,
-                messages: action.messages
+                loading: false
             }
         case GET_LOCATION:
             return {
@@ -488,7 +484,7 @@ const storeReducer = (state, action) => {
                 ...state,
                 logged: false,
                 User: "",
-                AdminUser: "",
+                AdminUser: { token: "", user: { username: "" } },
                 messages: "",
                 stores: "",
                 Ordered: "",
@@ -537,9 +533,17 @@ export const getHours = (time) => {
         let hours = time.slice(0, 2);
         let covHours = parseInt(hours) + 1
         let seconds = time.slice(2, 5);
+        let secs; 
+        if(seconds === ""){
+            secs = ":00";
+        }else {
+            secs = seconds;  
+        }
         let amPM = covHours >= 12 && covHours !== "00" ? "PM" : "AM";
-        if (covHours > 12) {
-            return covHours - 12 + seconds + " " + amPM
+        if(covHours === 10){
+            return covHours + secs + " " + amPM
+        }else if (covHours > 12) {
+            return covHours - 12 + secs + " " + amPM
         } else {
             return covHours + " " + amPM
         }
@@ -669,10 +673,7 @@ const StoreContextProvider = (props) => {
         localStorage.setItem("storestate", JSON.stringify(storestate))
     }, [storestate]);
 
-    return ( < storeContext.Provider value = {
-            { storestate, storedispatch, getHours }
-        } > { props.children } <
-        /storeContext.Provider>
+    return ( < storeContext.Provider value = {{ storestate, storedispatch, getHours }} > { props.children } </storeContext.Provider>
     )
 }
 export default StoreContextProvider;
