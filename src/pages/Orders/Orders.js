@@ -32,8 +32,8 @@ const Order = () => {
     if (!logged) {
         return window.location = "/login";
     }
-    const { User: {user: {username}}} = storestate;
-    
+    const { AdminUser: { user: { username } } } = storestate;
+
     return (
         <div className="dashboard-page ms-content-wrapper" style={{ backgroundColor: checkTheme.bg, color: checkTheme.bgColor }}>
             <AdminNavbar />

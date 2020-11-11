@@ -118,7 +118,6 @@ export const processOrder = (data, config) => {
         return {
             type: PROCESS_ORDER,
             data: res.data.Ordered,
-            messages: " ",
             success: true,
             cart: [],
             toppingcart: [],
@@ -142,8 +141,7 @@ export const payment = (data, orderlist) => {
         filtered.push(res.data)
         return {
             type: PAYMENT,
-            data: filtered,
-            messages: "Order Placed Successfully",
+            data: filtered
 
         }
     }).catch(err => {
@@ -393,7 +391,6 @@ const storeReducer = (state, action) => {
             return {
                 ...state,
                 Ordered: [action.data, ...state.Ordered],
-                messages: action.messages,
                 success: action.success,
                 cart: action.cart,
                 toppingcart: action.toppingcart,
@@ -406,8 +403,7 @@ const storeReducer = (state, action) => {
             return {
                 ...state,
                 Ordered: action.data,
-                loading: false,
-                messages: action.messages
+                loading: false
             }
         case GET_LOCATION:
             return {
@@ -488,7 +484,7 @@ const storeReducer = (state, action) => {
                 ...state,
                 logged: false,
                 User: "",
-                AdminUser: "",
+                AdminUser: { token: "", user: { username: "" } },
                 messages: "",
                 stores: "",
                 Ordered: "",
