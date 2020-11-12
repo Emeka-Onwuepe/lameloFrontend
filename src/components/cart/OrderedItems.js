@@ -50,9 +50,9 @@ const OrderedItems = (props) => {
 
         return (
             <div>
-                {/* {User.user !== undefined && User.user !== "" ? <div className="userNameDiv">
+                {User.user !== undefined && User.user !== "" ? <div className="userNameDiv">
                     <p className="userName">Welcome, {User.fullName.toUpperCase()}</p>
-                </div> : ""} */}
+                </div> : ""}
                 <table>
                     <thead>
                         <tr>

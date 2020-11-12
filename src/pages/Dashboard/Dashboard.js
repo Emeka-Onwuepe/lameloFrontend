@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 // import { Redirect } from 'react-router-dom';
 import { storeContext, getOrder } from '../../components/State/State';
+import { Redirect } from 'react-router-dom'
 
 import OrderList from './OrderList';
 
@@ -14,7 +15,7 @@ const Dashboard = () => {
         getOrder(config).then(res => storedispatch(res));
     }, []);
     if (!logged) {
-        return window.location = "/login";
+        return <Redirect to="/login" />;
     }
     return (
      

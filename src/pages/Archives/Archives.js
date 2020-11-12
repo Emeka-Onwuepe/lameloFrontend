@@ -3,6 +3,7 @@ import AdminNavbar from '../AdminNavbar';
 import { ThemeContext } from '../Context/ThemeContext'
 import ArchivedData from './ArchivedData';
 import {storeContext} from "../../components/State/State";
+import { Redirect } from 'react-router-dom'
 
 const Archives = () => {
     const theme = useContext(ThemeContext);
@@ -11,7 +12,7 @@ const Archives = () => {
     const { storestate, storedispatch } = useContext(storeContext);
     const{logged, AdminUser: {user: {username}}}=storestate
       if (!logged) {
-        return window.location = "/login";
+        return <Redirect to="/login" />
     }
     return (
         <div style={{backgroundColor: checkTheme.bg, color: checkTheme.bgColor}}>

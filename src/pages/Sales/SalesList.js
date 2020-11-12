@@ -4,6 +4,7 @@ import { Container, Card } from 'reactstrap';
 import { storeContext, getSales, getHours } from '../../components/State/State';
 import './Sales.css';
 import SalesItems from './SalesItems';
+import { Redirect } from 'react-router-dom';
 
 const SalesList = () => {
     const [sales, setSales] = useState([])
@@ -47,9 +48,9 @@ const{Sales}=storestate
         getSales(data, config).then(res => storedispatch(res))
 
     }, [])
-    console.log(Sales)
+  
     if (!logged) {
-        return window.location = "/login";
+        return <Redirect to= "/login" />;
     }
 
     return (
@@ -59,14 +60,16 @@ const{Sales}=storestate
                     Daily Sales
                 </h3>
              
-                <hr />
+                <hr style={{borderColor: checkTheme.bgColor}}/>
 
                 {sales && sales.length > 0 ? <><h5 className="text-center">You have made</h5>
                     <h2 className="text-center sales-count">{sales.length}</h2>
                     <h5 className="text-center">{sales.length > 1 ? "Sales" : "Sale"}</h5>
                 </> : <p className="text-center">No Sales Yet</p>}
+
+                <SalesItems />
             </Card>
-            <SalesItems />
+          
         </Container>
 
     )

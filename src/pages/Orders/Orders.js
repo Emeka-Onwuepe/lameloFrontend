@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { storeContext, CLEAR_NOTIFICATION, load } from '../../components/State/State';
 import { ThemeContext } from '../Context/ThemeContext';
+import { Redirect } from 'react-router-dom'
 
 import NotificationList from './NotificationList';
 
@@ -30,7 +31,7 @@ const Order = () => {
     }, []);
 
     if (!logged) {
-        return window.location = "/login";
+        return <Redirect to="/login" />
     }
 
     

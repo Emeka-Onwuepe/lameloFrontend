@@ -3,6 +3,7 @@ import AdminNavbar from '../AdminNavbar'
 import { ThemeContext } from '../Context/ThemeContext'
 import SalesList from './SalesList';
 import { storeContext } from "../../components/State/State";
+import { Redirect } from 'react-router-dom'
 
 const Sales = () => {
     const theme = useContext(ThemeContext);
@@ -13,7 +14,7 @@ const Sales = () => {
     const { logged, AdminUser } = storestate
 
     if (!logged) {
-        return window.location = "/login";
+        return <Redirect to="/login" />
     }
     
 

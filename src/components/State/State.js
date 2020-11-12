@@ -238,11 +238,11 @@ export const getSales = (data, config) => {
             data: { products, toppings }
         }
     }).catch(err => {
-        // return {
-        //     type: ADD_ERROR,
-        //     data: err.response.data,
-        //     status: err.response.status
-        // }
+        return {
+            type: ADD_ERROR,
+            data: err.response.data,
+            status: err.response.status
+        }
 
     })
 }
@@ -534,7 +534,7 @@ export const getHours = (time) => {
         let covHours = parseInt(hours) + 1
         let seconds = time.slice(2, 5);
         let secs; 
-        if(seconds.includes(":00")){
+        if(seconds === ":00"){
             secs = ":00";
         }else {
             secs = seconds;  

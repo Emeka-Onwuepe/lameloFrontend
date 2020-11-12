@@ -18,7 +18,6 @@ const Notifications = () => {
             const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.AdminUser.token}` } }
             getOrder(config).then(res => {
                 let newOrder = []
-                console.log(res)
                 res.data.forEach(element => {
                     const check = joined.filter(item => item.id == element.id)
                     if (check.length == 0) {
@@ -37,7 +36,7 @@ const Notifications = () => {
                 }
             })
         }, 60000);
-        return () => clearInterval(orderCheckInterval)
+       return () => clearInterval(orderCheckInterval)
     }, [Orders]);
 
     return (
