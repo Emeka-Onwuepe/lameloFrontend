@@ -6,6 +6,7 @@ import './Sales.css';
 import SalesItems from './SalesItems';
 import { Redirect } from 'react-router-dom';
 
+
 const SalesList = () => {
     const [sales, setSales] = useState([])
     const theme = useContext(ThemeContext);
@@ -16,10 +17,10 @@ const SalesList = () => {
 
     let allSales = Orders.concat(archive);
 
-const{Sales}=storestate
+    const{Sales}=storestate
 
     const dateNow = (date) => {
-        const months = ['Jan', 'Feb', 'March', 'April', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
         const dateYear = date.getFullYear();
         const dateMonth = date.getMonth();
         const dateDay = date.getDate().toString().length < 2 ? "0" + date.getDate().toString() : date.getDate();
@@ -69,7 +70,7 @@ const{Sales}=storestate
 
                 <SalesItems />
             </Card>
-          
+
         </Container>
 
     )

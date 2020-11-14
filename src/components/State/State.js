@@ -178,9 +178,9 @@ export const getOrder = (config) => {
         }
     }).catch(err => {
         return {
-            type: ADD_ERROR,
-            data: err.response.data,
-            status: err.response.status
+            // type: ADD_ERROR,
+            // data: err.response.data,
+            // status: err.response.status
         }
 
     })
@@ -231,11 +231,15 @@ export const getOrderAndCustomer = (data, config) => {
 
 export const getSales = (data, config) => {
     return axios.post("https://lameloapis.herokuapp.com/dashboard", data, config).then(res => {
-        let products = res.data.products.length > 1 ? filteritems(res.data.products) : res.data.products
-        let toppings = res.data.toppings.length > 1 ? filteritems(res.data.toppings) : res.data.toppings
+        // let products = res.data.products.length > 1 ? filteritems(res.data.products) : res.data.products[0]
+        // let toppings = res.data.toppings.length > 1 ? filteritems(res.data.toppings) : res.data.toppings[0]
+        let products = filteritems(res.data.products) 
+        let toppings = filteritems(res.data.toppings) 
+
+        console.log(res.data.products)
         return {
             type: GET_SALES,
-            data: { products, toppings }
+            data: { products:products, toppings:toppings }
         }
     }).catch(err => {
         return {
