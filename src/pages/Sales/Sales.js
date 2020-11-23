@@ -18,9 +18,9 @@ const Sales = () => {
     if (!logged) {
         history.push("/login");
         refreshPage()
-     }
+    }
 
-    
+
 
     return (
         <div className="ms-content-wrapper dashboard-page" style={{ backgroundColor: checkTheme.bg, color: checkTheme.bgColor }}>
