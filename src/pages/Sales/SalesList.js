@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { ThemeContext } from '../Context/ThemeContext'
 import { Container, Card } from 'reactstrap';
-import { storeContext, getSales, getHours } from '../../components/State/State';
+import { storeContext, getSales, refreshPage } from '../../components/State/State';
 import './Sales.css';
 import SalesItems from './SalesItems';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
 const SalesList = () => {
@@ -17,7 +17,9 @@ const SalesList = () => {
 
     let allSales = Orders.concat(archive);
 
-    const{Sales}=storestate
+    const{Sales}=storestate;
+
+    const history = useHistory()
 
     const dateNow = (date) => {
         const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -51,8 +53,9 @@ const SalesList = () => {
     }, [])
   
     if (!logged) {
-        return <Redirect to= "/login" />;
-    }
+        history.push("/login");
+        refreshPage()
+     }
 
     return (
         <Container className="dashboard-container">

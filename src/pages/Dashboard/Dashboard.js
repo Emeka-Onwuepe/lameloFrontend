@@ -16,7 +16,7 @@ const Dashboard = () => {
         getOrder(config).then(res => storedispatch(res));
     }, []);
     if (!logged) {
-        history.push("/login");
+         history.push("/login");
          refreshPage()
     }
     return (

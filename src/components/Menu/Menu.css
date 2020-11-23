@@ -179,17 +179,17 @@ to{
 cursor: pointer;
 }
 
-@media (max-width: 568px){
+@media (max-width: 360px){
  
   button.menu-call-to-action{
-     left: 70%;
+     left: 65%;
   }
  
   .logo-2 {
-     width: 160px;
-     height: 160px;
+     width: 120px;
+     height: 120px;
      position: relative;
-     margin-left: 110px;
+     /* margin-left: 110px; */
      margin-top: 20px;
   }
   h1.menu-header {

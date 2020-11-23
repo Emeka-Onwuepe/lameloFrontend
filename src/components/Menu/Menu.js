@@ -25,20 +25,20 @@ const Menu = (props) => {
             <div className="menu-content" >
                 <ol className="items" >
                     <div className="menu-deal" data-aos="fade-up" data-aos-duration="3000">
-                        <li className="menu" onClick={() => props.history.push('/pizza-page')}>Pizza page <span className="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, illum.</span></li>
+                        <li className="menu" onClick={() => props.history.push('/pizza-page')}>Pizza <span className="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, illum.</span></li>
 
                     </div>
                     <div className="menu-deal" data-aos="fade-down" data-aos-duration="3200">
-                        <li className="menu" onClick={() => props.history.push('/wings-fries-burger')}>Burger, Fries & Wings page<span className="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, illum.</span></li>
+                        <li className="menu" onClick={() => props.history.push('/wings-fries-burger')}>Burger, Fries & Wings<span className="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, illum.</span></li>
 
                     </div>
                     <div className="menu-deal" data-aos="zoom-in-right" data-aos-duration="3400">
-                        <li className="menu" onClick={() => props.history.push('/salad-varities')}>Salad Variety page<span className="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, illum.</span></li>
+                        <li className="menu" onClick={() => props.history.push('/salad-varities')}>Salad Variety<span className="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, illum.</span></li>
 
                     </div>
                     <div className="menu-deal" data-aos="flip-right" data-aos-duration="3600">
-                        <li className="menu" onClick={() => props.history.push('/gelatos')}>Gelatos page
-                                <span className="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, illum.</span></li>
+                        <li className="menu" onClick={() => props.history.push('/gelatos')}>Gelatos
+                                <span className="subtitle">Treat yourself to delightfully indulgent ice-cream that's made exclusively in-house. With all our lip-smacking flavors, you'll be spoilt for choice! </span></li>
 
                     </div>
                     <div className="menu-deal" data-aos="zoom-out" data-aos-duration="3800">

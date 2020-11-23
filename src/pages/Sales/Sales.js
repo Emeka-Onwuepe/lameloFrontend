@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import AdminNavbar from '../AdminNavbar'
 import { ThemeContext } from '../Context/ThemeContext'
 import SalesList from './SalesList';
-import { storeContext } from "../../components/State/State";
+import { storeContext, refreshPage } from "../../components/State/State";
 import { useHistory } from 'react-router-dom'
 
 const Sales = () => {
