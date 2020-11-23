@@ -9,12 +9,8 @@ import ScrollTop from '../Home/ScrollTop';
 
 const ShoppingCart = (props) => {
     const { storestate, storedispatch } = useContext(storeContext)
-    const { cart, User, logistics, toppingcart } = storestate;
-  
+    const { cart, User: { fullName }, logistics, toppingcart } = storestate;
 
-//     const fullname = User !== undefined && User !== "" ? <div className="userNameDiv">
-//     <p className="userName" data-aos="fade-up">Welcome, {User.fullame.toUpperCase()} </p>
-// </div> : ""
     useEffect(() => {
         storedispatch({ type: CLEAR_SUCCESS });
         locations().then(res => storedispatch(res))
@@ -44,10 +40,11 @@ const ShoppingCart = (props) => {
 
     return (
         <div className="container-fluid cart-store">
-            {/* {fullname} */}
+           <p>{fullName}</p>
             <Button onClick={() => props.history.push("/orderhistory")} className="order-history">View Order History</Button>
             <div className="orderListDisplay text-center mt-4">
                 <h3>CART</h3>
+               
                 {toppingcart.length > 0 ? <Container data-aos="flip-up" data-aos-easing="ease-out-cubic"><Row>{toppingsDisplay}</Row></Container> : ""}
                 <Container data-aos="flip-up" data-aos-easing="ease-out-cubic"><Row>{itemDisplay}</Row></Container>
                 {total > 0 ? < p className="amount mt-4"><b>Total Amount:  ₦{numbro(total).format({ thousandSeparated: true })}</b></p> : <p data-aos="fade-right">Your Cart is Empty</p>}

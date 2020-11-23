@@ -28,7 +28,6 @@ const SalesItems = () => {
     const allToppingsSold = []
 
 
-
     // console.log(toppings, products)
 
    products.forEach(product => allProductsSold.push({"name": product.name, "qty": product.quantity}));

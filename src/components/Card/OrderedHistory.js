@@ -6,8 +6,10 @@ import { storeContext } from '../State/State';
 
 const OrderedHistory = () => {
     const { storestate } = useContext(storeContext)
+    console.log(storestate)
     const { Ordered } = storestate;
     let orderedlist = <OrderedList products={Ordered} />
+    console.log(Ordered)
     return (
         <div>
             <div className="orderList" >

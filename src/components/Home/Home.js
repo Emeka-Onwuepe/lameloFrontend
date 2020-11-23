@@ -18,31 +18,17 @@ import ScrollBottom from './ScrollBottom';
 
 const Home = (props) => {
   
-    // const myDiv= useRef();
-    // useEffect(() => {
-    //   const div = document.querySelector(".main-page")
-    //   div.scrollTo("", 100)
-    // }, [scrollY]);
-  
-  
-    // function scrollDiv() {
-    //   const div = document.querySelector(".main-page")
-    //   setscrolly(scrollY - 250)
-    //   div.style.marginTop = `${scrollY}px`;
-  
-    //   document.getElementById("scroll").scrollTop += 100;
-    //   console.log(window.pageYOffset)
-    // }
+  console.log(window.innerWidth)
   return (
     <div className="content">
-      <Row className="row-items" data-aos="zoom-in-left">
+      <Row className="row-items" data-aos="zoom-in">
 
         <Col lg="3" className="scrolldown" >
             <ScrollBottom />
         </Col>
         <Col lg="9" className="main-page">
           <div className="logo-image">
-            <img src={Logo1} alt="logo1" className="logo-home" data-aos="fade-up-left" />
+            <img src={Logo1} alt="logo1" className="logo-home" data-aos="fade-in" />
           </div>
           <img src={bgImg} style={{ width: '100%' }} alt="pictures" className="bgImg" />
           <div className="moto">
@@ -62,7 +48,7 @@ const Home = (props) => {
                               </span>
               </span>
             </div>
-            <Row className="contact" data-aos="fade-left"
+            <Row className="contact" data-aos="fade-in"
      data-aos-easing="linear"
      data-aos-duration="3500">
               <Col lg="4" id="explore-contact">

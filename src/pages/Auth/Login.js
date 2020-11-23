@@ -6,7 +6,7 @@ const Login = (props) => {
     const { storestate, storedispatch } = useContext(storeContext);
 
 
-    const{logged} = storestate
+    const { logged } = storestate
     const initialState = {
         username: "", password: ""
     }

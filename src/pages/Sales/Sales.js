@@ -3,7 +3,7 @@ import AdminNavbar from '../AdminNavbar'
 import { ThemeContext } from '../Context/ThemeContext'
 import SalesList from './SalesList';
 import { storeContext } from "../../components/State/State";
-import { Redirect } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 const Sales = () => {
     const theme = useContext(ThemeContext);
@@ -11,11 +11,15 @@ const Sales = () => {
     const checkTheme = isLightTheme ? light : dark;
     const { storestate, storedispatch } = useContext(storeContext);
     // const{logged, AdminUser:{user: {username}} } = storestate
-    const { logged, AdminUser } = storestate
+    const { logged, AdminUser } = storestate;
+    const history = useHistory()
+
 
     if (!logged) {
-        return <Redirect to="/login" />
-    }
+        history.push("/login");
+        refreshPage()
+     }
+
     
 
     return (

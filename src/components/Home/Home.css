@@ -224,6 +224,7 @@ div.col-lg-8 {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  max-height: 100%;
   width: 100%;
   height: 100%;
 }
@@ -287,8 +288,130 @@ iframe {
   border-top: 2px dotted white;
    background: #1B1D1E;
 }
+/* 320px
+480px
+600px
+768px
+900px */
 
-@media (max-width: 568px){
+@media only screen and (max-width: 320px), (min-device-width: 320px) {}
+
+@media only screen 
+    and (max-width: 760px), (min-device-width: 768px) 
+    and (max-device-width: 1024px)  {
+      button.call-to-action {
+        left: 70%;
+     }
+     .scrolldown {
+         display: none;
+     }
+     .logo-home {
+        width: 200px;
+        height: 200px;
+        margin: 0px;
+     }
+     .bgImg {
+       width: 100%;
+       background: url('../../assets/restaurant.jpeg');
+       height:100%;
+     
+     }
+     .moto {
+       margin-top: 80px;
+       width: 100%;
+       left: 0;
+     }
+     .h1-heading {
+        display: hidden
+     }
+     .moto h1 {
+       display: none;
+       visibility: hidden;
+     }
+     .logo-image {
+         display: flex;
+         justify-content: center;
+      
+     }
+     .welcome-container {
+         display: flex;
+         justify-content: center;
+         margin-top: 20px;
+     }
+     .welcome-note {
+        width: 80%;
+     }
+     .others {
+       top: 30%;
+     }
+     #other-items {
+       position: relative;
+        margin-top: 980px;
+     }
+     #explore-contact {
+       display: flex;
+       justify-content: center;
+       margin: 20px auto;
+     }
+     .explore {
+       width: 80%;
+       margin: 0px auto;
+     }
+     .contactor {
+       margin-top: 30px;
+       position: relative;
+       margin: 10px auto;
+     }
+    .contact-us.card {
+      display: flex;
+      width: 74%;
+      margin: 10px auto;
+      justify-content: center;
+      border-top-right-radius: 20px;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+   
+    }
+    .colored {
+       width: 100%;
+       position: relative;
+    
+    }
+    .map-box {
+     display: flex;
+     align-self: center;
+     width: 100%;
+     top: 360px;
+     margin: auto;
+     justify-content: center;
+     padding: 0;
+   
+    }
+   
+    .map-box iframe {
+      position: relative;
+      width: 100%;
+      margin: auto;
+      top: -15px;
+      padding: 0;
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius:  20px;
+      
+    }
+    .call-to-action-home {
+      left: 70%;
+    }
+    .scroll-to-top-menu {
+        margin: 0 auto;
+    }
+   
+
+}
+
+/* @media (max-width: 568px){
  
   button.call-to-action {
      left: 70%;
@@ -305,6 +428,7 @@ iframe {
     width: 100%;
     background: url('../../assets/restaurant.jpeg');
     height:100%;
+  
   }
   .moto {
     margin-top: 80px;
@@ -317,10 +441,7 @@ iframe {
   .moto h1 {
     display: none;
     visibility: hidden;
-     /* font-weight: bold;
-     font-size: 22px;
-     width: 90%;
-     text-align: center; */
+
   }
   .logo-image {
       display: flex;
@@ -402,4 +523,4 @@ iframe {
      margin: 0 auto;
  }
 
-}
+} */
