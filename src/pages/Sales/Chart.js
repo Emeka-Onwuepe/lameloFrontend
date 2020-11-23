@@ -22,7 +22,6 @@ const Chart = ({pizzas, salad, wings, burger, platter, topping, background, bord
                         "rgba(150,99,132,0.6)"
                     ],
                     borderWidth: 1
-
                  }
              ]
             

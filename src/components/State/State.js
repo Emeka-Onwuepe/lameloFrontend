@@ -178,9 +178,9 @@ export const getOrder = (config) => {
         }
     }).catch(err => {
         return {
-            // type: ADD_ERROR,
-            // data: err.response.data,
-            // status: err.response.status
+            type: ADD_ERROR,
+            data: err.response.data,
+            status: err.response.status
         }
 
     })
@@ -496,7 +496,8 @@ const storeReducer = (state, action) => {
                 Orders: [],
                 notification: [],
                 archive: [],
-                loading: false,
+                Sales:{products:[],toppings:[]},
+                loading: false
             }
         case CLEAR_SUCCESS:
             return {
@@ -536,22 +537,22 @@ export const getHours = (time) => {
 
         let hours = time.slice(0, 2);
         let covHours = parseInt(hours) + 1
-        let seconds = time.slice(2, 5);
-        let secs; 
-        if(seconds === ":00"){
-            secs = ":00";
-        }else {
-            secs = seconds;  
-        }
+        let minutes = time.slice(3, 5);
+        let mins = minutes.length < 2 ? "0" + minutes : minutes
+        
         let amPM = covHours >= 12 && covHours !== "00" ? "PM" : "AM";
-        if(covHours === 10){
-            return covHours + secs + " " + amPM
+        if(hours === "00"){
+            return 12 + ":" + mins + " " + amPM
         }else if (covHours > 12) {
-            return covHours - 12 + secs + " " + amPM
+            return covHours - 12 + ":" + mins + " " + amPM
         } else {
-            return covHours + " " + amPM
+            return covHours + ":" + mins + " " + amPM
         }
     }
+
+export const refreshPage = () => {
+    window.location.reload(true)
+}
     //build stateProvider
 
 export const storeContext = createContext()
@@ -677,7 +678,7 @@ const StoreContextProvider = (props) => {
         localStorage.setItem("storestate", JSON.stringify(storestate))
     }, [storestate]);
 
-    return ( < storeContext.Provider value = {{ storestate, storedispatch, getHours }} > { props.children } </storeContext.Provider>
+    return ( < storeContext.Provider value = {{ storestate, storedispatch, getHours, refreshPage }} > { props.children } </storeContext.Provider>
     )
 }
 export default StoreContextProvider;

@@ -14,12 +14,13 @@ const OrderedList = (props) => {
 
 const config =(items,user,ordered)=>{
 const data={id:items.id}
+
 return {
         txref: items.OrderId,
         customer_email: user.email,
         customer_phone: user.phoneNumber,
         amount: items.total + items.logistics,
-        PBFPubKey: process.env.REACT_APP_PBFPubKey,
+        PBFPubKey: "FLWPUBK_TEST-64bdb63268791e82f346056cbc4e8029-X",
         production: false,
         onSuccess:(()=>{
              payment(data, ordered).then(res => storedispatch(res))
@@ -28,7 +29,6 @@ return {
     }
 
 } ;
-
     const products = props.products
     const list = products.map(items => (
     <tr key={items.id}>

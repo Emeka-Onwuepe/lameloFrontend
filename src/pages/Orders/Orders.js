@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { storeContext, CLEAR_NOTIFICATION, load } from '../../components/State/State';
+import { storeContext, CLEAR_NOTIFICATION, load, getOrder } from '../../components/State/State';
 import { ThemeContext } from '../Context/ThemeContext';
 import { Redirect } from 'react-router-dom'
 
@@ -18,10 +18,10 @@ const Order = () => {
     const { notification, logged, AdminUser:{user: {username}} } = storestate;
 
     let NotList = <NotificationList products={notification} />
-    // useEffect(() => {
-    // const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.User.token}` } }
-    // getOrder(config).then(res => storedispatch(res));
-    // }, []);
+    useEffect(() => {
+    const config = { headers: { "Content-Type": "application/json", "Authorization": `Token ${storestate.User.token}` } }
+    getOrder(config).then(res => storedispatch(res));
+    }, []);
 
     useEffect(() => {
 
