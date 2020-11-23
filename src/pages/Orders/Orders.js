@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
-import { storeContext, CLEAR_NOTIFICATION, load, getOrder } from '../../components/State/State';
+import { storeContext, CLEAR_NOTIFICATION, load, getOrder, refreshPage } from '../../components/State/State';
 import { ThemeContext } from '../Context/ThemeContext';
-import { Redirect } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 import NotificationList from './NotificationList';
 
@@ -16,6 +16,7 @@ const Order = () => {
     const { storestate, storedispatch } = useContext(storeContext);
 
     const { notification, logged, AdminUser:{user: {username}} } = storestate;
+    const history = useHistory()
 
     let NotList = <NotificationList products={notification} />
     useEffect(() => {
@@ -31,7 +32,8 @@ const Order = () => {
     }, []);
 
     if (!logged) {
-        return <Redirect to="/login" />
+       history.push("/login");
+       refreshPage()
     }
 
     
