@@ -233,13 +233,13 @@ export const getSales = (data, config) => {
     return axios.post("https://lameloapis.herokuapp.com/dashboard", data, config).then(res => {
         // let products = res.data.products.length > 1 ? filteritems(res.data.products) : res.data.products[0]
         // let toppings = res.data.toppings.length > 1 ? filteritems(res.data.toppings) : res.data.toppings[0]
-        let products = filteritems(res.data.products) 
-        let toppings = filteritems(res.data.toppings) 
+        let products = filteritems(res.data.products)
+        let toppings = filteritems(res.data.toppings)
 
         console.log(res.data.products)
         return {
             type: GET_SALES,
-            data: { products:products, toppings:toppings }
+            data: { products: products, toppings: toppings }
         }
     }).catch(err => {
         return {
@@ -487,16 +487,14 @@ const storeReducer = (state, action) => {
             return {
                 ...state,
                 logged: false,
-                User: "",
                 AdminUser: { token: "", user: { username: "" } },
                 messages: "",
                 stores: "",
-                Ordered: "",
                 OrderedProduct: "",
                 Orders: [],
                 notification: [],
                 archive: [],
-                Sales:{products:[],toppings:[]},
+                Sales: { products: [], toppings: [] },
                 loading: false
             }
         case CLEAR_SUCCESS:
@@ -535,24 +533,24 @@ const storeReducer = (state, action) => {
 
 export const getHours = (time) => {
 
-        let hours = time.slice(0, 2);
-        let covHours = parseInt(hours) + 1
-        let minutes = time.slice(3, 5);
-        let mins = minutes.length < 2 ? "0" + minutes : minutes
-        
-        let amPM = covHours >= 12 && covHours !== "00" ? "PM" : "AM";
-        if(hours === "00"){
-            return 12 + ":" + mins + " " + amPM
-        }else if (covHours > 12) {
-            return covHours - 12 + ":" + mins + " " + amPM
-        } else {
-            return covHours + ":" + mins + " " + amPM
-        }
+    let hours = time.slice(0, 2);
+    let covHours = parseInt(hours) + 1
+    let minutes = time.slice(3, 5);
+    let mins = minutes.length < 2 ? "0" + minutes : minutes
+
+    let amPM = covHours >= 12 && covHours !== "00" ? "PM" : "AM";
+    if (hours === "00") {
+        return 12 + ":" + mins + " " + amPM
+    } else if (covHours > 12) {
+        return covHours - 12 + ":" + mins + " " + amPM
+    } else {
+        return covHours + ":" + mins + " " + amPM
     }
+}
 
 export const refreshPage = () => {
-    window.location.reload(true)
-}
+        window.location.reload(true)
+    }
     //build stateProvider
 
 export const storeContext = createContext()
@@ -678,7 +676,7 @@ const StoreContextProvider = (props) => {
         localStorage.setItem("storestate", JSON.stringify(storestate))
     }, [storestate]);
 
-    return ( < storeContext.Provider value = {{ storestate, storedispatch, getHours, refreshPage }} > { props.children } </storeContext.Provider>
-    )
+    return ( < storeContext.Provider value = {
+        { storestate, storedispatch, getHours, refreshPage } } > { props.children } < /storeContext.Provider>)
 }
 export default StoreContextProvider;
