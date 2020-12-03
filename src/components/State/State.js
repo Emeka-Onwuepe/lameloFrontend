@@ -602,8 +602,6 @@ const StoreContextProvider = (props) => {
                     logged: false,
                     cart: [],
                     toppingcart: [],
-                    scrow: window.pageYOffset,
-                    width: window.innerWidth,
                     prices: [],
                     locations: [],
                     destination: "",
@@ -656,8 +654,6 @@ const StoreContextProvider = (props) => {
                     logged: false,
                     cart: [],
                     toppingcart: [],
-                    scrow: window.pageYOffset,
-                    width: window.innerWidth,
                     prices: [],
                     locations: [],
                     destination: "",
@@ -676,7 +672,6 @@ const StoreContextProvider = (props) => {
         localStorage.setItem("storestate", JSON.stringify(storestate))
     }, [storestate]);
 
-    return ( < storeContext.Provider value = {
-        { storestate, storedispatch, getHours, refreshPage } } > { props.children } < /storeContext.Provider>)
+    return ( <storeContext.Provider value = {{ storestate, storedispatch, getHours, refreshPage } } > { props.children } </storeContext.Provider>)
 }
 export default StoreContextProvider;

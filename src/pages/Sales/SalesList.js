@@ -9,6 +9,7 @@ import { useHistory } from 'react-router-dom';
 
 const SalesList = () => {
     const [sales, setSales] = useState([])
+    const history = useHistory()
     const theme = useContext(ThemeContext);
     const { storestate, storedispatch } = useContext(storeContext);
     const { Orders, archive, logged } = storestate;
@@ -19,7 +20,7 @@ const SalesList = () => {
 
     const{Sales}=storestate;
 
-    const history = useHistory()
+
 
     const dateNow = (date) => {
         const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']

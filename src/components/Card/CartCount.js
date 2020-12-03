@@ -8,7 +8,7 @@ const CartCount = (props) => {
 
     return (
         <div className="shopping-cart" onClick={() => window.location = '/ShoppingCart'}>
-            <FaShoppingCart style={{ fontSize: "50px" }} />
+            <FaShoppingCart style={{ fontSize: "50px" }} className="cart-shop" />
             <span className="cart-count">{cart.length + toppingcart.length}</span>
         </div>
     )

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Logo1 from '../../assets/LAMELŌ logo blk.png';
 
-import bgImg from '../../assets/restaurant.jpeg';
+// import bgImg from '../../assets/restaurant.jpeg';
 import {
   Row, Col, Card, CardText, CardBody,
   CardTitle, Container
@@ -20,17 +20,16 @@ const Home = (props) => {
   
   console.log(window.innerWidth)
   return (
-    <div className="content">
+    <div className="home_content">
       <Row className="row-items" data-aos="zoom-in">
 
-        <Col lg="3" className="scrolldown" >
+        <Col lg="4" id="scrolldown" >
             <ScrollBottom />
         </Col>
-        <Col lg="9" className="main-page">
+        <Col lg="8" className="main-page">
           <div className="logo-image">
             <img src={Logo1} alt="logo1" className="logo-home" data-aos="fade-in" />
           </div>
-          <img src={bgImg} style={{ width: '100%' }} alt="pictures" className="bgImg" />
           <div className="moto">
             <div className="h1-heading" data-aos="fade-down"
      data-aos-easing="linear"
@@ -99,12 +98,14 @@ const Home = (props) => {
           </div>
         </Col>
       </Row>
-      <Container fluid id="other-items">
+      <Container fluid id="other-items" data-aos="fade-in"
+     data-aos-easing="linear"
+     data-aos-duration="3500">
         <div className="others">
           <Row className="other-details">
-            <Col lg="4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam explicabo, voluptatem error distinctio fugiat consequatur?</Col>
-            <Col lg="4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam explicabo, voluptatem error distinctio fugiat consequatur?</Col>
-            <Col lg="4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam explicabo, voluptatem error distinctio fugiat consequatur?</Col>
+            <Col lg="4" className="footer-details">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam explicabo, voluptatem error distinctio fugiat consequatur?</Col>
+            <Col lg="4" className="footer-details">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam explicabo, voluptatem error distinctio fugiat consequatur?</Col>
+            <Col lg="4" className="footer-details">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam explicabo, voluptatem error distinctio fugiat consequatur?</Col>
 
           </Row>
         </div>
@@ -113,13 +114,6 @@ const Home = (props) => {
       <CartCount />
       <ScrollTop />
     </div>
-
-
-
-
-
-
-
 
   )
 }

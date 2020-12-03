@@ -29,7 +29,7 @@ const Menu = (props) => {
 
                     </div>
                     <div className="menu-deal" data-aos="fade-down" data-aos-duration="3200">
-                        <li className="menu" onClick={() => props.history.push('/wings-fries-burger')}>Burger, Fries & Wings<span className="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, illum.</span></li>
+                        <li className="menu" onClick={() => props.history.push('/wings-fries-burger')}>Burger, Fries & Wings<span className="subtitle">Our juicy, charbroiled burgers comes with a side of FRESH salad and fries. Tantalizing and deliciously spiced chicken wings, in an option of either 6, 12, 24 or 48. </span></li>
 
                     </div>
                     <div className="menu-deal" data-aos="zoom-in-right" data-aos-duration="3400">
@@ -42,8 +42,8 @@ const Menu = (props) => {
 
                     </div>
                     <div className="menu-deal" data-aos="zoom-out" data-aos-duration="3800">
-                        <li className="menu" onClick={() => props.history.push('/platter')}>Platter page
-                                <span className="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, illum.</span></li>
+                        <li className="menu" onClick={() => props.history.push('/platter')}>Platter
+                                <span className="subtitle">Can't decide what to eat? Try out our platters, which gives you the best of everything on the menu!</span></li>
 
                     </div>
                 </ol>
