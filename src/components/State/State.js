@@ -54,7 +54,7 @@ const filteritems = (array) => {
 //Actions dispatchers
 
 export const LoginUser = (data, config) => {
-    return axios.post('https://lameloapis.herokuapp.com/login', data, config).then(res => {
+    return axios.post('https://lameloapi.herokuapp.com/login', data, config).then(res => {
 
         return {
             type: LOGIN,
@@ -71,7 +71,7 @@ export const LoginUser = (data, config) => {
 }
 
 export const LogOut = (data, config) => {
-    return axios.post('https://lameloapis.herokuapp.com/logout', null, config).then(res => {
+    return axios.post('https://lameloapi.herokuapp.com/logout', null, config).then(res => {
 
         return {
             type: LOGOUT,
@@ -94,7 +94,7 @@ export const deleteUser = () => {
 }
 
 export const getCategory = (data, type) => {
-    return axios.post("https://lameloapis.herokuapp.com/getproducts", data, ).then(res => {
+    return axios.post("https://lameloapi.herokuapp.com/getproducts", data, ).then(res => {
         return {
             type: type,
             products: res.data.products,
@@ -114,7 +114,7 @@ export const getCategory = (data, type) => {
 }
 
 export const processOrder = (data, config) => {
-    return axios.post('https://lameloapis.herokuapp.com/orderview', data, config).then(res => {
+    return axios.post('https://lameloapi.herokuapp.com/orderview', data, config).then(res => {
         return {
             type: PROCESS_ORDER,
             data: res.data.Ordered,
@@ -136,7 +136,7 @@ export const processOrder = (data, config) => {
 
 
 export const payment = (data, orderlist) => {
-    return axios.post("https://lameloapis.herokuapp.com/payment", data, ).then(res => {
+    return axios.post("https://lameloapi.herokuapp.com/payment", data, ).then(res => {
         const filtered = orderlist.filter(item => item.id != res.data.id)
         filtered.push(res.data)
         return {
@@ -155,7 +155,7 @@ export const payment = (data, orderlist) => {
 }
 
 export const locations = () => {
-    return axios.get("https://lameloapis.herokuapp.com/location").then(res => {
+    return axios.get("https://lameloapi.herokuapp.com/location").then(res => {
         return {
             type: GET_LOCATION,
             data: res.data
@@ -170,7 +170,7 @@ export const locations = () => {
     })
 }
 export const getOrder = (config) => {
-    return axios.get("https://lameloapis.herokuapp.com/dashboard", config).then(res => {
+    return axios.get("https://lameloapi.herokuapp.com/dashboard", config).then(res => {
         return {
             type: GET_ORDERED,
             data: res.data.ordered,
@@ -187,7 +187,7 @@ export const getOrder = (config) => {
 }
 
 export const performAction = (data, type, config) => {
-    return axios.post("https://lameloapis.herokuapp.com/dashboard", data, config).then(res => {
+    return axios.post("https://lameloapi.herokuapp.com/dashboard", data, config).then(res => {
         if (type == GET_ORDERED) {
             return {
                 type: GET_ORDERED,
@@ -211,7 +211,7 @@ export const performAction = (data, type, config) => {
 }
 
 export const getOrderAndCustomer = (data, config) => {
-    return axios.post("https://lameloapis.herokuapp.com/dashboard", data, config).then(res => {
+    return axios.post("https://lameloapi.herokuapp.com/dashboard", data, config).then(res => {
         return {
             type: GET_PRODUCT_AND_CUSTOMER,
             products: res.data.products,
@@ -230,7 +230,7 @@ export const getOrderAndCustomer = (data, config) => {
 
 
 export const getSales = (data, config) => {
-    return axios.post("https://lameloapis.herokuapp.com/dashboard", data, config).then(res => {
+    return axios.post("https://lameloapi.herokuapp.com/dashboard", data, config).then(res => {
         // let products = res.data.products.length > 1 ? filteritems(res.data.products) : res.data.products[0]
         // let toppings = res.data.toppings.length > 1 ? filteritems(res.data.toppings) : res.data.toppings[0]
         let products = filteritems(res.data.products)
@@ -556,127 +556,128 @@ export const refreshPage = () => {
 export const storeContext = createContext()
 
 const StoreContextProvider = (props) => {
-    const [storestate, storedispatch] = useReducer(storeReducer, {},
-        () => {
-            const localdata = localStorage.getItem("storestate");
-            let finaldata = ""
-            if (localdata) {
-                const jsonify = JSON.parse(localdata)
-                finaldata = {
-                    pizza: {
-                        products: [],
+        const [storestate, storedispatch] = useReducer(storeReducer, {},
+            () => {
+                const localdata = localStorage.getItem("storestate");
+                let finaldata = ""
+                if (localdata) {
+                    const jsonify = JSON.parse(localdata)
+                    finaldata = {
+                        pizza: {
+                            products: [],
+                            prices: [],
+                            toppings: []
+                        },
+                        bfw: {
+                            products: [],
+                            prices: [],
+                            toppings: []
+                        },
+                        salad: {
+                            products: [],
+                            prices: [],
+                            toppings: []
+                        },
+                        gelatos: {
+                            products: [],
+                            prices: [],
+                            toppings: []
+                        },
+                        platter: {
+                            products: [],
+                            prices: [],
+                            toppings: []
+                        },
+                        User: "",
+                        AdminUser: "",
+                        Ordered: [],
+                        Orders: [],
+                        Sales: { products: [], toppings: [] },
+                        notification: [],
+                        archive: [],
+                        customers: [],
+                        OrderedProduct: [],
+                        orderedTopping: [],
+                        loading: true,
+                        logged: false,
+                        cart: [],
+                        toppingcart: [],
+                        scrow: window.pageYOffset,
+                        width: window.innerWidth,
                         prices: [],
-                        toppings: []
-                    },
-                    bfw: {
-                        products: [],
+                        locations: [],
+                        destination: "",
+                        customer: { address: "", email: "", fullName: "", id: "", phoneNumber: "" },
+                        logistics: 0,
+                        ...jsonify,
+                        message: "",
+                        status: "",
+                        messages: "",
+                        check: "",
+                    }
+                } else {
+                    finaldata = {
+                        pizza: {
+                            products: [],
+                            prices: [],
+                            toppings: []
+                        },
+                        bfw: {
+                            products: [],
+                            prices: [],
+                            toppings: []
+                        },
+                        salad: {
+                            products: [],
+                            prices: [],
+                            toppings: []
+                        },
+                        gelatos: {
+                            products: [],
+                            prices: [],
+                            toppings: []
+                        },
+                        platter: {
+                            products: [],
+                            prices: [],
+                            toppings: []
+                        },
+                        User: "",
+                        AdminUser: "",
+                        Ordered: [],
+                        Orders: [],
+                        Sales: { products: [], toppings: [] },
+                        notification: [],
+                        archive: [],
+                        customers: [],
+                        OrderedProduct: [],
+                        orderedTopping: [],
+                        loading: true,
+                        logged: false,
+                        cart: [],
+                        toppingcart: [],
+                        scrow: window.pageYOffset,
+                        width: window.innerWidth,
                         prices: [],
-                        toppings: []
-                    },
-                    salad: {
-                        products: [],
-                        prices: [],
-                        toppings: []
-                    },
-                    gelatos: {
-                        products: [],
-                        prices: [],
-                        toppings: []
-                    },
-                    platter: {
-                        products: [],
-                        prices: [],
-                        toppings: []
-                    },
-                    User: "",
-                    AdminUser: "",
-                    Ordered: [],
-                    Orders: [],
-                    Sales: { products: [], toppings: [] },
-                    notification: [],
-                    archive: [],
-                    customers: [],
-                    OrderedProduct: [],
-                    orderedTopping: [],
-                    loading: true,
-                    logged: false,
-                    cart: [],
-                    toppingcart: [],
-                    scrow: window.pageYOffset,
-                    width: window.innerWidth,
-                    prices: [],
-                    locations: [],
-                    destination: "",
-                    customer: { address: "", email: "", fullName: "", id: "", phoneNumber: "" },
-                    logistics: 0,
-                    ...jsonify,
-                    message: "",
-                    status: "",
-                    messages: "",
-                    check: "",
+                        locations: [],
+                        destination: "",
+                        customer: { address: "", email: "", fullName: "", id: "", phoneNumber: "" },
+                        logistics: 0,
+                        message: "",
+                        status: "",
+                        messages: "",
+                        check: "",
+                    }
                 }
-            } else {
-                finaldata = {
-                    pizza: {
-                        products: [],
-                        prices: [],
-                        toppings: []
-                    },
-                    bfw: {
-                        products: [],
-                        prices: [],
-                        toppings: []
-                    },
-                    salad: {
-                        products: [],
-                        prices: [],
-                        toppings: []
-                    },
-                    gelatos: {
-                        products: [],
-                        prices: [],
-                        toppings: []
-                    },
-                    platter: {
-                        products: [],
-                        prices: [],
-                        toppings: []
-                    },
-                    User: "",
-                    AdminUser: "",
-                    Ordered: [],
-                    Orders: [],
-                    Sales: { products: [], toppings: [] },
-                    notification: [],
-                    archive: [],
-                    customers: [],
-                    OrderedProduct: [],
-                    orderedTopping: [],
-                    loading: true,
-                    logged: false,
-                    cart: [],
-                    toppingcart: [],
-                    scrow: window.pageYOffset,
-                    width: window.innerWidth,
-                    prices: [],
-                    locations: [],
-                    destination: "",
-                    customer: { address: "", email: "", fullName: "", id: "", phoneNumber: "" },
-                    logistics: 0,
-                    message: "",
-                    status: "",
-                    messages: "",
-                    check: "",
-                }
+                return finaldata
             }
-            return finaldata
-        }
-    )
-    useEffect(() => {
-        localStorage.setItem("storestate", JSON.stringify(storestate))
-    }, [storestate]);
+        )
+        useEffect(() => {
+            localStorage.setItem("storestate", JSON.stringify(storestate))
+        }, [storestate]);
 
-    return ( < storeContext.Provider value = {
-        { storestate, storedispatch, getHours, refreshPage } } > { props.children } < /storeContext.Provider>)
-}
-export default StoreContextProvider;
+        return ( < storeContext.Provider value = {
+                { storestate, storedispatch, getHours, refreshPage }
+            } > { props.children } < /storeContext.Provider>)
+        }
+        export default StoreContextProvider;
