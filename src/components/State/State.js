@@ -675,17 +675,8 @@ const StoreContextProvider = (props) => {
         useEffect(() => {
             localStorage.setItem("storestate", JSON.stringify(storestate))
         }, [storestate]);
-
-        <<
-        << << < HEAD
         return ( < storeContext.Provider value = {
                 { storestate, storedispatch, getHours, refreshPage }
             } > { props.children } < /storeContext.Provider>)
         }
-        export default StoreContextProvider; ===
-        === =
-        return ( < storeContext.Provider value = {
-                { storestate, storedispatch, getHours, refreshPage } } > { props.children } < /storeContext.Provider>)
-        }
-        export default StoreContextProvider; >>>
-        >>> > 8517704 d72dde9a03f602d4b66d63ee1f5551f05
+        export default StoreContextProvider;
