@@ -31,10 +31,10 @@ const Order = () => {
         };
     }, []);
 
-    if (!logged) {
-       history.push("/login");
-       refreshPage()
-    }
+    // if (!logged) {
+    //    history.push("/login");
+    //    refreshPage()
+    // }
 
     
     return (
