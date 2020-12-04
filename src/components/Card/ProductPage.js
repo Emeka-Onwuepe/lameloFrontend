@@ -23,7 +23,7 @@ const ProductPage = (props) => {
   })
   const { category } = useParams()
   let [match] = category.match(/(\w+)/)
-  const action = match === "wings" ? 'bfw' : match
+  const action = match === "wings" ? 'blw' : match
   const GET_CATEGORY = (match) => {
     switch (match) {
       case 'pizza':
@@ -34,7 +34,7 @@ const ProductPage = (props) => {
       case 'wings':
         return {
           mainCategory: GET_BFW,
-          heading: "Burger, Chicken Wing, Fries Menu"
+          heading: "Burger, Chicken Wing, Chicken Lollipop Menu"
         }
 
       case 'salad':
