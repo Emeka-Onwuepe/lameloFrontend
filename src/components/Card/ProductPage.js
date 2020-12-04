@@ -5,7 +5,7 @@ import { FaArrowDown } from 'react-icons/fa';
 // import { Container } from 'reactstrap';
 
 import Logo1 from '../../assets/LAMELŌ logo blk.png';
-import { storeContext, GET_PIZZA, GET_BFW, GET_GELATOS, GET_SALAD, GET_PLATTER, getCategory, load, LOADING } from "../State/State"
+import { storeContext, GET_PIZZA, GET_BLW, GET_GELATOS, GET_SALAD, GET_PLATTER, getCategory, load, LOADING } from "../State/State"
 
 import './Product.css';
 import ProductCard from './ProductCard';
@@ -33,8 +33,8 @@ const ProductPage = (props) => {
         }
       case 'wings':
         return {
-          mainCategory: GET_BFW,
-          heading: "Burger, Chicken Wing, Chicken Lollipop Menu"
+          mainCategory: GET_BLW,
+          heading: "Burger, Chicken Wing & Lollipop Menu"
         }
 
       case 'salad':

@@ -9,7 +9,7 @@ import axios from 'axios';
 export const GET_PIZZA = "GET_PIZZA";
 export const GET_PLATTER = "GET_PLATTER";
 export const GET_SALAD = "GET_SALAD";
-export const GET_BFW = "GET_BFW";
+export const GET_BLW = "GET_BLW";
 export const GET_GELATOS = "GET_GELATOS";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const ADD_TO_TOPPING_CART = "ADD_TO_TOPPING_CART";
@@ -312,10 +312,10 @@ const storeReducer = (state, action) => {
                 },
                 loading: false,
             }
-        case GET_BFW:
+        case GET_BLW:
             return {
                 ...state,
-                bfw: {
+                blw: {
                     products: action.products,
                     prices: action.prices,
                     toppings: action.toppings
@@ -568,7 +568,7 @@ const StoreContextProvider = (props) => {
                             prices: [],
                             toppings: []
                         },
-                        bfw: {
+                        blw: {
                             products: [],
                             prices: [],
                             toppings: []
@@ -622,7 +622,7 @@ const StoreContextProvider = (props) => {
                             prices: [],
                             toppings: []
                         },
-                        bfw: {
+                        blw: {
                             products: [],
                             prices: [],
                             toppings: []
