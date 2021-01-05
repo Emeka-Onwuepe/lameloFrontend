@@ -8,7 +8,7 @@ import Details from "./components/cart/Details";
 import OrderedItems from "./components/cart/OrderedItems";
 import OrderedHistory from "./components/Card/OrderedHistory"
 import PaymentBtn from './components/cart/PaymentBtn';
-import Login from "./pages/Auth/Login"
+import Login from "./pages/Auth/Login";
 
 
 

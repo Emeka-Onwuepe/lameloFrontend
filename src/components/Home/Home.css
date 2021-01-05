@@ -1,68 +1,136 @@
-.home_content{
-
-  height: 150vh;
-  background:  url('../../assets/restaurant.jpeg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  /* border: 30px solid #ffffff; */
+.all_content {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+.home_content1 {
+   height: 100%;
+   width: 100%;
 }
 
-.logo-home{
-  position: absolute;
+#footer-items {
+  position: fixed;
+  border-top: 2px dotted white;
+   background: #1B1D1E;
+   bottom: 0;
+   z-index: 200;
+}
+
+.footer {
+  width: 90%;
+   padding: 20px;
+  margin: 0px auto;
+  color: white;
+}
+
+.call-to-action-home {
+  position: fixed;
+  z-index: 500;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  top: 80%;
+  left: 87%;
+  color: #ffffff;
+  background: tomato;
+  font-weight: 800;
+  text-transform: uppercase;
+  border: none;
+}
+.call-to-action-home:hover {
+ background: #000000;
+ color: tomato;
+ cursor: pointer;
+ -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  transition: ease-in-out 0.5s all;
+}
+.call-to-action-home:active {
+
+}
+
+.call-to-action-home:focus{
+  outline: none;
+  color: tomato;
+  background: #000000;
+}
+
+#scrolldown1 {
+    left: 0;
+    width: 25%;
+    background: #1B1D1E;
+}
+.main_content {
+    width: 75%;
+    background: url('../../assets/restaurant2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.explorers_side {
+  display: flex;
+  flex-direction: row;
+  margin-left: -100px;
+}
+
+.logo-home1{
+  /* position: relative; */
   z-index: 100;
   width: 280px;
   height: 280px;
   margin-left:  14%;
 }
-
-
-.down-btn {
-   position: fixed;
-   top: 22rem;
-   left: 10rem;
-   text-align: center;
-   -webkit-animation: move 2s infinite  alternate;
-  animation: move 1s infinite  alternate;
+#explore-contact1 {
+   width: 20%;
 }
-.row-items {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: 0px;
-  margin-left: 0px;
+.text-detailss {
+   width: 50%;
 }
-.moto {
-  position: absolute;
-  top: 18rem;
-  left: -10%;
-  color: #ffffff;
+.contact-us1 {
+    width: 41%;
+    background: #E6C14B !important;
+    opacity: .9;
+    border-radius: 20px;
 }
-.main-page {
-    padding-bottom: 5rem;
+.mapbox-iframe {
+   z-index: 200;
 }
- 
+.map-frame {
+   z-index: 100;
+   height: 450px;
+   width: 250px;
+   margin-left: -16rem;
+   margin-top: 0.6rem;
+}
+  
+.colored {
+    width: 60%;
+}
+.contact-headers {
+    margin-left: 20px;
+    text-transform: uppercase;
+}
 
 .scroll-to-top {
-     position: fixed;
-     z-index: 1000;
-     font-weight: bolder;
-     height: 50px;
-     width: 50px;
-     background: black;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     font-size: 40px;
-     padding: 10px;
-     bottom: 18%;
-     left: 50%;
-     color: white;
-     border-radius: 100%;
+  position: fixed;
+  z-index: 1000;
+  font-weight: bolder;
+  height: 50px;
+  width: 50px;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  padding: 10px;
+  bottom: 18%;
+  left: 50%;
+  color: white;
+  border-radius: 100%;
 }
 
 .scroll-to-top svg {
-     animation: scrollTop 0.5s alternate ease infinite;
+  animation: scrollTop 0.5s alternate ease infinite;
 }
 
 
@@ -75,476 +143,1327 @@
   }
 }
 
-.cursor-pointer {
-   cursor: pointer;
+
+.explore-header1 {
+  font-size: 2.1rem;
+  text-transform: uppercase;
+  font-weight: bolder;
 }
-  .text-details {
-    line-height: 1.9;
+.explore1 {
+    background: #4B8B6A;
+    opacity: 0.8;
+    padding: .5rem .75rem;
+    text-align: center;
+    border-radius: 20px;
+    margin-right: 10px;
   }
+.explore1 a {
+    text-decoration: none;
+    color: #ffffff;
+}
+.text-details1 {
+    line-height: 2;
+    font-size: 16px;
+    text-align: left;
+}
+.welcome-container1 {
+    width: 65%;
+    padding: 1rem 0;
+    background: #1B1D1E;
+    margin-bottom: 1.5rem;
+    margin-left: -5rem;
+}
+.motto-theme1 {
+    width: 65%;
+    padding: 1rem 0;
+    background: #1B1D1E;
+    margin-left: -5rem;
+}
+  .motto-theme1 h1{
+      font-weight: bolder;
+      font-size: 48px;
+      text-transform: uppercase;
+      color: #ffffff;
+      letter-spacing: 1.5;
+  }
+.welcome1 {
+     width: 60%;
+     font-size: 1.2rem;
+     color: #C7B491;
+}
+.main1 {
+    width: 60%;
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
 
+.down-btn1 {
+    position: fixed;
+    color: #C7B491;
+    top: 22rem;
+    text-align: center;
+    -webkit-animation: move 2s infinite  alternate;
+   animation: move1 1s infinite  alternate;
+ }
 
-
-  @-webkit-keyframes move {
+ 
+ @-webkit-keyframes move1 {
     0% { transform: translateY(0); }
     100% { transform: translateY(-20px); }
   }
-  @keyframes move {
+  @keyframes move1 {
     0% { transform: translateY(0); }
     100% { transform: translateY(-20px); }
   }
-  .down-btn:hover {
+  .down-btn1:hover {
       cursor: pointer;
   }
 
- 
-
-
-.scroll-arrow {
+.scroll-arrow1 {
   color: #C7B491;
   width: 2rem;
 }
 
-.down-btn {
-  color:#C7B491;
-}
-  .call-to-action-home {
-      position: fixed;
-      z-index: 500;
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      top: 80%;
-      left: 87%;
-      color: #ffffff;
-      background: orangered;
-      font-weight: 800;
-      text-transform: uppercase;
-      border: none;
-  }
-  .call-to-action-home:hover {
-     background: #000000;
-     color: orangered;
-     cursor: pointer;
-     -webkit-transform: scale(1.2);
-      -ms-transform: scale(1.2);
-      transform: scale(1.2);
-      transition: ease-in-out 0.5s all;
-  }
-  
-  button.call-to-action:focus, button.call-to-action:active, button.call-to-action:hover{
-      outline: none;
-      color: orangered;
-      background: #000000;
-  }
-  
-
-.moto  h1 {
-   text-transform: uppercase;
-   font-weight: bolder;
-   letter-spacing: .2rem;
-   border: 1px solid #1B1D1E;
-   padding: .5rem;
-   background: #1B1D1E;
-   font-size: 3rem;
-}
-
-
-.welcome-note {
-   width: 60%;
-   position: absolute;
-   background: #1B1D1E;
-  padding: .75rem;
-  line-height: 1.7;
-  margin-top: -0.50rem;
-}
-
-.welcome-note .welcome {
-  width: 100%;
-  font-size: 1.2rem;
-  color:#C7B491;
-}
-
-/* Footer styles */
-.contact {
-  position: absolute;
-  margin-top: 15rem;
-  margin-bottom: 7.5rem;
-}
-
-.explore {
-  background: #4B8B6A;
-  opacity: 0.8;
-  padding: .5rem .75rem;
-  text-align: center;
-  border-radius: 20px;
-}
-.contact h2.explore-header {
-  font-weight: bolder;
-  font-size: 2.1rem;
-  padding-bottom: 2rem;
-  text-transform: uppercase;
-  color: #EFEFEF;
-}
-.map-box {
-  position: absolute;
- 
-}
-.map-box iframe {
-  height: 400px;
-  min-height: 460px;
-  width: 220px;
-  margin-top: 50px;
-  margin-left: 250px;
-  position: relative; 
-  margin-top: 7px;
-  border-radius: 20px;
-}
-.explore-headers{
-   font-weight: bolder;
-   color: black;
-  
-}
-.text-details-1 {
+.text-detailss {
   color:black;
   text-align: left; 
- 
 }
-.text-details-1 .holder {
+.text-detailss .holder {
   font-weight: bolder;
   line-height: 1.2;
 }
-
-div.col-lg-8 {
-  height: 100%;
-  padding: 0;
+.social-media-links {
+  margin-top: 5px;
+  display: flex;
+  justify-content: left;
+}
+.social-media-links a {
+ padding: 0 40px 0 0;
+ font-size: 1.2rem;
+ letter-spacing: 1.2;
+ z-index: 200;
 }
 
-.contact-us {
-  background: #E6C14B;
-  opacity: .9;
-  padding: .5rem .75rem;
-  text-align: center;
-  border-radius: 20px;
+.facebook-icon {
+   color: #4267B2;
 }
 
-/* .contactor {
-    display: inline-block;
-} */
+.twitter-icon {
+   color: #00acee;
+}
 
-.contact .text-details {
-  color: white;
-  text-align: left;
+.instagram-icon {
+  color: #e13068;
+}
+
+.linkedin-icon {
+ color:  #2867B2;
+}
+
+
+  /* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-width : 20em) and (max-width : 30em) {
+  body { width: 100%; max-width: 100%; height: auto;}
+    .home_content1 {
+        height: auto;
+        background: url("../../assets/restaurant2.jpg");  
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        background-size: auto; 
+        background-attachment: fixed;
+    }
+    .main_content {
+      width: 100%;
+    }
+    #scrolldown1 {
+     display: none;
+    }
+    .all_content {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+    .logo-image1 {
+        display: flex;
+        justify-content: center;
+    }
+    .logo-home1 {
+       margin-left: 0;
+       width: 150px;
+       height: 150px;
+    }
+    .explorers_side {
+      margin: auto; 
+      display: block;
+    }
+    #explore-contact1 {
+      width: 96%;
+      margin: 10px auto;
+      border-radius: 0;
+   }
+   .mapbox-iframe {
+      text-align: center;
+      margin-top: -1.7rem;
   
-}
+   }
+   .map-frame {
+     width: 96%;
+     display: inline-block;
+     margin-left: auto;
+     margin-right: auto;
+     margin-bottom: 11rem;
+   }
 
-.social-links {
-   margin-top: 5px;
-   display: flex;
-   justify-content: left;
-}
-.social-links a {
-  padding: 0 40px 0 0;
-  font-size: 1.2rem;
-  letter-spacing: 1.2;
-  z-index: 200;
-}
+   .contact-us1 {
+      width: 96%;
+      margin: 10px auto;
+      border-radius: 0;
+    }
+    .text-detailss {
+        width: 100%;
+    }
+    .contact-headers {
+         margin-left: 0;
+         text-align: center;
+    }
+    .motto-theme1 {
+      width: 100%;
+      padding: 0;
+      background: transparent;
+      margin-left: 0;
+      text-align: center;
+    }
+    .motto-theme1 h1 {
+        font-size: 20px;
+    }
+    .welcome-container1 {
+      width: 96%;
+      padding: 1rem;
+      background: #1B1D1E;
+      margin-bottom: 0;
+      margin-left: auto;
+      margin-right: auto;
+      border: 5px solid tomato;
+    }
+    .welcome1, .main1 {
+         width: 100%;
+    }
+    .call-to-action-home {
+        left: 70%;
+        top: 81%;
+        width: 80px;
+        height: 80px;
+    }
+    .footer-details {
+        font-size: 14px;
+    }
+    .scroll-to-top {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
 
-.facebook {
-    color: #4267B2;
-}
+  /* Smartphones (portrait) ----------- */
+  @media only screen and (max-width : 20em) {
+    body { width: 100%; max-width: 100%; height: auto;}
+    .home_content1 {
+        height: auto;
+        background: url("../../assets/restaurant2.jpg");  
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        background-size: auto; 
+        background-attachment: fixed;
+    }
+    .main_content {
+      width: 100%;
+    }
+    #scrolldown1 {
+     display: none;
+    }
+    .all_content {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+    .logo-image1 {
+        display: flex;
+        justify-content: center;
+    }
+    .logo-home1 {
+       margin-left: 0;
+       width: 150px;
+       height: 150px;
+    }
+    .explorers_side {
+      margin: auto; 
+      display: block;
+    }
+    #explore-contact1 {
+      width: 96%;
+      margin: 10px auto;
+      border-radius: 0;
+   }
+   .mapbox-iframe {
+      text-align: center;
+      margin-top: -1.7rem;
+  
+   }
+   .map-frame {
+     width: 96%;
+     display: inline-block;
+     margin-left: auto;
+     margin-right: auto;
+     margin-bottom: 11rem;
+   }
 
-.twitter {
-    color: #00acee;
-}
+   .contact-us1 {
+      width: 96%;
+      margin: 10px auto;
+      border-radius: 0;
+    }
+    .text-detailss {
+        width: 100%;
+    }
+    .contact-headers {
+         margin-left: 0;
+         text-align: center;
+    }
+    .motto-theme1 {
+      width: 100%;
+      padding: 0;
+      background: transparent;
+      margin-left: 0;
+      text-align: center;
+    }
+    .motto-theme1 h1 {
+        font-size: 20px;
+    }
+    .welcome-container1 {
+      width: 96%;
+      padding: 1rem;
+      background: #1B1D1E;
+      margin-bottom: 0;
+      margin-left: auto;
+      margin-right: auto;
+      border: 5px solid tomato;
+    }
+    .welcome1, .main1 {
+         width: 100%;
+    }
+    .call-to-action-home {
+        left: 70%;
+        top: 81%;
+        width: 80px;
+        height: 80px;
+    }
+    .footer-details {
+        font-size: 14px;
+    }
+    .scroll-to-top {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 
-.instagram {
-   color: #e13068;
-}
 
-.linkedin {
-  color:  #2867B2;
-}
-iframe {
-  display: inline;
-}
+  /* small Ipads */
 
-.others {
-   width: 90%;
-    padding: 20px;
-   margin: 0px auto;
-   color: white;
-}
+  @media only screen and (min-width : 30.0625em) and (max-width : 47.9375em) {
+    body { width: 100%; max-width: 100%; height: auto;}
+      .home_content1 {
+          height: auto;
+          background: url("../../assets/restaurant2.jpg");  
+          background-position: 0 0;
+          background-repeat: no-repeat;
+          background-size: auto; 
+          background-attachment: fixed;
+      }
+      .main_content {
+        width: 100%;
+      }
+      #scrolldown1 {
+       display: none;
+      }
+      .all_content {
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+      .logo-image1 {
+          display: flex;
+          justify-content: center;
+      }
+      .logo-home1 {
+         margin-left: 0;
+         width: 190px;
+         height: 190px;
+      }
+      .explorers_side {
+        margin: auto; 
+        display: block;
+      }
+      #explore-contact1 {
+        width: 96%;
+        margin: 10px auto;
+        border-radius: 0;
+     }
+     .mapbox-iframe {
+        text-align: center;
+        margin-top: -1.7rem;
+    
+     }
+     .map-frame {
+       width: 96%;
+       display: inline-block;
+       margin-left: auto;
+       margin-right: auto;
+       margin-bottom: 11rem;
+     }
+  
+     .contact-us1 {
+        width: 96%;
+        margin: 10px auto;
+        border-radius: 0;
+      }
+      .text-detailss {
+          width: 100%;
+      }
+      .contact-headers {
+           margin-left: 0;
+           text-align: center;
+      }
+      .motto-theme1 {
+        width: 100%;
+        padding: 0;
+        background: transparent;
+        margin-left: 0;
+        text-align: center;
+      }
+      .motto-theme1 h1 {
+          font-size: 30px;
+      }
+      .welcome-container1 {
+        width: 96%;
+        padding: 1rem;
+        background: #1B1D1E;
+        margin-bottom: 0;
+        margin-left: auto;
+        margin-right: auto;
+        border: none;
+      }
+      .welcome1, .main1 {
+           width: 100%;
+      }
+      .call-to-action-home {
+          left: 80%;
+          top: 80%;
+          width: 90px;
+          height: 90px;
+      }
+      .footer-details {
+          font-size: 16px;
+      }
+      .scroll-to-top {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  
+  /* iPads (portrait and landscape) ----------- */
+  @media only screen and (min-width : 48em) and (max-width : 82.4375em) {
+    #scrolldown1 {
+      left: 0;
+      width: 30%;
+      background: #1B1D1E;
+  }
+  .down-btn1 {
+    position: fixed;
+    color: #C7B491;
+    top: 10rem;
+    text-align: center;
+ }
+ .down-btn1:hover {
+    cursor: pointer;
+ } 
+  .main_content {
+      width: 70%;
+  }
+  /* Styles */
+  .explorers_side {
+    display: block;
+    margin-top: -1rem;
+     margin-left: -2rem;
+    width: 100%;
+  }
+  
+  .logo-home1{
+    z-index: 100;
+    width: 230px;
+    height: 230px;
+    margin-left:  14%;
+  }
+  #explore-contact1 {
+     width: 80%;
+  }
+  .text-detailss {
+     width: 100%;
+     font-size: 14px;
+     padding-bottom: 0;
 
-#other-items {
-  position: fixed;
-  border-top: 2px dotted white;
-   background: #1B1D1E;
-   bottom: 0;
+  }
+  .contact-us1 {
+      width: 80%;
+      height: 340px;
+      margin-top: 1rem;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+  }
+
+  .welcome-container1 {
+    width: 80%;
+    padding: 1rem;
+    background: #1B1D1E;
+    margin-bottom: 1.5rem;
+    margin-left: -2rem;
 }
-#scrolldown {
+.motto-theme1 {
+    width: 80%;
+    padding: 1rem 0;
+    background: #1B1D1E;
+    margin-left: -2rem;
+}
+  .motto-theme1 h1{
+      font-weight: bolder;
+      font-size: 30px;
+      width: 100%;
+      text-transform: uppercase;
+      color: #ffffff;
+  }
+  .welcome1 {
+      width: 100%;
+      font-size: 1.2rem;
+      color: #C7B491;
+  }
+  .main1 {
+    width: 100%;
+  }
+  .mapbox-iframe {
+     z-index: 200;
+     width: 100%;
+     margin-top: -0.8rem;
+    margin-bottom: 3rem;
+  }
+  .map-frame {
+     height: 300px;
+     margin-left: 0;
+     width: 80%;
+     margin-bottom: 4rem;
+     border-bottom-right-radius: 20px;
+     border-bottom-left-radius: 20px;
+  }
+    
+  .colored {
+      width: 60%;
+  }
+  .contact-headers {
+      text-align: center;
+      margin-bottom: -2rem;
+      line-height: 1.4;
+      text-transform: uppercase;
+  }
+  .call-to-action-home {
+    top: 75%;
+    left: 82%;
+  }
+
+  }
+  
+  /* iPads (landscape) ----------- */
+  @media only screen and (min-width : 48em) and (max-width : 82.4375em) and (orientation : landscape) {
+  /* Styles */
+  #scrolldown1 {
+    left: 0;
+    width: 30%;
     background: #1B1D1E;
 }
+.down-btn1 {
+  position: fixed;
+  color: #C7B491;
+  top: 50%;
+  text-align: center;
+}
+.down-btn1:hover {
+  cursor: pointer;
+} 
+.main_content {
+    width: 70%;
+}
+/* Styles */
+.explorers_side {
+  display: block;
+  margin-top: -1rem;
+   margin-left: -2rem;
+  width: 100%;
+}
 
+.logo-home1{
+  z-index: 100;
+  width: 230px;
+  height: 230px;
+  margin-left:  14%;
+}
+#explore-contact1 {
+   width: 80%;
+}
+.text-detailss {
+   width: 100%;
+   font-size: 14px;
+   padding-bottom: 0;
 
-/** Mobile responsiveness **/
-@media screen and (min-width: 280px) and (max-width: 320px){
- 
-  button.menu-call-to-action{
-     left: 65%;
-     height: 80px;
-     width: 80px;
+}
+.contact-us1 {
+    width: 80%;
+    height: 340px;
+    margin-top: 1rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.welcome-container1 {
+  width: 80%;
+  padding: 1rem;
+  background: #1B1D1E;
+  margin-bottom: 1.5rem;
+  margin-left: -2rem;
+}
+.motto-theme1 {
+  width: 80%;
+  padding: 1rem 0;
+  background: #1B1D1E;
+  margin-left: -2rem;
+}
+.motto-theme1 h1{
+    font-weight: bolder;
+    font-size: 30px;
+    width: 100%;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+.welcome1 {
+    width: 100%;
+    font-size: 1.2rem;
+    color: #C7B491;
+}
+.main1 {
+  width: 100%;
+}
+.mapbox-iframe {
+   z-index: 200;
+   width: 100%;
+   margin-top: -0.8rem;
+  margin-bottom: 3rem;
+}
+.map-frame {
+   height: 300px;
+   margin-left: 0;
+   width: 80%;
+   margin-bottom: 4rem;
+   border-bottom-right-radius: 20px;
+   border-bottom-left-radius: 20px;
+}
+  
+.colored {
+    width: 60%;
+}
+.contact-headers {
+    text-align: center;
+    margin-bottom: -2rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+.call-to-action-home {
+  top: 75%;
+  left: 82%;
+}
   }
- 
-  .logo-2 {
-     width: 100px;
-     height: 100px;
-     position: relative;
-     /* margin-left: 110px; */
-     margin-top: 20px;
+  
+  /* iPads (portrait) ----------- */
+  @media only screen and (min-width : 48em) and (max-width : 82.4375em) and (orientation : portrait) {
+  /* Styles */
+  #scrolldown1 {
+    left: 0;
+    width: 30%;
+    background: #1B1D1E;
+}
+.down-btn1 {
+  position: fixed;
+  color: #C7B491;
+  top: 50%;
+  text-align: center;
+}
+.down-btn1:hover {
+  cursor: pointer;
+} 
+.main_content {
+    width: 70%;
+}
+/* Styles */
+.explorers_side {
+  display: block;
+  margin-top: -1rem;
+   margin-left: -2rem;
+  width: 100%;
+}
+
+.logo-home1{
+  z-index: 100;
+  width: 230px;
+  height: 230px;
+  margin-left:  14%;
+}
+#explore-contact1 {
+   width: 80%;
+}
+.text-detailss {
+   width: 100%;
+   font-size: 14px;
+   padding-bottom: 0;
+
+}
+.contact-us1 {
+    width: 80%;
+    height: 340px;
+    margin-top: 1rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.welcome-container1 {
+  width: 80%;
+  padding: 1rem;
+  background: #1B1D1E;
+  margin-bottom: 1.5rem;
+  margin-left: -2rem;
+}
+.motto-theme1 {
+  width: 80%;
+  padding: 1rem 0;
+  background: #1B1D1E;
+  margin-left: -2rem;
+}
+.motto-theme1 h1{
+    font-weight: bolder;
+    font-size: 30px;
+    width: 100%;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+.welcome1 {
+    width: 100%;
+    font-size: 1.2rem;
+    color: #C7B491;
+}
+.main1 {
+  width: 100%;
+}
+.mapbox-iframe {
+   z-index: 200;
+   width: 100%;
+   margin-top: -0.8rem;
+  margin-bottom: 3rem;
+}
+.map-frame {
+   height: 300px;
+   margin-left: 0;
+   width: 80%;
+   margin-bottom: 4rem;
+   border-bottom-right-radius: 20px;
+   border-bottom-left-radius: 20px;
+}
+  
+.colored {
+    width: 60%;
+}
+.contact-headers {
+    text-align: center;
+    margin-bottom: -2rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+.call-to-action-home {
+  top: 75%;
+  left: 82%;
+}
   }
-  h1.menu-header {
-    font-size: 40px;
-    margin-bottom: -5px;
-    margin-top: 10px;
- }
- .menupage {
-    margin-top: -3px;
- }
- .items {
-  margin-left: 0;
+  /**********
+  iPad 3
+  **********/
+  @media only screen and (min-width : 48em) and (max-width : 82.4375em) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+  /* Styles */
+  #scrolldown1 {
+    left: 0;
+    width: 30%;
+    background: #1B1D1E;
+}
+.down-btn1 {
+  position: fixed;
+  color: #C7B491;
+  top: 50%;
+  text-align: center;
+}
+.down-btn1:hover {
+  cursor: pointer;
+} 
+.main_content {
+    width: 70%;
+}
+/* Styles */
+.explorers_side {
+  display: block;
+  margin-top: -1rem;
+   margin-left: -2rem;
+  width: 100%;
 }
 
-.menu {
-  font-size: 1.3rem;
-  font-weight: bolder;
+.logo-home1{
+  z-index: 100;
+  width: 230px;
+  height: 230px;
+  margin-left:  14%;
 }
-.subtitle {
-  font-weight: normal !important;
+#explore-contact1 {
+   width: 80%;
+}
+.text-detailss {
+   width: 100%;
+   font-size: 14px;
+   padding-bottom: 0;
+
+}
+.contact-us1 {
+    width: 80%;
+    height: 340px;
+    margin-top: 1rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
-.menu-content {
-  margin-bottom: 20px;
+.welcome-container1 {
+  width: 80%;
+  padding: 1rem;
+  background: #1B1D1E;
+  margin-bottom: 1.5rem;
+  margin-left: -2rem;
 }
-
+.motto-theme1 {
+  width: 80%;
+  padding: 1rem 0;
+  background: #1B1D1E;
+  margin-left: -2rem;
 }
-
-@media screen and (min-width: 321px) and (max-width: 375px){
- 
-  button.menu-call-to-action{
-     left: 70%;
-     height: 90px;
-     width: 90px;
+.motto-theme1 h1{
+    font-weight: bolder;
+    font-size: 30px;
+    width: 100%;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+.welcome1 {
+    width: 100%;
+    font-size: 1.2rem;
+    color: #C7B491;
+}
+.main1 {
+  width: 100%;
+}
+.mapbox-iframe {
+   z-index: 200;
+   width: 100%;
+   margin-top: -0.8rem;
+  margin-bottom: 3rem;
+}
+.map-frame {
+   height: 300px;
+   margin-left: 0;
+   width: 80%;
+   margin-bottom: 4rem;
+   border-bottom-right-radius: 20px;
+   border-bottom-left-radius: 20px;
+}
+  
+.colored {
+    width: 60%;
+}
+.contact-headers {
+    text-align: center;
+    margin-bottom: -2rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+.call-to-action-home {
+  top: 75%;
+  left: 82%;
+}
   }
- 
-  .logo-2 {
-     width: 120px;
-     height: 120px;
-     position: relative;
-     margin-top: 20px;
+  
+  @media only screen and (min-width : 48em) and (max-width : 82.4375em) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+  /* Styles */
+  #scrolldown1 {
+    left: 0;
+    width: 30%;
+    background: #1B1D1E;
+}
+.down-btn1 {
+  position: fixed;
+  color: #C7B491;
+  top: 50%;
+  text-align: center;
+}
+.down-btn1:hover {
+  cursor: pointer;
+} 
+.main_content {
+    width: 70%;
+}
+/* Styles */
+.explorers_side {
+  display: block;
+  margin-top: -1rem;
+   margin-left: -2rem;
+  width: 100%;
+}
+
+.logo-home1{
+  z-index: 100;
+  width: 230px;
+  height: 230px;
+  margin-left:  14%;
+}
+#explore-contact1 {
+   width: 80%;
+}
+.text-detailss {
+   width: 100%;
+   font-size: 14px;
+   padding-bottom: 0;
+
+}
+.contact-us1 {
+    width: 80%;
+    height: 340px;
+    margin-top: 1rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.welcome-container1 {
+  width: 80%;
+  padding: 1rem;
+  background: #1B1D1E;
+  margin-bottom: 1.5rem;
+  margin-left: -2rem;
+}
+.motto-theme1 {
+  width: 80%;
+  padding: 1rem 0;
+  background: #1B1D1E;
+  margin-left: -2rem;
+}
+.motto-theme1 h1{
+    font-weight: bolder;
+    font-size: 30px;
+    width: 100%;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+.welcome1 {
+    width: 100%;
+    font-size: 1.2rem;
+    color: #C7B491;
+}
+.main1 {
+  width: 100%;
+}
+.mapbox-iframe {
+   z-index: 200;
+   width: 100%;
+   margin-top: -0.8rem;
+  margin-bottom: 3rem;
+}
+.map-frame {
+   height: 300px;
+   margin-left: 0;
+   width: 80%;
+   margin-bottom: 4rem;
+   border-bottom-right-radius: 20px;
+   border-bottom-left-radius: 20px;
+}
+  
+.colored {
+    width: 60%;
+}
+.contact-headers {
+    text-align: center;
+    margin-bottom: -2rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+.call-to-action-home {
+  top: 75%;
+  left: 82%;
+}
   }
-  h1.menu-header {
-    font-size: 53px;
-    margin-bottom: -5px;
-    margin-top: 10px;
- }
- .menupage {
-    margin-top: -3px;
- }
- .items {
-  margin-left: 0;
-}
-
-.menu {
-  font-size: 1.4rem;
-  font-weight: bolder;
-}
-.subtitle {
-  font-weight: normal !important;
-}
-
-.menu-content {
-  margin-bottom: 20px;
-}
-/* .menu-deal {
-  line-height: 1;
-} */
-
-}
-
-
-
-@media screen and (min-width: 376px) and (max-width: 425px){
- 
-  button.menu-call-to-action{
-     left: 70%;
-     top: 75%;
-     height: 100px;
-     width: 100px;
+  /* Desktops and laptops ----------- */
+  @media only screen  and (min-width : 82.5em)  and (max-width : 92.5em) {
+  /* Styles */
+  
+     
+      .call-to-action-home {
+        position: fixed;
+        z-index: 500;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        top: 80%;
+        left: 87%;
+        color: #ffffff;
+        background: tomato;
+        font-weight: 800;
+        text-transform: uppercase;
+        border: none;
+      }
+      .call-to-action-home:hover {
+      background: #000000;
+      color: tomato;
+      cursor: pointer;
+      -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+        transition: ease-in-out 0.5s all;
+      }
+      .call-to-action-home:focus{
+        outline: none;
+        color: tomato;
+        background: #000000;
+      }
+      
+      #scrolldown1 {
+          left: 0;
+          width: 25%;
+          background: #1B1D1E;
+      }
+      .down-btn1 {
+          top: 50%;
+      }
+      .main_content {
+          width: 75%;
+          background: url('../../assets/restaurant2.jpg');
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+      .explorers_side {
+        display: flex;
+        flex-direction: row;
+        margin-left: -5rem;
+        margin-bottom: 10rem;
+      }
+      
+      #explore-contact1 {
+        width: 30%;
+      }
+      .text-detailss {
+        width: 30%;
+      }
+      .contact-us1 {
+          width: 60%;
+          background: #E6C14B !important;
+          opacity: .9;
+          border-radius: 20px;
+      }
+      .mapbox-iframe {
+        z-index: 200;
+      }
+      .map-frame {
+        z-index: 100;
+        height: 28.25em;
+        top: -1rem;
+    
+      }
+      .contact-us1 {
+        max-height: 470px;
+        height: auto;
+      }
+      .contact-headers {
+          text-align: left;
+          margin-top: .3rem;
+          margin-bottom: -2rem;
+          text-transform: uppercase;
+      }
+      .explore-header1 {
+        font-size: 2.1rem;
+        text-transform: uppercase;
+        font-weight: bolder;
+      }
+      .explore1 {
+          background: #4B8B6A;
+          opacity: 0.8;
+          padding: .5rem .75rem;
+          text-align: center;
+          max-height: 470px;
+          height: auto;
+          border-radius: 20px;
+          margin-right: 10px;
+        }
+      .explore1 a {
+          text-decoration: none;
+          color: #ffffff;
+      }
+      .text-details1 {
+          line-height: 1.7;
+          font-size: 16px;
+          text-align: left;
+      }
+      .welcome-container1 {
+          width: 75%;
+          padding: 1rem 0;
+          background: #1B1D1E;
+          margin-bottom: 1.5rem;
+          margin-left: -5rem;
+      }
+      .motto-theme1 {
+          width: 75%;
+          padding: 1rem 0;
+          background: #1B1D1E;
+          margin-left: -5rem;
+      }
+        .motto-theme1 h1{
+            font-weight: bolder;
+            font-size: 48px;
+            text-transform: uppercase;
+            color: #ffffff;
+            letter-spacing: 1.5;
+        }
+      .welcome1 {
+          width: 67%;
+          font-size: 1.2rem;
+          color: #C7B491;
+      }
+      .main1 {
+          width: 67%;
+          font-size: 1.2rem;
+          color: #ffffff;
+      }
+         
+     
   }
- 
-  .logo-2 {
-     width: 150px;
-     height: 150px;
-     position: relative;
-     margin-top: 20px;
+  
+  /* Large screens ----------- */
+  @media only screen  and (min-width : 114em) {
+  /* Styles */
+  .all_content {
+    display: flex;
+    height: 100%;
+    width: 100%;
   }
-  h1.menu-header {
-    font-size: 50px;
-    margin-bottom: -5px;
-    margin-top: 10px;
- }
- .menupage {
-    margin-top: -3px;
- }
- .items {
-  margin-left: 0;
-}
-
-.menu {
-  font-size: 1.6rem;
-  font-weight: bolder;
-}
-.subtitle {
-  font-weight: normal !important;
-  font-size: 18px;
-}
-
-.menu-content {
-  margin-bottom: 20px;
-}
-/* .menu-deal {
-  line-height: 1;
-} */
-
-}
-
-
-
-@media screen and (min-width: 426px) and (max-width: 768px){
- 
-  button.menu-call-to-action{
-     left: 72%;
-     top: 70%;
-     height: 110px;
-     width: 110px;
+  .home_content1 {
+     height: 100%;
+     width: 100%;
   }
- 
-  .logo-2 {
-     width: 180px;
-     height: 180px;
-     position: relative;
-     margin-top: 20px;
+  
+  #footer-items {
+    position: fixed;
+    border-top: 2px dotted white;
+     background: #1B1D1E;
+     bottom: 0;
+     z-index: 200;
   }
-  h1.menu-header {
-    font-size: 68px;
-    margin-bottom: -5px;
-    margin-top: 10px;
- }
- .menupage {
-    margin-top: -3px;
- }
- .items {
-  margin-left: 0;
-}
-
-.menu {
-  font-size: 1.7rem;
-  font-weight: bolder;
-}
-.subtitle {
-  font-weight: normal !important;
-  font-size: 18px;
-}
-
-.menu-content {
-  margin-bottom: 20px;
-}
-
-}
-
-
-
-@media screen and (min-width: 769px) and (max-width: 1024px){
- 
-  button.menu-call-to-action{
-     left: 73%;
-     top: 70%;
-     height: 120px;
-     width: 120px;
+  
+  .footer {
+    width: 90%;
+     padding: 20px;
+    margin: 0px auto;
+    color: white;
   }
- 
-  .logo-2 {
-     width: 220px;
-     height: 220px;
-     position: relative;
-     margin-top: 20px;
+  
+  .call-to-action-home {
+    position: fixed;
+    z-index: 500;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    top: 80%;
+    left: 87%;
+    color: #ffffff;
+    background: tomato;
+    font-weight: 800;
+    text-transform: uppercase;
+    border: none;
   }
-  h1.menu-header {
-    font-size: 90px;
-    margin-bottom: -5px;
-    margin-top: 10px;
- }
- .menupage {
-    margin-top: -3px;
- }
- /* .items {
-  margin-left: 0;
-} */
-
-.menu {
-  font-size: 2.5rem;
-  font-weight: bolder;
-}
-.subtitle {
-  font-weight: normal !important;
-  font-size: 18px;
-}
-
-.menu-content {
-  margin-bottom: 20px;
-}
-
-}
-
-
-@media screen and (min-width: 1025px) and (max-width: 2500px){
- 
-  button.menu-call-to-action{
-     left: 85%;
-     top: 70%;
-     height: 130px;
-     width: 130px;
+  .call-to-action-home:hover {
+   background: #000000;
+   color: tomato;
+   cursor: pointer;
+   -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    transition: ease-in-out 0.5s all;
   }
- 
-  .logo-2 {
+  .call-to-action-home:active {
+  
+  }
+  
+  .call-to-action-home:focus{
+    outline: none;
+    color: tomato;
+    background: #000000;
+  }
+  
+  #scrolldown1 {
+      left: 0;
+      width: 25%;
+      background: #1B1D1E;
+  }
+  .down-btn1 {
+      top: 50%;
+  }
+  .main_content {
+      width: 75%;
+      background: url('../../assets/restaurant2.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+  }
+  .explorers_side {
+    display: flex;
+    flex-direction: row;
+    margin-left: -100px;
+  }
+  
+  .logo-home1{
+    /* position: relative; */
+    z-index: 100;
+    width: 280px;
+    height: 280px;
+    margin-left:  14%;
+  }
+  #explore-contact1 {
+     width: 20%;
+  }
+  .text-detailss {
+     width: 50%;
+  }
+  .contact-us1 {
+      width: 41%;
+      background: #E6C14B !important;
+      opacity: .9;
+      border-radius: 20px;
+  }
+  .mapbox-iframe {
+     z-index: 200;
+  }
+  .map-frame {
+     z-index: 100;
+     height: 450px;
      width: 250px;
-     height: 250px;
-     position: relative;
-     margin-top: 20px;
+     margin-left: -16rem;
+     margin-top: 0.6rem;
   }
-  h1.menu-header {
-    font-size: 100px;
-    margin-bottom: -5px;
-    margin-top: 10px;
- }
- .menupage {
-    margin-top: -3px;
- }
- /* .items {
-  margin-left: 0;
-} */
-
-.menu {
-  font-size: 3rem;
-  font-weight: bolder;
-}
-.subtitle {
-  font-weight: normal !important;
-  font-size: 18px;
-}
-
-.menu-content {
-  margin-bottom: 20px;
-}
-
-}
+    
+  .colored {
+      width: 60%;
+  }
+  .contact-headers {
+      margin-left: 20px;
+      text-transform: uppercase;
+  }
+  
+  .scroll-to-top {
+    position: fixed;
+    z-index: 1000;
+    font-weight: bolder;
+    height: 50px;
+    width: 50px;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    padding: 10px;
+    bottom: 18%;
+    left: 50%;
+    color: white;
+    border-radius: 100%;
+  }
+  
+  .scroll-to-top svg {
+    animation: scrollTop 0.5s alternate ease infinite;
+  }
+  
+  
+  @keyframes scrollTop {
+    from{
+      transform: translateY(2px);
+    }
+    to{
+      transform: translateY(-1px);
+    }
+  }
+  
+  
+  .explore-header1 {
+    font-size: 2.1rem;
+    text-transform: uppercase;
+    font-weight: bolder;
+  }
+  .explore1 {
+      background: #4B8B6A;
+      opacity: 0.8;
+      padding: .5rem .75rem;
+      text-align: center;
+      border-radius: 20px;
+      margin-right: 10px;
+    }
+  .explore1 a {
+      text-decoration: none;
+      color: #ffffff;
+  }
+  .text-details1 {
+      line-height: 2;
+      font-size: 16px;
+      text-align: left;
+  }
+  .welcome-container1 {
+      width: 65%;
+      padding: 1rem 0;
+      background: #1B1D1E;
+      margin-bottom: 1.5rem;
+      margin-left: -5rem;
+  }
+  .motto-theme1 {
+      width: 65%;
+      padding: 1rem 0;
+      background: #1B1D1E;
+      margin-left: -5rem;
+  }
+    .motto-theme1 h1{
+        font-weight: bolder;
+        font-size: 48px;
+        text-transform: uppercase;
+        color: #ffffff;
+        letter-spacing: 1.5;
+    }
+  .welcome1 {
+       width: 60%;
+       font-size: 1.2rem;
+       color: #C7B491;
+  }
+  .main1 {
+      width: 60%;
+      font-size: 1.2rem;
+      color: #ffffff;
+  }
+  }
+  
